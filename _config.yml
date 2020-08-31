@@ -1,0 +1,53 @@
+# Site settings
+title: CircleUpX
+description: "Software Engineer"
+url:  "https://yunier.dev" # Actual base url of the website
+baseurl: "/"           # url of the jekyll blog. e.g. if you set url to "mysite.com" and baseurl to "blog", the jekyll website will work on "mysite.com/blog"
+author:
+  name: "Yunier"
+  email: "yunier@hey.com"
+  url: "https://yunier.dev"
+permalink: /:year/:month/:day/:title:output_ext
+
+#Plugins
+plugins: [jekyll-paginate, jekyll-feed, jekyll-seo-tag, jekyll-sitemap]
+
+#Pagination
+paginate: 3
+paginate_path: "/page:num/"
+
+#SEO
+twitter:
+  username: CircleUpX
+  card: summary
+logo: /assets/img/logo.jpg
+social:
+  links: #List your social links here
+    - https://twitter.com/CircleUpX
+    - https://github.com/circleupx
+    - https://www.linkedin.com/in/circleupx/
+webmaster_verifications:
+  google: 
+  bing: 
+  alexa: 
+  yandex: 
+  baidu: 
+lang: en_US
+
+#Highlighter
+kramdown:
+  input:          GFM
+  syntax_highlighter: rouge
+
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+#Sass
+sass:
+  style: compressed
+  sourcemap: never

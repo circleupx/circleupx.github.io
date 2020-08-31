@@ -1,0 +1,4 @@
+pages:
+  - {name: 'About Me', url: 'about.html'}
+  - {name: 'Contact', url: 'contact.html'}
+  - {name: 'Archived Post', url: 'archive.html'}
