@@ -1,9 +1,9 @@
 ---
 title: Configure Serilog Sub-loggers using XML AppSettings
 layout: post
-categories: [serilog, xml, appsettings, logging]
+categories: [serilog, xml, appsettings, logging, dotnet]
 image: /assets/img/serilogappsetting.PNG
-description: "Learn how to configure Serilog sub-loggers using XML configuration settings."
+description: "Configure Serilog sub-loggers through XML settings."
 ---
 
 Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application. 
@@ -144,7 +144,7 @@ namespace SubLogger
 
 Now we can test our console application to confirm that the correct configurations are being applied to each sub -logger. If you run the application, then two log files should be generated on C:\Log
 
-![Log Files](https://github.com/circleupx/circleupx.github.io/blob/master/assets/img/logfilesincdrive.PNG "Log Files in C Drive")
+![Log Files](https://raw.githubusercontent.com/circleupx/circleupx.github.io/master/assets/img/logfilesincdrive.PNG)
 
 and if we open the red log file you should see the following log lines.
 ```json
@@ -154,4 +154,4 @@ and if we open the red log file you should see the following log lines.
     "isRed":true
 }
 ```
-Congratulations, you have successfully configured two different Serilog sub-loggers through XML base configuration.
+Congratulations, you have successfully configured two different Serilog sub-loggers through XML configuration.
