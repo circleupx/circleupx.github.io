@@ -4,7 +4,7 @@ analytics-id: #leave blank to not use Analytics
 #Subtitle
 subtitle:
   active: true
-  text: Yet Another Minimal Theme
+  text: Yet Another Developer Blog
 
 #Nav 
 nav:
@@ -32,7 +32,7 @@ mathjax:
 #Show related posts based on categories
 related-posts:
   active: true
-  title: "You May Also Enjoy"
+  title: "See More"
 
 #Disqus
 disqus:
