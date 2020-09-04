@@ -1,7 +1,7 @@
 ---
 title: Configure Serilog Sub-loggers using XML AppSettings
 layout: post
-categories: [serilog, xml, appsettings, logging, dotnet]
+categories: [serilog, xml, appsettings, logging, .NET Framework]
 image: /assets/img/serilogappsetting.PNG
 description: "Configure Serilog sub-loggers through XML settings."
 ---
