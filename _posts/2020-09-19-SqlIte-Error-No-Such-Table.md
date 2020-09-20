@@ -2,13 +2,13 @@
 title: Sqlite Error No Such Table
 layout: post
 categories: [Sqlite, Unit Test, Errors, WebApplicationFactory, EF Core, .NET Core]
-image: /assets/img/sqlite/sqlite.PNG
+image: /assets/img/sqlite/sqlite.png
 description: "How to fix SQlite error no such table exception."
 ---
 
 Are you using SQlite as an in-memory provider with EF Core in your Unit/Integration test? If you are, you may come across the following exception when creating a database schema.
 
-![EFCore ToView Note](/assets/img/sqlite/pet-exception.PNG)
+![EFCore ToView Note](/assets/img/sqlite/pet-exception.png)
 
 As you can see from the exception, the error is **"SQlite Error 1: 'no such table vPet'"** which is odd because vPet has been defined as a sql view on my DbContext, not a sql table.
 
@@ -66,7 +66,7 @@ public class PetModelConfiguration : IEntityTypeConfiguration<Pet>
 
 Notice the usage of **.ToView()** on my entity type configuration class, per the [EF Core documentation](https://docs.microsoft.com/en-us/ef/core/modeling/keyless-entity-types?tabs=data-annotations#mapping-to-database-objects), the method .ToView assumes that the view vPet has been created prior to the execution of **EnsuredCreated** or **EnsureCreatedAsync**.
 
-![EFCore ToView Note](/assets/img/sqlite/efcore-toview-note.PNG)
+![EFCore ToView Note](/assets/img/sqlite/efcore-toview-note.png)
 
 ```c#
 [Fact]
