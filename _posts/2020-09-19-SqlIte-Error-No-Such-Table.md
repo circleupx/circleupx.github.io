@@ -6,13 +6,13 @@ image: https://www.yunier.dev/assets/img/sqlite/sqlite.png
 description: "How to fix SQlite error no such table exception."
 ---
 
-Are you using SQlite as an in-memory provider with EF Core in your Unit/Integration test? If you are, you may come across the following exception when creating a database schema.
+Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
 
 ![EFCore ToView Note](https://www.yunier.dev/assets/img/sqlite/pet-exception.PNG)
 
-As you can see from the exception, the error is **"SQlite Error 1: 'no such table vPet'"** which is odd because vPet has been defined as a sql view on my DbContext, not a sql table.
+As you can see from the exception, the error is **"SQLite Error 1: 'no such table vPet'"** which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
 
-This is my DbContext.
+Here is my PetsDbContext.
 ```c#
 public class PetsDbContext : DbContext
 {
@@ -36,7 +36,7 @@ public class PetsDbContext : DbContext
     }
 }
 ```
-here is the entity model for Pet.
+and my entity model for Pet.
 
 ```c#
 public class Pet
@@ -64,7 +64,7 @@ public class PetModelConfiguration : IEntityTypeConfiguration<Pet>
 }
 ```
 
-Notice the usage of **.ToView()** on my entity type configuration class, per the [EF Core documentation](https://docs.microsoft.com/en-us/ef/core/modeling/keyless-entity-types?tabs=data-annotations#mapping-to-database-objects), the method .ToView assumes that the view vPet has been created prior to the execution of **EnsuredCreated** or **EnsureCreatedAsync**.
+Notice the usage of **.ToView()** on my entity configuration class, per the [EF Core documentation](https://docs.microsoft.com/en-us/ef/core/modeling/keyless-entity-types?tabs=data-annotations#mapping-to-database-objects), the method .ToView assumes that the database object vPet has been created outside of the execution **EnsuredCreated** or **EnsureCreatedAsync**.
 
 ![EFCore ToView Note](https://www.yunier.dev/assets/img/sqlite/efcore-toview-note.PNG)
 
@@ -84,7 +84,7 @@ public async Task Test_UsingSqliteInMemoryProvider()
 }
 ```
 
-In other words, any entity configuration that utilizes .ToView() on your DbContext will not generate a view. This is why SQlite is throwing the error "SQlite Error 1: 'no such table vPets'". To get around this problem, you can write a script that generates the missing View in SQlite, for example.
+In other words, any entity configuration that utilizes .ToView() on your DbContext will not generate a corresponding SQL view. This is why SQLite is throwing the error "SQLite Error 1: 'no such table vPets'". To get around this problem, you can write a script that generates the missing View in SQLite, for example.
 
 ```c#
 
@@ -103,4 +103,3 @@ public async Task Test_UsingSqliteInMemoryProvider()
     }
 }
 ```
-Now whenever EnsureCreatedAsync creates a new database schema, vPets will be included.
