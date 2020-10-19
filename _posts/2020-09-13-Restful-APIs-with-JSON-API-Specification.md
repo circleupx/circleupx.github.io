@@ -1,9 +1,10 @@
 ---
-title: Building JSON&#58;API in .NET Core - The Home Resource. 
+title: JSON&#58;API in .NET Core - The Home Resource. 
 layout: post
 categories: [.NET Core, JSON, JSON&#58;API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/json-api.PNG
-description: "Building a .NET Core Web Api Using JSON&#58;API"
+description: "Part one of my blog series on building a .NET Core Web Api Using JSON&#58;API"
+
 ---
 
 Hello, this is going to be my first entry into a multi-part series of post showing how I've built RESTful APIs using the [JSON:API](https://jsonapi.org/) specification.
