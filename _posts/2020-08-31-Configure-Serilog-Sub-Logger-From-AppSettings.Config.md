@@ -14,26 +14,26 @@ First, we need to grab a few NuGet packages.
 
 We need Serilog.
 
-```text
-> dotnet add package Serilog
+```bash
+dotnet add package Serilog
 ```
 
 We have to read application settings from AppSettings.config/App.config, for that, we use the following Serilog package.
 
-```text
-> dotnet add package Serilog.Settings.AppSettings
+```bash
+dotnet add package Serilog.Settings.AppSettings
 ```
 
 Our sample application will be configured to log to files, so we need to grab file sink package.
 
-```text
-> dotnet add package Serilog.Sinks.File
+```bash
+dotnet add package Serilog.Sinks.File
 ```
 
 and the last NuGet package.
 
-```text
-> dotnet add package Serilog.Filters.Expressions
+```bash
+dotnet add package Serilog.Filters.Expressions
 ```
 
 This NuGet package will allow us to write logs to different sub-loggers based on an expression defined on our configuration. Our log will also be enriched logs with these expressions. 

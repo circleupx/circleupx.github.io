@@ -19,7 +19,7 @@ The convention/configuration approach taken by JsonApiFramework means that your 
 
 OK. Let's get started by installing JsonApiFramework using the following dotnet command.
 
-```text
+```bash
 
 dotnet add package JsonApiFramework.Server --version 2.4.0
 
@@ -196,8 +196,8 @@ Kinda hard to see, I am going to install JSON prettifier to my browser, if you a
 
 Much better, JSON Viewer sure helps, but wait, something doesn't look right. The serialization does not look correct, luckily I know the problem and how it can be fixed. JsonApiFramework has a [hard decency](https://github.com/scott-mcdonald/JsonApiFramework/issues/67) on Newtonsoft.JSON and .NET 3.1 uses [System.Text.Json](https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/). We can correct our problem by installing the following NuGet package.
 
-```text
-dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 3.1.8
+```bash
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```
 
 I need to update our StartUp.cs class so that NewtonsoftJson is used to serialize/deserialize JSON.
