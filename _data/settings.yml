@@ -4,7 +4,7 @@ analytics-id: #leave blank to not use Analytics
 #Subtitle
 subtitle:
   active: true
-  text: Yet Another Developer Blog
+  text: NOT Y3K COMPLIANT
 
 #Nav 
 nav:
@@ -36,4 +36,4 @@ related-posts:
 
 #Disqus
 disqus:
-  disqus_shortname: "" #Your disqus shortname. Leave blank to deactivate disqus comments
+  disqus_shortname: #Your disqus shortname. Leave blank to deactivate disqus comments
