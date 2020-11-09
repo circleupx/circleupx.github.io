@@ -7,9 +7,9 @@ description: "Part one of my blog series on building a .NET Core Web Api using J
 
 ---
 
-Hello, this is going to be my first entry into a multi-part series of post showing how I've built RESTful APIs using the [JSON:API](https://jsonapi.org/) specification.
+Hello, this is going to be my first entry into a multi-part series of post showing how I build RESTful APIs using the [JSON:API](https://jsonapi.org/) specification.
 
-In this post, I will start by creating a new .NET Core Web Api project, I am going to call this project **Chinook**, after the sqlite [database](https://www.sqlitetutorial.net/sqlite-sample-database/) that I will use in the project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his [Clean Architecture](https://github.com/ardalis/CleanArchitecture) repository.
+In this post, I will start by creating a new .NET Core Web Api project, I am going to call this project **Chinook**, after the sqlite [database](https://www.sqlitetutorial.net/sqlite-sample-database/) that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his [Clean Architecture](https://github.com/ardalis/CleanArchitecture) repository.
 
 ![Chinook Project Structure](/assets/img/json-api/chinook-project-structure.PNG)
 

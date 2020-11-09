@@ -1,5 +1,5 @@
 ---
-title: Configure Serilog Sub-loggers using XML AppSettings
+title: Configure Serilog Sub-loggers Using XML AppSettings
 layout: post
 categories: [serilog, xml, appsettings, logging, .NET Framework]
 image: /assets/img/serilogappsetting.PNG
@@ -93,11 +93,6 @@ private static void ReadBlueLoggerConfigurations(LoggerConfiguration loggerConfi
 Here is the completed console application.
 
 ```c#
-using Serilog;
-using Serilog.Core;
-using Serilog.Core.Enrichers;
-using System;
-
 namespace SubLogger
 {
     class Program

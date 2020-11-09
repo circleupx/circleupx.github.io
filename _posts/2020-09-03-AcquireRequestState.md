@@ -1,5 +1,5 @@
 ---
-title: AcquireRequestState
+title: AcquireRequestState In The .NET Framework.
 layout: post
 categories: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
 image: https://docs.microsoft.com/en-us/previous-versions/aspnet/images/bb470252.apppipeover(en-us,vs.100).png

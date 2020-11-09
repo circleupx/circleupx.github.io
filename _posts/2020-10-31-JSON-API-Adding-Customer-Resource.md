@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Adding The First API Resource. 
+title: JSON&#58;API in .NET Core - Adding The Customer Resource. 
 layout: post
 categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/chinook-database-entities.PNG
@@ -8,7 +8,7 @@ description: "Part three of my blog series on building a .NET Core Web Api using
 
 This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core. 
 
-I plant to add the first API resource, but before we get too deep on the code, I would like to review the [Chinook](https://www.sqlitetutorial.net/sqlite-sample-database/) database project. To do that I'm going to import [Chinook.db](https://cdn.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip) into [DB Browser](https://sqlitebrowser.org/dl/) for SQLite to see all available entities.
+I plant to add **Customer** as an API resource, but before we get too deep on the code, I would like to review the [Chinook](https://www.sqlitetutorial.net/sqlite-sample-database/) database project. To do that I'm going to import [Chinook.db](https://cdn.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip) into [DB Browser](https://sqlitebrowser.org/dl/) for SQLite to see all available entities.
 
 ![Database Entities](/assets/img/json-api/chinook-database-entities.PNG)
 
@@ -609,6 +609,6 @@ If I run the project again. I still get a valid HTTP response.
 
 ![Second Successful HTTP Response From Customer Resource](/assets/img/json-api/second-successful-response-customers.PNG)
 
-There you have it, we successfully added our first api resource. On the next blog post, I will add the remaining resources.
+There you have it, we successfully expose Customer as an API resource. On the next blog post, I will add the remaining resources.
 
 Bye.
