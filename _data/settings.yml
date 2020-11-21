@@ -15,7 +15,7 @@ nav:
 
 #Featured images in homepage
 featured-img:
-  active: false
+  active: true
 
 #Show categories at the end of posts
 categories:
