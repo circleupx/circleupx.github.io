@@ -1,19 +1,19 @@
-<section class="disqus">
-    <p id="load-comments" onclick="loadDisqus()">Load Comments</p>
+{%- if site.disqus -%}
+<div class="disqus-comments">
+  <div class="comments">
     <div id="disqus_thread"></div>
-
-    <script id="loadDisqus" type="text/javascript">
-      var disqus_loaded = false;
-      var disqus_shortname = "{{ site.data.settings.disqus.disqus_shortname }}";
-      var disqus_identifier = "{{ page.url }}";
-      function loadDisqus() {
-        var e = document.createElement('script'); 
-        e.type = 'text/javascript'; 
-        e.async = true;
-        e.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(e);
-        document.getElementById("load-comments").style.display = "none";
-      };
+    <script type="text/javascript">
+	  var disqus_shortname = '{{ site.disqus }}';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments.</a></noscript>
-</section>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+{%- endif -%}
