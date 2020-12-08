@@ -587,9 +587,62 @@ Ensure metadata is configured correctly for the respective domain/schema.
 
 JsonApiFramework is not able to determine which property within the Customers class should be used as the JSON:API [identifier](https://jsonapi.org/format/#document-resource-object-identification). JsonApiFramework offers two solutions to this problem. We can use the built-in conventions offered by JsonApiFramework. This is similar to how EF and EF Core Fluent APIs work, if you have a class named Dog and that class has a public property named Id or DogId, JsonApiFramework understands that this property is the entity identifier so it automatically maps it as the JSON:API identifier on your JSON:API document. In our case, our class is named Customers, plural, and the entity identifier is the public property CustomerId, **notice that word Customer in CustomerId is singular**. This naming mismatched is due to the EF scaffold tool. 
 
-So, if I refactor my code by renaming the Customers (plural) class to Customer (singular) then I get the valid HTTP response.
+So, if I refactor my code by renaming the Customers (plural) class to Customer (singular) then the API returns the following JSON:API Document.
 
-![Successful HTTP Response From Customer Resource](/assets/img/json-api/first-successful-response-customers.PNG)
+```json
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "https://localhost:44323/customers",
+    "up": "https://localhost:44323"
+  },
+  "data": [
+    {
+      "type": "customers",
+      "id": "1",
+      "attributes": {
+        "firstName": "Luís",
+        "lastName": "Gonçalves",
+        "company": "Embraer - Empresa Brasileira de Aeronáutica S.A.",
+        "address": "Av. Brigadeiro Faria Lima, 2170",
+        "city": "São José dos Campos",
+        "state": "SP",
+        "country": "Brazil",
+        "postalCode": "12227-000",
+        "phone": "+55 (12) 3923-5555",
+        "fax": "+55 (12) 3923-5566",
+        "email": "luisg@embraer.com.br"
+      },
+      "links": {
+        "self": "https://localhost:44323/customers/1"
+      }
+    },
+    {
+      "type": "customers",
+      "id": "2",
+      "attributes": {
+        "firstName": "Leonie",
+        "lastName": "Köhler",
+        "company": null,
+        "address": "Theodor-Heuss-Straße 34",
+        "city": "Stuttgart",
+        "state": null,
+        "country": "Germany",
+        "postalCode": "70174",
+        "phone": "+49 0711 2842222",
+        "fax": null,
+        "email": "leonekohler@surfeu.de"
+      },
+      "links": {
+        "self": "https://localhost:44323/customers/2"
+      }
+    }
+  ]
+}
+
+```
 
 The second approach is to use configurations by configuring our CustomerServiceModelConfiguration class. I'll undo my refactoring, the customers class is back to being plural and I'll update the CustomerServiceModelConfiguration class.
 
@@ -605,10 +658,61 @@ class CustomerServiceModelConfiguration : ResourceTypeBuilder<Customers>
 
 Simply call the method ResourceIdentity, use the **nameof** and **typeof** parameter to let JsonApiFramework know what the entity identifier is for the service model.
 
-If I run the project again. I still get a valid HTTP response.
+If I run the Web Api project again. I get the same JSON:API document as an HTTP response.
 
-![Second Successful HTTP Response From Customer Resource](/assets/img/json-api/second-successful-response-customers.PNG)
+```json
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "https://localhost:44323/customers",
+    "up": "https://localhost:44323"
+  },
+  "data": [
+    {
+      "type": "customers",
+      "id": "1",
+      "attributes": {
+        "firstName": "Luís",
+        "lastName": "Gonçalves",
+        "company": "Embraer - Empresa Brasileira de Aeronáutica S.A.",
+        "address": "Av. Brigadeiro Faria Lima, 2170",
+        "city": "São José dos Campos",
+        "state": "SP",
+        "country": "Brazil",
+        "postalCode": "12227-000",
+        "phone": "+55 (12) 3923-5555",
+        "fax": "+55 (12) 3923-5566",
+        "email": "luisg@embraer.com.br"
+      },
+      "links": {
+        "self": "https://localhost:44323/customers/1"
+      }
+    },
+    {
+      "type": "customers",
+      "id": "2",
+      "attributes": {
+        "firstName": "Leonie",
+        "lastName": "Köhler",
+        "company": null,
+        "address": "Theodor-Heuss-Straße 34",
+        "city": "Stuttgart",
+        "state": null,
+        "country": "Germany",
+        "postalCode": "70174",
+        "phone": "+49 0711 2842222",
+        "fax": null,
+        "email": "leonekohler@surfeu.de"
+      },
+      "links": {
+        "self": "https://localhost:44323/customers/2"
+      }
+    }
+  ]
+}
 
-There you have it, we successfully expose Customer as an API resource. On the next blog post, I will add the remaining resources.
+```
 
-Bye.
+The API now successfully exposes Customer as an API resource. On the next blog post, I will add the remaining resources.

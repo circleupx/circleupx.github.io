@@ -223,7 +223,7 @@ public async Task<Document> GetArtistResourceToAlbumResourceCollection(int resou
     }
 ```
 
-Perfect, the controller has been configured, now if we click on the related link to albums for artist 1 the API will respond with the following JSON:API document.
+Perfect, the controller has been configured, now if I click on the related link to albums for artist with id 1 the API will respond with the following JSON:API document.
 
 ```json
 
@@ -260,7 +260,7 @@ Perfect, the controller has been configured, now if we click on the related link
 }
 ```
 
-Now I will need to make a similar change to the album controller. Here are the changes that need to be made.
+Now I will need to make a similar change to the album controller.
 
 ```c#
     // new controller method
@@ -305,7 +305,7 @@ Now I will need to make a similar change to the album controller. Here are the c
     }
 ```
 
-Now if I click the related link to any artist on an album resource I get the following JSON:API document as a response.
+Now if I click the related link to artist on an album resource I get the following JSON:API document as a response.
 
 ```json
 {
@@ -329,4 +329,4 @@ Now if I click the related link to any artist on an album resource I get the fol
 }
 ```
 
-All that remains to do now is to expose all relationship. Something that I will accomplish before our next post.
+All that remains to do now is to expose all relationships. Something that I will accomplish before our next post.
