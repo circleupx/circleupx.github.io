@@ -1,9 +1,7 @@
 ---
 title: AcquireRequestState In The .NET Framework.
 layout: post
-categories: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
-image: https://docs.microsoft.com/en-us/previous-versions/aspnet/images/bb470252.apppipeover(en-us,vs.100).png
-description: "The problem with AcquireRequestState."
+tags: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
 ---
 
 In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.

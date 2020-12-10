@@ -1,9 +1,7 @@
 ---
 title: UniFi Dream Machine - Turn on/off LED Light Switch  
 layout: post
-categories: [hardware, UniFi, Dream Machine]
-image: https://cdn.shopify.com/s/files/1/1439/1668/products/UDM_Front_Top_Right_Angle_89229906-3437-4d12-83ac-a54f06353e75_grande.png?v=1555624462
-description: "Turn off the LED Light on a Dream Machine"
+tags: [UniFi, Dream Machine, UniFi Controller]
 ---
 
 I want to step away from software for this post to talk about some hardware. Over the years I've owned a few routers, some have been really really [good](https://www.amazon.com/R7000-100PAS-Nighthawk-Parental-Controls-Compatible/dp/B00F0DD0I6/) and some have been really [bad](https://en.wikipedia.org/wiki/Linksys_WRT54G_series). So far the best router I have owned is my current router, the [UniFi Dream Machine](https://www.amazon.com/Ubiquiti-UniFi-Dream-Machine-UDM-US/dp/B081QNJFPV/). While I was mostly happy with my last router, the NighHawk AC1900, it did dropped the WiFi signal a lot, I think that at one point it was dropping the WiFi signal once a week. That prompted me to start looking for a new router. After doing some research, and seeing [Troy Hunt presentation on bad IOT devices](https://youtu.be/FRsRoaubPiY?t=1800) and NetworkChuck's [review](https://www.youtube.com/watch?v=BezoNUflqXo) on the Dream Machine, I was sold on the Dream Machine.

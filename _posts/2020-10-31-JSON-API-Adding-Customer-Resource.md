@@ -1,9 +1,7 @@
 ---
 title: JSON&#58;API in .NET Core - Adding The Customer Resource. 
 layout: post
-categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
-image: /assets/img/json-api/chinook-database-entities.PNG
-description: "Part three of my blog series on building a .NET Core Web Api using JSON&#58;API"
+tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 ---
 
 This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core. 

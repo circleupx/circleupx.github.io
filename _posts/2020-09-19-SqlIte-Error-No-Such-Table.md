@@ -1,9 +1,7 @@
 ---
 title: Sqlite Error No Such Table
 layout: post
-categories: [Sqlite, Unit Test, Errors, WebApplicationFactory, EF Core, .NET Core]
-image: https://www.yunier.dev/assets/img/sqlite/sqlite.png
-description: "How to fix SQlite error no such table exception."
+tags: [Sqlite, Unit Test, Errors, WebApplicationFactory, EF Core, .NET Core]
 ---
 
 Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
