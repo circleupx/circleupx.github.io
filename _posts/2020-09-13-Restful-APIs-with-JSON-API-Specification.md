@@ -1,7 +1,7 @@
 ---
-title: JSON:API in .NET Core - The Home Resource. 
+title: JSON&#58;API in .NET Core - The Home Resource. 
 layout: post
-categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/json-api.PNG
 description: "Part one of my blog series on building a .NET Core Web Api using JSON:API"
 

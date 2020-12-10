@@ -1,7 +1,7 @@
 ---
-title: JSON:API in .NET Core - A Global Exception Handling Middleware. 
+title: JSON&#58;API in .NET Core - A Global Exception Handling Middleware. 
 layout: post
-categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/errors-object-definition.PNG
 description: "Part two of my blog series on building a .NET Core Web Api using JSON:API"
 ---
