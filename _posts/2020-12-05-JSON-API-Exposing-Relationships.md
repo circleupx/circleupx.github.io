@@ -1,43 +1,43 @@
 ---
-title: JSON&#58;API in .NET Core - Exposing Relationships
+title: JSON:API in .NET Core - Exposing Relationships
 layout: post
-categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/chinook-database-entities.PNG
 description: "Part four of my blog series on building a .NET Core Web Api using JSON&#58;API"
 ---
 
-My [previous](https://www.yunier.dev/2020/10/31/JSON-API-Adding-Customer-Resource.html) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource. 
+My [previous](https://www.yunier.dev/2020-10-31-JSON-API-Adding-Customer-Resource/) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource. 
 
 For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums. 
 
 Here is current class definition for ArtistServiceModelConfiguration.
 
 ```c#
-    class ArtistServiceModelConfiguration : ResourceTypeBuilder<Artist>
+class ArtistServiceModelConfiguration : ResourceTypeBuilder<Artist>
+{
+    public ArtistServiceModelConfiguration()
     {
-        public ArtistServiceModelConfiguration()
-        {
-            // Ignore ER Core Navigation Properties
-            this.Attribute(a => a.Albums)
-                .Ignore();
-        }
+        // Ignore ER Core Navigation Properties
+        this.Attribute(a => a.Albums)
+            .Ignore();
     }
+}
 ```
 
 Here is the class definition afterwards.
 
 ```c#
-    class ArtistServiceModelConfiguration : ResourceTypeBuilder<Artist>
+class ArtistServiceModelConfiguration : ResourceTypeBuilder<Artist>
+{
+    public ArtistServiceModelConfiguration()
     {
-        public ArtistServiceModelConfiguration()
-        {
-            // Ignore ER Core Navigation Properties
-            this.Attribute(a => a.Albums)
-                .Ignore();
+        // Ignore ER Core Navigation Properties
+        this.Attribute(a => a.Albums)
+            .Ignore();
 
-            this.ToManyRelationship<Album>(AlbumResourceKeyWords.ToManyRelationShipKey);
-        }
+        this.ToManyRelationship<Album>(AlbumResourceKeyWords.ToManyRelationShipKey);
     }
+}
 ```
 
 With this change the API will expose the to-many part of the relationship between artist and album. Time to expose the to-one part of the relationship, for that I will update the class AlbumServiceModelConfiguration. 
@@ -45,68 +45,67 @@ With this change the API will expose the to-many part of the relationship betwee
 Here is the class definition for AlbumServiceModelConfiguration.
 
 ```c#
-    class AlbumServiceModelConfiguration : ResourceTypeBuilder<Album>
+class AlbumServiceModelConfiguration : ResourceTypeBuilder<Album>
+{
+    public AlbumServiceModelConfiguration()
     {
-        public AlbumServiceModelConfiguration()
-        {
-            // Ignore ER Core Navigation Properties
-            this.Attribute(a => a.Artist)
-                .Ignore();
+        // Ignore ER Core Navigation Properties
+        this.Attribute(a => a.Artist)
+            .Ignore();
 
-            this.Attribute(a => a.Tracks)
-                .Ignore();
+        this.Attribute(a => a.Tracks)
+            .Ignore();
 
-            // Ignore Foreign Keys
-            this.Attribute(a => a.ArtistId)
-                .Ignore();
-        }
+        // Ignore Foreign Keys
+        this.Attribute(a => a.ArtistId)
+            .Ignore();
     }
+}
 ```
 
 Here is the class afterwards.
 
 ```c#
-    class AlbumServiceModelConfiguration : ResourceTypeBuilder<Album>
+class AlbumServiceModelConfiguration : ResourceTypeBuilder<Album>
+{
+    public AlbumServiceModelConfiguration()
     {
-        public AlbumServiceModelConfiguration()
-        {
-            // Ignore ER Core Navigation Properties
-            this.Attribute(a => a.Artist)
-                .Ignore();
+        // Ignore ER Core Navigation Properties
+        this.Attribute(a => a.Artist)
+            .Ignore();
 
-            this.Attribute(a => a.Tracks)
-                .Ignore();
+        this.Attribute(a => a.Tracks)
+            .Ignore();
 
-            // Ignore Foreign Keys
-            this.Attribute(a => a.ArtistId)
-                .Ignore();
+        // Ignore Foreign Keys
+        this.Attribute(a => a.ArtistId)
+            .Ignore();
 
-            this.ToOneRelationship<Artist>(ArtistResourceKeyWords.ToOneRelationshipKey);
-        }
+        this.ToOneRelationship<Artist>(ArtistResourceKeyWords.ToOneRelationshipKey);
     }
+}
 ```
 
 Now the API will be able to expose the one-to-many relationship between artist and albums. With this changes JsonApiFramework will know how to build relationship links between artists and albums. Time to use the new configuration, I'll start by updating the GetResourceCollection and GetResource method that exist in the class AlbumResource and ArtistResource. The change will be be the same across all methods. I will update the fluent style API expose by JsonApiFramework by calling the AddRelationship method in the Relationships chain.
 
 ```c#
-    using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
-    var document = chinookDocumentContext
-        .NewDocument(currentRequestUri)
-        .SetJsonApiVersion(JsonApiVersion.Version10)
+using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
+var document = chinookDocumentContext
+    .NewDocument(currentRequestUri)
+    .SetJsonApiVersion(JsonApiVersion.Version10)
+        .Links()
+            .AddSelfLink()
+            .AddUpLink()
+        .LinksEnd()
+        .ResourceCollection(artistResourceCollection)
+            .Relationships()
+                .AddRelationship(AlbumResourceKeyWords.ToManyRelationShipKey, new[] { Keywords.Related })
+            .RelationshipsEnd()
             .Links()
                 .AddSelfLink()
-                .AddUpLink()
-            .LinksEnd()
-            .ResourceCollection(artistResourceCollection)
-                .Relationships()
-                    .AddRelationship(AlbumResourceKeyWords.ToManyRelationShipKey, new[] { Keywords.Related })
-                .RelationshipsEnd()
-                .Links()
-                    .AddSelfLink()
-                .LinksEnd()                          
-            .ResourceCollectionEnd()
-        .WriteDocument();
-
+            .LinksEnd()                          
+        .ResourceCollectionEnd()
+    .WriteDocument();
 ```
 
 Now if I run the Web API project and go to any given artist, the API will expose a [related](https://tools.ietf.org/html/rfc4287#section-4.2.7.2) link to a collection of album.
@@ -177,50 +176,50 @@ Exposing the relationship alone is not enough, if you were to click any of those
 I'll start with the Artist controller. I'll update it by adding the following method.
 
 ```c#
-    [Route(ArtistRoutes.ArtistResourceToAlbumResourceCollection)]
-    public async Task<IActionResult> GetArtistResourceToAlbumResourceCollection(int resourceId)
-    {
-        var document = await _artistResource.GetArtistResourceToAlbumResourceCollection(resourceId);
-        return Ok(document);
-    }
+[Route(ArtistRoutes.ArtistResourceToAlbumResourceCollection)]
+public async Task<IActionResult> GetArtistResourceToAlbumResourceCollection(int resourceId)
+{
+    var document = await _artistResource.GetArtistResourceToAlbumResourceCollection(resourceId);
+    return Ok(document);
+}
 ```
 GetArtistResourceToAlbumResourceCollection is a new method on the IArtistResource interface. Here is the updated interface definition.
 
 ```c#
-    public interface IArtistResource
-    {
-        Task<Document> GetArtistResource(int resourceId);
-        Task<Document> GetArtistResourceCollection();
-        Task<Document> GetArtistResourceToAlbumResourceCollection(int resourceId);
-    }
+public interface IArtistResource
+{
+    Task<Document> GetArtistResource(int resourceId);
+    Task<Document> GetArtistResourceCollection();
+    Task<Document> GetArtistResourceToAlbumResourceCollection(int resourceId);
+}
 ```
 
 Time to update the ArtistResource class by adding the concrete implementation of the GetArtistResourceToAlbumResourceCollection method.
 
 ```c#
 public async Task<Document> GetArtistResourceToAlbumResourceCollection(int resourceId)
-    {
-        var albumResourceCollection = await _mediator.Send(new GetArtistResourceToAlbumResourceCollectionCommand(resourceId));
-        var currentRequestUri = _httpContextAccessor.HttpContext.GetCurrentRequestUri();
+{
+    var albumResourceCollection = await _mediator.Send(new GetArtistResourceToAlbumResourceCollectionCommand(resourceId));
+    var currentRequestUri = _httpContextAccessor.HttpContext.GetCurrentRequestUri();
 
-        using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
-        var document = chinookDocumentContext
-            .NewDocument(currentRequestUri)
-            .SetJsonApiVersion(JsonApiVersion.Version10)
+    using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
+    var document = chinookDocumentContext
+        .NewDocument(currentRequestUri)
+        .SetJsonApiVersion(JsonApiVersion.Version10)
+            .Links()
+                .AddSelfLink()
+                .AddUpLink()
+            .LinksEnd()
+            .ResourceCollection(albumResourceCollection)
                 .Links()
                     .AddSelfLink()
-                    .AddUpLink()
                 .LinksEnd()
-                .ResourceCollection(albumResourceCollection)
-                    .Links()
-                        .AddSelfLink()
-                    .LinksEnd()
-                .ResourceCollectionEnd()
-            .WriteDocument();
+            .ResourceCollectionEnd()
+        .WriteDocument();
 
-        _logger.LogInformation("Request for {URL} generated JSON:API document {doc}", currentRequestUri, document);
-        return document;
-    }
+    _logger.LogInformation("Request for {URL} generated JSON:API document {doc}", currentRequestUri, document);
+    return document;
+}
 ```
 
 Perfect, the controller has been configured, now if I click on the related link to albums for artist with id 1 the API will respond with the following JSON:API document.
@@ -263,46 +262,46 @@ Perfect, the controller has been configured, now if I click on the related link 
 Now I will need to make a similar change to the album controller.
 
 ```c#
-    // new controller method
-    [Route(AlbumRoutes.AlbumResourceToArtistResource)]
-    public async Task<IActionResult> GetAlbumResourceToArtistResource(int resourceId)
-    {
-        var document = await _albumResource.GetAlbumResourceToArtistResource(resourceId);
-        return Ok(document);
-    }
+// new controller method
+[Route(AlbumRoutes.AlbumResourceToArtistResource)]
+public async Task<IActionResult> GetAlbumResourceToArtistResource(int resourceId)
+{
+    var document = await _albumResource.GetAlbumResourceToArtistResource(resourceId);
+    return Ok(document);
+}
 
-    // updated IAlbumResource interface
-    public interface IAlbumResource
-    {
-        Task<Document> GetAlbumResource(int resourceId);
-        Task<Document> GetAlbumResourceCollection();
-        Task<Document> GetAlbumResourceToArtistResource(int resourceId);
-    }
+// updated IAlbumResource interface
+public interface IAlbumResource
+{
+    Task<Document> GetAlbumResource(int resourceId);
+    Task<Document> GetAlbumResourceCollection();
+    Task<Document> GetAlbumResourceToArtistResource(int resourceId);
+}
 
-    // concrete GetAlbumResourceToArtistResource implementation 
-    public async Task<Document> GetAlbumResourceToArtistResource(int resourceId)
-    {
-        var artistResource = await _mediator.Send(new GetAlbumResourceToArtistResourceCommand(resourceId));
-        var currentRequestUri = _httpContextAccessor.HttpContext.GetCurrentRequestUri();
+// concrete GetAlbumResourceToArtistResource implementation 
+public async Task<Document> GetAlbumResourceToArtistResource(int resourceId)
+{
+    var artistResource = await _mediator.Send(new GetAlbumResourceToArtistResourceCommand(resourceId));
+    var currentRequestUri = _httpContextAccessor.HttpContext.GetCurrentRequestUri();
 
-        using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
-        var document = chinookDocumentContext
-            .NewDocument(currentRequestUri)
-            .SetJsonApiVersion(JsonApiVersion.Version10)
+    using var chinookDocumentContext = new ChinookJsonApiDocumentContext(currentRequestUri);
+    var document = chinookDocumentContext
+        .NewDocument(currentRequestUri)
+        .SetJsonApiVersion(JsonApiVersion.Version10)
+            .Links()
+                .AddSelfLink()
+                .AddUpLink()
+            .LinksEnd()
+            .Resource(artistResource)
                 .Links()
                     .AddSelfLink()
-                    .AddUpLink()
                 .LinksEnd()
-                .Resource(artistResource)
-                    .Links()
-                        .AddSelfLink()
-                    .LinksEnd()
-                .ResourceEnd()
-            .WriteDocument();
+            .ResourceEnd()
+        .WriteDocument();
 
-        _logger.LogInformation("Request for {URL} generated JSON:API document {doc}", currentRequestUri, document);
-        return document;
-    }
+    _logger.LogInformation("Request for {URL} generated JSON:API document {doc}", currentRequestUri, document);
+    return document;
+}
 ```
 
 Now if I click the related link to artist on an album resource I get the following JSON:API document as a response.

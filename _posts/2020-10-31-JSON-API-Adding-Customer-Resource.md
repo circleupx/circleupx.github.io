@@ -1,7 +1,7 @@
 ---
-title: JSON&#58;API in .NET Core - Adding The Customer Resource. 
+title: JSON:API in .NET Core - Adding The Customer Resource. 
 layout: post
-categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/chinook-database-entities.PNG
 description: "Part three of my blog series on building a .NET Core Web Api using JSON&#58;API"
 ---
@@ -491,13 +491,32 @@ The second change I made was to create a private method within the HomeResource 
 
 Now if I run the project the home resource should expose a link to the customers API resource.
 
-![Link to Customer Resource in Home Resource](/assets/img/json-api/link-to-customers-resource.PNG)
+```json
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "https://localhost:44323"
+  },
+  "data": {
+    "type": "home",
+    "id": null,
+    "attributes": {
+      "message": "Chinook Sample JSON:API Project"
+    },
+    "links": {
+      "customers": "https://localhost:44323/customers"
+    }
+  }
+}
+```
 
-If you click the link you will get an error as we haven't added any controllers that can handle that HTTP request. 
+If you click the link you will get HTTP 404 error as we haven't added any controllers that can handle that HTTP request. 
 
 Let's change that.
 
-I'll start by adding a new controller, CustomerController. This will handle routing for customer resource collection and customer resource, as well as any relationships exposed to other resources.
+I'll start by adding a new controller, CustomerController. This will handle routing for the customer resource, as well as any relationships exposed to other resources.
 
 ```c#
 [ApiController]
@@ -554,7 +573,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-and I know, I can hear you saying **'Doesn't accessing the DbContext directly on the controller violate the Clean Architecture project structure?'**. It does, but for right now I am not concerned about that, I don't want to spend too much time on the DAL layer at this point. I want to keep it simple by accessing the DbContext directly. In a future blog post, I will return to clean this all up. For now I want to get the resource up and running.
+and I know, I can hear you saying **'Doesn't accessing the DbContext directly on the controller violate the Clean Architecture project structure?'**. It does, but for right now I am not concerned about that, I don't want to spend too much time on the Data layer at this point. I want to keep it simple by accessing the DbContext directly. In a future blog post, I will return to clean this all up. For now I want to get the resource up and running.
 
 Time to run the project again. Clicking on the customer link on the home resource gets me the following JSON:API errors documents as the HTTP response.
 
@@ -578,11 +597,29 @@ The error did not make any sense at first, but then it clicked. We created a Cus
 
 Here is the updated CreateServiceModel method in our ConfigurationFactory class. As you can see, the CustomerServiceModelConfiguration class is now registered. When I run the project now I get the following runtime exception,
 
-```c#
-JsonApiFramework.ServiceModel.ServiceModelException
-HResult=0x80131500
-Message=JsonApiFramework.ServiceModel.Internal.ResourceType [clrType=Customers] has missing ResourceIdentityInfo metadata.
-Ensure metadata is configured correctly for the respective domain/schema.
+```json
+{
+  "errors": [
+    {
+      "id": "1312",
+      "status": "InternalServerError",
+      "code": "0380bf13-8d15-4bf5-9367-170af0bb7d95",
+      "title": "ServiceModelException",
+      "detail": "ServiceModel has missing ResourceType [clrType=Customer] metadata. Ensure metadata is configured correctly for the respective domain/schema.",
+      "source": {
+        "pointer": null
+      },
+      "links": {
+        "about": {
+          "href": null
+        }
+      },
+      "meta": {
+        "targetSite": "GetResourceType"
+      }
+    }
+  ]
+}
 ```
 
 JsonApiFramework is not able to determine which property within the Customers class should be used as the JSON:API [identifier](https://jsonapi.org/format/#document-resource-object-identification). JsonApiFramework offers two solutions to this problem. We can use the built-in conventions offered by JsonApiFramework. This is similar to how EF and EF Core Fluent APIs work, if you have a class named Dog and that class has a public property named Id or DogId, JsonApiFramework understands that this property is the entity identifier so it automatically maps it as the JSON:API identifier on your JSON:API document. In our case, our class is named Customers, plural, and the entity identifier is the public property CustomerId, **notice that word Customer in CustomerId is singular**. This naming mismatched is due to the EF scaffold tool. 
@@ -715,4 +752,4 @@ If I run the Web Api project again. I get the same JSON:API document as an HTTP 
 
 ```
 
-The API now successfully exposes Customer as an API resource. On the next blog post, I will add the remaining resources.
+The API now successfully exposes Customer as an API resource. By the next blog post, I will add the remaining resources.

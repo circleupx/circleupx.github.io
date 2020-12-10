@@ -87,4 +87,4 @@ echo "Done."
 
 Before running the script, make sure to update the variables **username, password and url** with your username, your password, and the URL you use to connect to the UniFi Dream Machine. Do not drop the port, 8443, you need it. Also, if you have 2FA authentication enabled, you should, you will need to disable it before running the script. You can turn 2FA on again after running the script.
 
-Credits: All credits go to [**ameyuuno**](https://github.com/ameyuuno). I recommend checking out his script if you are interested on having the LED light be on and off base on a schedule.
+**Credits:** All credits go to [**ameyuuno**](https://github.com/ameyuuno). I recommend checking out his script if you are interested on having the LED light be on and off base on a schedule.

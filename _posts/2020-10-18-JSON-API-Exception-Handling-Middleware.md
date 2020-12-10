@@ -1,9 +1,9 @@
 ---
-title: JSON&#58;API in .NET Core - A Global Exception Handling Middleware. 
+title: JSON:API in .NET Core - A Global Exception Handling Middleware. 
 layout: post
-categories: [.NET Core, JSON, JSON&#58;API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/errors-object-definition.PNG
-description: "Part two of my blog series on building a .NET Core Web Api using JSON&#58;API"
+description: "Part two of my blog series on building a .NET Core Web Api using JSON:API"
 ---
 
 On my second post on [JSON:API](https://jsonapi.org/) in .NET Core I wanted to create an exception handling [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1). This middleware would be responsible for catching all exceptions and for generating a JSON:API [Errors Documents](https://jsonapi.org/format/#document-top-level). 
@@ -134,7 +134,30 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 If I run the Chinook.Web project, I get the following JSON:API Errors Document.
 
-![Exception Extension](/assets/img/json-api/errors-document-on-home-resource.PNG)
+```json
+{
+  "errors": [
+    {
+      "id": "3646",
+      "status": "InternalServerError",
+      "code": "94ee7495-d507-4819-ad8c-4ebaab08c8e4",
+      "title": "NotImplementedException",
+      "detail": "The method or operation is not implemented.",
+      "source": {
+        "pointer": "Chinook.Web"
+      },
+      "links": {
+        "about": {
+          "href": null
+        }
+      },
+      "meta": {
+        "targetSite": "GetHomeDocument"
+      }
+    }
+  ]
+}
+```
 
 Now the API has a global exception handler that will transform all errors into JSON:API Errors document.
 
