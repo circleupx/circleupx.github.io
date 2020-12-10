@@ -1,7 +1,7 @@
 ---
 title: JSON&#58;API in .NET Core - Exposing Relationships
 layout: post
-categories: [.NET Core, JSON:API, JsonApiFramework, APIs, REST]
+categories: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 image: /assets/img/json-api/chinook-database-entities.PNG
 description: "Part four of my blog series on building a .NET Core Web Api using JSON&#58;API"
 ---
