@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Adding The Customer Resource. 
+title: JSON&#58;API in .NET Core - Adding The Customer Resource
 layout: post
 tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 ---

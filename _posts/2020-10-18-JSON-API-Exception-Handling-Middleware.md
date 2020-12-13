@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - A Global Exception Handling Middleware. 
+title: JSON&#58;API in .NET Core - A Global Exception Handling Middleware
 layout: post
 tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
 ---

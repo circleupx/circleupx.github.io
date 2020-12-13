@@ -1,5 +1,5 @@
 ---
-title: AcquireRequestState In The .NET Framework.
+title: AcquireRequestState In The .NET Framework
 layout: post
 tags: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
 ---
