@@ -7,7 +7,7 @@ My name is Yunier, I am a software developer from South Florida. I work mostly w
 
 Some of my current skills include,
 
-1. OAuth 2.0 (Waiting for 2.1 to be formalized).
+1. [OAuth 2.0](https://tools.ietf.org/html/rfc6749) (Waiting for [2.1](https://oauth.net/2.1/) to be formalized).
 2. [JSON:API](https://jsonapi.org/) (An excellent API specification in my opinion).
 3. .NET & .NET Core (I love .NET Core).
 4. Angular.

@@ -1,7 +1,8 @@
 ---
-title: AcquireRequestState In The .NET Framework
+title: AcquireRequestState In .NET Framework
 layout: post
 tags: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
+readtime: true
 ---
 
 In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.

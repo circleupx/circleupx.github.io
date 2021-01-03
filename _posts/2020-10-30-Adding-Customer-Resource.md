@@ -1,7 +1,8 @@
 ---
-title: JSON&#58;API in .NET Core - Adding The Customer Resource
+title: Adding The Customer Resource
 layout: post
-tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
+tags: [.NET Core, APIs, REST]
+readtime: true
 ---
 
 This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core. 

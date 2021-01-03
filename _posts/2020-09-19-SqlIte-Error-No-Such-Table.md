@@ -2,6 +2,7 @@
 title: Sqlite Error No Such Table
 layout: post
 tags: [Sqlite, Unit Test, Errors, WebApplicationFactory, EF Core, .NET Core]
+readtime: true
 ---
 
 Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.

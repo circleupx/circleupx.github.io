@@ -2,6 +2,7 @@
 title: Configure Serilog Sub-loggers Using XML AppSettings
 layout: post
 tags: [serilog, xml, appsettings, logging, .NET Framework]
+readtime: true
 ---
 
 Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application. 

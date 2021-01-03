@@ -2,6 +2,7 @@
 title: Integration Test using WebApplicationFactory
 layout: post
 tags: [Integration Test, Testing, WebApplicationFactory, HTTP, TestServer, Kestrel]
+readtime: true
 ---
 
 When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of [.NET MVC 5](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started) you probably know that one of the best ways to test an HTTP request in MVC 5 was to use [Phil's HttpSimulator](https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/). 

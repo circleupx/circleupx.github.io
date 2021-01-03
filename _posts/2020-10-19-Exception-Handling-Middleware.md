@@ -1,7 +1,8 @@
 ---
-title: JSON&#58;API in .NET Core - A Global Exception Handling Middleware
+title: Global Exception Handling Middleware
 layout: post
-tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
+tags: [.NET Core, APIs, REST]
+readtime: true
 ---
 
 On my second post on [JSON:API](https://jsonapi.org/) in .NET Core I wanted to create an exception handling [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1). This middleware would be responsible for catching all exceptions and for generating a JSON:API [Errors Documents](https://jsonapi.org/format/#document-top-level). 
@@ -159,4 +160,5 @@ If I run the Chinook.Web project, I get the following JSON:API Errors Document.
 
 Now the API has a global exception handler that will transform all errors into JSON:API Errors document.
 
-**Note:** The code here is meant to illustrate how to generate JSON:API errors documents using [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework). I would not use this code in a production environment as it is still missing important implementation such as having a proper event id for each error rather than just generating random number. Additionally, as I mentioned before, this doesn't handle specific errors like validation, 404s, invalid query parameters etc. I will cover those later on this series.
+{: .box-note}
+The code here is meant to illustrate how to generate JSON:API errors documents using [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework). I would not use this code in a production environment as it is still missing important implementation such as having a proper event id for each error rather than just generating random number. Additionally, as I mentioned before, this doesn't handle specific errors like validation, 404s, invalid query parameters etc. I will cover those later on this series.

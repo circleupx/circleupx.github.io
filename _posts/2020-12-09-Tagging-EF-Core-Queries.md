@@ -2,6 +2,7 @@
 title: Tagging EF Core SQL Queries
 layout: post
 tags: [EF Core, Query Tags, Tagging, LINQ, IQueryable]
+readtime: true
 ---
 
 
