@@ -1,7 +1,7 @@
 ---
-title: Chinook API Project Hosted on Heroku
+title: Chinook API Project Now Hosted on Heroku
 layout: post
-tags: [Chinook, Heroku, Hosting, Rest, JSON:API]
+tags: [Chinook, API, Hosting, Heroku]
 ---
 
 My [Chinook JSON:API project](https://github.com/circleupx/Chinook) is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, [https://chinook-jsonapi.herokuapp.com/](https://chinook-jsonapi.herokuapp.com/), I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh). 
