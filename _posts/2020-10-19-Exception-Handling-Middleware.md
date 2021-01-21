@@ -1,7 +1,7 @@
 ---
-title: Global Exception Handling Middleware
+title: JSON&#58;API in .NET Core - Exception Handling Middleware
 layout: post
-tags: [.NET Core, APIs, REST]
+tags: [JSON&#58;API, REST, Hypermedia]
 readtime: true
 ---
 

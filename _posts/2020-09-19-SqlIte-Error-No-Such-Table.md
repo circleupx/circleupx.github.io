@@ -1,7 +1,7 @@
 ---
 title: Sqlite Error No Such Table
 layout: post
-tags: [Sqlite, Unit Test, Errors, WebApplicationFactory, EF Core, .NET Core]
+tags: [Sqlite, EF Core]
 readtime: true
 ---
 

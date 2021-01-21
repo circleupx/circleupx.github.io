@@ -1,7 +1,7 @@
 ---
 title: JSON&#58;API in .NET Core - Exposing Relationships
 layout: post
-Tags: [.NET Core, JSON&#58;API, JsonApiFramework, APIs, REST]
+tags: [JSON&#58;API, REST, Hypermedia]
 readtime: true
 ---
 

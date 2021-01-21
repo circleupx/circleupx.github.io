@@ -1,7 +1,7 @@
 ---
-title: Adding The Customer Resource
+title: JSON&#58;API in .NET Core - Second Resource
 layout: post
-tags: [.NET Core, APIs, REST]
+tags: [JSON&#58;API, REST, Hypermedia]
 readtime: true
 ---
 

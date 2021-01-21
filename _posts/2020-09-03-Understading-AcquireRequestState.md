@@ -1,7 +1,7 @@
 ---
 title: AcquireRequestState In .NET Framework
 layout: post
-tags: [.NET Framework, Session State, AcquireRequestState, Redis, Session Provider]
+tags: [Session State, AcquireRequestState, .NET]
 readtime: true
 ---
 
