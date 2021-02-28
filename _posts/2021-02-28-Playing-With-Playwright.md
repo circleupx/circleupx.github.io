@@ -5,7 +5,7 @@ tags: ["Testing", "Playwright"]
 readtime: true
 ---
 
-A few weeks ago I was looking for an end-to-end testing framework. An alternative to [Selenium](https://www.selenium.dev/), and all the other end-to-end frameworks. I came across a project called [Playwright](https://playwright.dev/). Playwright is a new end-to-end framewrok created and maintained by Microsf, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.
+A few weeks ago I was looking for an end-to-end testing framework. An alternative to [Selenium](https://www.selenium.dev/), and all the other end-to-end frameworks. I came across a project called [Playwright](https://playwright.dev/). Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.
 
 1. Playwright has full API coverage for all modern browsers, including Google Chrome and Microsoft Edge (with Chromium), Apple Safari (with WebKit) and Mozilla Firefox.
 2. Supports multiple languages like Node.js, Python, c# and Java.
@@ -13,7 +13,7 @@ A few weeks ago I was looking for an end-to-end testing framework. An alternativ
 4. Use device emulation to test your responsive web apps in mobile web browsers.
 5. Provides APIs to monitor and modify network traffic, both HTTP and HTTPS. Any requests that page does, including XHRs and fetch requests, can be tracked, modified and handled.
 
-While those feature are all great and useful, they don't measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like [qa wolf](https://www.qawolf.com/) and [headless-recorder](https://github.com/checkly/headless-recorder), these tools record any action you take on the browser and turns them into Playwright script.
+While those feature are all great and useful, they don't measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like [qa wolf](https://www.qawolf.com/) and [headless-recorder](https://github.com/checkly/headless-recorder), these tools record any action you take on the browser, those actions are then converted into Playwright scripts.
 
 For today's post, I am going to build a small playwright project, I will use this project to demonstrate how to create some basic tests using playwright. To follow along you will need to have [Node.js](https://nodejs.org/en/) installed, version 10.17 or greater. 
 
@@ -207,7 +207,7 @@ describe('loading google.com successfully', function () {
 });
 ```
 
-The code above imports the required node packages, then playwright's browser and page objects are configured to run before and after each test, then finally at the end, you have the test. Like I said before one test will assert the title of the page and the other test will aserrt the response code. To execute these test run the following command.
+The code above imports the required node packages, then playwright's browser and page objects are configured to run before and after each test, then finally at the end, you have the two test. Like I said before one test will assert the title of the page and the other test will aserrt the response code. To execute these tests run the following command.
 
 ```text
 npm test
@@ -220,7 +220,7 @@ The command should output the following result.
 > mocha -r ts-node/register 'test/*.ts' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit
 ```
 
-Playwright run headless by default, if you want to see it execute the test on the browser, then set the headless property to false on the launch() method.
+Playwright run headless by default, if you want to see it execute the tests on the browser, then set the headless property to false on the launch() method.
 
 ```javascript
 let browser: Browser;
@@ -232,3 +232,4 @@ before(async () => {
 For a complete list of available launch options, see the [playwright api docs](https://playwright.dev/docs/api/class-playwright).
 
 Awesome. A foundation for building end-to-end test with playwright has been established. More test can now be added. If you are building tests that deal with data input, then I suggest installing [faker.js](https://github.com/marak/Faker.js/), it is another node libary used to create fake data such as people, address, number, text and so on. Learn more about playwright by reading the [docs](https://playwright.dev/docs/intro).
+
