@@ -1,7 +1,7 @@
 ---
 title: Parsing in C#
 layout: post
-tags: [C#, Parsing, Lexer, Tokenizer, Superpower, Pidgin]
+tags: [Parsing]
 readtime: true
 ---
 

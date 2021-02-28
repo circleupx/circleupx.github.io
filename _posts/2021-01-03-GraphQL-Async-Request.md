@@ -1,7 +1,7 @@
 ---
 title: Asynchronous Request in GraphQL
 layout: post
-tags: [GraphQL, Subscriptions, Websocket]
+tags: [GraphQL, Websocket]
 readtime: true
 ---
 

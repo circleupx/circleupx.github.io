@@ -1,7 +1,7 @@
 ---
 title: AcquireRequestState In .NET Framework
 layout: post
-tags: [Session State, AcquireRequestState, .NET]
+tags: [Session, AcquireRequestState, .NET Framework]
 readtime: true
 ---
 

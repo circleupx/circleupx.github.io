@@ -1,7 +1,7 @@
 ---
 title: UniFi Dream Machine - Turn on/off LED Light Switch  
 layout: post
-tags: [UniFi, Dream Machine, UniFi Controller]
+tags: [UniFi, Dream Machine]
 readtime: true
 ---
 

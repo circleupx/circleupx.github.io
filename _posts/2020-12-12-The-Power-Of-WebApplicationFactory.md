@@ -1,7 +1,7 @@
 ---
 title: Integration Test using WebApplicationFactory
 layout: post
-tags: [Integration Test, Testing, WebApplicationFactory, HTTP, TestServer, Kestrel]
+tags: [Testing, WebApplicationFactory]
 readtime: true
 ---
 

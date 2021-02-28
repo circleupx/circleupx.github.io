@@ -1,7 +1,7 @@
 ---
 title: Configure Serilog Sub-loggers Using XML AppSettings
 layout: post
-tags: [Serilog, AppSettings, Configuration, .NET]
+tags: [Serilog, AppSettings, Configuration, .NET Framework]
 readtime: true
 ---
 
