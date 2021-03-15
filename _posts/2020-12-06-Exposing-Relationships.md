@@ -1,7 +1,7 @@
 ---
 title: JSON&#58;API in .NET Core - Exposing Relationships
 layout: post
-tags: [JSON&#58;API, REST, Chinook]
+tags: [JSON&#58;API, REST]
 readtime: true
 ---
 

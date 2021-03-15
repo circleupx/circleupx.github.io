@@ -3,7 +3,7 @@ layout: page
 title: About Me
 subtitle: A little info on me.
 ---
-My name is Yunier, I'm a software developer from South Florida. I work mostly with .NET & .NET Core. I am currently trying to expand my skills by learning Kubernetes.
+My name is Yunier, I'm a software developer from South Florida. I am currently trying to expand my skills by learning Kubernetes.
 
 Some of my current skills include,
 

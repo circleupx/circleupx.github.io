@@ -1,7 +1,7 @@
 ---
 title: Chinook API Project Now Hosted on Heroku
 layout: post
-tags: [Chinook, Heroku]
+tags: [Heroku]
 readtime: true
 ---
 
