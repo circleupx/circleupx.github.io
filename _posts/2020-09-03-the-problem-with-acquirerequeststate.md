@@ -1,5 +1,5 @@
 ---
-title: AcquireRequestState In .NET Framework
+title: The Problem With AcquireRequestState
 layout: post
 tags: [Session, AcquireRequestState, .NET Framework]
 readtime: true

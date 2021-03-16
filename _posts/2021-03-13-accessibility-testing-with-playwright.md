@@ -1,5 +1,5 @@
 ---
-title: a11y Testing In Playwright
+title: Accessibility Testing In Playwright
 layout: post
 tags: ["Testing", "Playwright", "a11y"]
 readtime: true
@@ -9,7 +9,7 @@ I don't believe I've mention this before here, but I am a huge fan of [Hey](http
 
 I'm going to reuse the project I created in my [last](https://www.yunier.dev/2021-02-28-Playing-With-Playwright/) playwright post, it already has few test and has been configure to use other packages like Mocha and Chai. To get started, axe-core needs to be installed, you can use the following command.
 
-```text
+```shell
 npm install axe-core
 ```
 
@@ -80,12 +80,6 @@ declare global {
         axe: AxePlugin
     }
 }
-```
-
-Now it is possible to do this.
-
-```javascript
-const evaluationResult: AxeResults = await page.evaluate(() => window.axe.run(window.document))
 ```
 
 Putting everything we have talked about so far together yields the following test.
@@ -198,7 +192,7 @@ The test failed, I can use console.log to spit out the violation. Running the te
 }
 ```
 
-Awesome. I can now do a11y testing while using playwright. You should know, that the example above is the most basic a11y test you can created. Axe is a very powerful library that offers many configurations. You can take the code above and expand it by passing different configurations to the run method. Or you can take a different approach, that is to leverage an existing library that does most of the heavy lifting for you, a library like [axe-playwright](https://github.com/abhinaba-ghosh/axe-playwright).
+Awesome. I can now do a11y testing while using playwright. You should know, that the example above is the most basic a11y test you can create. Axe is a very powerful library that offers many configurations. You can take the code above and expand it by passing different configurations to the run method. Or you can take a different approach, that is to leverage an existing library that does most of the heavy lifting for you, a library like [axe-playwright](https://github.com/abhinaba-ghosh/axe-playwright).
 
 **Credits:**
 - [Hey, accessibility is a lot of work!](https://world.hey.com/michael/hey-accessibility-is-a-lot-of-work-785ec5cf)
