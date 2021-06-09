@@ -11,14 +11,13 @@ My name is Yunier, I'm a software developer from South Florida. Some of my curre
 4. C#
 5. Angular.
 6. Terraform.
-7. Redis.
-8. New Relic.
-9. Postman.
-10. Unit Testing ([XUnit](https://xunit.net/), [NUnit](https://nunit.org/), [Moq](https://github.com/moq/moq4), [FluentAssertions](https://fluentassertions.com/), [AutoFixture](https://github.com/AutoFixture/AutoFixture)).
-11. Git (I use [Fork](https://fork.dev/)).
-12. [GraphQL](https://graphql.org/).
-13. SQL Server.
-14. TypeScript/JavaScript.
-15. Docker.
-16. Helm.
-17. Kubernetes.
+7. New Relic.
+8. Postman & [Newman](https://github.com/postmanlabs/newman).
+9. Unit Testing ([XUnit](https://xunit.net/), [NUnit](https://nunit.org/), [Moq](https://github.com/moq/moq4), [FluentAssertions](https://fluentassertions.com/), [AutoFixture](https://github.com/AutoFixture/AutoFixture)).
+10. Git (I use [Fork](https://fork.dev/)).
+11. [GraphQL](https://graphql.org/).
+12. SQL.
+13. TypeScript/JavaScript.
+14. Docker.
+15. Helm.
+16. Kubernetes.
