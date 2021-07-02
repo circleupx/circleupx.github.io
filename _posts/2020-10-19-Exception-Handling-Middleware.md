@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Exception Handling Middleware
+title: JSON&#58;API in .NET Core - Exception handling middleware.
 layout: post
 tags: [JSON&#58;API, REST]
 readtime: true

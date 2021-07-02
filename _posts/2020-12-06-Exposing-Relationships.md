@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Exposing Relationships
+title: JSON&#58;API in .NET Core - Exposing relationships
 layout: post
 tags: [JSON&#58;API, REST]
 readtime: true

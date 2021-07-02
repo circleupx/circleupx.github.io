@@ -1,5 +1,5 @@
 ---
-title: Asynchronous Request in GraphQL
+title: Asynchronous request in GraphQL.
 layout: post
 tags: [GraphQL, Websocket]
 readtime: true

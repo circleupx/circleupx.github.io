@@ -1,5 +1,5 @@
 ---
-title: Sqlite Error No Such Table
+title: Sqlite error no such table.
 layout: post
 tags: [Sqlite, EF Core]
 readtime: true

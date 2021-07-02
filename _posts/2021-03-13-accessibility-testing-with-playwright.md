@@ -1,5 +1,5 @@
 ---
-title: Accessibility Testing In Playwright
+title: Accessibility testing in Playwright.
 layout: post
 tags: ["Testing", "Playwright", "a11y"]
 readtime: true

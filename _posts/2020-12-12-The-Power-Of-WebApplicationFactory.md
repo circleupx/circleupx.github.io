@@ -1,5 +1,5 @@
 ---
-title: Integration Test using WebApplicationFactory
+title: Integration test using WebApplicationFactory
 layout: post
 tags: [Testing, WebApplicationFactory]
 readtime: true
