@@ -1,8 +1,9 @@
 ---
-title: Hypermedia Driven Microservices
+title: Hypermedia Driven Microservices.
 layout: post
 tags: ["REST"]
 readtime: true
+published: false
 ---
 
 In my previous company we had hypermedia driven api that followed the [JSON:API](https://jsonapi.org/) specification. The API was a monolith, it handled all business logic, transactions and workflows. When the time came to talk about possibly switching to a microservice oriented architecture, an idea imerged, to use hypermedia to stitch up the different microservices, the same idea that led to the world wide web become such a successful system. Sadly, the team was never ever to complete the implementation. Lately, I've seen some chatter on twitter on hypermedia driven APIs that includes using hypermedia to stitch up multiple APIs.
