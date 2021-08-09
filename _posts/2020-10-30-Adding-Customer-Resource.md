@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Second resource
+title: JSON&#58;API in .NET Core - Customer resource
 layout: post
 tags: [JSON&#58;API, REST]
 readtime: true

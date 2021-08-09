@@ -1,5 +1,5 @@
 ---
-title: GraphQL is protocol agnostic.
+title: GraphQL is protocol agnostic
 layout: post
 tags: ["GraphQL"]
 readtime: true

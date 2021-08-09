@@ -1,5 +1,5 @@
 ---
-title: Running lighthouse on CI/CD pipeline.
+title: Running lighthouse on CI/CD pipeline
 layout: post
 tags: ["Playwright", "Testing"]
 readtime: true

@@ -1,5 +1,5 @@
 ---
-title: Configure serilog sub-loggers using XML app settings.
+title: Configure serilog sub-loggers using XML app settings
 layout: post
 tags: [serilog, .NET Framework]
 readtime: true

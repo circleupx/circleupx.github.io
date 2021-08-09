@@ -1,5 +1,5 @@
 ---
-title: Testing web apps with Playwright.
+title: Testing web apps with Playwright
 layout: post
 tags: ["Testing", "Playwright"]
 readtime: true

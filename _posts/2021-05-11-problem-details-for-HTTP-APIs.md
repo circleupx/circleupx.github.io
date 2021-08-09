@@ -1,5 +1,5 @@
 ---
-title: Problem Details for HTTP APIs.
+title: Problem Details for HTTP APIs
 layout: post
 tags: ["REST"]
 readtime: true
