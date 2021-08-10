@@ -20,7 +20,7 @@ public async Task<IActionResult> CreateCustomerResource([FromBody] Document json
 }
 ```
 
-Notice that the method has been decorated with the HttpPost attribute and it is using the same route as the customer resource collection. If no error are encountered, then API returns a [201 Created](https://datatracker.ietf.org/doc/html/rfc2616/#section-10.2.2) HTTP status code with a JSON:API document along with a [location header](https://datatracker.ietf.org/doc/html/rfc2616/#section-14.30) pointing to the location of the newly created resource. The helper function, SelfLink() is part of JsonApiFramework.
+Notice that the method has been decorated with the [HttpPost attribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute?view=aspnetcore-5.0) and it is using the same route as the customer resource collection. If no error are encountered, then API returns a [201 Created](https://datatracker.ietf.org/doc/html/rfc2616/#section-10.2.2) HTTP status code with a JSON:API document along with a [location header](https://datatracker.ietf.org/doc/html/rfc2616/#section-14.30) pointing to the location of the newly created resource. The helper function, [SelfLink](https://github.com/scott-mcdonald/JsonApiFramework/blob/47d970cae1297d4341bd7cdb1c992d35428ec34d/Source/JsonApiFramework.Core/JsonApi/GetLinksExtensions.cs#L133) is part of JsonApiFramework.
 
 Next step, updating the customer resource class to take in the incoming JSON:API document from the controller so that it can be dispatched via Mediatr. The response from the mediatr handler is then used to create the response JSON:API document.
 
@@ -54,7 +54,7 @@ public async Task<Document> CreateCustomerResource(Document jsonApiDocument)
 }
 ```
 
-The Mediatr command class is also very simple, it simply accepts the JSON:API document and stores it on a field that can be used on the handler. Here is the class definition for the command class.
+The Mediatr command class is also very simple, it accepts an incoming JSON:API document and stores it on a public field that can be access by the handler. Here is the class definition for the command class.
 
 ```c#
 public class CreateCustomerResourceCommand : IRequest<Customer>
@@ -96,12 +96,12 @@ public class CreateCustomerResourceHandler : IRequestHandler<CreateCustomerResou
 }
 ```
 
-Nothing to exciting, the resource data is extraced out of the JSON:API document and it gets attached to EF Core, which then saves it to the database. Simple stuff, it will get a little more complicated later, but for now this works. Time to test our newly exposed endpoint. What better tool than POSTMAN to do the test.
+Nothing to exciting, the resource data is extracted out of the JSON:API document and it gets attached to EF Core, which then saves it to the database. Simple stuff, it will get a little more complicated later, but for now this will work. Time to test our code and what better tool than POSTMAN to do the test.
 
 {: .box-note}
 You should know that POSTMAN comes with a CLI, [newman](https://github.com/postmanlabs/newman), a great option for executing test written in POSTMAN on your CI/CD pipeline. See [this](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) blog post more details. 
 
-I'll go ahead an open up postman. I'm going to add new API request of type POST, using [https://chinook-jsonapi.herokuapp.com/customers](https://chinook-jsonapi.herokuapp.com/customers) as the request URL. Under the headers tab, I will add a new header, content-type and set the value to be application/vnd.api+json, since this is required by JSON:API. Next, the request body will use the following json.
+I'll go ahead an open up postman. I'm going to add new API request of type POST, using [https://chinook-jsonapi.herokuapp.com/customers](https://chinook-jsonapi.herokuapp.com/customers) as the request URL. Under the headers tab, I will add a new header, content-type, and set the value to [application/vnd.api+json](https://www.iana.org/assignments/media-types/application/vnd.api+json), since this is required by JSON:API. Next, the request body will use the following json as the request body.
 
 ```json
 {
@@ -132,11 +132,11 @@ I am providing all attributes here since there are no validation or rules yet. N
 {: .box-note}
 .NET has a copy of faker called [Bogus](https://github.com/bchavez/Bogus), an excellent library to use in your Unit/Integration test whenever you need to generate data. You could even it use it to seed a test database.
 
-When I execute the POSTMAN request I get a 200 OK with the newly created user on the response body. You can execute the test yourself by pulling the chinook repository down and importing the test into POSTMAN. All tests are located under the [test folder](https://github.com/circleupx/Chinook/tree/master/test).
+When I execute the POSTMAN request I get a 201 Created as the response code with the newly created user on the response body. You can execute the test yourself by pulling the chinook repository down and importing the test into POSTMAN. All tests are located under the [test folder](https://github.com/circleupx/Chinook/tree/master/test).
 
-Great, so the API now supports creating new users. All is great in the world, well, almost all. See what we have here is the most basic example, it is simple and easy, starting with the fact that in this sample app there are no validation or business rules, but what really complicates thing is having resources like customers, that have related resources. 
+Great, so the API now supports creating new customers. All is great in the world, well, almost all. See what we have here is the most basic example, it is simple and easy, starting with the fact that in this sample app there are no validation or business rules, but what really complicates thing is having resources like customers, that have related resources. 
 
-The customer resource we just created did not have any relationships, meaning the customer being created did not have any invoices. There might be instances where a new customer has one or many invoices, to support this type of request the API should be enhanced to support adding new invoices, then link between the new customer and the existing invoices can be establush by including the relationship on the HTTP request body for the customer resource or vice versa. The response body of such request would look like the following JSON document.
+The customer resource we just created did not have any relationships, meaning the customer being created did not have any invoices. There might be instances where a new customer has one or many invoices, to support this type of request the API should be enhanced to support adding new invoices, the link between the new customer and the new invoice can be established by including the relationship on the HTTP request body for the customer resource or vice versa. The response body of such request may look like the following JSON document.
 
 ```json
 {
@@ -167,9 +167,9 @@ The customer resource we just created did not have any relationships, meaning th
 }
 ```
 
-Another option would be to support [sideposting](https://github.com/json-api/json-api/issues/1216), that is being able to create multiple resources of different types in a single request. So that the client doesn't have to send multiple POST request for every new resource it needs to link. This is where JSON:API [extensions](https://jsonapi.org/extensions/) for [atomic operations](https://jsonapi.org/ext/atomic/) come into play. It establishes a contract on how the client should tructure a request that contains multiple resource and how the server should handle these type of request.
+Another option would be to support [sideposting](https://github.com/json-api/json-api/issues/1216), that is being able to create multiple resources of different types in a single request so that the client application doesn't have to send multiple POST request for every new resource it needs to link. This is where JSON:API [extensions](https://jsonapi.org/extensions/) for [atomic operations](https://jsonapi.org/ext/atomic/) come into play. It establishes a contract on how the client should tructure a request that contains multiple resource and how the server should handle these type of request.
 
-The release of JSON:API v1.1 should simplify side posting due to the introduction of [lid](https://github.com/json-api/json-api/pull/1244). An lid is an id generated on the client, this id is then used to link resources on a client document. Remember the great thing about [JSON:API is that it is a wire protocol for incrementally fetching and updating a graph over HTTP](https://youtu.be/LLe7Fi-wM3Q?t=922). The keywords here being updating a graph, by combining lid with resource linkage a client can create a JSON:API documents with a complex hierarchy. 
+The release of JSON:API v1.1 should simplify side posting due to the introduction of [lid](https://github.com/json-api/json-api/pull/1244). An lid is an id generated on the client, this id is then used to link resources on a client document. Remember the great thing about JSON:API is that it is a [wire protocol for incrementally fetching and updating a graph over HTTP](https://youtu.be/LLe7Fi-wM3Q?t=922). The keywords here being updating a graph, by combining lid with resource linkage a client can create a JSON:API documents with a complex hierarchy, for example.
 
 
 ```text
@@ -220,4 +220,4 @@ The release of JSON:API v1.1 should simplify side posting due to the introductio
 
 ```
 
-In the example above, the included resource, invoices, could also have a relationship member that links to another resource on the included array, and that resource could also have a relationship member that links to another resource on the included array and so on. When the server receives this JSON:API document, it can generate all those resources, saving the client from having to send multiple POST request.
+In the example above, the included resource, invoices, could also have a relationship member that links to another resource on the included array, and that resource could also have a relationship member that links to another resource on the included array and so on. When the server receives this JSON:API document, it can create all those resources on the database and establish relatioships as defined on the client document.
