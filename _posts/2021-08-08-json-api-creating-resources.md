@@ -1,5 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Creating resources.
+title: JSON&#58;API in .NET Core - Creating resources
 layout: post
 tags: [JSON&#58;API, REST]
 readtime: true
