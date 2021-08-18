@@ -1,6 +1,5 @@
 ---
 title: Chinook project now hosted on Heroku
-layout: post
 tags: [Heroku]
 readtime: true
 ---

@@ -1,6 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Home resource
-layout: post
+title: JSON&#58;API in .NET - Home resource
 tags: [JSON&#58;API, REST]
 readtime: true
 ---

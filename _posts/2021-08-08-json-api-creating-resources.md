@@ -1,6 +1,5 @@
 ---
-title: JSON&#58;API in .NET Core - Creating resources
-layout: post
+title: JSON&#58;API in .NET - Creating resources
 tags: [JSON&#58;API, REST]
 readtime: true
 published: true
@@ -98,7 +97,7 @@ public class CreateCustomerResourceHandler : IRequestHandler<CreateCustomerResou
 
 Nothing to exciting, the resource data is extracted out of the JSON:API document and it gets attached to EF Core, which then saves it to the database. Simple stuff, it will get a little more complicated later, but for now this will work. Time to test our code and what better tool than POSTMAN to do the test.
 
-{: .box-note}
+{: .notice--warning}
 You should know that POSTMAN comes with a CLI, [newman](https://github.com/postmanlabs/newman), a great option for executing test written in POSTMAN on your CI/CD pipeline. See [this](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) blog post more details. 
 
 I'll go ahead an open up postman. I'm going to add new API request of type POST, using [https://chinook-jsonapi.herokuapp.com/customers](https://chinook-jsonapi.herokuapp.com/customers) as the request URL. Under the headers tab, I will add a new header, content-type, and set the value to [application/vnd.api+json](https://www.iana.org/assignments/media-types/application/vnd.api+json), since this is required by JSON:API. Next, the request body will use the following json as the request body.
@@ -124,12 +123,12 @@ I'll go ahead an open up postman. I'm going to add new API request of type POST,
 }
 ```
 
-{: .box-note}
+{: .notice--warning}
 The postman syntax includes opening and closing brackets. They were excluded above because Jekyll, the engine that powers this blog interprets them as empty strings, so it will not render them on the page.
 
 I am providing all attributes here since there are no validation or rules yet. Note the use of postman's dynamic variable syntax. Postman uses [faker.js](https://github.com/Marak/Faker.js) under the hood to generate this random data. Do forgive me for using random country code for the state property. Didn't feel like making a helper function that generates a random state.
 
-{: .box-note}
+{: .notice--warning}
 .NET has a copy of faker called [Bogus](https://github.com/bchavez/Bogus), an excellent library to use in your Unit/Integration test whenever you need to generate data. You could even it use it to seed a test database.
 
 When I execute the POSTMAN request I get a 201 Created as the response code with the newly created user on the response body. You can execute the test yourself by pulling the chinook repository down and importing the test into POSTMAN. All tests are located under the [test folder](https://github.com/circleupx/Chinook/tree/master/test).

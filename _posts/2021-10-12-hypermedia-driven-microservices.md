@@ -1,6 +1,5 @@
 ---
 title: Hypermedia driven microservices.
-layout: post
 tags: ["REST"]
 readtime: true
 published: false

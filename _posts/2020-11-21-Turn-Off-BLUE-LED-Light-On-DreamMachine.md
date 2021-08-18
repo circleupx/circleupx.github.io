@@ -1,6 +1,5 @@
 ---
 title: UniFi Dream Machine - Turn on/off LED light switch  
-layout: post
 tags: [UniFi, Dream Machine]
 readtime: true
 ---
