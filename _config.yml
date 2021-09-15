@@ -6,7 +6,7 @@ title: "Yunier's Blog"
 title_separator: "- Documenting my adventures in software."
 subtitle: # site tagline that appears below site title in masthead
 name: "Yunier"
-description: "A collection of blog post."
+description: "Documenting my adventures in software."
 url: "https://www.yunier.dev"
 repository: "circleupx/circleupx.github.io"
 masthead_title: # overrides the website title displayed in the masthead, use " " for no title
