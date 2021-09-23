@@ -1,7 +1,6 @@
 ---
 title: Problem Details for HTTP APIs
 tags: ["REST"]
-readtime: true
 ---
 
 One of the many benefits of working with [JSON:API](https://jsonapi.org/) and [GraphQL](https://graphql.org/) is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently. 

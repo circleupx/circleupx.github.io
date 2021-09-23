@@ -1,7 +1,6 @@
 ---
 title: JSON&#58;API in .NET - Exposing relationships
 stags: [JSON&#58;API, REST]
-readtime: true
 ---
 
 My [previous](https://www.yunier.dev/2020-10-31-JSON-API-Adding-Customer-Resource/) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource. 

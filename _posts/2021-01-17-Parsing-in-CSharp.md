@@ -1,7 +1,6 @@
 ---
 title: Parsing in C#
 tags: [Parsing]
-readtime: true
 ---
 
 I am currently building a [JSON:API](https://jsonapi.org/) driven API on [.NET 5](https://dotnet.microsoft.com/download/dotnet/5.0), the project is called [Chinook](https://github.com/circleupx/Chinook) after the Sqlite Chinook project. The API is mature enough for me to introduce [filtering](https://jsonapi.org/format/#fetching-filtering) via the [Filter](https://jsonapi.org/recommendations/#filtering) query parameter used in JSON:API. 

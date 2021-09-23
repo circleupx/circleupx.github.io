@@ -1,7 +1,6 @@
 ---
 title: JSON&#58;API in .NET - Customer resource
 tags: [JSON&#58;API, REST]
-readtime: true
 ---
 
 This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core. 

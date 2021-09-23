@@ -1,7 +1,6 @@
 ---
 title: Running lighthouse on CI/CD pipeline
 tags: ["Playwright", "Testing"]
-readtime: true
 ---
 
 In the world of front end development there is no better tool than [Lighthouse](https://developers.google.com/web/tools/lighthouse/). Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.

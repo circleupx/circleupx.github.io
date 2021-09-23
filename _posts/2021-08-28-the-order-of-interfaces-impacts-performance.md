@@ -1,7 +1,6 @@
 ---
 title: The order of Interfaces impacts performace
 tags: [Interfaces, Performance, .NET, BenchmarkDotNet, Performance]
-readtime: true
 published: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Sqlite error no such table
 tags: [Sqlite, EF Core]
-readtime: true
 ---
 
 Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.

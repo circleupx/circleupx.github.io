@@ -1,7 +1,6 @@
 ---
 title: Tagging EF Core sql queries
 tags: [EF Core, Query Tags]
-readtime: true
 ---
 
 

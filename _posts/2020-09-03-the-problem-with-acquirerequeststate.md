@@ -1,7 +1,6 @@
 ---
 title: The problem with AcquireRequestState
 tags: [Session, AcquireRequestState, .NET Framework]
-readtime: true
 ---
 
 In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.

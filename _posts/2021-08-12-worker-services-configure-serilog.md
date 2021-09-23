@@ -1,7 +1,6 @@
 ---
 title: Worker Services configure Serilog
 tags: [Worker Services, Serilog]
-readtime: true
 published: true
 ---
 

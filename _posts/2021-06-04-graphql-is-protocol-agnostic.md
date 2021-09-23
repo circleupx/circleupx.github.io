@@ -1,7 +1,6 @@
 ---
 title: GraphQL is protocol agnostic
 tags: ["GraphQL"]
-readtime: true
 ---
 
 I'm seeing many API developers, specially those that come from a REST background, struggle with GraphQL simply because they are introducing protocol concepts into their GraphQL documents. 

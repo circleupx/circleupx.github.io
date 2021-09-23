@@ -1,7 +1,6 @@
 ---
 title: Testing web apps with Playwright
 tags: ["Testing", "Playwright"]
-readtime: true
 ---
 
 A few weeks ago I was looking for an end-to-end testing framework. An alternative to [Selenium](https://www.selenium.dev/), and all the other end-to-end frameworks. I came across a project called [Playwright](https://playwright.dev/). Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.

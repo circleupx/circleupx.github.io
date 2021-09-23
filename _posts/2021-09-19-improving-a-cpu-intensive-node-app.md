@@ -1,7 +1,6 @@
 ---
-title: Improving a CPU-intensive Node.js app.
+title: Improving a CPU-intensive Node.js app
 tags: [Node.js, Microservices]
-readtime: true
 published: true
 ---
 

@@ -63,7 +63,7 @@ analytics:
 author:
   name: Yunier
   avatar: "/assets/img/avatar-icon.png"
-  bio: Developer
+  bio: Developer.
   location: South Florida
   email: yunier@hey.com
   links:
@@ -190,7 +190,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true

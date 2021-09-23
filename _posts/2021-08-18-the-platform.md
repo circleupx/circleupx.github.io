@@ -1,7 +1,6 @@
 ---
 title: The Platform
 tags: [web components, UseThePlatform, HTML, CSS]
-readtime: true
 published: true
 ---
 

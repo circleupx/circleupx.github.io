@@ -1,7 +1,6 @@
 ---
 title: Asynchronous request in GraphQL
 tags: [GraphQL, Websocket]
-readtime: true
 ---
 
 When I first started to learn about GraphQL I was somewhat surprise to learn that the [GraphQL specification](https://spec.graphql.org/June2018/) did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context. 

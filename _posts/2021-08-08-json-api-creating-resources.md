@@ -1,7 +1,6 @@
 ---
 title: JSON&#58;API in .NET - Creating resources
 tags: [JSON&#58;API, REST]
-readtime: true
 published: true
 ---
 

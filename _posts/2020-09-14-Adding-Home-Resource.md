@@ -1,7 +1,6 @@
 ---
 title: JSON&#58;API in .NET - Home resource
 tags: [JSON&#58;API, REST]
-readtime: true
 ---
 
 This post will be my first entry into a multi-part series of post showing how I've built RESTful APIs using the [JSON:API](https://jsonapi.org/) specification on .NET Core.
