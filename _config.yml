@@ -3,14 +3,11 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 # Site Settings
 locale: "en-US"
 title: "Yunier's Blog"
-title_separator: "- Documenting my adventures in software."
-subtitle: # site tagline that appears below site title in masthead
+title_separator: "-"
 name: "Yunier"
-description: "Documenting my adventures in software."
+description: "A blog for documenting my day to day adventures in software development."
 url: "https://www.yunier.dev"
 repository: "circleupx/circleupx.github.io"
-masthead_title: # overrides the website title displayed in the masthead, use " " for no title
-# breadcrumbs            : false # true, false (default)
 words_per_minute: 200
 comments:
   provider: # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
@@ -63,7 +60,7 @@ analytics:
 author:
   name: Yunier
   avatar: "/assets/img/avatar-icon.png"
-  bio: Developer.
+  bio: Writing about code on my XPS 15
   location: South Florida
   email: yunier@hey.com
   links:
@@ -190,7 +187,9 @@ defaults:
     values:
       layout: single
       author_profile: true
+      classes: wide
       read_time: false
       comments: true
       share: true
       related: true
+      show_date: true
