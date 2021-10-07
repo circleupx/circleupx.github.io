@@ -1,7 +1,7 @@
 baseURL: "https://www.yunier.dev"
 title: Yunier's Blog
 paginate: 5
-theme: hugo-PaperMod
+theme: PaperMod
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
