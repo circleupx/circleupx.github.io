@@ -80,6 +80,8 @@ params:
         Content: >
             Welcome to my blog, where I document my adventures in software.
 
+            - I'm currently migrating the blog from Jekyll to Hugo. You may find broken links and/or images.
+
     socialIcons:
         - name: github
           url: "https://github.com/circleupx"
