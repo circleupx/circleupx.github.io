@@ -110,4 +110,4 @@ The API request above should really be.
 https://api.tvmaze.com/episode?sortDesc=runtime,type,id
 ```
 
-By including the Id property, the sorting order will now always be guaranteed, because the id field will always be unique. By always adding a unique field to a sort operation, the AP will achieve greater cache hits and provide an overall better experience for the consumer of the API. 
+By including the Id property, the sorting order will now always be guaranteed, because the id field will always be unique. By always adding a unique field to a sort operation, the API will achieve greater cache hits and provide an overall better experience for the consumer of the API. 

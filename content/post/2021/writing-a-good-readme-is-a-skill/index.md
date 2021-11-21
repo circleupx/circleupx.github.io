@@ -1,5 +1,5 @@
 ---
-title: Writting a good ReadME is a skill
+title: Writing a good ReadME is a skill
 tags: [ReadMe]
 author: "Yunier"
 date: "2021-08-25"
