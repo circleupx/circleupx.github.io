@@ -2,7 +2,7 @@
 title: Hypermedia driven microservices
 tags: ["REST", "Hypermedia", "Microservices", "JSON:API"]
 author: "Yunier"
-date: "2021-10-13"
+date: "2022-01-01"
 description: "Exploring hypermedia microservices"
 draft: true
 ---
