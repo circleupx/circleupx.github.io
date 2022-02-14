@@ -1,5 +1,5 @@
 ---
-title: The Platform
+title: The platform
 tags: [Web Components, UseThePlatform, HTML, CSS]
 author: "Yunier"
 date: "2021-08-18"

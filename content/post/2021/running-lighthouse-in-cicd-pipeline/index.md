@@ -1,6 +1,6 @@
 ---
 title: Running lighthouse on CI/CD pipeline
-tags: ["Playwright", "Testing"]
+tags: [Playwright, Testing]
 author: "Yunier"
 date: "2021-06-05"
 description: "Guide on how to configure lighthouse to ru on CI/CD"

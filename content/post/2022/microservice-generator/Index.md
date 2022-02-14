@@ -1,6 +1,6 @@
 ---
-title: Microservice Generator
-tags: ["Microservices"]
+title: Microservice generator
+tags: [Microservices]
 author: "Yunier"
 date: "2022-01-23"
 description: "Build a microservice generators with the dotnet template."

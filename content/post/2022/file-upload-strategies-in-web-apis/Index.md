@@ -1,8 +1,8 @@
 ---
-title: File upload strategies in Web APIs
-tags: [REST, .NET, HTTP, S3]
+title: File upload stratergies in web APIs
+tags: [REST, S3]
 author: "Yunier"
-date: "2022-01-01"
+date: "2022-03-01"
 description: "How to upload files in Web APIs"
 draft: true
 ---

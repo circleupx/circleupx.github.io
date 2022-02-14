@@ -1,6 +1,6 @@
 ---
-title: Hypermedia driven microservices
-tags: ["REST", "Hypermedia", "Microservices", "JSON:API"]
+title: Building hypermedia driven microservices
+tags: [REST, Hypermedia, Microservices, JSON:API]
 author: "Yunier"
 date: "2022-01-01"
 description: "Exploring hypermedia microservices"

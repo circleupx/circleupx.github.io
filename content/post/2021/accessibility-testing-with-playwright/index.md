@@ -1,6 +1,6 @@
 ---
 title: Accessibility testing in Playwright
-tags: ["Testing", "Playwright", "a11y"]
+tags: [Testing, Playwright, a11y]
 author: "Yunier"
 date: "2021-03-13"
 description: "Guide on how to handle accessibility using Playwright"

@@ -1,6 +1,6 @@
 ---
 title: Problem Details for HTTP APIs
-tags: ["REST"]
+tags: [REST]
 author: "Yunier"
 date: "2021-05-11"
 description: "Guide on how to use Problem Details on an API"

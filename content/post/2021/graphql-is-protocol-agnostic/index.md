@@ -1,6 +1,6 @@
 ---
 title: GraphQL is protocol agnostic
-tags: ["GraphQL"]
+tags: [GraphQL]
 author: "Yunier"
 date: "2021-06-04"
 ---

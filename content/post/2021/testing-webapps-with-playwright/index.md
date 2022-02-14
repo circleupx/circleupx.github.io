@@ -1,6 +1,6 @@
 ---
 title: Testing web apps with Playwright
-tags: ["Testing", "Playwright"]
+tags: [Testing, Playwright]
 author: "Yunier"
 date: "2021-02-18"
 description: "Guide on how to create e2e test with Playwright"
