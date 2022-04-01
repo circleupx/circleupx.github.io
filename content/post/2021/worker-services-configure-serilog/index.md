@@ -98,7 +98,7 @@ If you want to use a different Sink, [file](https://github.com/serilog/serilog-s
 
 Now that everything has been configured, I can run the worker to see the prettified console logs.
 
-![Logger](./console.png)
+![Logger](/post/2021/worker-services-configure-serilog/console.png)
 
 Ain't Serilog just awesome. 
 

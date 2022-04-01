@@ -1,5 +1,5 @@
 ---
-title: A better API validation strategy
+title: A better Web API validation strategy
 tags: [REST, GraphQL, JSON Schema]
 author: "Yunier"
 date: "2021-10-09"
@@ -117,11 +117,11 @@ Base on the Chinook database schema, at least the following validation should ex
 
 Now, time to write the JSON schema that will be used for validation. You could choose to write it by hand, but there are better ways. I find [stoplight](stoplight.io) to be the perfect tool to use to create REST APIs.
 
-![Stoplight](./stoplight-vendor.PNG)
+![Stoplight](/post/2021/a-better-web-api-validation-strategy/stoplight-vendor.PNG)
 
 What is even better is that they support writing JSON schemas, they make it super simple, give it a resource model in JSON, they'll generate the model, then you'll be given the opportunity to annotate the model with validation rules. For example, I can take the customer model above and import it into their system.
 
-![Model in Stoplight](./model-in-stoplight.PNG)
+![Model in Stoplight](/post/2021/a-better-web-api-validation-strategy/model-in-stoplight.PNG)
 
 I'll add all the rules to the model, like which field is required, the minimum and maximum length of a field, a regex expression for the email field. That will generate the following JSON file.
 

@@ -33,4 +33,4 @@ The hash function used a CPU-intensive algorithm and Node.js is notorious for be
 
 > Info: Here is the new authentication Web API architecture.
 
-![Node.js hashing microservices architecture](./NodeMicroservices.png)
+![Node.js hashing microservices architecture](/post/2021/improving-a-cpu-intensive-node-app/NodeMicroservices.png)

@@ -1,6 +1,6 @@
 ---
 title: JSON:API - Pagination links
-tags: [JSON:API, REST, Hypermedia, Chinook]
+tags: [JSON:API, REST, Chinook]
 author: "Yunier"
 date: "2022-01-25"
 description: "Exposing pagination links on JSON:API documents"

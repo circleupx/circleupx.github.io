@@ -8,7 +8,7 @@ description: "Guide on how to handle SQLite error on Unit/Integration test"
 
 Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
 
-![EFCore ToView Note](./pet-exception.PNG)
+![EFCore ToView Note](/post/2020/sqlIte-no-such-table-error/pet-exception.PNG)
 
 As you can see from the exception, the error is **"SQLite Error 1: 'no such table vPet'"** which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
 
@@ -66,7 +66,7 @@ public class PetModelConfiguration : IEntityTypeConfiguration<Pet>
 
 Notice the usage of **.ToView()** on my entity configuration class, per the [EF Core documentation](https://docs.microsoft.com/en-us/ef/core/modeling/keyless-entity-types?tabs=data-annotations#mapping-to-database-objects), the method .ToView assumes that the database object vPet has been created outside of the execution **EnsuredCreated** or **EnsureCreatedAsync**.
 
-![EFCore ToView Note](./efcore-toview-note.PNG)
+![EFCore ToView Note](/post/2020/sqlIte-no-such-table-error/efcore-toview-note.PNG)
 
 ```c#
 [Fact]
@@ -87,7 +87,6 @@ public async Task Test_UsingSqliteInMemoryProvider()
 In other words, any entity configuration that utilizes .ToView() on your DbContext will not generate a corresponding SQL view. This is why SQLite is throwing the error "SQLite Error 1: 'no such table vPets'". To get around this problem, you can write a script that generates the missing View in SQLite, for example.
 
 ```c#
-
 [Fact]
 public async Task Test_UsingSqliteInMemoryProvider()
 {

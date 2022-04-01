@@ -1,6 +1,6 @@
 ---
 title: Dream Machine - Turn on/off LED light switch  
-tags: [UniFi, Dream Machine]
+tags: [Dream Machine]
 author: "Yunier"
 date: "2020-11-21"
 description: "Guide on how to turn off the LED light switch"

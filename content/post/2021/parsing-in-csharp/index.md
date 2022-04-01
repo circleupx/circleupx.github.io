@@ -201,11 +201,10 @@ Token type SequenceTerminator has value
 
 Great! I am able to parse an input string into tokens, the time has come to build an expression tree from these token. If you break down the expression 2 * 3 + 8 into a tree it would like this.
 
-![Expression Tree Structure](./expression-tree.png)
+![Expression Tree Structure](/post/2021/parsing-in-csharp/expression-tree.png)
 
 The above structure is what we are aiming to build. Once the expression tree has been created I can compile it and execute it. If everything is done correctly, we should get 14 as our result. It is time to use perhaps one of the least used design patterns, yet one of the most powerful patterns, I'm talking about the [Visitor Design pattern](https://refactoring.guru/design-patterns/visitor). The visitor pattern or visitation pattern will be used to visit each node on our tree, the visitor will traverse the tree, in the end it will output our compile expression which can then be invoked to get our our result.
 
-{: .notice--warning}
 The visitation pattern is heavily used in frameworks like EF Core. [This](https://www.youtube.com/watch?v=r69ZxXgOIK4) video by [Shay Rojansky](https://twitter.com/shayrojansky) explains how EF Core uses expression tree to generate SQL statements.
 
 The first step in implementing the visitor pattern is to define our Visitor interface and what is often called the "element" interface. The Element interface declares a method for “accepting” visitors. This method should have one parameter declared with the type of the visitor interface.

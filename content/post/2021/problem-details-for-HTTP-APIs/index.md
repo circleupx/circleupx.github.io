@@ -13,7 +13,6 @@ One of the many benefits of working with [JSON:API](https://jsonapi.org/) and [G
 
 [RFC 7807](https://tools.ietf.org/html/rfc7807), better known as "**Problem Details for HTTP APIs**" was created to standardize the way errors are handled in web APIs. Even though the RFC was published in 2016, it is not well-known, in fact, I myself did not know about it until 2019. To help spread the knowledge and usefulness of using "Problem Details" I would like to demonstrate how you can utilize it in .NET.
 
-{: .notice--warning}
 Problem details is currently going through a [revision](https://tools.ietf.org/html/draft-ietf-httpapi-rfc7807bis-00). You can make contributions [here](https://github.com/ietf-wg-httpapi/rfc7807bis).
 
 .NET already comes with a [problem details class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.problemdetails?view=aspnetcore-5.0). No need to import extra packages. The problem details class has the following properties.
@@ -33,7 +32,6 @@ dotnet new webapi -n ProblemDetailsExample
 
 Within this new web api I will create a new [exception handling middleware](https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/). The purpose of this middleware is to act as a mapper between an exception and a problem details json document. Basically, when an exception is caught by the middleware, it will extract metadata from the excepton to produce a Problem Details object.
 
-{: .notice--warning}
 Microsoft has some really good documentation on how to handle errors in .NET Web APIs, see [Handle errors in ASP.NET Core web APIs](https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-5.0).
 
 Here is the middleware class definition without any mapping logic.
@@ -117,7 +115,6 @@ private Task HandleException(HttpContext httpContext, Exception exception)
 
 As you can see the method extract information from the exception object. The exception name is used as the title, the exception message is used as the detail and the current request uri is used as the instance. Since this is just sample project, the type field will simply point to the [MDN](https://developer.mozilla.org/en-US/) docs that corresponds to the HTTP status returned by the middleware. In your project, the type property should point to some documentation that provides addtional details.
 
-{: .notice--warning}
 The extension methods WriteAsJsonAsync and GetDisplayUrl are part of [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/). The method WriteAsJsonAsync is only available in .NET 5 and above. 
 
 When an HTTP GET request is sent to /weatherforecast the not implemented exception is handled by the middleware, producing the following HTTP response.

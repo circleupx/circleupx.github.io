@@ -1,12 +1,12 @@
 ---
-title: A practical API validation strategy
+title: A practical Web API validation strategy
 tags: [REST, FluentValidation, ProblemDetails]
 author: "Yunier"
 date: "2021-10-13"
 description: "Guide on how to create practical API validation in .NET"
 ---
 
-In my [last post](../a-better-api-validation-strategy/) I wrote about how you can leverage [JSON Schema](https://json-schema.org/) to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library [FluentValidation](https://fluentvalidation.net/) and exposing validation errors using [Problem Details](https://datatracker.ietf.org/doc/html/rfc7807).
+In my [last post](/post//2021/a-better-web-api-validation-strategy/index/) I wrote about how you can leverage [JSON Schema](https://json-schema.org/) to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library [FluentValidation](https://fluentvalidation.net/) and exposing validation errors using [Problem Details](https://datatracker.ietf.org/doc/html/rfc7807).
 
 I'll start by creating a new Web API project using the following dotnet command.
 

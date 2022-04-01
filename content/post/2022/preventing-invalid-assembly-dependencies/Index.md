@@ -1,6 +1,6 @@
 ---
 title: Preventing invalid assembly dependencies
-tags: [XUnit, .NET, Testing]
+tags: [.NET]
 author: "Yunier"
 date: "2022-03-12"
 description: "Avoid having invalid assembly references with a Unit Test."
@@ -8,7 +8,7 @@ description: "Avoid having invalid assembly references with a Unit Test."
 
 .NET makes it super simple to update the dependencies of a project. If you are following a solution structure like [Clean Architecture](https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies) where the [Web project](https://github.com/ardalis/CleanArchitecture#the-web-project) should not be referenced by the [Core project](https://github.com/ardalis/CleanArchitecture#the-core-project) or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies. 
 
-![clean architecture project dependencies](../clean-architecture-projet-dependencies.png)
+![clean architecture project dependencies](/post/2022/preventing-invalid-assembly-dependencies/clean-architecture-projet-dependencies.png)
 
 > The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution. Built with [Excalidraw](https://excalidraw.com/).
 

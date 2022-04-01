@@ -1,9 +1,9 @@
 ---
-title: Faster pagination
-tags: [SQL]
+title: Faster Web API pagination
+tags: [SQL, REST]
 author: "Yunier"
 date: "2022-02-17"
-description: "Make pagination faster with deferred joins"
+description: "Make web-api pagination faster with deferred joins"
 ---
 
 A few weeks ago I came across a blog [post](https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins) from [Aaron Francis](https://aaronfrancis.com/) in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in [High Performance MySQL: Proven Strategies for Operating at Scale](https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519). 

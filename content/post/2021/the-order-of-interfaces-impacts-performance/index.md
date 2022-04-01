@@ -1,6 +1,6 @@
 ---
 title: The order of Interfaces impacts performace
-tags: [Interfaces, Performance, .NET, BenchmarkDotNet, Performance]
+tags: [.NET, BenchmarkDotNet]
 author: "Yunier"
 date: "2021-08-28"
 description: "Guide on where to place interfaces on a .NET application"
@@ -80,7 +80,7 @@ class Program
 
 OK, it is time to execute BenchmarkDotNet, and our results are...
 
-![BenchmarkDonetResults](./interfaces-performance.PNG)
+![BenchmarkDonetResults](/post/2021/the-order-of-interfaces-impacts-performance/interfaces-performance.PNG)
 
 Wait, what? That is not exactly what I was expecting. Well, it is what I was expecting, it confirms the comment made on the issue [#32488](https://github.com/dotnet/runtime/pull/32488), I'm just not sure if it is something worth optimizing for given how small the performance difference is between the first and second test. I reran the test and I ended up with the same result. So, while the order of interfaces matters when casting, I would argue that you should not worry about it too much. Having the interface at the start or end will probably have little impact on the overall performance of your application. 
 

@@ -1,6 +1,6 @@
 ---
-title: Integration test using WebApplicationFactory
-tags: [Testing, WebApplicationFactory]
+title: Integration testing using WebApplicationFactory
+tags: [WebApplicationFactory]
 author: "Yunier"
 date: "2020-12-05"
 description: "Guide to on how to create integration test using WebApplicationFactory"
@@ -156,7 +156,7 @@ public class HomeControllerIntegrationTest : IClassFixture<CustomWebApplicationF
 ```
 Time to execute the test on Visual Studio.
 
-![Executed Integration Test](./home-resource-integration-test.PNG)
+![Executed Integration Test](/post/2021/integration-testing-using-webapplicationfactory/home-resource-integration-test.PNG)
 
 As you can see the test passed when executed on visual studio. In less than half of a second, our integration test create a kestrel web server, it configured the server, it configure our API project, it made the API accessible through HTTP, it sent an HTTP request to the server, it received a 200 OK response and it validated the response. Awesome.
 

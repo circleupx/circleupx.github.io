@@ -1,6 +1,6 @@
 ---
 title: The problem with AcquireRequestState
-tags: [Session, AcquireRequestState, .NET Framework]
+tags: [Session, AcquireRequestState, .NET]
 author: "Yunier"
 date: "2020-09-03"
 description: "Guide on how to overcome AcquireRequestState"
@@ -26,4 +26,4 @@ When I first encountered AcquireRequestState, turning off session was not an opt
 
 We immediately modified our .NET Framework project to utilize RedisSessionProvider and the benefits were noticed right away. I believe, we dropped our response time by about a second across all pages while lowering .NET CLR from about 200ms to about ~58ms.
 
-During my second encounter with AcquireRequestState, I did not implement a customer Session provider. It was not needed, the application I was working on was only storing some basic information to session, and those values were available through some other means. So we turned off Session completely, thus eliminating AcquireRequestState. Once again, I saw response time improvement across the entire application, our .NET CLR went from about ~250ms to about ~30ms.
+During my second encounter with AcquireRequestState, I did not implement a customer Session provider. It was not needed, the application I was working on was only storing some basic information to session, and those values were available through some other means. So we turned off Session completely, thus eliminating AcquireRequestState. Once again, I saw response time improvement across the entire application, our .NET CLR went from about 250ms to about ~30ms.

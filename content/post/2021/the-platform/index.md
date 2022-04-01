@@ -1,6 +1,6 @@
 ---
 title: The platform
-tags: [Web Components, UseThePlatform, HTML, CSS]
+tags: [Web Components, HTML, CSS]
 author: "Yunier"
 date: "2021-08-18"
 description: "Guide on the current state of the UI world."

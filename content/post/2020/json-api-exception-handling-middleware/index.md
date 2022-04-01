@@ -11,7 +11,7 @@ On my second post on [JSON:API](https://jsonapi.org/) in .NET Core I wanted to c
 
 I'll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.
 
-![Middleware Folder](./middleware-folder.PNG)
+![Middleware Folder](/post/2020/json-api-exception-handling-middleware/middleware-folder.PNG)
 
 Folder has been added, now I will add the middleware class to the project in here.
 
@@ -38,7 +38,7 @@ The code above is the default middleware class generate by Visual Studio, pretty
 
 Our first modification to the code will be to wrap the code in the Invoke method around a try/catch. Then to create a HandleException method to put all logic that deals with error handling. I need to build the Errors Document and I also need to transform .NET Core Exception objects into a JSON:API Errors Object. Additionally, I want to include inner exceptions on the Errors document. Ben Brandt, has an [exception extension class](https://gist.github.com/benbrandt22/8676438) that I use a lot, though I slightly modified it for my use case, still it is useful because we can extract each child exception and log them while they are being added to the Errors document. 
 
-![Exception Extension](./exception-extension.PNG)
+![Exception Extension](/post/2020/json-api-exception-handling-middleware/exception-extension.PNG)
 
 Back in the exception handling middleware class, I'll use the exception extension class to get all exceptions and to transformer them into a JSON:API Error Objects. The code ends up looking like this, 
 
@@ -162,5 +162,4 @@ If I run the Chinook.Web project, I get the following JSON:API Errors Document.
 
 Now the API has a global exception handler that will transform all errors into JSON:API Errors document.
 
-{: .notice--warning}
 The code here is meant to illustrate how to generate JSON:API errors documents using [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework). I would not use this code in a production environment as it is still missing important implementation such as having a proper event id for each error rather than just generating random number. Additionally, as I mentioned before, this doesn't handle specific errors like validation, 404s, invalid query parameters etc. I will cover those later on this series.

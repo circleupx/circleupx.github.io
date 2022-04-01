@@ -11,7 +11,7 @@ This post will be my first entry into a multi-part series of post showing how I'
 
 I will start by creating a new .NET Core Web Api project, I am going to call this project **Chinook**, after the sqlite [database](https://www.sqlitetutorial.net/sqlite-sample-database/) that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his [Clean Architecture](https://github.com/ardalis/CleanArchitecture) repository.
 
-![Chinook Project Structure](./chinook-project-structure.PNG)
+![Chinook Project Structure](/post/2020/json-api-creating-the-home-resource/chinook-project-structure.PNG)
 
 Now that I have a project structure, I will import a a library that will help me build the API. The official JSON:API website contains a [list](https://jsonapi.org/implementations/#server-libraries-net) of server implementations that can be use on .NET Core. Out of that list, [JsonApiDotNetCore](https://github.com/json-api-dotnet/JsonApiDotNetCore) is by far the most popular and the one with the most community support, but for this project I will utilize [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework). The reason for that is that I do not like using decorators on my classes, I like the idea of using a framework that is not directly reference on my domain. 
 
@@ -27,11 +27,11 @@ dotnet add package JsonApiFramework.Server --version 2.4.0
 
 Now that I have JsonApiFramework installed, I can add our first API resource, the Home resource. If you are not familiar with the concept of having a home resource, I suggest reading [API Discovery Using JSON Home](https://apievangelist.com/2017/08/03/api-discovery-using-json-home/) by API Evangelist. Before creating the Home resource, I will add a new folder, Resources, to the Chinook.Web project, in this folder I will add the HomeResource class.
 
-![Home Resource Class](./home-resource.PNG)
+![Home Resource Class](/post/2020/json-api-creating-the-home-resource/home-resource.PNG)
 
 It is now time to configure our Home resource using JsonApiFramework. I added a new folder named ServiceModels under Chinook.Core. In this folder I added new class, HomeServiceModel. Additionally, under the ServiceModels I added a Configuration folder, and within this folder I added a HomeConfiguration class. Our Chinook.Core project so far looks like this.
 
-![Home Service Model](./home-service-model.PNG)
+![Home Service Model](/post/2020/json-api-creating-the-home-resource/home-service-model.PNG)
 
 Our HomeServiceModel class is rather simple, for now it will have a message property, the property will be used to display a "Hello World" message on our home document.
 

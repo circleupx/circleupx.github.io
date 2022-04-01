@@ -14,12 +14,10 @@ If the API were RESTful then one solution to this problem might be to allow the 
 
 In a GraphQL API there are two solutions to this problem. The first solution is the same solution used on our RESTful API example, the client submits a long running request to the API then polls the status of the request on a set interval. The trick with GraphQL is that GraphQL is a funnel API, every request in GraphQL goes through the same endpoint, hence the name funnel API, as GraphQL does not have the concept of using individual URIs to represent resources, therefore, a GraphQL API that whishes to support long-running request would need to expose an endpoint that handle long-running request.
 
-{: .notice--warning} 
 The methodology described above is also mention on the book, [Production Ready GraphQL](https://book.productionreadygraphql.com/) by [Marc-André Giroux](https://twitter.com/__xuorig__). I highly recommend this book to anyone wanting to learn about GraphQL.
 
 The second solution would be to use [GraphQL subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/). GraphQL subscriptions are awesome, they can leverage the power of [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket). The client application and the GraphQL API can switch protocols from HTTP to Websocket anytime there is need to process a long-running request, thanks to the [full-duplex](https://en.wikipedia.org/wiki/Duplex_(telecommunications)#FULL-DUPLEX) nature of Websocket, the GraphQL API can use the existing connection opened by the client to send back the output of the job request to the client.
 
-{: .notice--warning} 
 [Shopify's Admin API](https://shopify.dev/tutorials/perform-bulk-operations-with-admin-api) is a good example of a GraphQL API that can query a large collection of data using a polling mechanism.
 
 In GraphQL we have two options to help us deal with long-running request, the question now is when to use each option. At first, I was under the impression that Subscriptions should only be used from here on out, that polling was a dead mechanism, after all why would you want to create a specific endpoint that only deals with a certain type of request. 

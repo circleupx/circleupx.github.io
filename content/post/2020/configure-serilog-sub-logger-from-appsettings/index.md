@@ -1,6 +1,6 @@
 ---
 title: Configure Serilog sub-loggers using XML app settings
-tags: [Serilog, .NET Framework]
+tags: [Serilog, .NET]
 author: "Yunier"
 date: "2020-08-31"
 description: "Guide on how to configure Serilog through XML settings"
@@ -139,7 +139,7 @@ namespace SubLogger
 
 Now we can test our console application to confirm that the correct configurations are being applied to each sub -logger. If you run the application, then two log files should be generated on C:\Log
 
-![Log Files](./logfilesincdrive.PNG)
+![Log Files](/post/2020/configure-serilog-sub-logger-from-appsettings/logfilesincdrive.PNG)
 
 and if we open the red log file you should see the following log lines.
 ```json
