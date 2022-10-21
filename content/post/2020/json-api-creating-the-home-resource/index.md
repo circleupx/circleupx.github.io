@@ -1,5 +1,5 @@
 ---
-title: JSON:API - Creating the home resource
+title: JSON:API - Creating The Home Resource
 tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-09-14"

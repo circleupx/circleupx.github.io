@@ -1,5 +1,5 @@
 ---
-title: Preventing invalid assembly dependencies
+title: Preventing Invalid Assembly Dependencies
 tags: [.NET]
 author: "Yunier"
 date: "2022-03-12"

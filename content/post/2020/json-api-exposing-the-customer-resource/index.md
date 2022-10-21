@@ -1,5 +1,5 @@
 ---
-title: JSON:API - Exposing the customer resource
+title: JSON:API - Exposing The Customer Resource
 tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-10-30"

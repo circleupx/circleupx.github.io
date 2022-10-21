@@ -1,5 +1,5 @@
 ---
-title: Extracting values from types
+title: Extracting Values From Types
 tags: [C#]
 author: "Yunier"
 date: "2022-04-10"

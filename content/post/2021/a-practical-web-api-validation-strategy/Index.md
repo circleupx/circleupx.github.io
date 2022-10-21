@@ -1,5 +1,5 @@
 ---
-title: A practical Web API validation strategy
+title: A Practical Web API Validation Strategy
 tags: [REST, FluentValidation, ProblemDetails]
 author: "Yunier"
 date: "2021-10-13"

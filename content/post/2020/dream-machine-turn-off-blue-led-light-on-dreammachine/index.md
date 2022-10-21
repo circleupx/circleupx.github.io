@@ -1,5 +1,5 @@
 ---
-title: Dream Machine - Turn on/off LED light switch  
+title: Dream Machine - Turn On/Off LED Light Switch  
 tags: [Dream Machine]
 author: "Yunier"
 date: "2020-11-21"

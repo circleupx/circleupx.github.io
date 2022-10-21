@@ -1,5 +1,5 @@
 ---
-title: Integration testing using WebApplicationFactory
+title: Integration Testing Using WebApplicationFactory
 tags: [WebApplicationFactory]
 author: "Yunier"
 date: "2020-12-05"

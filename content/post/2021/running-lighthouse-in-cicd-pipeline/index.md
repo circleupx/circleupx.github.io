@@ -1,5 +1,5 @@
 ---
-title: Running lighthouse on CI/CD pipeline
+title: Running Lighthouse On CI/CD Pipeline
 tags: [Playwright]
 author: "Yunier"
 date: "2021-06-05"

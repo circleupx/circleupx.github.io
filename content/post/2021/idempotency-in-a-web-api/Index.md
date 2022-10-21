@@ -1,5 +1,5 @@
 ---
-title: Idempotency in a Web API
+title: Idempotency In A Web API
 tags: [REST]
 author: "Yunier"
 date: "2021-11-17"

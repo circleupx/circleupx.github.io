@@ -1,5 +1,5 @@
 ---
-title: The problem with AcquireRequestState
+title: The Problem With AcquireRequestState
 tags: [Session, AcquireRequestState, .NET]
 author: "Yunier"
 date: "2020-09-03"

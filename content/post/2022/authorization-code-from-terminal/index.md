@@ -1,5 +1,5 @@
 ---
-title: Authorization code from a terminal
+title: Authorization Code From Terminal
 tags: [.NET, OAuth]
 author: "Yunier"
 date: "2022-06-05"

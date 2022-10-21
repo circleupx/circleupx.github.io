@@ -1,5 +1,5 @@
 ---
-title: Improving a CPU-intensive Node.js app
+title: Improving A CPU-Intensive Node.js App
 tags: [Node.js, Microservices]
 author: "Yunier"
 date: "2021-09-19"

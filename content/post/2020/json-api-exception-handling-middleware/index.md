@@ -1,5 +1,5 @@
 ---
-title: JSON:API - Exception handling middleware
+title: JSON:API - Exception Handling Middleware
 tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-10-19"

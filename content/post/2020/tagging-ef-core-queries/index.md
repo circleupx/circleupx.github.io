@@ -1,5 +1,5 @@
 ---
-title: Tagging EF Core queries
+title: Tagging EF Core Queries
 tags: [EF Core, Query Tags]
 author: "Yunier"
 date: "2020-12-09"

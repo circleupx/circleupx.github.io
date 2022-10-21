@@ -1,5 +1,5 @@
 ---
-title: Sort functions are non-deterministic 
+title: Sort Functions Are Non-Deterministic 
 tags: [REST, SQL Server]
 author: "Yunier"
 date: "2021-11-13"

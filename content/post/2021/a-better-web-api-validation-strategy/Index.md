@@ -1,5 +1,5 @@
 ---
-title: A better Web API validation strategy
+title: A Better Web API Validation Strategy
 tags: [REST, GraphQL, JSON Schema]
 author: "Yunier"
 date: "2021-10-09"

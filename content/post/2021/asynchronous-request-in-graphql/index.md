@@ -1,5 +1,5 @@
 ---
-title: Asynchronous request in GraphQL
+title: Asynchronous Request In GraphQL
 tags: [GraphQL, Websocket]
 author: "Yunier"
 date: "2021-01-03"

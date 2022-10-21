@@ -1,5 +1,5 @@
 ---
-title: Configure Serilog sub-loggers using XML app settings
+title: Configure Serilog Sub-Loggers Using XML App Settings
 tags: [Serilog, .NET]
 author: "Yunier"
 date: "2020-08-31"

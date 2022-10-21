@@ -1,5 +1,5 @@
 ---
-title: JSON:API - Pagination links
+title: JSON:API - Pagination Links
 tags: [JSON:API, REST, Chinook]
 author: "Yunier"
 date: "2022-01-25"

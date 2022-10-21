@@ -1,5 +1,5 @@
 ---
-title: Worker Services configure Serilog
+title: Worker Services Configure Serilog
 tags: [Worker Services, Serilog]
 author: "Yunier"
 date: "2021-08-12"

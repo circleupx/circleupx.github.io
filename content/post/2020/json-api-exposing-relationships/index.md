@@ -1,5 +1,5 @@
 ---
-title: JSON:API - Exposing relationships
+title: JSON:API - Exposing Rselationships
 stags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-12-06"

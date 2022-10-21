@@ -1,5 +1,5 @@
 ---
-title: Tools for the modern-day developer
+title: Tools For The Modern-Day Developer
 tags: [Tools]
 author: "Yunier"
 date: "2021-11-20"

@@ -1,5 +1,5 @@
 ---
-title: Chinook project hosted on Heroku
+title: Chinook Project Hosted On Heroku
 tags: [Heroku]
 author: "Yunier"
 date: "2021-01-02"

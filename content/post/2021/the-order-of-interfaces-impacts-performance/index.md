@@ -1,5 +1,5 @@
 ---
-title: The order of Interfaces impacts performace
+title: The Order Of Interfaces Impacts Performace
 tags: [.NET, BenchmarkDotNet]
 author: "Yunier"
 date: "2021-08-28"

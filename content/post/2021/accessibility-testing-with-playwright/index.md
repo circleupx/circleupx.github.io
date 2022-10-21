@@ -1,5 +1,5 @@
 ---
-title: Accessibility testing in Playwright
+title: Accessibility Testing in Playwright
 tags: [Playwright, a11y]
 author: "Yunier"
 date: "2021-03-13"

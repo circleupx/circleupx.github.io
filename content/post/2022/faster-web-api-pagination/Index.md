@@ -1,5 +1,5 @@
 ---
-title: Faster Web API pagination
+title: Faster Web API Pagination
 tags: [SQL, REST]
 author: "Yunier"
 date: "2022-02-17"

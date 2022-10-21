@@ -1,5 +1,5 @@
 ---
-title: Testing web apps with Playwright
+title: Testing Web Apps With Playwright
 tags: [Playwright]
 author: "Yunier"
 date: "2021-02-18"
