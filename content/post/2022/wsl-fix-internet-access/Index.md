@@ -36,6 +36,7 @@ nameserver XXX.XX.XX.X
 Where nameserver point to the IP of your machine. What needs to be done is to change the nameserver to point to another DNS provider like 8.8.8.8 (Google) or 1.1.1.1 (Cloudflare), before that, the setting that makes WSL generates a new resolv.config on starts needs to be changed, otherwise, you would lose your settings on every boot of WSL.
 
 ## Solution
+
 The first step in getting internet in WSL is to update the file wsl.conf located in the /etc directory. This file applies WSL setting per WSL distribution, if you would like to apply a setting across all distributions then you will need to modify the .wslconfig file. For more information, visit [Advanced settings configuration in WSL](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig).
 
 Back to wsl.cofig, run the following command to modify the file.
@@ -46,7 +47,7 @@ sudo nano /etc/wsl.conf
 
 If this is your first time opening this file then it is more than likely empty, if not delete the content and replace it with the following code snippet.
 
-```
+```text
 [network]
 generateHosts = false
 generateResolvConf = false
@@ -77,7 +78,7 @@ ping google.com
 
 You should get back a response similar to the code snippet below.
 
-```
+```text
 PING google.com (142.250.64.174) 56(84) bytes of data.
 64 bytes from mia09s22-in-f14.1e100.net (142.250.64.174): icmp_seq=1 ttl=113 time=21.2 ms
 64 bytes from mia09s22-in-f14.1e100.net (142.250.64.174): icmp_seq=2 ttl=113 time=23.1 ms
@@ -109,7 +110,7 @@ Wait a few seconds, then open WSL again, and confirm that you still have interne
 
 ### VPN
 
-Oh, right. You followed the instructions above and were able to restore internet access within WSL. However, you still cannot connect to resources that are behind a VPN. The solution to this problem is simple, you have to add the IP of your VPN provider. 
+Oh, right. You followed the instructions above and were able to restore internet access within WSL. However, you still cannot connect to resources that are behind a VPN. The solution to this problem is simple, you have to add the IP of your VPN provider.
 
 On a shell/terminal on the host machine, not WSL, run nslookup while connected to the VPN, this is essential, you must be connected to the VPN.
 
@@ -142,7 +143,6 @@ nameserver YY.Y.YYY.YY
 nameserver 1.1.1.1
 ```
 
-Do another ping against google to confirm the internet is still accessible, then do another ping against a resource that seats behind the VPN. 
+Do another ping against google to confirm the internet is still accessible, then do another ping against a resource that seats behind the VPN.
 
 Both ping commands should work.
-
