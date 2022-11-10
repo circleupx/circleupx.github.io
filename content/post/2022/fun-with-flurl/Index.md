@@ -135,4 +135,4 @@ With Flurl in test mode, all requests and configurations can be faked and contro
 
 ## Error Handling
 
-Error handling in Flurl is a bit different, the default behavior is to throw an exception on any calls that do not result in a status code that is in the 200 range. I like this behavior because it works great if you use an [exception handling middleware](/post/2020/json-api-exception-handling-middleware/) that can take an exception thrown by Flurl and convert the exception into a [problem details](/post/2021/problem-details-for-HTTP-APIs/) response.
+Error handling in Flurl is a bit different, the default behavior is to throw an exception on any calls that do not result in a status code that is in the 200 range. I like this behavior because it works great if you use an [exception handling middleware](/post/2020/json-api-exception-handling-middleware/) that can take an exception thrown by Flurl and convert the exception into a [problem details](/post/2021/problem-details-for-http-apis/) response.
