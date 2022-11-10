@@ -8,7 +8,7 @@ description: "Convert long URLs to short URLs."
 
 I was recently talking to another developer about the importance of never exposing internal identifiers to the outside world. A well-known example of this is using an auto-incrementing identity field in SQL and exposing that field through an API. A client can look at the highest number to tell how many records exist, in an ordering system this is far from ideal. Now everyone will know how many orders you have created. I recommend watching [The Internet of Pwned Things](https://youtu.be/FRsRoaubPiY?t=2363) by [Troy Hunt](https://twitter.com/troyhunt) for a real-world example.
 
-One way to avoid the problem above is by simply hashing/encoding your identifiers. You can use a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) but as Planet Scale points out in their [Why we chose NanoIDs for PlanetScale's API](https://planetscale.com/blog/why-we-chose-nanoids-for-planetscales-api) blog post, UUIDs don't provide a good developer experience. As an API developer, I want to provide the best DX possible. 
+One way to avoid the problem above is by simply hashing/encoding your identifiers. You can use a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) but as Planet Scale points out in their [Why we chose NanoIDs for PlanetScale's API](https://planetscale.com/blog/why-we-chose-nanoids-for-planetscales-api) blog post, UUIDs don't provide a good developer experience. As an API developer, I want to provide the best DX possible.
 
 I started thinking about the process of hashing identifiers, and I wanted to build one from the ground up to expand my knowledge and understanding. Now I could build a C# version of the nano id implementation, but that [already exists](https://github.com/codeyu/nanoid-net). Instead, what I will do is tackle another known problem, URL shortening. The idea here is to take a URL like [https://www.yunier.dev](https://www.yunier.dev/) and convert it into something like [https://tinyurl.com/yckpk37h](https://tinyurl.com/yckpk37h), where yckpk37h is more than likely the hashed representation of the internal identifier in the database used by TinyURL. I'm honestly guessing here but I know that is how a typical URL shortening system is built.
 
@@ -25,11 +25,11 @@ The following diagram provides a high-level overview of the process described ab
 
 I want to implement steps three through five. I'll start by creating a new .NET 6 project that will write and read from a SQLite database, I picked SQLite to keep things simple. The SQLite table structure consists of three columns, an identity column, the hashed column to store the hashed id, and the URL column to store the original value. Here is the markdown representation of that table.
 
-| Id     | Hash   | Url                         |
-|---     |---     |---                          |
-| 100000 | q0U    | https://www.yunier.dev/     |
-| 200000 | Q1O    | https://en.wikipedia.org/   |
-| 300000 | 1g2I   | https://gohugo.io/          |
+| Id     | Hash   | Url                           |
+|---     |---     |---                            |
+| 100000 | q0U    | <https://www.yunier.dev/>     |
+| 200000 | Q1O    | <https://en.wikipedia.org/>   |
+| 300000 | 1g2I   | <https://gohugo.io/>          |
 
 The first step in building my own hash function is to decide which characters can be used by the hashed function, essentially I need an alphabet. For a URL shortening service an alphabet composed of the numbers from 0 to 9, the letters a to z, and A to Z is generally considered good enough, it means that the alphabet will be composed of a total of [62 characters](https://en.wikipedia.org/wiki/Base62). One of the most important aspects of a good hashing function is that the function should properly handle collisions. By using Base62, collision will be impossible because the conversion is consistent, there will never be any duplicates.
 
@@ -61,7 +61,8 @@ while(hashDigitsCount > i)
 endwhile
 ```
 
-The algorithm can be translated into the following C# code. 
+The algorithm can be translated into the following C# code.
+
 ```C#
 var digits = new List<int>();
 var dividend = value;
@@ -131,13 +132,14 @@ curl -X 'POST' \
 
 Executing the command above yields the following JSON response.
 
-```json 
+```json
 {
   "id": 19,
   "hash": "j",
   "url": "https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/"
 }
 ```
+
 with the following HTTP response headers.
 
 ```http

@@ -6,7 +6,7 @@ date: "2022-03-12"
 description: "Avoid having invalid assembly references with a Unit Test."
 ---
 
-.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like [Clean Architecture](https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies) where the [Web project](https://github.com/ardalis/CleanArchitecture#the-web-project) should not be referenced by the [Core project](https://github.com/ardalis/CleanArchitecture#the-core-project) or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies. 
+.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like [Clean Architecture](https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies) where the [Web project](https://github.com/ardalis/CleanArchitecture#the-web-project) should not be referenced by the [Core project](https://github.com/ardalis/CleanArchitecture#the-core-project) or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies.
 
 ![clean architecture project dependencies](/post/2022/preventing-invalid-assembly-dependencies/clean-architecture-projet-dependencies.png)
 
@@ -40,7 +40,7 @@ Before I start writing the Unit Test, I would like to share the csproj file for 
 </Project>
 ```
 
-The unit test itself is rather simple, I just need to grab the assembly of each project and use the [NotReference](https://fluentassertions.com/assemblies/) function in FluentAssertions to assert that there is no reference between each assembly. 
+The unit test itself is rather simple, I just need to grab the assembly of each project and use the [NotReference](https://fluentassertions.com/assemblies/) function in FluentAssertions to assert that there is no reference between each assembly.
 
 ```c#
 public class ProjectDependencies
@@ -56,6 +56,6 @@ public class ProjectDependencies
 }
 ```
 
-As expected, the test passed when I executed dotnet test on the [Chinook.Core.UnitTest.csproj](https://github.com/circleupx/Chinook/blob/master/test/Chinook.Core.Test/Chinook.Core.UnitTest.csproj) file. With this test being executed on a continuous integration pipeline on every build I can be sure that nobody will accidentally adds the Infrastructure project as a dependency of the Core project. 
+As expected, the test passed when I executed dotnet test on the [Chinook.Core.UnitTest.csproj](https://github.com/circleupx/Chinook/blob/master/test/Chinook.Core.Test/Chinook.Core.UnitTest.csproj) file. With this test being executed on a continuous integration pipeline on every build I can be sure that nobody will accidentally adds the Infrastructure project as a dependency of the Core project.
 
 You can use this technique in your own solutions to do the same. I've found this solution to be better than documenting the project dependencies on a README file or any other type of documentation because there is no guarantee that a developer will ever read or see that documentation.

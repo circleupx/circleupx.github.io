@@ -25,7 +25,7 @@ OS Name:    Microsoft Windows 11 Home
 OS Version: 10.0.22621 N/A Build 22621
 ```
 
-Next, install or have WSL installed, you can follow the official guide [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install). Do not install a distribution through WSL, instead install your desired distribution using Windows Store. This is important as the distro on the Windows Store tends to work better. 
+Next, install or have WSL installed, you can follow the official guide [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install). Do not install a distribution through WSL, instead install your desired distribution using Windows Store. This is important as the distro on the Windows Store tends to work better.
 
 With WSL installed, confirm you are on the right version using the following command.
 
@@ -96,6 +96,7 @@ With Snap, all the great apps in the Linux ecosystem are in our hands. You can b
 The last WSL configuration needed is systemd, it can be enabled on WSL using the following command. In the future, this setting should be automatically enabled for you when you install WSL.
 
 First, use nano to open wsl.conf
+
 ```shell
 sudo nano /etc/wsl.conf
 ```

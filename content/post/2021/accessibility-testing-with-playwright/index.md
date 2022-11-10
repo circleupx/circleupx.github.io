@@ -54,7 +54,7 @@ Base on the [axe docs](https://github.com/dequelabs/axe-core/blob/develop/doc/de
 const file: string = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 ```
 
-The tricky part comes next, you see, you need to understand a very important aspect of playwright. That is that playwright has two execution contexts, one for playwright and one for the browser. These two execution context will never share state with each other, it is not possible to access a [window](https://developer.mozilla.org/en-US/docs/Web/API/Window) or [document](https://developer.mozilla.org/en-US/docs/Web/API/Document) directly in playwright's exection context. So, how can we get axe.min.js, which was loaded under playwright context injected into the browser context. The answer can be found under the [evaluate](https://playwright.dev/docs/api/class-page/#pageevaluatepagefunction-arg) function of playwright's [page](https://playwright.dev/docs/api/class-page) object. You see, the evaluate function can run a JavaScript function in the context of the web page and bring results back to the playwright environment. It can also take something that exist on the playwright environment and send it to the browser context. 
+The tricky part comes next, you see, you need to understand a very important aspect of playwright. That is that playwright has two execution contexts, one for playwright and one for the browser. These two execution context will never share state with each other, it is not possible to access a [window](https://developer.mozilla.org/en-US/docs/Web/API/Window) or [document](https://developer.mozilla.org/en-US/docs/Web/API/Document) directly in playwright's exection context. So, how can we get axe.min.js, which was loaded under playwright context injected into the browser context. The answer can be found under the [evaluate](https://playwright.dev/docs/api/class-page/#pageevaluatepagefunction-arg) function of playwright's [page](https://playwright.dev/docs/api/class-page) object. You see, the evaluate function can run a JavaScript function in the context of the web page and bring results back to the playwright environment. It can also take something that exist on the playwright environment and send it to the browser context.
 
 For example, if you wanted to get the value of a document's href that is running under the browser context loaded into a playwright context, you would do so like this.
 
@@ -75,6 +75,7 @@ await page.evaluate((minifiedAxe: string) => window.eval(minifiedAxe), file);
 Now comes the next trick, and that is that I need to run axe under the context of the browser, see [#1638](https://github.com/microsoft/playwright/issues/1638#issuecomment-634233277). That means we have to use the evaluate method again. The problem here is that when the test are executed, axe will run under the playwright context, and will not be available under the browser context. The solution to this problem is to extend the [window](https://developer.mozilla.org/en-US/docs/Web/API/Window) interface to include axe, see [How to declare a new property on the Window object with Typescript](https://ourcodeworld.com/articles/read/337/how-to-declare-a-new-property-on-the-window-object-with-typescript) for more details.
 
 I'll use the following code to include axe under the window interface.
+
 ```javascript
 declare global {
     interface Window {
@@ -169,33 +170,37 @@ The test failed, I can use console.log to spit out the violation. Running the te
 
 ```json
 {
-	"id": "aria-required-attr",
-	"impact": "critical",
-	"tags": ["cat.aria", "wcag2a", "wcag412"],
-	"description": "Ensures elements with ARIA roles have all required ARIA attributes",
-	"help": "Required ARIA attributes must be provided",
-	"helpUrl": "https://dequeuniversity.com/rules/axe/4.1/aria-required-attr?application=axeAPI",
-	"nodes": [{
-		"any": [{
-			"id": "aria-required-attr",
-			"data": ["aria-expanded"],
-			"relatedNodes": [],
-			"impact": "critical",
-			"message": "Required ARIA attribute not present: aria-expanded"
-		}],
-		"all": [],
-		"none": [],
-		"impact": "critical",
-		"html": "<input class=\"gLFyf gsfi\" jsaction=\"paste:puy29d;\" maxlength=\"2048\" name=\"q\" type=\"text\" aria-autocomplete=\"both\" aria-haspopup=\"false\" autocapitalize=\"off\" autocomplete=\"off\" autocorrect=\"off\" autofocus=\"\" role=\"combobox\" spellcheck=\"false\" title=\"Search\" value=\"\" aria-label=\"Search\" data-ved=\"0ahUKEwiV8IqSubHvAhXHjFkKHaP-DIQQ39UDCAY\">",
-		"target": [".gLFyf"],
-		"failureSummary": "Fix any of the following:\n  Required ARIA attribute not present: aria-expanded"
-	}]
+    "id": "aria-required-attr",
+    "impact": "critical",
+    "tags": ["cat.aria", "wcag2a", "wcag412"],
+    "description": "Ensures elements with ARIA roles have all required ARIA attributes",
+    "help": "Required ARIA attributes must be provided",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.1/aria-required-attr?application=axeAPI",
+    "nodes": [
+        {
+            "any": [
+                {
+                    "id": "aria-required-attr",
+                    "data": ["aria-expanded"],
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Required ARIA attribute not present: aria-expanded"
+                }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<input class=\"gLFyf gsfi\" jsaction=\"paste:puy29d;\" maxlength=\"2048\" name=\"q\" type=\"text\" aria-autocomplete=\"both\" aria-haspopup=\"false\" autocapitalize=\"off\" autocomplete=\"off\" autocorrect=\"off\" autofocus=\"\" role=\"combobox\" spellcheck=\"false\" title=\"Search\" value=\"\" aria-label=\"Search\" data-ved=\"0ahUKEwiV8IqSubHvAhXHjFkKHaP-DIQQ39UDCAY\">","target": [".gLFyf"],
+            "failureSummary": "Fix any of the following:\n  Required ARIA attribute not present: aria-expanded"
+        }
+    ]
 }
 ```
 
 Awesome. I can now do a11y testing while using playwright. You should know, that the example above is the most basic a11y test you can create. Axe is a very powerful library that offers many configurations. You can take the code above and expand it by passing different configurations to the run method. Or you can take a different approach, that is to leverage an existing library that does most of the heavy lifting for you, a library like [axe-playwright](https://github.com/abhinaba-ghosh/axe-playwright).
 
 **Credits:**
+
 - [Hey, accessibility is a lot of work!](https://world.hey.com/michael/hey-accessibility-is-a-lot-of-work-785ec5cf)
 - [Accessibility Testing[Question] #1638](https://github.com/microsoft/playwright/issues/1638)
 - [Writing unit tests in TypeScript](https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40)

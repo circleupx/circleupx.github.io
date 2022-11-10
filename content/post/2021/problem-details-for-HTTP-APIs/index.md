@@ -6,8 +6,7 @@ date: "2021-05-11"
 description: "Guide on how to use Problem Details on an API"
 ---
 
-One of the many benefits of working with [JSON:API](https://jsonapi.org/) and [GraphQL](https://graphql.org/) is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently. 
-
+One of the many benefits of working with [JSON:API](https://jsonapi.org/) and [GraphQL](https://graphql.org/) is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Almost every HTTP API that I&#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?</p>&mdash; Derek Comartin (@codeopinion) <a href="https://twitter.com/codeopinion/status/1381260308854026247?ref_src=twsrc%5Etfw">April 11, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -115,7 +114,7 @@ private Task HandleException(HttpContext httpContext, Exception exception)
 
 As you can see the method extract information from the exception object. The exception name is used as the title, the exception message is used as the detail and the current request uri is used as the instance. Since this is just sample project, the type field will simply point to the [MDN](https://developer.mozilla.org/en-US/) docs that corresponds to the HTTP status returned by the middleware. In your project, the type property should point to some documentation that provides addtional details.
 
-The extension methods WriteAsJsonAsync and GetDisplayUrl are part of [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/). The method WriteAsJsonAsync is only available in .NET 5 and above. 
+The extension methods WriteAsJsonAsync and GetDisplayUrl are part of [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/). The method WriteAsJsonAsync is only available in .NET 5 and above.
 
 When an HTTP GET request is sent to /weatherforecast the not implemented exception is handled by the middleware, producing the following HTTP response.
 
@@ -175,7 +174,7 @@ Much better.
 
 I now want to extend the problem details class. I want to include additional types, and move the logic that extracts data from the exception into another class. This specialize problem details class can accept an expcetion as a parameter, the class would then create a problem details document out of the exception context. The idea is very similar to how the [ValidationProblemDetails](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.validationproblemdetails?view=aspnetcore-5.0) class works.
 
-The class will be named ExceptionProblemDetails, for now it will have three constructors, the default constructor, one constructor that take an exception and a constructor that takes an exception and an httpcontext. 
+The class will be named ExceptionProblemDetails, for now it will have three constructors, the default constructor, one constructor that take an exception and a constructor that takes an exception and an httpcontext.
 
 ```c#
 public class ExceptionProblemDetails : ProblemDetails

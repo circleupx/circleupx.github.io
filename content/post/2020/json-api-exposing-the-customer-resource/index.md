@@ -7,13 +7,13 @@ description: "Guide on how to expose resources"
 series: ['JSON:API in .NET']
 ---
 
-This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core. 
+This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core.
 
 I plant to add **Customer** as an API resource, but before we get too deep on the code, I would like to review the [Chinook](https://www.sqlitetutorial.net/sqlite-sample-database/) database project. To do that I'm going to import [Chinook.db](https://cdn.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip) into [DB Browser](https://sqlitebrowser.org/dl/) for SQLite to see all available entities.
 
 ![Database Entities](/post/2020/json-api-exposing-the-customer-resource/chinook-database-entities.PNG)
 
-As you can see we have quite a few entities, for this blog post I will concentrate on the **customers** entity. To accomplish adding customers as an API resource I will need to create a new service model that represents the customers entity in both JsonApiFramework and EF Core. I will scaffold the SQLite database using [EF Core's reverse engineering capabilities](https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=dotnet-core-cli). 
+As you can see we have quite a few entities, for this blog post I will concentrate on the **customers** entity. To accomplish adding customers as an API resource I will need to create a new service model that represents the customers entity in both JsonApiFramework and EF Core. I will scaffold the SQLite database using [EF Core's reverse engineering capabilities](https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=dotnet-core-cli).
 
 For that, I'll open up a command line tool (windows terminal in my case) to execute the following commands.
 
@@ -466,6 +466,7 @@ public class HomeResource
     }
 }
 ```
+
 Let's review the changes I just made, the first change made was to call GetCurrentRequestUri(), this is a new method that exist within the HttpContextExtensions class. Here is the class definition.
 
 ```c#
@@ -488,6 +489,7 @@ public static class HttpContextExtensions
     }
 }
 ```
+
 The second change I made was to create a private method within the HomeResource class called CreateCustomerResourceCollectionLink, this method utilizes the UrlBuilder class from JsonApiFramework to build a JSON:API [Link](https://jsonapi.org/format/#document-links).
 
 Now if I run the project the home resource should expose a link to the customers API resource.
@@ -559,7 +561,8 @@ public class CustomerController : ControllerBase
     }
 }
 ```
-Controller has been added. 
+
+Controller has been added.
 
 Don't forget to register ChinookContext on the built-int dependency injection framework.
 
@@ -623,7 +626,7 @@ Here is the updated CreateServiceModel method in our ConfigurationFactory class.
 }
 ```
 
-JsonApiFramework is not able to determine which property within the Customers class should be used as the JSON:API [identifier](https://jsonapi.org/format/#document-resource-object-identification). JsonApiFramework offers two solutions to this problem. We can use the built-in conventions offered by JsonApiFramework. This is similar to how EF and EF Core Fluent APIs work, if you have a class named Dog and that class has a public property named Id or DogId, JsonApiFramework understands that this property is the entity identifier so it automatically maps it as the JSON:API identifier on your JSON:API document. In our case, our class is named Customers, plural, and the entity identifier is the public property CustomerId, **notice that word Customer in CustomerId is singular**. This naming mismatched is due to the EF scaffold tool. 
+JsonApiFramework is not able to determine which property within the Customers class should be used as the JSON:API [identifier](https://jsonapi.org/format/#document-resource-object-identification). JsonApiFramework offers two solutions to this problem. We can use the built-in conventions offered by JsonApiFramework. This is similar to how EF and EF Core Fluent APIs work, if you have a class named Dog and that class has a public property named Id or DogId, JsonApiFramework understands that this property is the entity identifier so it automatically maps it as the JSON:API identifier on your JSON:API document. In our case, our class is named Customers, plural, and the entity identifier is the public property CustomerId, **notice that word Customer in CustomerId is singular**. This naming mismatched is due to the EF scaffold tool.
 
 So, if I refactor my code by renaming the Customers (plural) class to Customer (singular) then the API returns the following JSON:API Document.
 

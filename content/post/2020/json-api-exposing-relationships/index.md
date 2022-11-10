@@ -7,9 +7,9 @@ description: "Guide on how to expose relationship link between resources"
 series: ['JSON:API in .NET']
 ---
 
-My [previous](/post/2020/json-api-exposing-the-customer-resource/index/) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource. 
+My [previous](/post/2020/json-api-exposing-the-customer-resource/index/) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource.
 
-For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums. 
+For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums.
 
 Here is current class definition for ArtistServiceModelConfiguration.
 
@@ -143,7 +143,6 @@ Now if I run the Web API project and go to any given artist, the API will expose
 and if I go to any given album, the API should expose a related link to a single artist.
 
 ```json
-
 {
   "jsonapi": {
     "version": "1.0"
@@ -184,6 +183,7 @@ public async Task<IActionResult> GetArtistResourceToAlbumResourceCollection(int 
     return Ok(document);
 }
 ```
+
 GetArtistResourceToAlbumResourceCollection is a new method on the IArtistResource interface. Here is the updated interface definition.
 
 ```c#

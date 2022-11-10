@@ -7,9 +7,9 @@ description: "Exposing pagination links on JSON:API documents"
 series: ['JSON:API in .NET']
 ---
 
-It has been a while since I blogged about [JSON:API](https://jsonapi.org/). In my last post on JSON:API I covered how to create [new resources](/post/2021/json-api-creating-new-resources). In today's post, I want to go over how I expose pagination links. [Pagination links](https://jsonapi.org/examples/#pagination) allow a client to page through a collection of resources. A shift of control from the client back to the server. 
+It has been a while since I blogged about [JSON:API](https://jsonapi.org/). In my last post on JSON:API I covered how to create [new resources](/post/2021/json-api-creating-new-resources). In today's post, I want to go over how I expose pagination links. [Pagination links](https://jsonapi.org/examples/#pagination) allow a client to page through a collection of resources. A shift of control from the client back to the server.
 
-Here is an example of a possible JSON:API response that includes pagination links. 
+Here is an example of a possible JSON:API response that includes pagination links.
 
 ```json
 {
@@ -35,7 +35,7 @@ The "up" link refers to a parent document in a hierarchy of documents. The "self
 
 The absence or presence of the pagination link is significant, if the "next" link exists, then there are more pages for the client to paginate through. If the "next" link does not exist, then the client has reached the last page. If the "prev" link exists, then the client is not on the first page. If neither a "next" or "prev" link exists, there is only one page.
 
-I want to update the [Chinook](https://chinook-jsonapi.herokuapp.com/) project by exposing pagination links on the [customers](https://chinook-jsonapi.herokuapp.com/customers) resource. For that I will need to add a code to support reading and writing Links, calculating the total number of pages to determine if there is more than one page. 
+I want to update the [Chinook](https://chinook-jsonapi.herokuapp.com/) project by exposing pagination links on the [customers](https://chinook-jsonapi.herokuapp.com/customers) resource. For that I will need to add a code to support reading and writing Links, calculating the total number of pages to determine if there is more than one page.
 
 I'll start by adding the following PagedList class, this class will help me determine how many pages are available and if a previous and next page exists.
 
@@ -95,7 +95,7 @@ public class PagedList
 
 Next, I will add code to handle creating the pagination links, it will also need to enforce pagination rules. For example, I prefer setting a limit on the number of records that can be retrieved per page. This is to prevent a single client from crashing the entire API. In my experience, I have found 100 to be the sweet spot.
 
-We can drive the rules through configurations defined on our AppSettings.json file. 
+We can drive the rules through configurations defined on our AppSettings.json file.
 
 ```json
 {
@@ -123,7 +123,7 @@ public class PageConfiguration
 }
 ```
 
-To properly manage the creation of pagination links I created three classes, one to read the query parameters from the incoming request and one to update those parameters and the last class will handle creating the Links by relying on the classes I just mentioned.   
+To properly manage the creation of pagination links I created three classes, one to read the query parameters from the incoming request and one to update those parameters and the last class will handle creating the Links by relying on the classes I just mentioned.
 
 ```C#
 public class PaginationLinkWriter
@@ -292,7 +292,7 @@ public class UriQueryParametersWriter
 }
 ```
 
-I also created the following helper classes to make everything easier. 
+I also created the following helper classes to make everything easier.
 
 ```C#
 public static class UriKeyWords
@@ -398,6 +398,7 @@ public Expression<Func<Customer, bool>> FilterExpression { get; } = entity => tr
 The fact that EF doesn't generate any additional SQL statements allows is great. I often used this to my advantage whenever I create custom filter expressions using extension methods.
 
 Anyways, back to the code, here is the updated GetCustomerResourceCollectionHandler.
+
 ```C#
 public class GetCustomerResourceCollectionHandler : IRequestHandler<GetCustomerResourceCollectionCommand, EntityCollectionResult<Customer>>
 {
@@ -453,7 +454,7 @@ The request yields the following response.
 }
 ```
 
-Note that the links are URL encoded as they should be, but we can see from the response that the prev link is null, which indicates we are on the first page. We see that the last link decoded is customers?page[number]=6&page[size]=10. This is correct, the last page is 6 because there are only six pages. As I client, I now want to navigate to the last page. 
+Note that the links are URL encoded as they should be, but we can see from the response that the prev link is null, which indicates we are on the first page. We see that the last link decoded is customers?page[number]=6&page[size]=10. This is correct, the last page is 6 because there are only six pages. As I client, I now want to navigate to the last page.
 
 I'll send the following HTTP request.
 
@@ -521,4 +522,4 @@ The request yields the following API response.
 
 Our API response above looks correct. The customer resource now supports pagination links. All that is left to do is apply the same code change to all the resource collections. I will do that offline and update the API at a later time. As always you can verify this API changes yourself by visiting the [Chinook API](https://chinook-jsonapi.herokuapp.com/) directly, I recommend having some type of JSON viewer enable like [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh).
 
-Till next time. Cheerio. 
+Till next time. Cheerio.

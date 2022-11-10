@@ -6,13 +6,13 @@ date: "2020-12-05"
 description: "Guide to on how to create integration test using WebApplicationFactory"
 ---
 
-When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of [.NET MVC 5](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started) you probably know that one of the best ways to test an HTTP request in MVC 5 was to use [Phil's HttpSimulator](https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/). 
+When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of [.NET MVC 5](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started) you probably know that one of the best ways to test an HTTP request in MVC 5 was to use [Phil's HttpSimulator](https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/).
 
 That is no longer the case in .NET Core thanks to the power of the [WebApplicationFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-5.0) class. This class creates a local instance of [TestServer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver?view=aspnetcore-5.0), TestServer creates a local [kestrel](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-5.0) web server. Since we are dealing with an actual web server, not a fake web server, there is no need to stub, fake, or mock anything. The HTTP request that are made to the local kestrel web server are legitimate HTTP request, this gives you the power to test your application's functionality from visual studio, build server, or wherever you are executing your Unit Test as if the app where hosted on a live server.
 
-Another neat feature of WebApplication factory is that it can create one or more instances of [HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-5.0), that means that not only does WebApplicationFactory allow us to test our application from the server side but it also allows you to test clients. 
+Another neat feature of WebApplication factory is that it can create one or more instances of [HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-5.0), that means that not only does WebApplicationFactory allow us to test our application from the server side but it also allows you to test clients.
 
-Imagine the following scenario, we want to test how our application handles conditional [HTTP GET request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests), using  the WebApplicationFactory class, you would instantiate an HttpClient that would send an HTTP GET request to the kestrel server. The server responds to the request with 200 OK, in the response headers, an [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) and [Last-Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified) are included. The HttpClient sends a second request to the kestrel server, in the request headers, [If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) and [If-Modified-Since](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Sinces) are included. The resource that was requested on the first GET request has not change, therefore, the server should return a [304 Not-Modify](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304). If the resource has change sine the first request than a 200 OK should be return with the updated content and a new ETag. If the resource has not change but the ETag has expire then the server should return a 200 OK with no content (a conditional request) to signal the client that their cache version of the resource is still valid. All these scenarios can be part of an integration test suite in our project, all possible thanks to WebApplicationFactory. Having the power to test how a client and server interact with each other in single test is super useful and extremely powerful. It elevates our testing to a new levels, it gives us confidence that our application will work as expected once it has been deployed. 
+Imagine the following scenario, we want to test how our application handles conditional [HTTP GET request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests), using  the WebApplicationFactory class, you would instantiate an HttpClient that would send an HTTP GET request to the kestrel server. The server responds to the request with 200 OK, in the response headers, an [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) and [Last-Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified) are included. The HttpClient sends a second request to the kestrel server, in the request headers, [If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) and [If-Modified-Since](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Sinces) are included. The resource that was requested on the first GET request has not change, therefore, the server should return a [304 Not-Modify](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304). If the resource has change sine the first request than a 200 OK should be return with the updated content and a new ETag. If the resource has not change but the ETag has expire then the server should return a 200 OK with no content (a conditional request) to signal the client that their cache version of the resource is still valid. All these scenarios can be part of an integration test suite in our project, all possible thanks to WebApplicationFactory. Having the power to test how a client and server interact with each other in single test is super useful and extremely powerful. It elevates our testing to a new levels, it gives us confidence that our application will work as expected once it has been deployed.
 
 For today's post I will show you how setup WebApplicationFactory to create integration tests. In a future post I will take the tests even further by leveraging SQLite as in-memory database, this will allow me to test the client, the API server and the database to ensure the data was persisted correctly. Please be aware that the database option may not work for you, it really depends on your use case. In .NET Core you can use the EF Core [in-memory provider](https://docs.microsoft.com/en-us/ef/core/providers/in-memory/?tabs=dotnet-core-cli) or an in-memory SQLite database if you are using SQLServer, MySQL or any other RDBMS. Personally, I recommend never using the in-memory provider. Jimmy Bogard [explains why](https://jimmybogard.com/avoid-in-memory-databases-for-tests/) on his blog.
 
@@ -34,7 +34,7 @@ dotnet add package FluentAssertions --version 5.10.3
 
 I'm a huge fan of fluent style interfaces, fluent assertions is a great NuGet package for assertions.
 
-Now that I have the required NuGet packages I will create the CustomApplicationFactory class. 
+Now that I have the required NuGet packages I will create the CustomApplicationFactory class.
 
 Here is the class definition for CustomWebApplicationFactory.
 
@@ -49,7 +49,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 }
 ```
 
-Are you surprise by how simple the class looks? 
+Are you surprise by how simple the class looks?
 
 Well, that is only because my Chinook project has SQLite [already configured](https://github.com/circleupx/Chinook/blob/a4dc0d50be656709c4a3191da6fd4531ad2401fc/src/Chinook.Core/ChinookDbContext.cs#L35) as an in-memory database by reading a SQLite database file from the project directory. I would imagine that for most of you this is not the case, you are probably using some database hosted on a remote server and you've registered this dependency as a service on the StartUp class, probably like this.
 
@@ -154,12 +154,13 @@ public class HomeControllerIntegrationTest : IClassFixture<CustomWebApplicationF
     } 
 }
 ```
+
 Time to execute the test on Visual Studio.
 
 ![Executed Integration Test](/post/2021/integration-testing-using-webapplicationfactory/home-resource-integration-test.PNG)
 
 As you can see the test passed when executed on visual studio. In less than half of a second, our integration test create a kestrel web server, it configured the server, it configure our API project, it made the API accessible through HTTP, it sent an HTTP request to the server, it received a 200 OK response and it validated the response. Awesome.
 
-**Summary:** 
+**Summary:**
 
 In this post I demonstrate how to build integration test using WebApplicationFactory. These test do not stub, mock or fake any data or http life cycle. The test are executed against a local kestrel web server, they run in memory and are very fast. These test allow you to validate your application's functionality as if it were deployed to a live server.

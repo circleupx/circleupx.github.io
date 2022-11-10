@@ -76,7 +76,7 @@ public static class LoggingBuilderExtensions
 }
 ```
 
-and my JSON configuration is as follows. 
+and my JSON configuration is as follows.
 
 ```json
 {
@@ -100,6 +100,6 @@ Now that everything has been configured, I can run the worker to see the prettif
 
 ![Logger](/post/2021/worker-services-configure-serilog/console.png)
 
-Ain't Serilog just awesome. 
+Ain't Serilog just awesome.
 
 Anyways, I hope this post helped you configured Serilog.

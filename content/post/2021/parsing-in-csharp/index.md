@@ -6,13 +6,13 @@ date: "2021-01-17"
 description: "Guide on how to parse strings on C#"
 ---
 
-I am currently building a [JSON:API](https://jsonapi.org/) driven API on [.NET 5](https://dotnet.microsoft.com/download/dotnet/5.0), the project is called [Chinook](https://github.com/circleupx/Chinook) after the Sqlite Chinook project. The API is mature enough for me to introduce [filtering](https://jsonapi.org/format/#fetching-filtering) via the [Filter](https://jsonapi.org/recommendations/#filtering) query parameter used in JSON:API. 
+I am currently building a [JSON:API](https://jsonapi.org/) driven API on [.NET 5](https://dotnet.microsoft.com/download/dotnet/5.0), the project is called [Chinook](https://github.com/circleupx/Chinook) after the Sqlite Chinook project. The API is mature enough for me to introduce [filtering](https://jsonapi.org/format/#fetching-filtering) via the [Filter](https://jsonapi.org/recommendations/#filtering) query parameter used in JSON:API.
 
 I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause. For example, take the following API request, it uses the [OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361038) filter syntax.
 
 ```text
 https://api.example.com/users?filter=name eq 'James'
-``` 
+```
 
 Some developers might choose to handle that request by implement filtering like this,
 
@@ -39,7 +39,7 @@ Each additional filter on the API is another if-else/switch statement. We should
 
 The first step in creating an expression tree is being able to parse a sequence of characters into a stream of tokens, this process is better known as **lexical analysis** or a **lexer**. Sometimes it is also refer to as a **tokenizer**. The **tokens** in this process are nothing more than a key value pair, in our example above, 'James' would be a token of type string, with a corresponding value of James.
 
-The question now is, how to parse strings in C#, something like 2 * 3 + 8. For that, I will create a parser based on a [regex parser created](https://jack-vanlightly.com/blog/2016/2/24/a-more-efficient-regex-tokenizer) by [Jack Vanlightly](https://jack-vanlightly.com/). The source code to his parser can be found on his [GitHub](https://github.com/Vanlightly/DslParser) page. 
+The question now is, how to parse strings in C#, something like 2 * 3 + 8. For that, I will create a parser based on a [regex parser created](https://jack-vanlightly.com/blog/2016/2/24/a-more-efficient-regex-tokenizer) by [Jack Vanlightly](https://jack-vanlightly.com/). The source code to his parser can be found on his [GitHub](https://github.com/Vanlightly/DslParser) page.
 
 To build this parser I will have to define the tokens it supports. For our expression, 2 * 3 + 8 I will only need four token types, an integer, summation, multiplication and a sequence terminator type. The following Enum can be used to represent those tokens.
 
@@ -188,6 +188,7 @@ public class PrecedenceBasedRegexTokenizer
     }
 }
 ```
+
 Running the code above yields the following result.
 
 ```text
@@ -230,7 +231,7 @@ interface IExpression
 }
 ```
 
-Additionally, I need to create a class that represents each the nodes on the tree. 
+Additionally, I need to create a class that represents each the nodes on the tree.
 
 ```c#
 public class Number : IExpression
@@ -400,6 +401,7 @@ Awesome, 14 was the final result obtained after executing the expression tree. I
 The complete code above can be found [here](https://github.com/circleupx/tokenizer).
 
 **Credits:**
+
 - [https://ruslanspivak.com/lsbasi-part1/](https://ruslanspivak.com/lsbasi-part1/)
 - [https://codereview.stackexchange.com/questions/108001/implementation-of-the-visitor-pattern](https://codereview.stackexchange.com/questions/108001/implementation-of-the-visitor-pattern)
 - [https://jack-vanlightly.com/blog/2016/2/24/a-more-efficient-regex-tokenizer](https://jack-vanlightly.com/blog/2016/2/24/a-more-efficient-regex-tokenizer)

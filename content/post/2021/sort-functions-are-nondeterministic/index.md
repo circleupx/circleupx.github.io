@@ -6,9 +6,9 @@ date: "2021-11-13"
 description: "Why sorting must be deterministic."
 ---
 
-When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data. 
+When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.
 
-From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, [like SQL Server](https://docs.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?redirectedfrom=MSDN&view=sql-server-ver15#arguments), is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same. 
+From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, [like SQL Server](https://docs.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?redirectedfrom=MSDN&view=sql-server-ver15#arguments), is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.
 
 It is important to not make this mistake in a Web API, especially in a RESTful system given that RESTful APIs rely upon HTTP. In HTTP, the GET, HEAD, PUT, and DELETE methods are [idempotent](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent), the same request should always return the same value.
 
@@ -110,4 +110,4 @@ The API request above should really be.
 https://api.tvmaze.com/episode?sortDesc=runtime,type,id
 ```
 
-By including the Id property, the sorting order will now always be guaranteed, because the id field will always be unique. By always adding a unique field to a sort operation, the API will achieve greater cache hits and provide an overall better experience for the consumer of the API. 
+By including the Id property, the sorting order will now always be guaranteed, because the id field will always be unique. By always adding a unique field to a sort operation, the API will achieve greater cache hits and provide an overall better experience for the consumer of the API.

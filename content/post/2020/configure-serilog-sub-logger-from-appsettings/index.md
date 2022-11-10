@@ -67,6 +67,7 @@ Now that we have all the required NuGet package we can move on to adding our log
     <add key="blue:serilog:filter:ByIcludingOnly.expression" value="isBlue = true" />
 </appSettings>
 ```
+
 As you can see, the trick here is to put the name of the sub-logger in front of :serilog. Next, we need to have Serilog read the configuration we defined above. 
 
 ```c#
@@ -75,6 +76,7 @@ Log.Logger = new LoggerConfiguration()
                 .WriteTo.Logger(ReadBlueLoggerConfigurations)
                 .CreateLogger();
 ```
+
 ReadRedLoggerConfigurations and ReadBlueLoggerConfigurations are two static methods used to configure each sub-logger. 
 
 ```c#
@@ -89,7 +91,9 @@ private static void ReadBlueLoggerConfigurations(LoggerConfiguration loggerConfi
     const string blueLogger = "blue";
     loggerConfiguration.ReadFrom.AppSettings(blueLogger);
 }
+
 ```
+
 Here is the completed console application.
 
 ```c#
@@ -142,6 +146,7 @@ Now we can test our console application to confirm that the correct configuratio
 ![Log Files](/post/2020/configure-serilog-sub-logger-from-appsettings/logfilesincdrive.PNG)
 
 and if we open the red log file you should see the following log lines.
+
 ```json
 {
     "@t":"2020-09-01T00:52:06.1676551Z",
@@ -149,4 +154,5 @@ and if we open the red log file you should see the following log lines.
     "isRed":true
 }
 ```
+
 Congratulations, you have successfully configured two different Serilog sub-loggers through XML configuration.

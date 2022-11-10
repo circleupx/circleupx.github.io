@@ -6,9 +6,9 @@ date: "2021-10-09"
 description: "Guide on how to improve API validation"
 ---
 
-As an API developer, you will eventually need to determine how to handle data validation. 
+As an API developer, you will eventually need to determine how to handle data validation.
 
-The .NET ecosystem offers a few options, the first option, [validation attributes](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes), can be used to annotate how a model should be validated. Validation attributes are great, they don't require any external dependencies, you can specify error messages, create your own [custom validator](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes), validate against many data types. 
+The .NET ecosystem offers a few options, the first option, [validation attributes](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes), can be used to annotate how a model should be validated. Validation attributes are great, they don't require any external dependencies, you can specify error messages, create your own [custom validator](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes), validate against many data types.
 
 For example, take the following Movie class, notice how the properties have been annotated with validation rules.
 
@@ -39,7 +39,7 @@ public class Movie
 }
 ```
 
-Another popular option in .NET is using the library [Fluent Validation](https://fluentvalidation.net/), this library allows you to define validation rules that are then applied against a data class. Fluent Validation offers the same capabilities as validation attributes, with one additional benefit, using the Fluent Validation library means that your classes are kept clean. The validation rules are defined in a configuration class. 
+Another popular option in .NET is using the library [Fluent Validation](https://fluentvalidation.net/), this library allows you to define validation rules that are then applied against a data class. Fluent Validation offers the same capabilities as validation attributes, with one additional benefit, using the Fluent Validation library means that your classes are kept clean. The validation rules are defined in a configuration class.
 
 For example, take the following CustomerValidator class, which defines rules that can be applied to the Customer class.
 
@@ -69,13 +69,13 @@ To summarize, our problems are as follows.
 
 How can these problems be solved, while arriving at a better API architecture?
 
-To avoid the first problem, client applications duplicating validation rules, the rules themselves should come from the API. One of the beauties of the REST architectural style is that everything is centered around resources. What are resources? Well, just about anything can be a resource, even validation rules. By having the API exposes the validation rules as a resource, the UI application does not have to duplicate the validation rules. Instead, the API can provide the UI with the validation code, the UI can then execute the code to confirm the data is valid. Having the API provide the UI with code to execute is not a new idea. In fact, it is one of the key constraints in the REST architecture, [code on demond](https://en.wikipedia.org/wiki/Representational_state_transfer#Code_on_demand_(optional)). The idea is that the UI application is extended by having the API providing additional logic. This idea is not just limited to REST, there is no rule that prevents you from doing the same in GraphQL or GRPC.   
+To avoid the first problem, client applications duplicating validation rules, the rules themselves should come from the API. One of the beauties of the REST architectural style is that everything is centered around resources. What are resources? Well, just about anything can be a resource, even validation rules. By having the API exposes the validation rules as a resource, the UI application does not have to duplicate the validation rules. Instead, the API can provide the UI with the validation code, the UI can then execute the code to confirm the data is valid. Having the API provide the UI with code to execute is not a new idea. In fact, it is one of the key constraints in the REST architecture, [code on demond](https://en.wikipedia.org/wiki/Representational_state_transfer#Code_on_demand_(optional)). The idea is that the UI application is extended by having the API providing additional logic. This idea is not just limited to REST, there is no rule that prevents you from doing the same in GraphQL or GRPC.
 
 So, validation rules will be exposed as a resource. How? Well, most APIs are built with JSON, and [JSON Schema](https://json-schema.org/) can be used to described JSON, plus it allows us to provide human-readable documentation. That sounds familiar, describing data formats while providing human-readable messages is the key essence of data validation. JSON Schema is the perfect tool for API validation, the schema can be exposed as an API resource, the client application can then consume the schema, execute it and validate the data. This is perfect, JSON Schema solves all of the problems identified above. The client doesn't have to duplicate any validation rules. The schema resource can be versioned in case of a major change. The rules are now more dynamic and are easily changed.
 
-I want to create an example to see how it all would work. 
+I want to create an example to see how it all would work.
 
-A [while back](/Adding-Customer-Resource) I exposes a customers resource on my [Chinook](https://chinook-jsonapi.herokuapp.com/) [JSON:API](https://jsonapi.org/) project. The endpoint does not have any data validation, you can send a POST request with an empty firstName or lastName property and the API won't stop the request, it will fail due to a database constraint. I purposely skipped over validation when I created the endpoint since I figure I would eventually write this post and would tackle data validation at that time. 
+A [while back](/Adding-Customer-Resource) I exposes a customers resource on my [Chinook](https://chinook-jsonapi.herokuapp.com/) [JSON:API](https://jsonapi.org/) project. The endpoint does not have any data validation, you can send a POST request with an empty firstName or lastName property and the API won't stop the request, it will fail due to a database constraint. I purposely skipped over validation when I created the endpoint since I figure I would eventually write this post and would tackle data validation at that time.
 
 I am going to modify the Chinook API project by exposing a JSON Schema resource that can be retrieved by a client app. The client application can then execute the schema on their end to confirm that the data being submitted adheres to the schema definition. For those unaware, here is how a customer is represented as of October 2021 on the Chinook API.
 
@@ -246,6 +246,6 @@ After modifying the Chinook API project to support JSON Schema, the customer res
 
 With this change, clients of the API can now retrieve a schema definition file that they can execute against data to confirm that the data captured by the client is valid. The API and the client will now be in sync with each other when it comes to validation. Should that validation change, then the validation resource would change, this is where versioning would become an important feature.
 
-One last question remains, how should the client execute the schema? 
+One last question remains, how should the client execute the schema?
 
 Well, that would depend on the client, JSON Schema is [supported in many languages](https://json-schema.org/implementations.html), find your language in their list of supported validators, and use the library that corresponds to your language to execute the schema. Most of you will probably be working in JavaScript, if so, consider using the library [ajv](https://github.com/ajv-validator/ajv). It is highly popular, blazing fast and should cover all your needs.

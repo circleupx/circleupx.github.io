@@ -13,6 +13,7 @@ Are you using SQLite as an in-memory provider for EF Core on your Unit/Integrati
 As you can see from the exception, the error is **"SQLite Error 1: 'no such table vPet'"** which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
 
 Here is my PetsDbContext.
+
 ```c#
 public class PetsDbContext : DbContext
 {
@@ -36,6 +37,7 @@ public class PetsDbContext : DbContext
     }
 }
 ```
+
 and my entity model for Pet.
 
 ```c#

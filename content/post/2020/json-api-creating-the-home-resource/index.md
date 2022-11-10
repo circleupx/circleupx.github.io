@@ -145,7 +145,7 @@ namespace Chinook.Web.Resources
 }
 ```
 
-Now, the last item we need is the DocumentContext, this class is required by JsonApiFramework whenever we work with a JSON:API document. 
+Now, the last item we need is the DocumentContext, this class is required by JsonApiFramework whenever we work with a JSON:API document.
 
 Here is the complete class.
 

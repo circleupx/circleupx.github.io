@@ -95,7 +95,7 @@ public class Root
 
 Where Root is the top-level representation of the JSON document that is returned by HTTPBin.
 
-Now that I have my response model, I can make the API request using the following code. Three lines of code are all that are needed to make an HTTP request to the endpoint https://httpbin.org/headers using Flurl.
+Now that I have my response model, I can make the API request using the following code. Three lines of code are all that are needed to make an HTTP request to the endpoint <https://httpbin.org/headers> using Flurl.
 
 ## Example
 

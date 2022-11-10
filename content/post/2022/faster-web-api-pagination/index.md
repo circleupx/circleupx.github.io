@@ -6,7 +6,7 @@ date: "2022-02-17"
 description: "Make web-api pagination faster with deferred joins"
 ---
 
-A few weeks ago I came across a blog [post](https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins) from [Aaron Francis](https://aaronfrancis.com/) in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in [High Performance MySQL: Proven Strategies for Operating at Scale](https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519). 
+A few weeks ago I came across a blog [post](https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins) from [Aaron Francis](https://aaronfrancis.com/) in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in [High Performance MySQL: Proven Strategies for Operating at Scale](https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519).
 
 The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an [OFFSET](https://www.geeksforgeeks.org/sql-offset-fetch-clause/) to skip over a number of records, however, even though the results are skipped, the database must still fetch those records. Meaning we are reading data from the disk and immediately discarding it. This is an inefficient process and is what causes pagination performance to degrade as you paginate over more records.
 
@@ -43,7 +43,7 @@ SELECT * FROM Customers c
     ) as t ON c.Id = t.Id
 ```
 
-I ran the query above against the same database with roughly 700K records. I got some rather impressive results. The client processing time was 981.8000 ms after 10 iterations, down from the original 2393.0000 ms. The total execution time was 1402.8000 ms after 10 iterations, down from 3287.0000 ms and the wait time on server reply was 421.0000 ms after 10 iterations, down from 894.0000 ms. 
+I ran the query above against the same database with roughly 700K records. I got some rather impressive results. The client processing time was 981.8000 ms after 10 iterations, down from the original 2393.0000 ms. The total execution time was 1402.8000 ms after 10 iterations, down from 3287.0000 ms and the wait time on server reply was 421.0000 ms after 10 iterations, down from 894.0000 ms.
 
 Those are some rather serious improvements. I'm thinking I will need to update the client app to use the updated query with deferred joins. It should improve the overall performance of the application, which is always a win in my book.
 

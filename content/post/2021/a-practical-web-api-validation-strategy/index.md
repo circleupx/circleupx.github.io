@@ -166,7 +166,6 @@ As you can tell from the payload, the field summary is empty, this should trigge
 
 Nice, as you can see the error messages defined in the WeatherForecastValidator are included on the response object. With this approach, the API can send a friendly error message to the client whenever a validation error occurs. FluentValidation even helps you with [Localizations](https://docs.fluentvalidation.net/en/latest/localization.html).
 
-
 Couple of things to note. The validations I've written here are arbitrary and outright stupid, for example, celsius can include decimal values like -17.8, which would be 0 Fahrenheit. Please ignore the validity of the validation rules I have written here, this post is meant to demonstrate how to provide practical API validation in .NET by using tools and patterns like FluentValidation and ProblemDetails.
 
 If you are in .NET Core 3 or earlier, ModelState is not serialized using camel casing. You can see that in the example above, where the word "Summary", in the error array has an upper case s. This was fixed in [7439](https://github.com/dotnet/aspnetcore/issues/7439) for newer versions of .NET. In 3 or earlier you can fix that by using the following code.

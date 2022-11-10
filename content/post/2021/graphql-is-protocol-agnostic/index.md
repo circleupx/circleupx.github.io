@@ -14,6 +14,7 @@ GraphQL is not bound to any network protocol, it is most often implemented on to
 Now, I know what you are thinking, "but I don't want to reinvent the wheel", normally you would be correct, after all the http spec takes care of many things that developers often take for granted, things like authorization and caching, but in the case of GraphQL ignoring the HTTP spec is the **price of admission to creating a good GraphQL API.**
 
 **Credits:**
+
 - [A few things to think about before blindly dumping REST for GraphQL.](https://apihandyman.io/and-graphql-for-all-a-few-things-to-think-about-before-blindly-dumping-rest-for-graphql/)
 - [Serving over HTTP](https://graphql.org/learn/serving-over-http/)
 - [Modeling Errors in GraphQL](https://engineering.zalando.com/posts/2021/04/modeling-errors-in-graphql.html)

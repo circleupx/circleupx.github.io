@@ -10,7 +10,7 @@ description: "Connect the internet from WSL."
 
 You have installed WSL successfully on your machine only to find out that you cannot connect to the internet. I have encountered this problem before sometimes it can be fixed externally, but from my experience, no matter what you do, you will end up having to mock around with the resolv.conf file within WSL, more on that later.
 
-You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level. You can confirm that this is applicable to you by searching for **Windows Defender Firewall with Advance Security** on the start menu, then going to Action, then Properties, under properties switching to the Public Profile tab, then clicking **customize** under settings. Now look under "Rule Merging", **if these options are set to no**, then you will not be able to connect from WSL. 
+You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level. You can confirm that this is applicable to you by searching for **Windows Defender Firewall with Advance Security** on the start menu, then going to Action, then Properties, under properties switching to the Public Profile tab, then clicking **customize** under settings. Now look under "Rule Merging", **if these options are set to no**, then you will not be able to connect from WSL.
 
 Your first option here is to talk to the network administrator, and see if they can change the rule. If they can, then great if not then you will have to follow the guide at the end of this blog post.
 

@@ -16,7 +16,7 @@ A few weeks ago I was looking for an end-to-end testing framework. An alternativ
 
 While those feature are all great and useful, they don't measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like [qa wolf](https://www.qawolf.com/) and [headless-recorder](https://github.com/checkly/headless-recorder), these tools record any action you take on the browser, those actions are then converted into Playwright scripts.
 
-For today's post, I am going to build a small playwright project, I will use this project to demonstrate how to create some basic tests using playwright. To follow along you will need to have [Node.js](https://nodejs.org/en/) installed, version 10.17 or greater. 
+For today's post, I am going to build a small playwright project, I will use this project to demonstrate how to create some basic tests using playwright. To follow along you will need to have [Node.js](https://nodejs.org/en/) installed, version 10.17 or greater.
 
 Open your favorite cli tool, [windows terminal](https://github.com/Microsoft/Terminal) in my case. Run the following npm command to install playwright
 
@@ -42,7 +42,7 @@ The first line of code imports the playwright library, then an asynchronous cont
 
 To execute the code, run the following command on the cli.
 
-```
+```shell
 node google.ts
 ```
 
@@ -72,7 +72,7 @@ Provided the required information such as project name, author, description and 
 
 ```
 
-Time to establish the folder structure. Whenever I work with a Node.js library, I like to follow the project structure outlined in [this](https://stackoverflow.com/questions/5178334/folder-structure-for-a-node-js-project) stack overflow post. 
+Time to establish the folder structure. Whenever I work with a Node.js library, I like to follow the project structure outlined in [this](https://stackoverflow.com/questions/5178334/folder-structure-for-a-node-js-project) stack overflow post.
 
 Fow now I will only add the test folder using the following command.
 
@@ -80,11 +80,11 @@ Fow now I will only add the test folder using the following command.
 mkdir test
 ```
 
-It is time to install a few additional node packages. Since I wiped the directory clean, I will need to reinstall playwright, I will also need a testing library, Playwright supports [Mocha](https://mochajs.org/), [Jest](https://github.com/playwright-community/jest-playwright) and [Ava](https://github.com/avajs/ava). For this repo I will use Mocha. I will also need an assertion library, you can use whichever library you want on your project, [chaijs](https://github.com/chaijs/chai) is my preferred framework. I work a lot with postman for API testing, postman uses chaijs to do assertions so I'm most familiar with chaijs and I know the syntax by heart. Other packages I will need are ts-node, typescript and mocha-junit-reporter. 
+It is time to install a few additional node packages. Since I wiped the directory clean, I will need to reinstall playwright, I will also need a testing library, Playwright supports [Mocha](https://mochajs.org/), [Jest](https://github.com/playwright-community/jest-playwright) and [Ava](https://github.com/avajs/ava). For this repo I will use Mocha. I will also need an assertion library, you can use whichever library you want on your project, [chaijs](https://github.com/chaijs/chai) is my preferred framework. I work a lot with postman for API testing, postman uses chaijs to do assertions so I'm most familiar with chaijs and I know the syntax by heart. Other packages I will need are ts-node, typescript and mocha-junit-reporter.
 
 Run the following command to install the required packages
 
-```
+```shell
 npm install playwright ts-node typescript eslint mocha chai @types/chai @types/faker @types/mocha mocha-junit-reporter
 ```
 
@@ -214,7 +214,7 @@ The code above imports the required node packages, then playwright's browser and
 npm test
 ```
 
-The command should output the following result. 
+The command should output the following result.
 
 ```text
 > e2eplaywright@1.0.0 test C:\Users\Yunier\Documents\playwright
@@ -233,4 +233,3 @@ before(async () => {
 For a complete list of available launch options, see the [playwright api docs](https://playwright.dev/docs/api/class-playwright).
 
 Awesome. A foundation for building end-to-end test with playwright has been established. More test can now be added. If you are building tests that deal with data input, then I suggest installing [faker.js](https://github.com/marak/Faker.js/), it is another node libary used to create fake data such as people, address, number, text and so on. Learn more about playwright by reading the [docs](https://playwright.dev/docs/intro).
-

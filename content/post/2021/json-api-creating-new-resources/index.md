@@ -7,7 +7,7 @@ description: "Guide on how to create new resources"
 series: ['JSON:API in .NET']
 ---
 
-So far in my JSON:API series I've covered the [home resource](https://www.yunier.dev/2020-09-14-Adding-Home-Resource/), adding [your own resource](https://www.yunier.dev/2020-10-30-Adding-Customer-Resource/), adding an [exception handling middleware](https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/) and how to [expose relationship](https://www.yunier.dev/2020-12-06-Exposing-Relationships/) between resources. For the today's post, I would like to cover creating resources. I will update the chinook project by allowing [POST](https://datatracker.ietf.org/doc/html/rfc2616/#section-9.5) request on the customers collections to add new customers. 
+So far in my JSON:API series I've covered the [home resource](https://www.yunier.dev/2020-09-14-Adding-Home-Resource/), adding [your own resource](https://www.yunier.dev/2020-10-30-Adding-Customer-Resource/), adding an [exception handling middleware](https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/) and how to [expose relationship](https://www.yunier.dev/2020-12-06-Exposing-Relationships/) between resources. For the today's post, I would like to cover creating resources. I will update the chinook project by allowing [POST](https://datatracker.ietf.org/doc/html/rfc2616/#section-9.5) request on the customers collections to add new customers.
 
 To get started, the customer controller needs to have a method that will accept the incoming POST request. I've decided to call the method **CreateCustomerResource**, the method will accept a [JSON:API document](https://jsonapi.org/format/#document-structure) from the request body. The full method signature is defined below.
 
@@ -99,7 +99,7 @@ public class CreateCustomerResourceHandler : IRequestHandler<CreateCustomerResou
 
 Nothing to exciting, the resource data is extracted out of the JSON:API document and it gets attached to EF Core, which then saves it to the database. Simple stuff, it will get a little more complicated later, but for now this will work. Time to test our code and what better tool than POSTMAN to do the test.
 
-You should know that POSTMAN comes with a CLI, [newman](https://github.com/postmanlabs/newman), a great option for executing test written in POSTMAN on your CI/CD pipeline. See [this](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) blog post more details. 
+You should know that POSTMAN comes with a CLI, [newman](https://github.com/postmanlabs/newman), a great option for executing test written in POSTMAN on your CI/CD pipeline. See [this](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) blog post more details.
 
 I'll go ahead an open up postman. I'm going to add new API request of type POST, using [https://chinook-jsonapi.herokuapp.com/customers](https://chinook-jsonapi.herokuapp.com/customers) as the request URL. Under the headers tab, I will add a new header, content-type, and set the value to [application/vnd.api+json](https://www.iana.org/assignments/media-types/application/vnd.api+json), since this is required by JSON:API. Next, the request body will use the following json as the request body.
 
@@ -132,7 +132,7 @@ I am providing all attributes here since there are no validation or rules yet. N
 
 When I execute the POSTMAN request I get a 201 Created as the response code with the newly created user on the response body. You can execute the test yourself by pulling the chinook repository down and importing the test into POSTMAN. All tests are located under the [test folder](https://github.com/circleupx/Chinook/tree/master/test).
 
-Great, so the API now supports creating new customers. All is great in the world, well, almost all. See what we have here is the most basic example, it is simple and easy, starting with the fact that in this sample app there are no validation or business rules, but what really complicates thing is having resources like customers, that have related resources. 
+Great, so the API now supports creating new customers. All is great in the world, well, almost all. See what we have here is the most basic example, it is simple and easy, starting with the fact that in this sample app there are no validation or business rules, but what really complicates thing is having resources like customers, that have related resources.
 
 The customer resource we just created did not have any relationships, meaning the customer being created did not have any invoices. There might be instances where a new customer has one or many invoices, to support this type of request the API should be enhanced to support adding new invoices, the link between the new customer and the new invoice can be established by including the relationship on the HTTP request body for the customer resource or vice versa. The response body of such request may look like the following JSON document.
 
@@ -168,7 +168,6 @@ The customer resource we just created did not have any relationships, meaning th
 Another option would be to support [sideposting](https://github.com/json-api/json-api/issues/1216), that is being able to create multiple resources of different types in a single request so that the client application doesn't have to send multiple POST request for every new resource it needs to link. This is where JSON:API [extensions](https://jsonapi.org/extensions/) for [atomic operations](https://jsonapi.org/ext/atomic/) come into play. It establishes a contract on how the client should tructure a request that contains multiple resource and how the server should handle these type of request.
 
 The release of JSON:API v1.1 should simplify side posting due to the introduction of [lid](https://github.com/json-api/json-api/pull/1244). An lid is an id generated on the client, this id is then used to link resources on a client document. Remember the great thing about JSON:API is that it is a [wire protocol for incrementally fetching and updating a graph over HTTP](https://youtu.be/LLe7Fi-wM3Q?t=922). The keywords here being updating a graph, by combining lid with resource linkage a client can create a JSON:API documents with a complex hierarchy, for example.
-
 
 ```text
  POST /customer HTTP/2.0
