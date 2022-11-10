@@ -1,6 +1,6 @@
 ---
 title: WSL For Local Development With Kubernetes
-tags: [.NET, Kubernetes, Microk8s]
+tags: [.NET, Kubernetes, Microk8s, WSL]
 author: "Yunier"
 date: "2022-11-03"
 description: "Configure WSL for local development with Kubernetes 2022 edition."

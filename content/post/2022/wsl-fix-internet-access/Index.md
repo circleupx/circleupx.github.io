@@ -16,7 +16,7 @@ Your first option here is to talk to the network administrator, and see if they 
 
 Another way you can encounter this issue is when you actually have internet access but you cannot connect to resources behind a VPN. As of October 2022, the only solution that I am aware of that works is modifying the resolve.conf file within WSL. Keep an eye on the following GitHub issues,[5068](https://github.com/microsoft/WSL/issues/5068),[4277](https://github.com/microsoft/WSL/issues/4277), [1350](https://github.com/microsoft/WSL/issues/1350), I'm hoping that this problem is eventually fixed and becomes a setting that can be applied when WSL is installed.
 
-## WSL 101 
+## WSL 101
 
 Before I get into the solution I would like to explain what is happening. When you launch WSL by default it is configured to write a resolv.config file in the /etc directory. This file is what controls DNS resolution in WSL. You can see the contect of the file by running the following command from WSL
 
