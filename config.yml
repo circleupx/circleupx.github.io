@@ -50,7 +50,7 @@ params:
     author: "Yunier"
     # author: ["Me", "You"] # multiple authors
 
-    defaultTheme: dark
+    defaultTheme: light
     ShowShareButtons: true
     ShowReadingTime: false
     displayFullLangName: true

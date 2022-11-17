@@ -1,6 +1,6 @@
 ---
-title: Sqlite - No Such Table Error
-tags: [Sqlite, EF Core]
+title: SQLite - No Such Table Error
+tags: [SQLite, EF Core]
 author: "Yunier"
 date: "2020-09-19"
 description: "Guide on how to handle SQLite error on Unit/Integration test"

@@ -1,6 +1,6 @@
 ---
 title: Extracting Values From Types
-tags: [C#]
+tags: [.NET]
 author: "Yunier"
 date: "2022-04-10"
 description: "Deconstructing values out of types."
