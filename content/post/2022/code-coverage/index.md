@@ -12,11 +12,9 @@ If you are writing unit tests in .NET, you may eventually find the need to gener
 
 [NUnit](https://nunit.org/), the tried and tested framework originally being a port of [JUnit](https://junit.org/junit5/). A powerful tool that when combined with [coverlet console](https://www.nuget.org/packages/coverlet.console) can be used to generate code coverage reports. To demonstrate, I will create an NUnit test project targeting .NET Framework 4.8 along with a Class Library type project also targeting .NET Framework 4.8
 
-The class library is going to be simple, it will have a single class called Calculator, this class will have a method that adds two numbers together. A classic example used often in programming tutorials. 
+The class library is going to be simple, it will have a single class called Calculator, this class will have a method that adds two numbers together. A classic example used often in programming tutorials.
 
-The key here is that it is going to be the NUnit project. I
-
-The calculator class definition can be seen in the code snippet below. 
+The calculator class definition can be seen in the code snippet below.
 
 ```c#
 public class Calculator
@@ -44,7 +42,7 @@ public void Calculator_AddingOnePlusTwo_AssertResultIsThree()
 }
 ```
 
-To generate a code coverage report for the example above a few tools are required. First, given this is Nunit, I will need to install the NUnit console so that I can execute the test from a shell. You can install the NUnit Console by going to the [official repository](https://github.com/nunit/nunit-console), under [releases](https://github.com/nunit/nunit-console/releases/), find the latest version, and install it. If you are a fan of [Chocolately](https://chocolatey.org/) then you can install the console runner by running the following command from a terminal.
+To generate a code coverage report for the unit test above I will need to install the NUnit console so that I can execute the test from a terminal like Powershell. You can install the NUnit Console by going to the [official repository](https://github.com/nunit/nunit-console), under [releases](https://github.com/nunit/nunit-console/releases/), find the latest version, and install it. If you are a fan of [Chocolately](https://chocolatey.org/) then you can install the console runner by running the following command from a terminal.
 
 ```bash
 choco install nunit-console-runner
@@ -53,10 +51,10 @@ choco install nunit-console-runner
 Confirm the console was installed correctly by running the following command on a terminal.
 
 ```bash
-nunit-console.exe
+nunit3-console.exe
 ```
 
-If the command is not recognized, then you will need to update your path environment variables to include nunit-console.exe
+If the command is not recognized, then you will need to update your path environment variables to include nunit-console.exe.
 
 The environment paths are as follows
 
@@ -64,13 +62,13 @@ The environment paths are as follows
 C:\ProgramData\chocolatey\bin
 ```
 
-If you install chocolatey on the C drive and install the console through chocolatey.
+If you install the nunit3 console throught chocolatey on the C drive.
 
 ```text
 C:\Program Files (x86)\Nunit.org\nunit-console.
 ```
 
-If you install the nunit console through an exe obtained under the releases tab in the official repo.
+Is the path if you install the nunit console through an exe obtained under the releases tab in the official repo.
 
 The next step will be to install a .NET Core SDK. As of November 2022, the SDK is at version 7, since .NET 7 was just released.
 
@@ -91,9 +89,9 @@ coverlet "TestProject2/bin/Release/net472/TestProject2.dll" --target "nunit3-con
 
 The command above can be broken down as follows.
 
-- **coverlet** is used to invoke the coverlet console pointing to the path of the DLL that contains the unit tests.
+- **coverlet** is used to invoke the coverlet console with a path to the DLL that contains the unit tests.
 - **target** is used to invoke an external test runner, in this case, NUnit 3.
-- **targetargs** are used to pass parameters to the target, NUnit. In the case above we are telling Nunit to run the tests located in the TestProject2 by giving it a direct path to the DLL, then we use the [--noresult](https://docs.nunit.org/articles/nunit/running-tests/Console-Command-Line.html) to tell NUnit to not generate a test result file. I used this argument here because, for our example, we are not interested in the test results from NUnit.
+- **targetargs** is used to pass parameters to the target runner, NUnit. In the case above we are telling Nunit to run the tests located in the TestProject2 by giving it a direct path to the DLL, then we use [--noresult](https://docs.nunit.org/articles/nunit/running-tests/Console-Command-Line.html)to tell NUnit to not generate a test result file. I am using this argument here because, for our example, we are not interested in the test results file genearted by NUnit. If you are interested in the file, then ommit --noresult from the command.
 - **format** is used to tell the coverlet console what format should be used when it outputs the coverage report. In this example I used opencover, the available formats are **json**, **lcov**, **opencover**, **cobertura**, and **teamcity**.
 - **output** is used to let coverlet know where to place the final result as well as what to name the file.
 
@@ -145,12 +143,12 @@ reportgenerator -reports:"*.xml" -targetdir:"report" --reporttypes: "Html"
 
 The command above can be broken down as follows.
 
-- **reportgenerator** is the dotnet tool we installed.
+- **reportgenerator** is the dotnet tool we installed, it will take the XML file, inspect the contect of said file, then create an HTML report from that content.
 - **reports** is the path to the location of the report you which to convert. Note that it accepted wild cards. You can use **/*.xml for recursive search.
 - **targetdir** is used to specify the location where the report should be generated. If the folder does not exist, it will be created.
 - **reporttypes** is used to specify the report format, in this case, Html.
 
-The resulting HTML report will be located under the report folder, located on the index.html page and you should see the code report summary.
+The resulting HTML report will be located under the report folder, in that folder, locate the index.html page and you should see the code report summary as showned below.
 
 ![Code Coverage](/post/2022/code-coverage/nunit-code-coverage.PNG)
 
@@ -160,7 +158,7 @@ As you can see from the image, an HTML report was generated from the result.xml 
 
 If you are using XUnit and would like to generate code coverage reports as demonstrated above then you are in luck, because generating reports in XUnit is much easier than NUnit. To demonstrate how to generate code coverage reports with XUnit, I will clone the Calculator project mentioned above for NUnit but this time I will target .NET 6.
 
-I once again created the Calculator class.
+I will once again created the Calculator class.
 
 ```c#
 public class Calculator
@@ -196,12 +194,14 @@ To get code coverage, we are going to need to add a few additional NuGet package
 - **xunit.testlogger** - This is an XML logger for XUnit.
 - **coverlet.collector** - Coverlet, the tool used for code coverage.
 
-These packages must be installed on any test project by running the following commands.
+These packages must be installed on the test project by running the following commands.
 
 ```Powershell
-dotnet add package coverlet.collector --version 3.2.0
-dotnet add package XunitXml.TestLogger --version 3.0.70
+dotnet add Test.csproj package coverlet.collector --version 3.2.0
+dotnet add Test.csproj package XunitXml.TestLogger --version 3.0.70
 ```
+
+Replace Test.csproj with the path to you project.
 
 To generate a code coverage report I will build the solution and then run the following command from a terminal.
 
@@ -217,7 +217,7 @@ The command above can be broken down as follows.
 - **logger** is used to specify a logger for test results. For a list of available options see [Available test loggers](https://github.com/Microsoft/vstest-docs/blob/main/docs/report.md#available-test-loggers).
 - **DataCollectionRunSettings** is used to set the format, in my case opencover.
 
-Just like before, the command generates an XML file, in my case located in the same folder as the XUnit project. The file is named coverage.opencover.xml and the content inside is as follows.
+Just like before, the command generates an XML file, in my case the file is located in the same folder as the XUnit project. The file is named coverage.opencover.xml and the content inside is as follows.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -268,11 +268,9 @@ The command above can be broken down as follows.
 - **targetdir** is used to specify the location where the report should be generated. If the folder does not exist, it will be created.
 - **reporttypes** is used to specify the report format, in this case, Html.
 
-
 ![Code Coverage](/post/2022/code-coverage/xunit-code-coverage.PNG)
 
 As you can see, I get an HTML report that is very similar to the one generated in the NUnit example, which is expected.
-
 
 ### Conclusion
 
