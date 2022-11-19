@@ -4,6 +4,7 @@ tags: [WSL]
 author: "Yunier"
 date: "2022-10-23"
 description: "Connect the internet from WSL."
+series: [WSL]
 ---
 
 ## Problem

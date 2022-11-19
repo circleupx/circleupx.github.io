@@ -4,6 +4,7 @@ tags: [.NET, Kubernetes, Microk8s, WSL]
 author: "Yunier"
 date: "2022-11-03"
 description: "Configure WSL for local development with Kubernetes 2022 edition."
+series: [WSL]
 ---
 
 If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.
