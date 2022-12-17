@@ -46,9 +46,8 @@ outputFormats:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Documenting my adventures in software."
+    description: "Documenting my adventures in software development."
     author: "Yunier"
-    # author: ["Me", "You"] # multiple authors
 
     defaultTheme: light
     ShowShareButtons: true
@@ -66,8 +65,6 @@ params:
         title: PaperMod
         imageUrl: "#"
         imageTitle: my image
-        # imageWidth: 120
-        # imageHeight: 120
         buttons:
             - name: Archives
               url: archives
@@ -78,8 +75,9 @@ params:
     homeInfoParams:
         Title: "Hi!"
         Content: >
-            Welcome to my blog, I'm a backend application developer focusing at the moment on the .NET stack. This blog serves as
-            my own personal notebook. I mainly use it to write down concepts or ideas that may be learning or have learned. I hope you like the content.
+            Welcome to my blog, I'm a backend application developer focusing at the moment on the .NET stack.
+            I use this blog to document ideas or concepts I have learn or might be currently learning. 
+            I hope you enjoy the content.
 
     socialIcons:
         - name: github
