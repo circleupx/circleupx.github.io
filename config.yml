@@ -75,9 +75,9 @@ params:
     homeInfoParams:
         Title: "Hi!"
         Content: >
-            Welcome to my blog, I'm a backend application developer focusing at the moment on the .NET stack.
-            I use this blog to document ideas or concepts I have learn or might be currently learning. 
-            I hope you enjoy the content.
+          Welcome to my blog, I’m a backend application developer focusing at the moment on the .NET stack. 
+          I use this blog to document ideas or concepts I have learned or might be currently learning. 
+          I hope you enjoy the content.
 
     socialIcons:
         - name: github
