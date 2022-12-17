@@ -76,9 +76,10 @@ params:
 
 
     homeInfoParams:
-        Title: "Hello"
+        Title: "Hi!"
         Content: >
-            Welcome to my blog, where I document my adventures in software.
+            Welcome to my blog, I'm a backend application developer focusing at the moment on the .NET stack. This blog serves as
+            my own personal notebook. I mainly use it to write down concepts or ideas that may be learning or have learned. I hope you like the content.
 
     socialIcons:
         - name: github

@@ -1,5 +1,5 @@
 ---
-title: RDP Into WSL
+title: Remote Desktop Into WSL
 tags: [WSL]
 author: "Yunier"
 date: "2022-11-17"

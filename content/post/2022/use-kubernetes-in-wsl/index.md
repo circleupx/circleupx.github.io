@@ -1,6 +1,6 @@
 ---
-title: WSL For Local Development With Kubernetes
-tags: [.NET, Kubernetes, Microk8s, WSL]
+title: Use Kubernetes In WSL
+tags: [Kubernetes, Microk8s, WSL]
 author: "Yunier"
 date: "2022-11-03"
 description: "Configure WSL for local development with Kubernetes 2022 edition."
@@ -62,7 +62,7 @@ ping google.com
 
 ### Internet
 
-If the command above failed then it means you can't reach the internet from WSL. Please read my [Wsl Fix Internet Access](/post/2022/wsl-fix-internet-access) post before continuing.
+If the command above failed then it means you can't reach the internet from WSL. Please read my [Connect To The Internet From WSL](/post/2022/connect-to-the-internet-from-wsl) post before continuing.
 
 ### Snap
 
@@ -160,4 +160,4 @@ gohan   Ready    <none>   15m   v1.25.3
 
 If so, then congratulations, you have successfully installed and configured Kubernetes on WSL.
 
-A quick note, WSL shares the same localhost as your Windows machine, this is why you can run an app on localhost on WSL and be able to access it on your windows machine. With Kubernetes, there is an additional configuration required to get this working. I will cover those configurations in a future post.
+A quick note, WSL shares the same localhost as your Windows machine, this is why you can run an app on localhost on WSL and be able to access it on your windows machine. With Kubernetes, there is an additional configuration required to get this working. I will cover those configurations in a [future post](/post/2022/connect-from-windows-to-kubernetes-on-wsl/).
