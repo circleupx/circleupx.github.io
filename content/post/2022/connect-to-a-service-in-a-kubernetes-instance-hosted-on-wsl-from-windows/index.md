@@ -102,7 +102,7 @@ NAME    STATUS   ROLES    AGE   VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAG
 gohan   Ready    <none>   30m   v1.25.4   172.23.207.235   <none>        Ubuntu 22.04.1 LTS   5.15.79.1-microsoft-standard-WSL2   containerd://1.6.9
 ```
 
-To connect to NGINX I opened up my Brave browser to 172.23.207.235:30454.
+To connect to NGINX I opened up my browser to 172.23.207.235:30454.
 
 <div style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #8a6d3b;; background-color: #fcf8e3; border-color: #faebcc;">
 The following screenshot shows that I can connect to a service running in Kubernetes on WSL from Windows using the node IP address.
@@ -110,9 +110,7 @@ The following screenshot shows that I can connect to a service running in Kubern
 
 ![Connect to the service using node ip](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/connected-to-service-using-node-ip.png)
 
-Bingo, I can reach the service from Windows. If you are not a fan of having to use an IP address then may I suggest taking the [modifying Windows host files](https://www.howtogeek.com/784196/how-to-edit-the-hosts-file-on-windows-10-or-11/) approach. 
-
-In my case, **I wanted to connect to the service using localhost**, so I thought, why not map 172.23.207.235 to Window's localhost, as it turns out, that is big fat **NO**. I learned that you should never attempt it, leave localhost alone. Instead map it to something similar, perhaps local.host or www.localhost.com
+Bingo, I can reach the service from Windows. **I wanted to connect to the service using localhost**, so I thought, why not map 172.23.207.235 to Window's localhost, as it turns out, that is big fat **NO**. I learned that you should never attempt it, leave localhost alone. Instead map it to something similar, perhaps local.host or www.localhost.com
 
 <div style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #8a6d3b;; background-color: #fcf8e3; border-color: #faebcc;">
 The following screenshot show you can create your own version of localhost.
@@ -125,16 +123,17 @@ If you still cannot reach the service after having modified the host's file, flu
 ```Powershell
 ipconfig /flushdns
 ```
-Then I realize that there were two flaws with this approach. 
 
-1. The port is randomly generated when the service is created.
+I Then realize that using the node IP to approach had two flaws. 
+
+1. The port is randomly generated when the service is created. I needed the port to predetermined.
 2. The Node IP can change if you restart or shut down WSL. **As of December 2022, there is no easy way to set the IP of WSL to be static.**
 
-I did not find this approach to be a viable solution so I moved on to the next approach, port forwarding.
+These two flaws made this approach not a viable solution so I moved on to the next approach, port forwarding.
  
 ## Using Port-Forward
 
-This approach does not involve any modifications of host files, and there is no need to obtain the node IP. It involves using [port forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
+This approach involves using [port forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
 
 After following the commands under [Connection Issue](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows#connection-issue) and having verified that all 3 pods are up and running, use the following kubectl command to port forward from the WSL's localhost to Windows' localhost. Remember, [they are now one and the same](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-linux-networking-apps-from-windows-localhost).
 
@@ -195,7 +194,7 @@ For my load balancer IP, I'm going to change the last octet from 34 to 49, so th
 microk8s enable metallb:172.23.200.49/32
 ```
 
-Note that I'm using /32, this keeps the load balancer IP static. If you don't understand why then may I recommend watching [Understanding CIDR Ranges and dividing networks](https://www.youtube.com/watch?v=MmA0-978fSk)
+Note that I'm using /32, this keeps the load balancer IP static. If you don't understand why /32 makes the IP static then may I recommend watching [Understanding CIDR Ranges and dividing networks](https://www.youtube.com/watch?v=MmA0-978fSk)
 
 Delete the Nginx service if you created one.
 
@@ -215,9 +214,9 @@ As expected, I can reach it.
 
 ![Nginx load balancer](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/nginx-using-load-balancer.png)
 
-Just like the [Using the Node IP ](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows#node-ip) approach, if don't enjoy using an IP address to access the service, modify the hosts file and map the IP of the load balancer to a custom domain. 
+Just like the [Using the Node IP ](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows#node-ip) approach, if don't enjoy using an IP address to access the service, modify the windows hosts file and map the IP of the load balancer to a custom domain. 
 
-You can could also port proxy the traffic from Windows to WSL using netsh interface portproxy.
+You could also port proxy the traffic from Windows to WSL using netsh interface portproxy.
 
 For example, 
 
@@ -225,11 +224,11 @@ For example,
 netsh interface portproxy add v4tov4 listenport=31080 listenaddress=0.0.0.0 connectport=31080 connectaddress=172.23.207.235
 ```
 
-Remember, if you restart WSL, a new IP will be assigned to the node, which means your load balance IP will no longer router traffic, you will need to reenable MetalLB using the new node IP to get traffic flowing into the Kubernetes service.
+Remember, if you restart WSL, a new IP will be assigned to the node, which means your load balance IP will no longer router traffic, you will need to reenable MetalLB using the new node IP to get traffic flowing into the Kubernetes service and also remap the netsh interace.
 
 ## Using HostPort
 
-What ultimately ended up being my preferred solution. HostPort keeps everything simple, no hosts files, no IPs, and no fuss. I consider this approach to be the same as [port forwarding](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows#port-forwarding) but unlike Port Forwarding, this approach has a permanent solution, well so long as the pods are running.
+What ultimately ended up being my preferred solution. HostPort keeps everything simple, no hosts files, no IPs, and no fuss. I consider this approach to be the same as [port forwarding](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows#port-forwarding) but unlike Port Forwarding, this approach is a more permanent solution, well so long as WSL is not restarted or shut down.
 
 HostPort applies to the Kubernetes containers. The port is exposed to the WSL network host. This is often an approach not recommended because the Host IP can change. In WSL that happens when WSL is restarted or shut down.
 
@@ -312,7 +311,7 @@ Great, need one additional configuration. This time on the host, open up Powersh
 netsh interface portproxy add v4tov4 listenport=5700 listenaddress=0.0.0.0 connectport=5700 connectaddress=172.23.207.235
 ```
 
-Where listenport is a port in our window's host, listenaddress is the host's localhost, connectport is the host port defined in our deploy.yaml file, and connectaddress is the node IP address obtained using the following command.
+Where listenport is a port in our window's host, listenaddress is the host's localhost, connectport is the host port defined in our deploy.yaml file, and connectaddress is the node IP address obtained using the following command. This command forwards traffice from http://localhost:5700 to http://172.23.207.235:5700
 
 ```bash
 kubectl get node -o wide
@@ -338,11 +337,10 @@ It will output any mapping, you may already have created or had created by anoth
 netsh interface portproxy delete v4tov4 listenport=5700 listenaddress=0.0.0.0
 ```
 
-Using the host port solves my original issue, I can now connect to services running on Kubernetes in WSL from Windows.
+Using the host port solves my original issue, I can now connect to services running on Kubernetes in WSL from Windows using localhost.
 
 ## Conclusion
 
-For now, I feel like HostPort is the best solution I could come up with. If the day ever comes when I can set a static IP in WSL then MetalLB would probably be my preferred choice since HostPort limits the number of PODs to one.
-
+For now, I feel like HostPort is the best solution I could come up with, even if the IP changes whenever I restart WSL. If the day ever comes when I can set a static IP in WSL then MetalLB would probably be my preferred choice since HostPort limits the number of PODs to one.
 
 Thanks for reading.
