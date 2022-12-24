@@ -1,5 +1,5 @@
 ---
-title: WSL Use Static IP
+title: Use Static IP In WSL
 tags: [Kubernetes, Microk8s, WSL]
 author: "Yunier"
 date: "2022-12-23"
@@ -48,19 +48,19 @@ After the command has been successfully executed you will be prompted to restart
 
 Once Windows fully boots up, search the Hyper-V manager on the start menu and open it.
 
-![Hyper-V Manager](/post/2022/wsl-use-static-ip/hyper-v-windows-menu.png)
+![Hyper-V Manager](/post/2022/use-static-ip-in-wsl/hyper-v-windows-menu.png)
 
-Inside the Hyper-V manager, under Actions, there should be an option called "Virtual Switch Manager", click on that option.
+Inside the Hyper-V manager, under Actions, there should be an option called "Virtual Switch Manager", click on that option
 
-![Virtual Switch Manager](/post/2022/wsl-use-static-ip/virtual-switch-manager.png)
+![Virtual Switch Manager](/post/2022/use-static-ip-in-wsl/virtual-switch-manager.png)
 
 The Virtual Switch Manager window will now appear. Under "Create virtual switch" make sure to have the "External" option selected, then click the "Create Virtual Switch" button.
 
-![Create Virtual Switch](/post/2022/wsl-use-static-ip/create-virtual-switch-manager-window.png)
+![Create Virtual Switch](/post/2022/use-static-ip-in-wsl/create-virtual-switch-manager-window.png)
 
 On the next screen, you will need to provide a name for the switch, and some notes if you like, the External Network has been chosen, I would leave it alone, just make sure that the checkbox "Allow management operating system to share this network adapter" is checked, then click on the "Apply" button.
 
-![Switch Properties](/post/2022/wsl-use-static-ip/switch-properties.png)
+![Switch Properties](/post/2022/use-static-ip-in-wsl/switch-properties.png)
 
 A new window will appear giving a warning about the network being disrupted due to this change. Click "Yes" to continue.
 
@@ -68,7 +68,7 @@ The Switch will be created, then click OK.
 
 Congratulations, you have successfully configured your Hyper-V switch. You can confirm by going to the networks view, there should be a new adapter listed called Network Bridge as seen in the image below.
 
-![Network View](/post/2022/wsl-use-static-ip/network-view.png)
+![Network View](/post/2022/use-static-ip-in-wsl/network-view.png)
 
 ## WSL
 
@@ -110,7 +110,7 @@ ip a
 
 In the output, look for the value of eth0.
 
-![IP A Output](/post/2022/wsl-use-static-ip/ip-a-output.png)
+![IP A Output](/post/2022/use-static-ip-in-wsl/ip-a-output.png)
 
 This is the new static IP that WSL will have. You can confirm that the IP does not change by restarting WSL again or by shutting down windows. 
 
@@ -134,7 +134,7 @@ microk8s enable metallb:192.168.2.11/32
 
 /32 at the end of the IP is used here to keep the host, 11, static. If you don't understand why then may I suggest watching [Understanding CIDR Ranges and dividing networks](https://www.youtube.com/watch?v=MmA0-978fSk)
 
-![MetalLb is ready](/post/2022/wsl-use-static-ip/metallb-is-ready.png)
+![MetalLb is ready](/post/2022/use-static-ip-in-wsl/metallb-is-ready.png)
 
 Once MetalLB is ready, you can serve traffic to a load balancer. 
 
@@ -185,15 +185,15 @@ kubectl get svc -o wide
 
 You will see that the Nginx service created was assigned an external IP, the load balancer's IP.
 
-![Service IP](/post/2022/wsl-use-static-ip/svc-ip.png)
+![Service IP](/post/2022/use-static-ip-in-wsl/svc-ip.png)
 
 Moment of truth, can we reach this Nginx service running on http://192.168.2.11:31080 from Windows.
 
-![Nginx Service Windows Access](/post/2022/wsl-use-static-ip/nginx-service-windows-access.png)
+![Nginx Service Windows Access](/post/2022/use-static-ip-in-wsl/nginx-service-windows-access.png)
 
 **We can!** The service can be reached from Windows.
 
-As mentioned in [Kubernetes In WSL - Connect to a service from Windows](post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/#using-metallb) we can change the windows host file by adding the load balancer IP and mapping to a domain. Remember you cannot map the load balancer IP to localhost but you could map it to something like www.localhost.com or local.host. If you really wish to access the Kubernetes service using localhost then may I suggest using a port proxy from Windows to WSL.
+As mentioned in [Kubernetes In WSL - Connect to a service from Windows](post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/#using-metallb) we can change the Windows host file by adding the load balancer IP and mapping to a domain. Remember you cannot map the load balancer IP to localhost but you could map it to something like www.localhost.com or local.host. If you really wish to access the Kubernetes service using localhost then may I suggest using a port proxy from Windows to WSL.
 
 ## localhost
 
@@ -205,7 +205,7 @@ netsh interface portproxy add v4tov4 listenport=31080 listenaddress=0.0.0.0 conn
 
 Here, I'm port proxying traffic on port 31080 on Windows localhost, 0.0.0.0 to port 31080 on 192.168.2.11, my load balancer IP. This will allow me to access the service using http://localhost:31080/ from Windows as shown on the screen below.
 
-![Port Proxy](/post/2022/wsl-use-static-ip/port-proxy-to-localhost.png)
+![Port Proxy](/post/2022/use-static-ip-in-wsl/port-proxy-to-localhost.png)
 
 ## Conclusion
 
