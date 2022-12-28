@@ -7,15 +7,17 @@ description: "Configure WSL to use a static IP address."
 series: [WSL]
 ---
 
-In my last post, [Kubernetes In WSL - Connect to a service from Windows](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/), I explored a few ways to connect to a Kubernetes service from the host machine, Windows. In the end, I decided that using [HostPort](post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/#using-hostport) was the best option because at the time I did not know how to set a static IP address to WSL. See without the static IP address, when WSL is restarted by a command or via Windows's shutting down a new IP is assigned when WSL starts back up. Having a dynamic IP made it harder to connect to a Kubernetes service from Windows as you would need to update all your configuration whenever a new IP was assigned to WSL.
+In my last post, [Kubernetes In WSL - Connect to a service from Windows](/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/), I explored a few ways to connect to a Kubernetes service from the host machine, Windows. In the end of that blog post, I stated that using [HostPort](post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/#using-hostport) was the best option because at the time I did not know how to assign a static IP address to WSL. 
 
-Luckily I was not the only developer that wanted WSL to use a static IP. In [WSL2 Set static ip?](https://github.com/microsoft/WSL/issues/4210), a few developers outlined how you can create a [Hyper-V switch](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch) to then bridge the network between WSL and Windows. By using a Hyper-V switch, the WSL IP becomes static, and by having a static IP, I can run a load balancer in front of a Kubernetes service.
+Without using a static IP address, when WSL is restarted a new IP is assigned. Having a dynamic IP made it harder for me to connect to a Kubernetes service from Windows as I would need to update all my configurations whenever a new IP was assigned to WSL.
 
-In today's post, I want to demonstrate how to create a [Hyper-V switch](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), how to assign it to WSL and how to add a load balancer to a Kubernetes service.
+Luckily I was not the only developer that wanted WSL to use a static IP. In [WSL2 Set static ip?](https://github.com/microsoft/WSL/issues/4210), a few developers outlined how you can create a [Hyper-V switch](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch) to bridge the network between WSL and Windows. By using a Hyper-V switch, the WSL IP becomes static, and by having a static IP, I can create a load balancer that uses that static IP to serve traffic.
+
+In today's post, I want to demonstrate how to create a [Hyper-V switch](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), how to assign it to WSL distro and how to add a load balancer to a Kubernetes service that uses the static IP.
 
 ## Prerequisite
 
-Before I get started I wanted to point out some requirements. First, one being that you need to be on Windows 11 Enterprise or Pro, Hyper-V is not available in Windows 11 Home, though you can try to enable it using the method documented in [this](https://www.makeuseof.com/install-hyper-v-windows-11-home/) post. As far as I know, what I am about to show you does not work on Windows 10 or older Windows systems.
+Before I get started I wanted to point out some requirements. First, you need to be on Windows 11 Enterprise or Pro, Hyper-V is not available in Windows 11 Home, though you can try to enable it using the method documented in [this](https://www.makeuseof.com/install-hyper-v-windows-11-home/) post. As far as I know, what I am about to show you does not work on Windows 10 or older Windows systems.
 
 Below you will find my current system spec, you should be using the same version or higher.
 
@@ -58,13 +60,13 @@ The Virtual Switch Manager window will now appear. Under "Create virtual switch"
 
 ![Create Virtual Switch](/post/2022/use-static-ip-in-wsl/create-virtual-switch-manager-window.png)
 
-On the next screen, you will need to provide a name for the switch, and some notes if you like, the External Network has been chosen, I would leave it alone, just make sure that the checkbox "Allow management operating system to share this network adapter" is checked, then click on the "Apply" button.
+On the next screen, you will need to provide a name for the switch, the name is important as we will use it later on. The External Network has been chosen, I would leave it alone, just make sure that the checkbox "Allow management operating system to share this network adapter" is checked, then click on the "Apply" button.
 
 ![Switch Properties](/post/2022/use-static-ip-in-wsl/switch-properties.png)
 
 A new window will appear giving a warning about the network being disrupted due to this change. Click "Yes" to continue.
 
-The Switch will be created, then click OK.
+After the Switch has been created, click the OK button.
 
 Congratulations, you have successfully configured your Hyper-V switch. You can confirm by going to the networks view, there should be a new adapter listed called Network Bridge as seen in the image below.
 
@@ -112,7 +114,7 @@ In the output, look for the value of eth0.
 
 ![IP A Output](/post/2022/use-static-ip-in-wsl/ip-a-output.png)
 
-This is the new static IP that WSL will have. You can confirm that the IP does not change by restarting WSL again or by shutting down windows. 
+This is the new static IP that WSL will have. You can confirm that the IP does not change by restarting WSL again or by shutting down Windows. 
 
 Great, with a static IP we can now configure the Kubernetes load balancer.
 
@@ -132,7 +134,7 @@ In WSL, enable MetalLB using the following command.
 microk8s enable metallb:192.168.2.11/32
 ```
 
-/32 at the end of the IP is used here to keep the host, 11, static. If you don't understand why then may I suggest watching [Understanding CIDR Ranges and dividing networks](https://www.youtube.com/watch?v=MmA0-978fSk)
+/32 at the end of the IP is used here to keep the load balancer IP static. If you don't understand why then may I suggest watching [Understanding CIDR Ranges and dividing networks](https://www.youtube.com/watch?v=MmA0-978fSk)
 
 ![MetalLb is ready](/post/2022/use-static-ip-in-wsl/metallb-is-ready.png)
 
@@ -215,5 +217,4 @@ Quick warning, if you restart Windows, the configuration above will continue to 
 
 Hope this post helped you get load balancing working for Kubernetes in WSL.
 
-It will be my last post for 2022, see you next year.
-
+This will be my last post for 2022, see you next year.
