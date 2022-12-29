@@ -4,6 +4,7 @@ tags: [Playwright, a11y]
 author: "Yunier"
 date: "2021-03-13"
 description: "Guide on how to handle accessibility using Playwright"
+series: [Playwright]
 ---
 
 I don't believe I've mention this before here, but I am a huge fan of [Hey](https://hey.com/). By far the **best** email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various [tweets](https://twitter.com/dhh/status/1275901955995385856) or blog post like [Scaling the hottest app in tech on AWS and Kubernetes](https://acloudguru.com/blog/engineering/scaling-the-hottest-app-in-tech-on-aws-and-kubernetes) which outline how they use k8s. Recently, they shared how to tackle ay11 under [hey accessibility is a lot of work](https://world.hey.com/michael/hey-accessibility-is-a-lot-of-work-785ec5cf). One thing that stood out was to me was their usage of [axe-core](https://github.com/dequelabs/axe-core). Axe-core is an accessibility engine for automated Web UI testing. Which reminded me of [playwright](https://playwright.dev/), so I started to wonder if the two could be combined, turns out they can be. Let's explore how to do that.

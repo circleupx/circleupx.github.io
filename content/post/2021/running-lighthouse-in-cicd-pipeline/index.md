@@ -4,6 +4,7 @@ tags: [Playwright]
 author: "Yunier"
 date: "2021-06-05"
 description: "Guide on how to configure lighthouse to ru on CI/CD"
+series: [Playwright]
 ---
 
 In the world of front end development there is no better tool than [Lighthouse](https://developers.google.com/web/tools/lighthouse/). Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.
