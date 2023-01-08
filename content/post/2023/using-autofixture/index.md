@@ -52,11 +52,13 @@ public class UnitTestingExample
     {
         var fixture = new Fixture();
         var employeeFixture = fixture.Create<Employee>();
+        Console.WriteLine(employeeFixture.FirstName) // f17b08e4-efb0-40b8-9b6b-c937d8032c8c
+        
     }
 }
 ```
 
-As mentioned before, AutoFixture will assign random values to each property, as shown in the following code snippet. 
+As shown above, AutoFixture will assign random values to each property, but in a unit test you would want to control the value, as shown in the following code snippet, you can use AutoFixture to assign a value to a property. 
 
 ```c#
 [Fact]
@@ -92,7 +94,7 @@ public void UnitTestingExample()
 }
 ```
 
-The code above will lead to an exception being thrown, instead, use the customize API again to assign a value to the nested property, create the fixture, then use the customize API again on the property of the parent object, and use the fixture as the value. 
+The code above will lead to an exception being thrown, instead, use the customize API again to assign a value to the nested property, create the fixture, then use the customize API again on the property of the parent object, and use the created fixture as the value. 
 
 ```c#
 public void UnitTestingExample()
@@ -101,10 +103,11 @@ public void UnitTestingExample()
     fixture.Customize<Employee>(e => e.With(p => p.FirstName, "John"));
     var employeeFixture1 = fixture.Create<Employee>()
     fixture.Customize<Employee>(e =>
+    {
+       return e.With(p => p.FirstName, "Benjamin")
+               .With(p => p.ReportsToNavigation, employeeFixture1)
+    });
     
-        e.With(p => p.FirstName, "Benjamin")
-         .With(p => p.ReportsToNavigation, employeeFixture1)  
-    )
     var employeeFixture2 = fixture.Create<Employee>();
     Console.WriteLine(employeeFixture1.FirstName); // John 
     Console.WriteLine(employeeFixture2.FirstName); // Benjamin
@@ -175,3 +178,4 @@ public class EmployeeCustomization : ICustomization
 ```
 
 With a centralized configuration class, test maintenance should be much easier. Another key feature of AutoFixure, it supports all the major .NET testing frameworks like [XUnit](https://xunit.net/), [NUnit](https://nunit.org/), [Moq](https://github.com/moq/moq) and so on.
+
