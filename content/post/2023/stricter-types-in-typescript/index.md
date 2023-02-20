@@ -47,10 +47,6 @@ A symbol is a type that can never be created because it is a primitive type, jus
 Now I'll declare my branded type and update the code.
 
 ```TypeScript
-type Brand<T, TBran extends number> = T & {[brand] : TBran};
-
-declare const brand: unique symbol;
-
 type Brand<T, TBran extends string> = T & {[brand] : TBran};
 
 type DepositAmount = Brand<number, "DepositAmount">;
