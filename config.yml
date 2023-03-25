@@ -32,7 +32,10 @@ languages:
                   weight: 2
                 - name: Series
                   url: /series/
-                  weight: 3   
+                  weight: 3
+                - name: Reading List
+                  url: /reading-list
+                  weight: 4     
 outputs:
     home:
         - HTML
@@ -75,9 +78,8 @@ params:
     homeInfoParams:
         Title: "Hi!"
         Content: >
-          Welcome to my blog, I'm a backend application developer focusing at the moment on the .NET stack. 
-          I use this blog to document ideas or concepts I have learned or might be currently learning. 
-          I hope you enjoy the content.
+          Welcome to my blog, I'm a backend developer focusing at the moment on the .NET stack. 
+          I use this blog to document ideas or concepts I have learned or might be currently learning.
 
     socialIcons:
         - name: github
