@@ -1,6 +1,6 @@
 ---
 title: My reading list.
-description: "This page contains a list of book that have impacted how I write and think about code."
+description: "This page contains a list of book that have impacted how I write and think about software."
 url: "/reading-list/"
 ---
 
