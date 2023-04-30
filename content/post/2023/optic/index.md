@@ -1,6 +1,6 @@
 ---
 title: "Tracking API changes with Optic"
-tags: [optic]
+tags: [Optic]
 author: "Yunier"
 date: "2023-04-17"
 description: "Preventing API breaking changes using Optic."

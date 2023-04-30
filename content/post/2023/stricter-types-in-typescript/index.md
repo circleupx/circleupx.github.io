@@ -1,6 +1,6 @@
 ---
 title: "Stricter Types in TypeScript"
-tags: [opaque types, branded types]
+tags: [TypeScript]
 author: "Yunier"
 date: "2023-02-17"
 description: "A quick look at opaque types and branded types in TypeScript."
