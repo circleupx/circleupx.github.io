@@ -3,7 +3,7 @@ title: "Stricter Types in TypeScript"
 tags: [TypeScript]
 author: "Yunier"
 date: "2023-02-17"
-description: "A quick look at opaque types and branded types in TypeScript."
+description: "A quick look at opaque/branded types in TypeScript."
 ---
 
 Recently TypeScript [wizard](https://www.totaltypescript.com/) [Matt Pocock](https://twitter.com/mattpocockuk) made a [Twitter thread](https://twitter.com/mattpocockuk/status/1625173884885401600) on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in [TypeScript 5](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/) but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types. 
