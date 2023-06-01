@@ -10,7 +10,6 @@ I was looking through some of my bookmarked Github issues when I rediscovered is
 
 To see how much of it can impact performance I will use [BenchmarkDotNet](https://benchmarkdotnet.org/). In case you didn't know, BenchmarkDotnet is an open-source project that helps you track benchmarks and track the performance of your code. It is an extremely useful project, it is used by Entity Framework, ASP.NET Core itself, Newtonsoft.Json, Autofac, MediatR, SignalR, Serilog, and so on.
 
-{: .notice--info}
 If you want to learn how to use BenchmarkDotNet then I suggest checking out Tim Corey's [intro video](https://www.youtube.com/watch?v=mmza9x3QxYE).
 
 To start the benchmarking experiment I will add a bunch of empty interfaces inside a new console application. The interfaces are as follows.
