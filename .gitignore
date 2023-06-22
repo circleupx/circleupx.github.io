@@ -28,3 +28,4 @@ codekit-config.json
 _asset_bundler_cache
 _site
 .github
+.hugo_build.lock
