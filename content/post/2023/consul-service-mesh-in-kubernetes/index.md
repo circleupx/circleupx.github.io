@@ -9,7 +9,7 @@ series: ['Consul']
 
 ## Introduction
 
-I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh to Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
+I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
 
 [Kubernetes offers a wide range of Service Meshes](https://thechief.io/c/editorial/top-14-kubernetes-service-meshes/), in this blog post I am going to concentrate on HashiCorp's service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support. 
 
@@ -285,7 +285,7 @@ image:
   tag: ""
 ```
 
-I'll need to make an additional update to the Helm charts by changing the port forward from port 8080, the two apps could potentially run on the same node and run into a port collision, therefore, I will change the UI to port forward on 8081, you can do it manually on the terminal using the kubectl port forward but I am going to go ahead and modify the command on the notes.txt file.
+I'll need to make an additional update to the Helm chart by changing the port forward from port 8080, the two apps could potentially run on the same node and run into a port collision, therefore, I will change the UI to port forward on 8081, you can do it manually on the terminal using the kubectl port forward but I am going to go ahead and modify the command on the notes.txt file.
 
 ## Deploying App to Kubernetes
 
@@ -553,7 +553,7 @@ Next, let me confirm that the Blazor app is still up and running.
 
 ![Blazor App Still Running](/post/2023/consul-service-mesh-in-kubernetes/blazor-still-running.png)
 
-And it is, great, while Consul has been installed successfully it is still not handling the network communication between the two pods. In order for Consul to handle the network communication between pods, the service need to be added to the service mesh via pod annotation, see [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for more details. In Consul, the annotation required is **consul.hashicorp.com/connect-inject:"true"**.
+And it is, great, while Consul has been installed successfully it is still not handling the network communication between the two pods. In order for Consul to handle the network communication between pods, the pods need to be added to the service mesh via pod annotation, see [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for more details. In Consul, the annotation required is **consul.hashicorp.com/connect-inject:"true"**.
 
 ### Adding Services to the Mesh
 
@@ -574,7 +574,7 @@ With the annotation now added to the deployment.yaml file, the app can be redepl
 
 ![Frontend App Register In Consul](/post/2023/consul-service-mesh-in-kubernetes/frontend-app-in-consul.png)
 
-When the annotation, consul.hashicorp.com/connect-inject:"true", Consul uses a mutating webhook, that is, an HTTP callback that allows third-party applications to modify Kubernetes Resources. When the frontend pod was scheduled, Kubernetes called Consul's mutating webhook, which allows Consul to look at the pod definition to see if it has the consul.hashicorp.com/connect-inject:"true" annotation, if it does, Consul modifies the pod to add a sidecar proxy.
+Consul uses a mutating webhook, that is, an HTTP callback that allows third-party applications to modify Kubernetes Resources. When the frontend pod was scheduled, Kubernetes called Consul's mutating webhook, which allows Consul to look at the pod definition to see if it has the consul.hashicorp.com/connect-inject:"true" annotation, if it does, Consul modifies the pod to add a sidecar proxy.
 
 Time to add the "backendapp" to the mesh, as before, I will update the values.yaml file to include the required annotation on any backend pod.
 
@@ -587,7 +587,7 @@ Redeploying the backend app and visiting the Consul UI shows the app was success
 
 ![Both apps in Consul](/post/2023/consul-service-mesh-in-kubernetes/both-apps-in-consul.png)
 
-This means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic may reach the apps, not very useful, but I'll change that in a future blog post.
+This means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic outside of the mesh may reach the apps, not very useful, but I'll change that in part 2 of this blog series.
 
 First, let's prove that the apps are secure by Consul and that only authenticated and authorized traffic is allowed to reach the applications. In my current cluster, aside from the frontend and backend app I have a few other pods, one of them being the consul server itself, if I have configure everything correctly, then the consul server pod should not be able to communicate with the frontend app, this can be proven by executing the following command.
 
@@ -602,7 +602,7 @@ curl: (52) Empty reply from server
 command terminated with exit code 52
 ```
 
-This means the frontend app is secure, applications containers that are not in the Service Mesh cannot talk to applications that are within, essentially the Service Mesh rejectes any unauthorized traffic, I can further prove that by removing the Consul annotation from the frontendapp, then redeploying the frontend app, and executing the same command, though this time I get a different response.
+This means the frontend app is secure, containers that are not in the Service Mesh cannot talk to applications that are within the mesh, essentially the Service Mesh rejectes any unauthorized traffic, I can further prove that by removing the Consul annotation from the frontendapp, then redeploying the frontend app, and executing the same command, though this time I get a different response.
 
 ```HTML
 <!DOCTYPE html>
@@ -662,13 +662,13 @@ Welcome to your new app.
 </html>
 ```
 
-The response is the HTML of the main landing page of the Blazor application, which means that the consul-server pod is now allowed to communicate with the frontend app, due to the removal of the frontend app from the Service Mesh. This is great, but we need to allow traffic from outside the mesh to reach the apps that live within the Service Mesh, we also need to control how apps communicate with each other inside the service. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in my next blog post on Consul along with how to establish strong ACLS within the Service Mesh.
+The response is the HTML of the main landing page of the Blazor application, which means that the consul-server pod is now allowed to communicate with the frontend app, due to the removal of the frontend app from the Service Mesh. This is great, but we need to allow traffic from outside the mesh to reach the apps that live within the Service Mesh, we also need to control how apps communicate with each other inside the service. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in part 2 of this series along with how to establish strong ACLS within the Service Mesh.
 
 ## Conclusion
 
-Using Consul as a Service Mesh in Kubernetes turned out to be a lot easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe, I'm not sure what the issue was, once I discover the problem I will share it here.
+Using Consul as a Service Mesh in Kubernetes turned out to be easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe from the Helm chart, I'm not sure what the issue was, once I discover the problem I will share it here.
 
-My plan is to do a few follow-up blog posts, the next one will be on the Consul Ingress Gateway, after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.
+Part two of this series will be on the Consul Ingress Gateway, after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.
 
 Till then, cheerio.
 
