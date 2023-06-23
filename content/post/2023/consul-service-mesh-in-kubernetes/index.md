@@ -515,7 +515,7 @@ Consul on Kubernetes CLI Reference:
 https://www.consul.io/docs/k8s/k8s-cli
 ```
 
-> **NOTE** The version installed in this example is Consul 1.15.3 which is the most recent version of Consul as of June 2023.
+> **NOTE** The version installed in this example is **Consul 1.15.3** which is the most recent version of Consul as of June 2023.
 
 Now run the following command to see the status of the newly created resources.
 
@@ -664,7 +664,7 @@ Welcome to your new app.
 </html>
 ```
 
-The response is the HTML of the main landing page of the Blazor application, we can assume the backend is secured as well, but we need to allow traffic from outside the mesh to reach the apps, after all having two apps that communicate with each other is not that much fun. Allow external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in the next blog post.
+The response is the HTML of the main landing page of the Blazor application, we can assume the backend is secured as well, but we need to allow traffic from outside the mesh to reach the apps, after all having two apps that communicate with each other is not that much fun. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in my next blog post on Consul.
 
 ## Conclusion
 
