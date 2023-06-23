@@ -589,9 +589,7 @@ Redeploying the backend app and visiting the Consul UI shows the app was success
 
 This means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic may reach the apps, not very useful, but I'll change that in a future blog post.
 
-First, let's prove that the apps are secure by Consul and that only authenticated and authorized traffic is allowed to reach the applications.
-
-If I execute the following command
+First, let's prove that the apps are secure by Consul and that only authenticated and authorized traffic is allowed to reach the applications. In my current cluster, aside from the frontend and backend app I have a few other pods, one of them being the consul server itself, if I have configure everything correctly, then the consul server pod should not be able to communicate with the frontend app, this can be proven by executing the following command.
 
 ```Shell
 kubectl exec consul-server-0 -n consul -- curl -sS http://frontend-frontendapp:80
@@ -604,7 +602,7 @@ curl: (52) Empty reply from server
 command terminated with exit code 52
 ```
 
-This means the frontend app is secure, the Service Mesh is rejected unauthorized traffic, I can further prove that by removing the Consul annotation, redeploying the frontend app, and executing the same command, though this time I get a different response.
+This means the frontend app is secure, applications containers that are not in the Service Mesh cannot talk to applications that are within, essentially the Service Mesh rejectes any unauthorized traffic, I can further prove that by removing the Consul annotation from the frontendapp, then redeploying the frontend app, and executing the same command, though this time I get a different response.
 
 ```HTML
 <!DOCTYPE html>
@@ -664,13 +662,13 @@ Welcome to your new app.
 </html>
 ```
 
-The response is the HTML of the main landing page of the Blazor application, we can assume the backend is secured as well, but we need to allow traffic from outside the mesh to reach the apps, after all having two apps that communicate with each other is not that much fun. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in my next blog post on Consul.
+The response is the HTML of the main landing page of the Blazor application, which means that the consul-server pod is now allowed to communicate with the frontend app, due to the removal of the frontend app from the Service Mesh. This is great, but we need to allow traffic from outside the mesh to reach the apps that live within the Service Mesh, we also need to control how apps communicate with each other inside the service. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the [Ingress gateways](https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway), which I'll cover in my next blog post on Consul along with how to establish strong ACLS within the Service Mesh.
 
 ## Conclusion
 
-Using Consul as a Service Mesh in Kubernetes turned out to be a lot easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe.
+Using Consul as a Service Mesh in Kubernetes turned out to be a lot easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe, I'm not sure what the issue was, once I discover the problem I will share it here.
 
-My plan is to do a few follow-up blog posts, the next one will be on the Consul Ingress Gateway, but after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.
+My plan is to do a few follow-up blog posts, the next one will be on the Consul Ingress Gateway, after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.
 
 Till then, cheerio.
 
