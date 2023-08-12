@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebApplicationFactory on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/webapplicationfactory/</link>
+    <description>Recent content in WebApplicationFactory on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/webapplicationfactory/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Up Integration Tests with Test Containers</title>
+      <link>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</guid>
+      <description>Introduction In my blog post Integration Testing Using WebApplicationFactory I spoke about the benefits of testing a .NET Core Web API using WebApplicationFactory. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.
+The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client.</description>
+    </item>
+    
+    <item>
+      <title>Integration Testing Using WebApplicationFactory</title>
+      <link>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</guid>
+      <description>When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of .NET MVC 5 you probably know that one of the best ways to test an HTTP request in MVC 5 was to use Phil&amp;rsquo;s HttpSimulator.
+That is no longer the case in .</description>
+    </item>
+    
+  </channel>
+</rss>

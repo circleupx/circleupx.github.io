@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Integration Testing Using WebApplicationFactory | Yunier&#39;s Blog</title>
+<meta name="keywords" content="WebApplicationFactory">
+<meta name="description" content="Guide to on how to create integration test using WebApplicationFactory">
+<meta name="author" content="Yunier">
+<link rel="canonical" href="https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.acb54fd32bbc1982428b8850317e45d076b95012730a5936667e6bc21777692a.js" integrity="sha256-rLVP0yu8GYJCi4hQMX5F0Ha5UBJzClk2Zn5rwhd3aSo="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://www.yunier.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.yunier.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.yunier.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.yunier.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.yunier.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Integration Testing Using WebApplicationFactory" />
+<meta property="og:description" content="Guide to on how to create integration test using WebApplicationFactory" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/" /><meta property="og:image" content="https://www.yunier.dev/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-12-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-05T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Integration Testing Using WebApplicationFactory"/>
+<meta name="twitter:description" content="Guide to on how to create integration test using WebApplicationFactory"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://www.yunier.dev/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Integration Testing Using WebApplicationFactory",
+      "item": "https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Integration Testing Using WebApplicationFactory",
+  "name": "Integration Testing Using WebApplicationFactory",
+  "description": "Guide to on how to create integration test using WebApplicationFactory",
+  "keywords": [
+    "WebApplicationFactory"
+  ],
+  "articleBody": "When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of .NET MVC 5 you probably know that one of the best ways to test an HTTP request in MVC 5 was to use Phil’s HttpSimulator.\nThat is no longer the case in .NET Core thanks to the power of the WebApplicationFactory class. This class creates a local instance of TestServer, TestServer creates a local kestrel web server. Since we are dealing with an actual web server, not a fake web server, there is no need to stub, fake, or mock anything. The HTTP request that are made to the local kestrel web server are legitimate HTTP request, this gives you the power to test your application’s functionality from visual studio, build server, or wherever you are executing your Unit Test as if the app where hosted on a live server.\nAnother neat feature of WebApplication factory is that it can create one or more instances of HttpClient, that means that not only does WebApplicationFactory allow us to test our application from the server side but it also allows you to test clients.\nImagine the following scenario, we want to test how our application handles conditional HTTP GET request, using the WebApplicationFactory class, you would instantiate an HttpClient that would send an HTTP GET request to the kestrel server. The server responds to the request with 200 OK, in the response headers, an ETag and Last-Modified are included. The HttpClient sends a second request to the kestrel server, in the request headers, If-None-Match and If-Modified-Since are included. The resource that was requested on the first GET request has not change, therefore, the server should return a 304 Not-Modify. If the resource has change sine the first request than a 200 OK should be return with the updated content and a new ETag. If the resource has not change but the ETag has expire then the server should return a 200 OK with no content (a conditional request) to signal the client that their cache version of the resource is still valid. All these scenarios can be part of an integration test suite in our project, all possible thanks to WebApplicationFactory. Having the power to test how a client and server interact with each other in single test is super useful and extremely powerful. It elevates our testing to a new levels, it gives us confidence that our application will work as expected once it has been deployed.\nFor today’s post I will show you how setup WebApplicationFactory to create integration tests. In a future post I will take the tests even further by leveraging SQLite as in-memory database, this will allow me to test the client, the API server and the database to ensure the data was persisted correctly. Please be aware that the database option may not work for you, it really depends on your use case. In .NET Core you can use the EF Core in-memory provider or an in-memory SQLite database if you are using SQLServer, MySQL or any other RDBMS. Personally, I recommend never using the in-memory provider. Jimmy Bogard explains why on his blog.\nTo demonstrate the how WebApplicationFactory works I will create a new XUnit Test project on my Chinook JSON:API project. The project will be called Chinook.Web.IntegrationTest and it will be placed under the integration folder.\nNow that we have a test project, I will create a CustomWebApplicationFactory class. This class will inherit from WebApplicationFactory. The purpose of the CustomWebApplicationFactory is to have a centralized location to add services, register middlewares, configure HttpClients, and override services registered on StartUp class.\nBefore I go on, I will need to install a few NuGet packages on the Chinook.Web.IntegrationTest project.\ndotnet add package Microsoft.AspNetCore.Mvc.Testing --version 5.0.1 This NuGet package is required to use the WebApplicationFactory.\ndotnet add package FluentAssertions --version 5.10.3 I’m a huge fan of fluent style interfaces, fluent assertions is a great NuGet package for assertions.\nNow that I have the required NuGet packages I will create the CustomApplicationFactory class.\nHere is the class definition for CustomWebApplicationFactory.\npublic class CustomWebApplicationFactory : WebApplicationFactory { protected override IHostBuilder CreateHostBuilder() { var builder = base.CreateHostBuilder(); return builder; } } Are you surprise by how simple the class looks?\nWell, that is only because my Chinook project has SQLite already configured as an in-memory database by reading a SQLite database file from the project directory. I would imagine that for most of you this is not the case, you are probably using some database hosted on a remote server and you’ve registered this dependency as a service on the StartUp class, probably like this.\npublic class StartUp { // rest of the code omitted for brevity public void ConfigureServices(IServiceCollection services) { var connectionString = \"REMOTE SERVER CONNECTION STRING\"; services.AddDbContext(options =\u003e options.UseSqlServer(connectionString)); } } If you want to switch to SQLite as an in-memory database provider for your integration test, then you will need to override your DbContext service, you can do so by overriding ConfigureWebHost as demonstrated on the following code.\nclass CustomWebApplicationFactory : WebApplicationFactory { protected override void ConfigureWebHost(IWebHostBuilder builder) { builder.ConfigureServices(ConfigureServices); } private void ConfigureServices(WebHostBuilderContext webHostBuilderContext, IServiceCollection serviceCollection) { var dbContextService = serviceCollection.SingleOrDefault(d =\u003e d.ServiceType == typeof(DbContextOptions)); if(dbContextService != null) { // remove the DbContext that is registered on StartUp.cs serviceCollection.Remove(dbContextService); } // register the new DbContext, .NET Core dependency injection framework will now use the this instance. var sqliteInMemoryConnectionString = new SqliteConnection(\"DataSource=:memory:\"); serviceCollection.AddDbContext(contextOptions =\u003e contextOptions.UseSqlite(sqliteInMemoryConnectionString)); } } Now an in-memory SQLite database will be use instead of whatever DbContext you’ve registered on StartUp.cs, by the way, the code above will create an empty SQLite database, if you need to seed the database then you will need to access the DbContext, see the following code.\n// rest of the code omitted for brevity private void ConfigureServices(WebHostBuilderContext webHostBuilderContext, IServiceCollection serviceCollection) { var dbContextService = serviceCollection.SingleOrDefault(d =\u003e d.ServiceType == typeof(DbContextOptions)); if(dbContextService != null) { // remove the DbContext that is registered on StartUp.cs serviceCollection.Remove(dbContextService); } // register the new DbContext, .NET Core dependency injection framework will now use the in-memory SQLite instance instead of whatever configuration was used to register the DbContext on the StartUp class. var sqliteInMemoryConnectionString = new SqliteConnection(\"DataSource=:memory:\"); serviceCollection.AddDbContext(contextOptions =\u003e contextOptions.UseSqlite(sqliteInMemoryConnectionString)); var builtServiceProvider = serviceCollection.BuildServiceProvider(); using var scopedProvider = builtServiceProvider.CreateScope(); var scopedServiceProvider = scopedProvider.ServiceProvider() // private field omitted for brevity _chinookDbContext = scopedServiceProvider.GetRequiredService(); // these two lines are important, they ensure the in-memory database is created now. _chinookDbContext.Database.OpenConnection(); _chinookDbContext.Database.EnsureCreated(); // database is now ready to be seeded through the DbContext. The data will be available in each of your integration test due to the scope of the DbContext. } Anyways, back to our integration test. Our CustomApplicationFactory is ready, time to use it on a test. I will start by creating a test that instantiates an instance of HttpClient, the client will then send an HTTP GET request to the Home resource of the API, the API should return a 200 OK.\nHere is the class definition for HomeControllerIntegrationTest.\npublic class HomeControllerIntegrationTest : IClassFixture { private readonly CustomWebApplicationFactory _customWebApplicationFactory; public HomeControllerIntegrationTest(CustomWebApplicationFactory customWebApplicationFactory) { _customWebApplicationFactory = customWebApplicationFactory; } [Fact] public async Task GetHomeResource_HttpResponse_ShouldReturn200OK() { // Arrange using var httpClient = _customWebApplicationFactory.CreateClient(); var requestUri = httpClient.BaseAddress.AbsoluteUri; // Act var sut = await httpClient.GetAsync(requestUri); // Assert var responseCode = sut.StatusCode; responseCode.Should().BeEquivalentTo(HttpStatusCode.OK); } } Time to execute the test on Visual Studio.\nAs you can see the test passed when executed on visual studio. In less than half of a second, our integration test create a kestrel web server, it configured the server, it configure our API project, it made the API accessible through HTTP, it sent an HTTP request to the server, it received a 200 OK response and it validated the response. Awesome.\nSummary:\nIn this post I demonstrate how to build integration test using WebApplicationFactory. These test do not stub, mock or fake any data or http life cycle. The test are executed against a local kestrel web server, they run in memory and are very fast. These test allow you to validate your application’s functionality as if it were deployed to a live server.\n",
+  "wordCount" : "1366",
+  "inLanguage": "en",
+  "datePublished": "2020-12-05T00:00:00Z",
+  "dateModified": "2020-12-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Yunier"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yunier's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.yunier.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.yunier.dev" accesskey="h" title="Yunier&#39;s Blog (Alt + H)">Yunier&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.yunier.dev/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/reading-list" title="Reading List">
+                    <span>Reading List</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://www.yunier.dev">Home</a>&nbsp;»&nbsp;<a href="https://www.yunier.dev/post/">Posts</a></div>
+    <h1 class="post-title">
+      Integration Testing Using WebApplicationFactory
+    </h1>
+    <div class="post-description">
+      Guide to on how to create integration test using WebApplicationFactory
+    </div>
+    <div class="post-meta"><span title='2020-12-05 00:00:00 +0000 UTC'>December 5, 2020</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2021/integration-testing-using-webapplicationfactory/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of <a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started">.NET MVC 5</a> you probably know that one of the best ways to test an HTTP request in MVC 5 was to use <a href="https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/">Phil&rsquo;s HttpSimulator</a>.</p>
+<p>That is no longer the case in .NET Core thanks to the power of the <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-5.0">WebApplicationFactory</a> class. This class creates a local instance of <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver?view=aspnetcore-5.0">TestServer</a>, TestServer creates a local <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-5.0">kestrel</a> web server. Since we are dealing with an actual web server, not a fake web server, there is no need to stub, fake, or mock anything. The HTTP request that are made to the local kestrel web server are legitimate HTTP request, this gives you the power to test your application&rsquo;s functionality from visual studio, build server, or wherever you are executing your Unit Test as if the app where hosted on a live server.</p>
+<p>Another neat feature of WebApplication factory is that it can create one or more instances of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-5.0">HttpClient</a>, that means that not only does WebApplicationFactory allow us to test our application from the server side but it also allows you to test clients.</p>
+<p>Imagine the following scenario, we want to test how our application handles conditional <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests">HTTP GET request</a>, using  the WebApplicationFactory class, you would instantiate an HttpClient that would send an HTTP GET request to the kestrel server. The server responds to the request with 200 OK, in the response headers, an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag">ETag</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified">Last-Modified</a> are included. The HttpClient sends a second request to the kestrel server, in the request headers, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match">If-None-Match</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Sinces">If-Modified-Since</a> are included. The resource that was requested on the first GET request has not change, therefore, the server should return a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304">304 Not-Modify</a>. If the resource has change sine the first request than a 200 OK should be return with the updated content and a new ETag. If the resource has not change but the ETag has expire then the server should return a 200 OK with no content (a conditional request) to signal the client that their cache version of the resource is still valid. All these scenarios can be part of an integration test suite in our project, all possible thanks to WebApplicationFactory. Having the power to test how a client and server interact with each other in single test is super useful and extremely powerful. It elevates our testing to a new levels, it gives us confidence that our application will work as expected once it has been deployed.</p>
+<p>For today&rsquo;s post I will show you how setup WebApplicationFactory to create integration tests. In a future post I will take the tests even further by leveraging SQLite as in-memory database, this will allow me to test the client, the API server and the database to ensure the data was persisted correctly. Please be aware that the database option may not work for you, it really depends on your use case. In .NET Core you can use the EF Core <a href="https://docs.microsoft.com/en-us/ef/core/providers/in-memory/?tabs=dotnet-core-cli">in-memory provider</a> or an in-memory SQLite database if you are using SQLServer, MySQL or any other RDBMS. Personally, I recommend never using the in-memory provider. Jimmy Bogard <a href="https://jimmybogard.com/avoid-in-memory-databases-for-tests/">explains why</a> on his blog.</p>
+<p>To demonstrate the how WebApplicationFactory works I will create a new <a href="https://xunit.net/">XUnit</a> Test project on my <a href="https://github.com/circleupx/Chinook">Chinook</a> JSON:API project. The project will be called <a href="https://github.com/circleupx/Chinook/tree/master/test/Chinook.Web.IntegrationTest">Chinook.Web.IntegrationTest</a> and it will be placed under the integration folder.</p>
+<p>Now that we have a test project, I will create a CustomWebApplicationFactory class. This class will inherit from WebApplicationFactory. The purpose of the CustomWebApplicationFactory is to have a centralized location to add services, register <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-5.0">middlewares</a>, configure HttpClients, and override services registered on <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-5.0">StartUp</a> class.</p>
+<p>Before I go on, I will need to install a few NuGet packages on the Chinook.Web.IntegrationTest project.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.AspNetCore.Mvc.Testing --version 5.0.1
+</span></span></code></pre></div><p>This NuGet package is required to use the WebApplicationFactory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package FluentAssertions --version 5.10.3
+</span></span></code></pre></div><p>I&rsquo;m a huge fan of fluent style interfaces, fluent assertions is a great NuGet package for assertions.</p>
+<p>Now that I have the required NuGet packages I will create the CustomApplicationFactory class.</p>
+<p>Here is the class definition for CustomWebApplicationFactory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomWebApplicationFactory</span> : WebApplicationFactory&lt;Program&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> IHostBuilder CreateHostBuilder()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> builder = <span style="color:#66d9ef">base</span>.CreateHostBuilder();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> builder;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Are you surprise by how simple the class looks?</p>
+<p>Well, that is only because my Chinook project has SQLite <a href="https://github.com/circleupx/Chinook/blob/a4dc0d50be656709c4a3191da6fd4531ad2401fc/src/Chinook.Core/ChinookDbContext.cs#L35">already configured</a> as an in-memory database by reading a SQLite database file from the project directory. I would imagine that for most of you this is not the case, you are probably using some database hosted on a remote server and you&rsquo;ve registered this dependency as a service on the StartUp class, probably like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StartUp</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// rest of the code omitted for brevity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> connectionString = <span style="color:#e6db74">&#34;REMOTE SERVER CONNECTION STRING&#34;</span>;
+</span></span><span style="display:flex;"><span>        services.AddDbContext&lt;YourDbContext&gt;(options =&gt; options.UseSqlServer(connectionString));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you want to switch to SQLite as an in-memory database provider for your integration test, then you will need to override your <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext?view=efcore-5.0">DbContext</a> service, you can do so by overriding <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost?view=aspnetcore-5.0#Microsoft_AspNetCore_Mvc_Testing_WebApplicationFactory_1_ConfigureWebHost_Microsoft_AspNetCore_Hosting_IWebHostBuilder_">ConfigureWebHost</a> as demonstrated on the following code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomWebApplicationFactory</span> : WebApplicationFactory&lt;Program&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> ConfigureWebHost(IWebHostBuilder builder)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        builder.ConfigureServices(ConfigureServices);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> ConfigureServices(WebHostBuilderContext webHostBuilderContext, IServiceCollection serviceCollection)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> dbContextService = serviceCollection.SingleOrDefault(d =&gt; d.ServiceType == <span style="color:#66d9ef">typeof</span>(DbContextOptions&lt;ChinookDbContext&gt;));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(dbContextService != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// remove the DbContext that is registered on StartUp.cs</span>
+</span></span><span style="display:flex;"><span>            serviceCollection.Remove(dbContextService);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// register the new DbContext, .NET Core dependency injection framework will now use the this instance.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> sqliteInMemoryConnectionString = <span style="color:#66d9ef">new</span> SqliteConnection(<span style="color:#e6db74">&#34;DataSource=:memory:&#34;</span>);
+</span></span><span style="display:flex;"><span>        serviceCollection.AddDbContext&lt;ChinookDbContext&gt;(contextOptions =&gt; contextOptions.UseSqlite(sqliteInMemoryConnectionString));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now an in-memory SQLite database will be use instead of whatever DbContext you&rsquo;ve registered on StartUp.cs, by the way, the code above will create an empty SQLite database, if you need to seed the database then you will need to access the DbContext, see the following code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">// rest of the code omitted for brevity</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> ConfigureServices(WebHostBuilderContext webHostBuilderContext, IServiceCollection serviceCollection)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> dbContextService = serviceCollection.SingleOrDefault(d =&gt; d.ServiceType == <span style="color:#66d9ef">typeof</span>(DbContextOptions&lt;ChinookDbContext&gt;));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(dbContextService != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// remove the DbContext that is registered on StartUp.cs</span>
+</span></span><span style="display:flex;"><span>        serviceCollection.Remove(dbContextService);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the new DbContext, .NET Core dependency injection framework will now use the in-memory SQLite instance instead of whatever configuration was used to register the DbContext on the StartUp class.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> sqliteInMemoryConnectionString = <span style="color:#66d9ef">new</span> SqliteConnection(<span style="color:#e6db74">&#34;DataSource=:memory:&#34;</span>);
+</span></span><span style="display:flex;"><span>    serviceCollection.AddDbContext&lt;ChinookDbContext&gt;(contextOptions =&gt; contextOptions.UseSqlite(sqliteInMemoryConnectionString));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> builtServiceProvider = serviceCollection.BuildServiceProvider();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var scopedProvider = builtServiceProvider.CreateScope();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> scopedServiceProvider = scopedProvider.ServiceProvider()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// private field omitted for brevity</span>
+</span></span><span style="display:flex;"><span>    _chinookDbContext = scopedServiceProvider.GetRequiredService&lt;ChinookDbContext&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// these two lines are important, they ensure the in-memory database is created now.</span>
+</span></span><span style="display:flex;"><span>    _chinookDbContext.Database.OpenConnection();
+</span></span><span style="display:flex;"><span>    _chinookDbContext.Database.EnsureCreated();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// database is now ready to be seeded through the DbContext. The data will be available in each of your integration test due to the scope of the DbContext.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Anyways, back to our integration test. Our CustomApplicationFactory is ready, time to use it on a test. I will start by creating a test that instantiates an instance of HttpClient, the client will then send an HTTP GET request to the <a href="https://www.yunier.dev/2020-09-13-Restful-APIs-with-JSON-API-Specification/">Home resource</a> of the API, the API should return a 200 OK.</p>
+<p>Here is the class definition for HomeControllerIntegrationTest.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeControllerIntegrationTest</span> : IClassFixture&lt;CustomWebApplicationFactory&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> CustomWebApplicationFactory _customWebApplicationFactory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> HomeControllerIntegrationTest(CustomWebApplicationFactory customWebApplicationFactory)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _customWebApplicationFactory = customWebApplicationFactory;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task GetHomeResource_HttpResponse_ShouldReturn200OK()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Arrange</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> var httpClient = _customWebApplicationFactory.CreateClient();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> requestUri = httpClient.BaseAddress.AbsoluteUri;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Act</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> sut = <span style="color:#66d9ef">await</span> httpClient.GetAsync(requestUri);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Assert </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> responseCode = sut.StatusCode;
+</span></span><span style="display:flex;"><span>        responseCode.Should().BeEquivalentTo(HttpStatusCode.OK);
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Time to execute the test on Visual Studio.</p>
+<p><img loading="lazy" src="/post/2021/integration-testing-using-webapplicationfactory/home-resource-integration-test.PNG" alt="Executed Integration Test"  />
+</p>
+<p>As you can see the test passed when executed on visual studio. In less than half of a second, our integration test create a kestrel web server, it configured the server, it configure our API project, it made the API accessible through HTTP, it sent an HTTP request to the server, it received a 200 OK response and it validated the response. Awesome.</p>
+<p><strong>Summary:</strong></p>
+<p>In this post I demonstrate how to build integration test using WebApplicationFactory. These test do not stub, mock or fake any data or http life cycle. The test are executed against a local kestrel web server, they run in memory and are very fast. These test allow you to validate your application&rsquo;s functionality as if it were deployed to a live server.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://www.yunier.dev/tags/webapplicationfactory/">WebApplicationFactory</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://www.yunier.dev/post/2020/json-api-exposing-relationships/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>JSON:API - Exposing Relationships</span>
+  </a>
+  <a class="next" href="https://www.yunier.dev/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Dream Machine - Turn On/Off LED Light Switch</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on twitter"
+        href="https://twitter.com/intent/tweet/?text=Integration%20Testing%20Using%20WebApplicationFactory&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f&amp;hashtags=WebApplicationFactory">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f&amp;title=Integration%20Testing%20Using%20WebApplicationFactory&amp;summary=Integration%20Testing%20Using%20WebApplicationFactory&amp;source=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f&title=Integration%20Testing%20Using%20WebApplicationFactory">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on whatsapp"
+        href="https://api.whatsapp.com/send?text=Integration%20Testing%20Using%20WebApplicationFactory%20-%20https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Integration Testing Using WebApplicationFactory on telegram"
+        href="https://telegram.me/share/url?text=Integration%20Testing%20Using%20WebApplicationFactory&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2021%2fintegration-testing-using-webapplicationfactory%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://www.yunier.dev">Yunier&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

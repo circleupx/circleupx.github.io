@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rules Engine on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/rules-engine/</link>
+    <description>Recent content in Rules Engine on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/rules-engine/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rule Engines In .NET</title>
+      <link>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</guid>
+      <description>Introduction I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.
+To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations.</description>
+    </item>
+    
+  </channel>
+</rss>

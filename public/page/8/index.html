@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.111.3"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Yunier&#39;s Blog</title>
+
+<meta name="description" content="Documenting my adventures in software development.">
+<meta name="author" content="Yunier">
+<link rel="canonical" href="https://www.yunier.dev/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://www.yunier.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.yunier.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.yunier.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.yunier.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.yunier.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://www.yunier.dev/rss">
+<link rel="alternate" type="application/json" href="https://www.yunier.dev/index.json">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Yunier&#39;s Blog" />
+<meta property="og:description" content="Documenting my adventures in software development." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.yunier.dev/" /><meta property="og:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Yunier&#39;s Blog"/>
+<meta name="twitter:description" content="Documenting my adventures in software development."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Yunier's Blog",
+  "url": "https://www.yunier.dev",
+  "description": "Documenting my adventures in software development.",
+  "thumbnailUrl": "https://www.yunier.dev/favicon.ico",
+  "sameAs": [
+      "https://github.com/circleupx", "https://twitter.com/circleupx", "mailto:yunier@hey.com", "rss"
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.yunier.dev" accesskey="h" title="Yunier&#39;s Blog (Alt + H)">Yunier&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.yunier.dev/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/reading-list" title="Reading List">
+                    <span>Reading List</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>The Order Of Interfaces Impacts Performace
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I was looking through some of my bookmarked Github issues when I rediscovered issue #32488, in that issue a comment was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the .NET CLR all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-28 00:00:00 +0000 UTC'>August 28, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to The Order Of Interfaces Impacts Performace" href="https://www.yunier.dev/post/2021/the-order-of-interfaces-impacts-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Writing A Good ReadME Is A Skill
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project’s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-25 00:00:00 +0000 UTC'>August 25, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Writing A Good ReadME Is A Skill" href="https://www.yunier.dev/post/2021/writing-a-good-readme-is-a-skill/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>The Platform
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>HTML, CSS, and Javascript, are the languages of the world wide web, the platform. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I’ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn’t mean that I don’t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-18 00:00:00 +0000 UTC'>August 18, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to The Platform" href="https://www.yunier.dev/post/2021/the-platform/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Worker Services Configure Serilog
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A worker service is a type of Background Service that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.
+If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-12 00:00:00 +0000 UTC'>August 12, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Worker Services Configure Serilog" href="https://www.yunier.dev/post/2021/worker-services-configure-serilog/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>JSON:API - Creating New Resources
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>So far in my JSON:API series I’ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today’s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
+To get started, the customer controller needs to have a method that will accept the incoming POST request....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-08 00:00:00 +0000 UTC'>August 8, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to JSON:API - Creating New Resources" href="https://www.yunier.dev/post/2021/json-api-creating-new-resources/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://www.yunier.dev/page/7/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://www.yunier.dev/page/9/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://www.yunier.dev">Yunier&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

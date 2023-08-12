@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GraphQL on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/graphql/</link>
+    <description>Recent content in GraphQL on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 09 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/graphql/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Better Web API Validation Strategy</title>
+      <link>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</link>
+      <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</guid>
+      <description>As an API developer, you will eventually need to determine how to handle data validation.
+The .NET ecosystem offers a few options, the first option, validation attributes, can be used to annotate how a model should be validated. Validation attributes are great, they don&amp;rsquo;t require any external dependencies, you can specify error messages, create your own custom validator, validate against many data types.
+For example, take the following Movie class, notice how the properties have been annotated with validation rules.</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Is Protocol Agnostic</title>
+      <link>https://www.yunier.dev/post/2021/graphql-is-protocol-agnostic/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/graphql-is-protocol-agnostic/</guid>
+      <description>I&amp;rsquo;m seeing many API developers, specially those that come from a REST background, struggle with GraphQL simply because they are introducing protocol concepts into their GraphQL documents.
+give it a REST... pic.twitter.com/sUxqL4ACdj
+&amp;mdash; I Am Devloper (@iamdevloper) November 13, 2020 GraphQL is not bound to any network protocol, it is most often implemented on top of the HTTP protocol and it only uses the most basic features of HTTP. That is because GraphQL treats HTTP as a dum pipe.</description>
+    </item>
+    
+    <item>
+      <title>Asynchronous Request In GraphQL</title>
+      <link>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</link>
+      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</guid>
+      <description>When I first started to learn about GraphQL I was somewhat surprise to learn that the GraphQL specification did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.
+For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.</description>
+    </item>
+    
+  </channel>
+</rss>

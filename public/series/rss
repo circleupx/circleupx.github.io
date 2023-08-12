@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/series/</link>
+    <description>Recent content in Series on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/series/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consul</title>
+      <link>https://www.yunier.dev/series/consul/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/series/consul/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSL</title>
+      <link>https://www.yunier.dev/series/wsl/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/series/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Design Patterns</title>
+      <link>https://www.yunier.dev/series/design-patterns/</link>
+      <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/series/design-patterns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JSON:API in .NET</title>
+      <link>https://www.yunier.dev/series/jsonapi-in-.net/</link>
+      <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/series/jsonapi-in-.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Playwright</title>
+      <link>https://www.yunier.dev/series/playwright/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/series/playwright/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

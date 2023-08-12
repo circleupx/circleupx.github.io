@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patterns on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/patterns/</link>
+    <description>Recent content in Patterns on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 04 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/patterns/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Up The Strategy Pattern With Inversion Of Control</title>
+      <link>https://www.yunier.dev/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</link>
+      <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</guid>
+      <description>If you are a fan of the strategy pattern, and you find yourself adding a lot of conditional logic around each strategy then you should consider replacing all branching logic using inversion of control.
+Take the following code as an example. It defines a strategy for reading different file types. For simplicity, the code writes out to the console a message, in a real-world application, the logic would be far more complex, but we are not interested in that logic, rather we are interested in how the strategy pattern works and how we can improve its usage.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/tools/</link>
+    <description>Recent content in Tools on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 20 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/tools/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools For The Modern-Day Developer</title>
+      <link>https://www.yunier.dev/post/2021/tools-for-the-modern-developer/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/tools-for-the-modern-developer/</guid>
+      <description>Development tools are an essential part of our job, they make us work smarter not harder, they simplify processes and make us more productive. In this post, I want to share some tools that I have found over the years that have made my job easier. If you have a similar experience with a tool that is not listed here, then I would love you hear from you.
+Grepapp The first tool I want to talk about is the grepapp, this tool is becoming one of my favorite tools.</description>
+    </item>
+    
+  </channel>
+</rss>

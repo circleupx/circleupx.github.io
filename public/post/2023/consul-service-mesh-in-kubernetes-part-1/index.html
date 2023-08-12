@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Consul Service Mesh in Kubernetes - Part 1 | Yunier&#39;s Blog</title>
+<meta name="keywords" content="Kubernetes, Consul, Service Mesh">
+<meta name="description" content="Series of blog post on using Consul Service Mesh in Kubernetes">
+<meta name="author" content="Yunier">
+<link rel="canonical" href="https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.acb54fd32bbc1982428b8850317e45d076b95012730a5936667e6bc21777692a.js" integrity="sha256-rLVP0yu8GYJCi4hQMX5F0Ha5UBJzClk2Zn5rwhd3aSo="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://www.yunier.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.yunier.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.yunier.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.yunier.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.yunier.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Consul Service Mesh in Kubernetes - Part 1" />
+<meta property="og:description" content="Series of blog post on using Consul Service Mesh in Kubernetes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/" /><meta property="og:image" content="https://www.yunier.dev/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-05-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-28T00:00:00+00:00" />
+<meta property="og:see_also" content="https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Consul Service Mesh in Kubernetes - Part 1"/>
+<meta name="twitter:description" content="Series of blog post on using Consul Service Mesh in Kubernetes"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://www.yunier.dev/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Consul Service Mesh in Kubernetes - Part 1",
+      "item": "https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Consul Service Mesh in Kubernetes - Part 1",
+  "name": "Consul Service Mesh in Kubernetes - Part 1",
+  "description": "Series of blog post on using Consul Service Mesh in Kubernetes",
+  "keywords": [
+    "Kubernetes", "Consul", "Service Mesh"
+  ],
+  "articleBody": "Introduction I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.\nKubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp’s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.\nThese features consist of three parts, first, the Consul server component, the Consul client, and the sidecars that are deployed. The server component is responsible for persisting data, i.e. configurations, thus requiring high availability, don’t run a single Consul Server in a Production environment. The client component resides in your node, it is responsible for reporting the health of each service running on your node as well as keeping track of the health of other services in other nodes. The client sends this information back to the Consul server component. Another responsibility of the client is to configure and manage all sidecars. The sidecars are responsible for intercepting inbound and outbound network traffic through a proxy, Consul leverages Envoy to achieve this feature.\nI have prepared two sample applications to demo how you can configure and use Consul as a Service Mesh in Kubernetes. The first app will be a frontend application written in Blazor, the second app will be a Web API written in .NET 6 using minimal APIs. The Blazor application will call the Web API to get a weather forecast, there will be no data validation, authentication or authorization in the apps since the main focus of this post is to show how to use Consul.\nWeb API The Web API is written using the new Minimal APIs feature offered by .NET. The API generates an in-memory collection of WeatherForecast, the entire API can be configured as shown below.\nnamespace BackendApp { public class Program { public static void Main(string[] args) { var builder = WebApplication.CreateBuilder(args); // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle builder.Services.AddEndpointsApiExplorer(); builder.Services.AddSwaggerGen(); var app = builder.Build(); app.UseHttpsRedirection(); var summaries = new[] { \"Freezing\", \"Bracing\", \"Chilly\", \"Cool\", \"Mild\", \"Warm\", \"Balmy\", \"Hot\", \"Sweltering\", \"Scorching\" }; app.MapGet(\"/weatherforecast\", (HttpContext httpContext) =\u003e { var forecast = Enumerable.Range(1, 5).Select(index =\u003e new WeatherForecast { Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)), TemperatureC = Random.Shared.Next(-20, 55), Summary = summaries[Random.Shared.Next(summaries.Length)] }) .ToArray(); return forecast; }) .WithName(\"GetWeatherForecast\") .WithOpenApi(); app.Run(); } } } In the code above, the router handler MapGet is used to map incoming HTTP requests whenever the incoming router matches “/weatherforecast”.\nAPI Docker File To be able to run the API in Kubernetes I will need to containerize the app, the following Docker file should do the trick.\nFROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base WORKDIR /app EXPOSE 80 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build WORKDIR /src COPY [\"App/BackendApp.csproj\", \"App/\"] RUN dotnet restore \"App/BackendApp.csproj\" COPY . . WORKDIR \"/src/App\" RUN dotnet build \"BackendApp.csproj\" -c Release -o /app/build FROM build AS publish RUN dotnet publish \"BackendApp.csproj\" -c Release -o /app/publish /p:UseAppHost=false FROM base AS final WORKDIR /app COPY --from=publish /app/publish . ENTRYPOINT [\"dotnet\", \"BackendApp.dll\"] Then to build the container image with Docker execute the following command.\ndocker build . -f App/Dockerfile -t backend:1.0.0 The dot after the build command refers to the current working directory, the -f is the path to the Docker file and the -t command sets a tag, in my case I decided to append version 1.0.0 to my app. After executing the command above, run the following command to confirm the image was created.\n$ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE backend 1.0.0 f20ce50a5b86 39 seconds ago 216MB Blazor App Next up, I have created a frontend application base on Blazor, the app uses the default Blazor template, and as part of the template, Blazor adds a weather forecast page. The data displayed is loaded from an in-memory collection. I am going to change the application to load the data from the Web API created above.\nThis is the WeatherForecastService that comes from the Blazor template.\npublic class WeatherForecastService { private static readonly string[] Summaries = new[] { \"Freezing\", \"Bracing\", \"Chilly\", \"Cool\", \"Mild\", \"Warm\", \"Balmy\", \"Hot\", \"Sweltering\", \"Scorching\" }; public Task GetForecastAsync(DateOnly startDate) { return Task.FromResult(Enumerable.Range(1, 5).Select(index =\u003e new WeatherForecast { Date = startDate.AddDays(index), TemperatureC = Random.Shared.Next(-20, 55), Summary = Summaries[Random.Shared.Next(Summaries.Length)] }).ToArray()); } } If you were to run the app and navigate to the forecast page you would see something similar to what is being shown on the screenshot below.\nI’ll need to refactor the GetForecastAsync method to use an HTTP client to make an API request to the Web API endpoint, https://localhost:7043/weatherforecast, to retrieve the WeatherForecast data from the API\nnamespace FrontEndApp.Data { public class WeatherForecastService { public async Task GetForecastAsync() { var httpClient = new HttpClient(); var weatherForecastCollection = await httpClient.GetFromJsonAsync(\"https://localhost:7043/weatherforecast\"); return weatherForecastCollection; } } } The code above will establish a dependency between the Web API and the Blazor App, the two apps now communicate through the network, once I introduce Consul into the mix, I will show how the network communication between these two apps can be secured by simply installing a Service Mesh.\nBlazor Docker File Just like the Web API, I will need to containerize the Blazor app, the following Docker file should do the trick.\nFROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base WORKDIR /app EXPOSE 80 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build WORKDIR /src COPY [\"App/FrontEndApp.csproj\", \"App/\"] RUN dotnet restore \"App/FrontEndApp.csproj\" COPY . . WORKDIR \"/src/App\" RUN dotnet build \"FrontEndApp.csproj\" -c Release -o /app/build FROM build AS publish RUN dotnet publish \"FrontEndApp.csproj\" -c Release -o /app/publish /p:UseAppHost=false FROM base AS final WORKDIR /app COPY --from=publish /app/publish . ENTRYPOINT [\"dotnet\", \"FrontEndApp.dll\"] Then to build the container image with Docker execute the following command.\ndocker build . -f App/Dockerfile -t frontend:1.0.0 Again, the dot after the build command refers to the current working directory, the -f is the path to the Docker file and the -t command sets a tag, in my case I decided to append version 1.0.0 to my app. After executing the command above, run the following command to confirm the image was created.\n$ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE frontend 1.0.0 f20ce50a5b86 4 seconds ago 216MB Configuring Helm I plan to use Helm to deploy my applications, Helm is the package manager for Kubernetes, it is a great tool to manage Kubernetes applications, you can use Helm to define, install and upgrade any Kubernetes application.\nTo use Helm I will need to create a Helm Chart for the frontend and backend application. Executing the following command will create a new helm chart.\nhelm create backendapp Executing the command above will create a new chart titled “backendapp”, the chart is composed of a few files as seen on the folder tree below.\nRoot ├── .vscode │ └── settings.json ├── App │ ├── appsettings.json │ ├── BackendApp.csproj │ ├── Dockerfile │ ├── Program.cs │ ├── Properties │ │ └── launchSettings.json │ └── WeatherForecast.cs ├── BackendApp.sln └── Deploy └── backendapp ├── .helmignore ├── Chart.yaml ├── charts ├── templates │ ├── deployment.yaml │ ├── hpa.yaml │ ├── ingress.yaml │ ├── NOTES.txt │ ├── service.yaml │ ├── serviceaccount.yaml │ ├── tests │ │ └── test-connection.yaml │ └── _helpers.tpl └── values.yaml #The file you provide to consumers of your chart. The deploy folder is the root directory for all helm charts. Within that folder, you will find the chart.yaml file, this is where all chart metadata is placed i.e. chart name, the Charts folder is where you place any Charts that your Chart depends on. The template folder is the directory containing the files used to manifest your chart. It utilizes Go’s template language.\nThe chart needs a few updates, first in the Chart.yaml file, I will set the appVersion to 1.0.0, this is because the Docker image was tagged with 1.0.0 and in my values.yaml I left the tag value empty.\napiVersion: v2 name: backendapp description: A Helm chart for Kubernetes type: application version: 0.1.0 appVersion: \"1.0.0\" The next change required is to the values.yaml file, I need to change the repository as newly created Helm Charts look for Nginx by default. The name of my container image is backend, so that is the value I will use, see below.\nimage: repository: backendapp pullPolicy: IfNotPresent # Overrides the image tag whose default is the chart appVekubecrsion. tag: \"\" The “pullPolicy” being set to “IfNotPresent” is important as it allows Helm to pull images from the local container registry.\nNo more changes are required for the backend Helm chart, next, I will create the Helm chart for the frontend using the following command.\nhelm create frontendapp Just like the Web API, this will create a chart named “frontendapp under my deploy folder within the FrontendApp and just like the Web API I will need to update the values.yaml and chart.yaml files as shown below.\napiVersion: v2 name: frontendapp description: A Helm chart for Kubernetes type: application version: 0.1.0 appVersion: \"1.0.0\" image: repository: frontendapp pullPolicy: IfNotPresent # Overrides the image tag whose default is the chart appVekubecrsion. tag: \"\" I’ll need to make an additional update to the Helm chart by changing the port forward from port 8080, the two apps could potentially run on the same node and run into a port collision, therefore, I will change the UI to port forward on 8081, you can do it manually on the terminal using the kubectl port forward but I am going to go ahead and modify the command on the notes.txt file.\nDeploying App to Kubernetes Time to use Helm to deploy both apps. First I am going to deploy the backend app using the following command.\nhelm install backendapp ./ The helm install command takes the name for the install, the chart, this can be a path and a set of flags, in the command above I am not providing any flags, just the name and the path to the chart, which is the current directory.\nThe output of that command should be the values found in notes.txt, as shown below.\nexport POD_NAME=$(kubectl get pods --namespace default -l \"app.kubernetes.io/name=backendapp,app.kubernetes.io/instance=backendapp\" -o jsonpath=\"{.items[0].metadata.name}\") export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath=\"{.spec.containers[0].ports[0].containerPort}\") echo \"Visit http://127.0.0.1:8080 to use your application\" kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT Run each of the following commands to being port forwarding from port 8080 on your machine to port 80 on the container.\nForwarding from 127.0.0.1:8080 -\u003e 80 Forwarding from [::1]:8080 -\u003e 80 Great, I should be able to send the following curl command and get a successful response from the API.\ncurl -X 'GET' \\ 'http://localhost:8080/weatherforecast' \\ -H 'accept: application/json' The command above yields the following response from the API.\n[ { \"date\": \"2023-06-22\", \"temperatureC\": -5, \"temperatureF\": 24, \"summary\": \"Bracing\" }, { \"date\": \"2023-06-23\", \"temperatureC\": 14, \"temperatureF\": 57, \"summary\": \"Scorching\" }, { \"date\": \"2023-06-24\", \"temperatureC\": 15, \"temperatureF\": 58, \"summary\": \"Mild\" }, { \"date\": \"2023-06-25\", \"temperatureC\": 27, \"temperatureF\": 80, \"summary\": \"Chilly\" }, { \"date\": \"2023-06-26\", \"temperatureC\": 46, \"temperatureF\": 114, \"summary\": \"Bracing\" } ] Excellent, the API was deployed successfully and it is listening to the incoming requests, I don’t need to keep the port-forward proxy open so I’ll use CTRL+C to end the proxy.\nTime to deploy the frontend app.\nJust like before, execute the Helm install command.\nhelm install frontendapp ./ The command should yield something similar to the following.\nNAME: frontendapp LAST DEPLOYED: Wed Jun 21 20:54:33 2023 NAMESPACE: default STATUS: deployed REVISION: 1 NOTES: 1. Get the application URL by running these commands: export POD_NAME=$(kubectl get pods --namespace default -l \"app.kubernetes.io/name=frontendapp,app.kubernetes.io/instance=frontendapp\" -o jsonpath=\"{.items[0].metadata.name}\") export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath=\"{.spec.containers[0].ports[0].containerPort}\") echo \"Visit http://127.0.0.1:8081 to use your application\" kubectl --namespace default port-forward $POD_NAME 8081:$CONTAINER_PORT Execute each of the commands from the notes to get the port-forwarding proxy going.\nForwarding from 127.0.0.1:8081 -\u003e 80 Forwarding from [::1]:8081 -\u003e 80 Great, let’s test it out, I should be able to open my browser to http://localhost:8081, then navigate to the Fetch Data page and see the randomly generate weather forecast create by the API.\nAs expected, it works, the Blazor App is running on Kubernetes and it is able to communicate with the Web API.\nNow that we have the apps deployed and exchanging dates I’ll introduce Consul and configure it to control how the app communicate with each other.\nNote: Not shown here, but the frontend required an additional update, the URL change from https://localhost:7043/weatherforecast to http://backendapp:80/weatherforecast that is because the frontend Pod talks to the backend pod though a Kubernetes Service name “backendapp”. This service was generated when the app was installed with Helm, see the service.yaml file under the templates folder.\nInstall Consul You can install Consul using the Consul K8s CLI, the CLI makes it easy to get up and running, another option is to install Consul using Helm. That is the option that I will show here.\nTo install Consul using Helm you will need to add the HashiCorp Helm repository by running on the following command.\nhelm repo add hashicorp https://helm.releases.hashicorp.com You should see the following as a confirmation.\n\"hashicorp\" has been added to your repositories With the HashiCorp Helm repo installed you can use the following command to install Consul, just don’t execute it yet.\nhelm install consul hashicorp/consul --set global.name=consul --create-namespace --namespace consul The command above will install Consul but it does so with the default configurations, you can provide your own configurations by creating your own values.yaml. In a text editor, create a values.yaml file and add the following content to it.\n# Contains values that affect multiple components of the chart. global: # The main enabled/disabled setting. # If true, servers, clients, Consul DNS and the Consul UI will be enabled. enabled: true # The prefix used for all resources created in the Helm chart. name: consul # The consul image version. image: hashicorp/consul:1.15.3 # The name of the datacenter that the agents should register as. datacenter: dc1 # Enables TLS across the cluster to verify authenticity of the Consul servers and clients. tls: enabled: true # Enables ACLs across the cluster to secure access to data and APIs. acls: # If true, automatically manage ACL tokens and policies for all Consul components. manageSystemACLs: true # Exposes Prometheus metrics for the Consul service mesh and sidecars. metrics: enabled: true # Enables Consul servers and clients metrics. enableAgentMetrics: true # Configures the retention time for metrics in Consul servers and clients. agentMetricsRetentionTime: \"1m\" # Configures values that configure the Consul server cluster. server: enabled: true # The number of server agents to run. This determines the fault tolerance of the cluster. replicas: 1 # Contains values that configure the Consul UI. ui: enabled: true # Defines the type of service created for the Consul UI (e.g. LoadBalancer, ClusterIP, NodePort). # NodePort is primarily used for local deployments. service: type: NodePort # Enables displaying metrics in the Consul UI. metrics: enabled: true # The metrics provider specification. provider: \"prometheus\" # Configures and installs the automatic Consul Connect sidecar injector. connectInject: enabled: true # Enables metrics for Consul Connect sidecars. metrics: defaultEnabled: true You can see the default values on the Consul chart by inspecting the Consul chart using the following command.\nhelm inspect values hashicorp/consul Or you can visit the official Helm Chart Reference docs to see all the values that can be overwritten on your values.yaml file.\nNow you can install Consul by executing the following command.\nhelm install consul hashicorp/consul --create-namespace --namespace consul --values values.yaml Successful execution of the command above yields the following.\nNAME: consul LAST DEPLOYED: Wed Jun 21 22:40:35 2023 NAMESPACE: consul STATUS: deployed REVISION: 1 NOTES: Thank you for installing HashiCorp Consul! Your release is named consul. To learn more about the release, run: $ helm status consul --namespace consul $ helm get all consul --namespace consul Consul on Kubernetes Documentation: https://www.consul.io/docs/platform/k8s Consul on Kubernetes CLI Reference: https://www.consul.io/docs/k8s/k8s-cli NOTE The version installed in this example is Consul 1.15.3 which is the most recent version of Consul as of June 2023.\nNow run the following command to see the status of the newly created resources.\nkubectl get statefulset,deployment -n consul NAME READY AGE statefulset.apps/consul-server 1/1 10m NAME READY UP-TO-DATE AVAILABLE AGE deployment.apps/consul-connect-injector 1/1 1 1 10m deployment.apps/consul-webhook-cert-manager 1/1 1 1 10m deployment.apps/prometheus-server 1/1 1 1 10m The deployment consul-connect-injector is responsible for injecting services mesh sidecars as well as keeping the Kubernetes probes in sync with Consul. The consul-webhook-cert-manager deployment is responsible for creating certificates. The prometheus-server deployment runs Prometheus, see Prometheus for more details, and the stateful set consul-server manages persistence claim volumes for the Consul server, remember this should be highly available, losing the claim volume could result in total loss of data.\nNote that these resources could take up to a minute to be created, though normally you should expect them to be created within a couple of seconds.\nAn additional confirmation to Consul being successfully installed is to connect to the UI using a port-forwarding proxy, you can do so by executing the following command.\nkubectl port-forward service/consul-server --namespace consul 8500:8500 Then on a web browser navigate to http://localhost:8500/ui/, you should see the Consul UI as shown in the screenshot below.\nNext, let me confirm that the Blazor app is still up and running.\nAnd it is, great, while Consul has been installed successfully it is still not handling the network communication between the two pods. In order for Consul to handle the network communication between pods, the pods need to be added to the service mesh via pod annotation, see Annotations for more details. In Consul, the annotation required is consul.hashicorp.com/connect-inject:“true”.\nAdding Services to the Mesh The annotation, consul.hashicorp.com/connect-inject:“true”, needs to be added to each pod running under the frontend app deployment, to add the annotation I will need to modify the values.yaml file from\npodAnnotations: {} to the following.\npodAnnotations: \"consul.hashicorp.com/connect-inject\": \"true\" With the annotation now added to the deployment.yaml file, the app can be redeployed. After redeploying the app, and returning to the Consul UI, the frontend app should now be registered under Services as shown in the screenshot below.\nConsul uses a mutating webhook, that is, an HTTP callback that allows third-party applications to modify Kubernetes Resources. When the frontend pod was scheduled, Kubernetes called Consul’s mutating webhook, which allows Consul to look at the pod definition to see if it has the consul.hashicorp.com/connect-inject:“true” annotation, if it does, Consul modifies the pod to add a sidecar proxy.\nTime to add the “backendapp” to the mesh, as before, I will update the values.yaml file to include the required annotation on any backend pod.\npodAnnotations: consul.hashicorp.com/connect-inject: \"true\" Redeploying the backend app and visiting the Consul UI shows the app was successfully registered, see the screenshot below.\nThis means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic outside of the mesh may reach the apps, not very useful, but I’ll change that in part 2 of this blog series.\nFirst, let’s prove that the apps are secure by Consul and that only authenticated and authorized traffic is allowed to reach the applications. In my current cluster, aside from the frontend and backend app I have a few other pods, one of them being the consul server itself, if I have configure everything correctly, then the consul server pod should not be able to communicate with the frontend app, this can be proven by executing the following command.\nkubectl exec consul-server-0 -n consul -- curl -sS http://frontend-frontendapp:80 I get this as a response.\ncurl: (52) Empty reply from server command terminated with exit code 52 This means the frontend app is secure, containers that are not in the Service Mesh cannot talk to applications that are within the mesh, essentially the Service Mesh rejectes any unauthorized traffic, I can further prove that by removing the Consul annotation from the frontendapp, then redeploying the frontend app, and executing the same command, though this time I get a different response.\n\u003c!DOCTYPE html\u003e \u003chtml lang=\"en\"\u003e \u003chead\u003e \u003cmeta charset=\"utf-8\" /\u003e \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /\u003e \u003cbase href=\"/\" /\u003e \u003clink rel=\"stylesheet\" href=\"css/bootstrap/bootstrap.min.css\" /\u003e \u003clink href=\"css/site.css\" rel=\"stylesheet\" /\u003e \u003clink href=\"FrontEndApp.styles.css\" rel=\"stylesheet\" /\u003e \u003clink rel=\"icon\" type=\"image/png\" href=\"favicon.png\"/\u003e \u003ctitle\u003eIndex\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e \u003cdiv class=\"page\" b-u0fy2w1pvo\u003e\u003cdiv class=\"sidebar\" b-u0fy2w1pvo\u003e\u003cdiv class=\"top-row ps-3 navbar navbar-dark\" b-125dvlpeqw\u003e\u003cdiv class=\"container-fluid\" b-125dvlpeqw\u003e\u003ca class=\"navbar-brand\" href b-125dvlpeqw\u003eFrontEndApp\u003c/a\u003e \u003cbutton title=\"Navigation menu\" class=\"navbar-toggler\" b-125dvlpeqw\u003e\u003cspan class=\"navbar-toggler-icon\" b-125dvlpeqw\u003e\u003c/span\u003e\u003c/button\u003e\u003c/div\u003e\u003c/div\u003e \u003cdiv class=\"collapse nav-scrollable\" b-125dvlpeqw\u003e\u003cnav class=\"flex-column\" b-125dvlpeqw\u003e\u003cdiv class=\"nav-item px-3\" b-125dvlpeqw\u003e\u003ca href=\"\" class=\"nav-link active\"\u003e\u003cspan class=\"oi oi-home\" aria-hidden=\"true\" b-125dvlpeqw\u003e\u003c/span\u003e Home \u003c/a\u003e\u003c/div\u003e \u003cdiv class=\"nav-item px-3\" b-125dvlpeqw\u003e\u003ca href=\"counter\" class=\"nav-link\"\u003e\u003cspan class=\"oi oi-plus\" aria-hidden=\"true\" b-125dvlpeqw\u003e\u003c/span\u003e Counter \u003c/a\u003e\u003c/div\u003e \u003cdiv class=\"nav-item px-3\" b-125dvlpeqw\u003e\u003ca href=\"fetchdata\" class=\"nav-link\"\u003e\u003cspan class=\"oi oi-list-rich\" aria-hidden=\"true\" b-125dvlpeqw\u003e\u003c/span\u003e Fetch data \u003c/a\u003e\u003c/div\u003e\u003c/nav\u003e\u003c/div\u003e\u003c/div\u003e \u003cmain b-u0fy2w1pvo\u003e\u003cdiv class=\"top-row px-4\" b-u0fy2w1pvo\u003e\u003ca href=\"https://docs.microsoft.com/aspnet/\" target=\"_blank\" b-u0fy2w1pvo\u003eAbout\u003c/a\u003e\u003c/div\u003e \u003carticle class=\"content px-4\" b-u0fy2w1pvo\u003e \u003ch1\u003eHello, world!\u003c/h1\u003e Welcome to your new app. \u003cdiv class=\"alert alert-secondary mt-4\"\u003e\u003cspan class=\"oi oi-pencil me-2\" aria-hidden=\"true\"\u003e\u003c/span\u003e \u003cstrong\u003eHow is Blazor working for you?\u003c/strong\u003e \u003cspan class=\"text-nowrap\"\u003e Please take our \u003ca target=\"_blank\" class=\"font-weight-bold link-dark\" href=\"https://go.microsoft.com/fwlink/?linkid=2186158\"\u003ebrief survey\u003c/a\u003e\u003c/span\u003e and tell us what you think. \u003c/div\u003e\u003c/article\u003e\u003c/main\u003e\u003c/div\u003e \u003cdiv id=\"blazor-error-ui\"\u003e An error has occurred. This application may no longer respond until reloaded. \u003ca href=\"\" class=\"reload\"\u003eReload\u003c/a\u003e \u003ca class=\"dismiss\"\u003e🗙\u003c/a\u003e \u003c/div\u003e \u003cscript src=\"_framework/blazor.server.js\"\u003e\u003c/script\u003e \u003c/body\u003e \u003c/html\u003e The response is the HTML of the main landing page of the Blazor application, which means that the consul-server pod is now allowed to communicate with the frontend app, due to the removal of the frontend app from the Service Mesh. This is great, but we need to allow traffic from outside the mesh to reach the apps that live within the Service Mesh, we also need to control how apps communicate with each other inside the service. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the Ingress gateways, which I’ll cover in part 2 of this series along with how to establish strong ACLS within the Service Mesh.\nConclusion Using Consul as a Service Mesh in Kubernetes turned out to be easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe from the Helm chart, I’m not sure what the issue was, once I discover the problem I will share it here.\nPart two of this series will be on the Consul Ingress Gateway, after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.\nTill then, cheerio.\nResources Helm Chart Reference\nHelm Uninstall Commands\nDeploy Consul datacenter\n",
+  "wordCount" : "3793",
+  "inLanguage": "en",
+  "datePublished": "2023-05-28T00:00:00Z",
+  "dateModified": "2023-05-28T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Yunier"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yunier's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.yunier.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.yunier.dev" accesskey="h" title="Yunier&#39;s Blog (Alt + H)">Yunier&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.yunier.dev/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/reading-list" title="Reading List">
+                    <span>Reading List</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://www.yunier.dev">Home</a>&nbsp;»&nbsp;<a href="https://www.yunier.dev/post/">Posts</a></div>
+    <h1 class="post-title">
+      Consul Service Mesh in Kubernetes - Part 1
+    </h1>
+    <div class="post-description">
+      Series of blog post on using Consul Service Mesh in Kubernetes
+    </div>
+    <div class="post-meta"><span title='2023-05-28 00:00:00 +0000 UTC'>May 28, 2023</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2023/consul-service-mesh-in-kubernetes-part-1/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#web-api" aria-label="Web API">Web API</a><ul>
+                        
+                <li>
+                    <a href="#api-docker-file" aria-label="API Docker File">API Docker File</a></li></ul>
+                </li>
+                <li>
+                    <a href="#blazor-app" aria-label="Blazor App">Blazor App</a><ul>
+                        
+                <li>
+                    <a href="#blazor-docker-file" aria-label="Blazor Docker File">Blazor Docker File</a></li></ul>
+                </li>
+                <li>
+                    <a href="#configuring-helm" aria-label="Configuring Helm">Configuring Helm</a></li>
+                <li>
+                    <a href="#deploying-app-to-kubernetes" aria-label="Deploying App to Kubernetes">Deploying App to Kubernetes</a></li>
+                <li>
+                    <a href="#install-consul" aria-label="Install Consul">Install Consul</a><ul>
+                        
+                <li>
+                    <a href="#adding-services-to-the-mesh" aria-label="Adding Services to the Mesh">Adding Services to the Mesh</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a></li>
+                <li>
+                    <a href="#resources" aria-label="Resources">Resources</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.</p>
+<p><a href="https://thechief.io/c/editorial/top-14-kubernetes-service-meshes/">Kubernetes offers a wide range of Service Meshes</a>, in this blog post I am going to concentrate on HashiCorp&rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.</p>
+<p>These features consist of three parts, first, the Consul server component, the Consul client, and the <a href="https://www.nginx.com/resources/glossary/sidecar/">sidecars</a> that are deployed. The server component is responsible for persisting data, i.e. configurations, thus requiring high availability, don&rsquo;t run a single Consul Server in a Production environment. The client component resides in your node, it is responsible for reporting the health of each service running on your node as well as keeping track of the health of other services in other nodes. The client sends this information back to the Consul server component. Another responsibility of the client is to configure and manage all sidecars. The sidecars are responsible for intercepting inbound and outbound network traffic through a proxy, Consul leverages <a href="https://www.envoyproxy.io/">Envoy</a> to achieve this feature.</p>
+<p>I have prepared two sample applications to demo how you can configure and use Consul as a Service Mesh in Kubernetes. The first app will be a frontend application written in <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor">Blazor</a>, the second app will be a Web API written in .NET 6 using <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/overview?view=aspnetcore-7.0">minimal APIs</a>. The Blazor application will call the Web API to get a weather forecast, there will be no data validation, authentication or authorization in the apps since the main focus of this post is to show how to use Consul.</p>
+<h2 id="web-api">Web API<a hidden class="anchor" aria-hidden="true" href="#web-api">#</a></h2>
+<p>The Web API is written using the new Minimal APIs feature offered by .NET. The API generates an in-memory collection of <a href="https://github.com/dotnet/aspnetcore/blob/main/src/ProjectTemplates/Web.ProjectTemplates/content/WebApi-CSharp/WeatherForecast.cs">WeatherForecast</a>, the entire API can be configured as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> BackendApp
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> builder = WebApplication.CreateBuilder(args);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle</span>
+</span></span><span style="display:flex;"><span>            builder.Services.AddEndpointsApiExplorer();
+</span></span><span style="display:flex;"><span>            builder.Services.AddSwaggerGen();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> app = builder.Build();
+</span></span><span style="display:flex;"><span>            app.UseHttpsRedirection();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> summaries = <span style="color:#66d9ef">new</span>[]
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Freezing&#34;</span>, <span style="color:#e6db74">&#34;Bracing&#34;</span>, <span style="color:#e6db74">&#34;Chilly&#34;</span>, <span style="color:#e6db74">&#34;Cool&#34;</span>, <span style="color:#e6db74">&#34;Mild&#34;</span>, <span style="color:#e6db74">&#34;Warm&#34;</span>, <span style="color:#e6db74">&#34;Balmy&#34;</span>, <span style="color:#e6db74">&#34;Hot&#34;</span>, <span style="color:#e6db74">&#34;Sweltering&#34;</span>, <span style="color:#e6db74">&#34;Scorching&#34;</span>
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            app.MapGet(<span style="color:#e6db74">&#34;/weatherforecast&#34;</span>, (HttpContext httpContext) =&gt;
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> forecast = Enumerable.Range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>).Select(index =&gt;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">new</span> WeatherForecast
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+</span></span><span style="display:flex;"><span>                        TemperatureC = Random.Shared.Next(-<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">55</span>),
+</span></span><span style="display:flex;"><span>                        Summary = summaries[Random.Shared.Next(summaries.Length)]
+</span></span><span style="display:flex;"><span>                    })
+</span></span><span style="display:flex;"><span>                    .ToArray();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> forecast;
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>            .WithName(<span style="color:#e6db74">&#34;GetWeatherForecast&#34;</span>)
+</span></span><span style="display:flex;"><span>            .WithOpenApi();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            app.Run();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In the code above, the router handler MapGet is used to map incoming HTTP requests whenever the incoming router matches &ldquo;/weatherforecast&rdquo;.</p>
+<h3 id="api-docker-file">API Docker File<a hidden class="anchor" aria-hidden="true" href="#api-docker-file">#</a></h3>
+<p>To be able to run the API in Kubernetes I will need to containerize the app, the following Docker file should do the trick.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+</span></span><span style="display:flex;"><span>WORKDIR /src
+</span></span><span style="display:flex;"><span>COPY <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;App/BackendApp.csproj&#34;</span>, <span style="color:#e6db74">&#34;App/&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>RUN dotnet restore <span style="color:#e6db74">&#34;App/BackendApp.csproj&#34;</span>
+</span></span><span style="display:flex;"><span>COPY . .
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#e6db74">&#34;/src/App&#34;</span>
+</span></span><span style="display:flex;"><span>RUN dotnet build <span style="color:#e6db74">&#34;BackendApp.csproj&#34;</span> -c Release -o /app/build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM build AS publish
+</span></span><span style="display:flex;"><span>RUN dotnet publish <span style="color:#e6db74">&#34;BackendApp.csproj&#34;</span> -c Release -o /app/publish /p:UseAppHost<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM base AS final
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>COPY --from<span style="color:#f92672">=</span>publish /app/publish .
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;dotnet&#34;</span>, <span style="color:#e6db74">&#34;BackendApp.dll&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Then to build the container image with Docker execute the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>docker build . -f App/Dockerfile -t backend:1.0.0
+</span></span></code></pre></div><p>The dot after the build command refers to the current working directory, the -f is the path to the Docker file and the -t command sets a tag, in my case I decided to append version 1.0.0 to my app. After executing the command above, run the following command to confirm the image was created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>$ docker image ls
+</span></span><span style="display:flex;"><span>REPOSITORY   TAG      IMAGE ID       CREATED          SIZE
+</span></span><span style="display:flex;"><span>backend      1.0.0    f20ce50a5b86   <span style="color:#ae81ff">39</span> seconds ago   216MB
+</span></span></code></pre></div><h2 id="blazor-app">Blazor App<a hidden class="anchor" aria-hidden="true" href="#blazor-app">#</a></h2>
+<p>Next up, I have created a frontend application base on Blazor, the app uses the default Blazor template, and as part of the template, Blazor adds a weather forecast page. The data displayed is loaded from an in-memory collection. I am going to change the application to load the data from the Web API created above.</p>
+<p>This is the WeatherForecastService that comes from the Blazor template.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WeatherForecastService</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">string</span>[] Summaries = <span style="color:#66d9ef">new</span>[]
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Freezing&#34;</span>, <span style="color:#e6db74">&#34;Bracing&#34;</span>, <span style="color:#e6db74">&#34;Chilly&#34;</span>, <span style="color:#e6db74">&#34;Cool&#34;</span>, <span style="color:#e6db74">&#34;Mild&#34;</span>, <span style="color:#e6db74">&#34;Warm&#34;</span>, <span style="color:#e6db74">&#34;Balmy&#34;</span>, <span style="color:#e6db74">&#34;Hot&#34;</span>, <span style="color:#e6db74">&#34;Sweltering&#34;</span>, <span style="color:#e6db74">&#34;Scorching&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Task&lt;WeatherForecast[]&gt; GetForecastAsync(DateOnly startDate)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Task.FromResult(Enumerable.Range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>).Select(index =&gt; <span style="color:#66d9ef">new</span> WeatherForecast
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Date = startDate.AddDays(index),
+</span></span><span style="display:flex;"><span>            TemperatureC = Random.Shared.Next(-<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">55</span>),
+</span></span><span style="display:flex;"><span>            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+</span></span><span style="display:flex;"><span>        }).ToArray());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you were to run the app and navigate to the forecast page you would see something similar to what is being shown on the screenshot below.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/weather-forecast-page.png" alt="Weather Forecast Page"  />
+</p>
+<p>I&rsquo;ll need to refactor the GetForecastAsync method to use an HTTP client to make an API request to the Web API endpoint, https://localhost:7043/weatherforecast, to retrieve the WeatherForecast data from the API</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> FrontEndApp.Data
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WeatherForecastService</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;WeatherForecast[]&gt; GetForecastAsync()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> httpClient = <span style="color:#66d9ef">new</span> HttpClient();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> weatherForecastCollection = <span style="color:#66d9ef">await</span> httpClient.GetFromJsonAsync&lt;WeatherForecast[]&gt;(<span style="color:#e6db74">&#34;https://localhost:7043/weatherforecast&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> weatherForecastCollection;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The code above will establish a dependency between the Web API and the Blazor App, the two apps now communicate through the network, once I introduce Consul into the mix, I will show how the network communication between these two apps can be secured by simply installing a Service Mesh.</p>
+<h3 id="blazor-docker-file">Blazor Docker File<a hidden class="anchor" aria-hidden="true" href="#blazor-docker-file">#</a></h3>
+<p>Just like the Web API, I will need to containerize the Blazor app, the following Docker file should do the trick.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+</span></span><span style="display:flex;"><span>WORKDIR /src
+</span></span><span style="display:flex;"><span>COPY <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;App/FrontEndApp.csproj&#34;</span>, <span style="color:#e6db74">&#34;App/&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>RUN dotnet restore <span style="color:#e6db74">&#34;App/FrontEndApp.csproj&#34;</span>
+</span></span><span style="display:flex;"><span>COPY . .
+</span></span><span style="display:flex;"><span>WORKDIR <span style="color:#e6db74">&#34;/src/App&#34;</span>
+</span></span><span style="display:flex;"><span>RUN dotnet build <span style="color:#e6db74">&#34;FrontEndApp.csproj&#34;</span> -c Release -o /app/build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM build AS publish
+</span></span><span style="display:flex;"><span>RUN dotnet publish <span style="color:#e6db74">&#34;FrontEndApp.csproj&#34;</span> -c Release -o /app/publish /p:UseAppHost<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM base AS final
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>COPY --from<span style="color:#f92672">=</span>publish /app/publish .
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;dotnet&#34;</span>, <span style="color:#e6db74">&#34;FrontEndApp.dll&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Then to build the container image with Docker execute the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>docker build . -f App/Dockerfile -t frontend:1.0.0
+</span></span></code></pre></div><p>Again, the dot after the build command refers to the current working directory, the -f is the path to the Docker file and the -t command sets a tag, in my case I decided to append version 1.0.0 to my app. After executing the command above, run the following command to confirm the image was created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>$ docker image ls
+</span></span><span style="display:flex;"><span>REPOSITORY   TAG      IMAGE ID       CREATED          SIZE
+</span></span><span style="display:flex;"><span>frontend     1.0.0    f20ce50a5b86   <span style="color:#ae81ff">4</span> seconds ago   216MB
+</span></span></code></pre></div><h2 id="configuring-helm">Configuring Helm<a hidden class="anchor" aria-hidden="true" href="#configuring-helm">#</a></h2>
+<p>I plan to use Helm to deploy my applications, <a href="https://helm.sh/">Helm</a> is the package manager for Kubernetes, it is a great tool to manage Kubernetes applications, you can use Helm to define, install and upgrade any Kubernetes application.</p>
+<p>To use Helm I will need to create a Helm Chart for the frontend and backend application. Executing the following command will create a new helm chart.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm create backendapp
+</span></span></code></pre></div><p>Executing the command above will create a new chart titled &ldquo;backendapp&rdquo;, the chart is composed of a few files as seen on the folder tree below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Text" data-lang="Text"><span style="display:flex;"><span>Root
+</span></span><span style="display:flex;"><span>├── .vscode
+</span></span><span style="display:flex;"><span>│   └── settings.json
+</span></span><span style="display:flex;"><span>├── App
+</span></span><span style="display:flex;"><span>│   ├── appsettings.json
+</span></span><span style="display:flex;"><span>│   ├── BackendApp.csproj
+</span></span><span style="display:flex;"><span>│   ├── Dockerfile
+</span></span><span style="display:flex;"><span>│   ├── Program.cs
+</span></span><span style="display:flex;"><span>│   ├── Properties
+</span></span><span style="display:flex;"><span>│   │   └── launchSettings.json
+</span></span><span style="display:flex;"><span>│   └── WeatherForecast.cs
+</span></span><span style="display:flex;"><span>├── BackendApp.sln
+</span></span><span style="display:flex;"><span>└── Deploy
+</span></span><span style="display:flex;"><span>    └── backendapp
+</span></span><span style="display:flex;"><span>        ├── .helmignore
+</span></span><span style="display:flex;"><span>        ├── Chart.yaml
+</span></span><span style="display:flex;"><span>        ├── charts
+</span></span><span style="display:flex;"><span>        ├── templates
+</span></span><span style="display:flex;"><span>        │   ├── deployment.yaml
+</span></span><span style="display:flex;"><span>        │   ├── hpa.yaml
+</span></span><span style="display:flex;"><span>        │   ├── ingress.yaml
+</span></span><span style="display:flex;"><span>        │   ├── NOTES.txt
+</span></span><span style="display:flex;"><span>        │   ├── service.yaml
+</span></span><span style="display:flex;"><span>        │   ├── serviceaccount.yaml
+</span></span><span style="display:flex;"><span>        │   ├── tests
+</span></span><span style="display:flex;"><span>        │   │   └── test-connection.yaml
+</span></span><span style="display:flex;"><span>        │   └── _helpers.tpl
+</span></span><span style="display:flex;"><span>        └── values.yaml  #The file you provide to consumers of your chart.
+</span></span></code></pre></div><p>The deploy folder is the root directory for all helm charts. Within that folder, you will find the chart.yaml file, this is where all chart metadata is placed i.e. chart name, the Charts folder is where you place any Charts that your Chart depends on. The template folder is the directory containing the files used to manifest your chart. It utilizes Go&rsquo;s <a href="https://pkg.go.dev/text/template">template language</a>.</p>
+<p>The chart needs a few updates, first in the Chart.yaml file, I will set the appVersion to 1.0.0, this is because the Docker image was tagged with 1.0.0 and in my values.yaml I left the tag value empty.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">backendapp</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#ae81ff">A Helm chart for Kubernetes</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">application</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.1.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">appVersion</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+</span></span></code></pre></div><p>The next change required is to the values.yaml file, I need to change the repository as newly created Helm Charts look for Nginx by default. The name of my container image is backend, so that is the value I will use, see below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">image</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">backendapp</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Overrides the image tag whose default is the chart appVekubecrsion.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tag</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><p>The &ldquo;pullPolicy&rdquo; being set to &ldquo;IfNotPresent&rdquo; is important as it allows Helm to pull images from the local container registry.</p>
+<p>No more changes are required for the backend Helm chart, next, I will create the Helm chart for the frontend using the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm create frontendapp
+</span></span></code></pre></div><p>Just like the Web API, this will create a chart named &ldquo;frontendapp under my deploy folder within the FrontendApp and just like the Web API I will need to update the values.yaml and chart.yaml files as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">frontendapp</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#ae81ff">A Helm chart for Kubernetes</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">application</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.1.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">appVersion</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">image</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">frontendapp</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Overrides the image tag whose default is the chart appVekubecrsion.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tag</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><p>I&rsquo;ll need to make an additional update to the Helm chart by changing the port forward from port 8080, the two apps could potentially run on the same node and run into a port collision, therefore, I will change the UI to port forward on 8081, you can do it manually on the terminal using the kubectl port forward but I am going to go ahead and modify the command on the notes.txt file.</p>
+<h2 id="deploying-app-to-kubernetes">Deploying App to Kubernetes<a hidden class="anchor" aria-hidden="true" href="#deploying-app-to-kubernetes">#</a></h2>
+<p>Time to use Helm to deploy both apps. First I am going to deploy the backend app using the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm install backendapp ./
+</span></span></code></pre></div><p>The helm install command takes the name for the install, the chart, this can be a path and a set of flags, in the command above I am not providing any flags, just the name and the path to the chart, which is the current directory.</p>
+<p>The output of that command should be the values found in notes.txt, as shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>export POD_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pods --namespace default -l <span style="color:#e6db74">&#34;app.kubernetes.io/name=backendapp,app.kubernetes.io/instance=backendapp&#34;</span> -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{.items[0].metadata.name}&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>export CONTAINER_PORT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pod --namespace default $POD_NAME -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{.spec.containers[0].ports[0].containerPort}&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Visit http://127.0.0.1:8080 to use your application&#34;</span>
+</span></span><span style="display:flex;"><span>kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
+</span></span></code></pre></div><p>Run each of the following commands to being port forwarding from port 8080 on your machine to port 80 on the container.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>Forwarding from 127.0.0.1:8080 -&gt; <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>Forwarding from <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:8080 -&gt; <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>Great, I should be able to send the following curl command and get a successful response from the API.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>curl -X <span style="color:#e6db74">&#39;GET&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#39;http://localhost:8080/weatherforecast&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;accept: application/json&#39;</span>
+</span></span></code></pre></div><p>The command above yields the following response from the API.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Json" data-lang="Json"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2023-06-22&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureC&#34;</span>: <span style="color:#ae81ff">-5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureF&#34;</span>: <span style="color:#ae81ff">24</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;Bracing&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2023-06-23&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureC&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureF&#34;</span>: <span style="color:#ae81ff">57</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;Scorching&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2023-06-24&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureC&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureF&#34;</span>: <span style="color:#ae81ff">58</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;Mild&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2023-06-25&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureC&#34;</span>: <span style="color:#ae81ff">27</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureF&#34;</span>: <span style="color:#ae81ff">80</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;Chilly&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2023-06-26&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureC&#34;</span>: <span style="color:#ae81ff">46</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;temperatureF&#34;</span>: <span style="color:#ae81ff">114</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;summary&#34;</span>: <span style="color:#e6db74">&#34;Bracing&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Excellent, the API was deployed successfully and it is listening to the incoming requests, I don&rsquo;t need to keep the port-forward proxy open so I&rsquo;ll use CTRL+C to end the proxy.</p>
+<p>Time to deploy the frontend app.</p>
+<p>Just like before, execute the Helm install command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm install frontendapp ./
+</span></span></code></pre></div><p>The command should yield something similar to the following.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>NAME: frontendapp
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Wed Jun <span style="color:#ae81ff">21</span> 20:54:33 <span style="color:#ae81ff">2023</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: default
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>NOTES:
+</span></span><span style="display:flex;"><span>1. Get the application URL by running these commands:
+</span></span><span style="display:flex;"><span>   export POD_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pods --namespace default -l <span style="color:#e6db74">&#34;app.kubernetes.io/name=frontendapp,app.kubernetes.io/instance=frontendapp&#34;</span> -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{.items[0].metadata.name}&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>   export CONTAINER_PORT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pod --namespace default $POD_NAME -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{.spec.containers[0].ports[0].containerPort}&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>   echo <span style="color:#e6db74">&#34;Visit http://127.0.0.1:8081 to use your application&#34;</span>
+</span></span><span style="display:flex;"><span>   kubectl --namespace default port-forward $POD_NAME 8081:$CONTAINER_PORT
+</span></span></code></pre></div><p>Execute each of the commands from the notes to get the port-forwarding proxy going.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>Forwarding from 127.0.0.1:8081 -&gt; <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>Forwarding from <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:8081 -&gt; <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>Great, let&rsquo;s test it out, I should be able to open my browser to http://localhost:8081, then navigate to the Fetch Data page and see the randomly generate weather forecast create by the API.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/blazor-in-kubernetes.png" alt="Blazor in Kubernetes"  />
+</p>
+<p>As expected, it works, the Blazor App is running on Kubernetes and it is able to communicate with the Web API.</p>
+<p>Now that we have the apps deployed and exchanging dates I&rsquo;ll introduce Consul and configure it to control how the app communicate with each other.</p>
+<blockquote>
+<p><strong>Note</strong>: Not shown here, but the frontend required an additional update, the URL change from <strong>https://localhost:7043/weatherforecast</strong> to <strong>http://backendapp:80/weatherforecast</strong> that is because the frontend Pod talks to the backend pod though a Kubernetes Service name &ldquo;backendapp&rdquo;. This service was generated when the app was installed with Helm, see the service.yaml file under the templates folder.</p>
+</blockquote>
+<h2 id="install-consul">Install Consul<a hidden class="anchor" aria-hidden="true" href="#install-consul">#</a></h2>
+<p>You can install Consul using the <a href="https://developer.hashicorp.com/consul/docs/k8s/installation/install-cli#install-the-cli">Consul K8s CLI</a>, the CLI makes it easy to get up and running, another option is to install Consul using Helm. That is the option that I will show here.</p>
+<p>To install Consul using Helm you will need to add the HashiCorp Helm repository by running on the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>helm repo add hashicorp https://helm.releases.hashicorp.com
+</span></span></code></pre></div><p>You should see the following as a confirmation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#e6db74">&#34;hashicorp&#34;</span> has been added to your repositories
+</span></span></code></pre></div><p>With the HashiCorp Helm repo installed you can use the following command to install Consul, just don&rsquo;t execute it yet.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm install consul hashicorp/consul --set global.name<span style="color:#f92672">=</span>consul --create-namespace --namespace consul
+</span></span></code></pre></div><p>The command above will install Consul but it does so with the default configurations, you can provide your own configurations by creating your own values.yaml. In a text editor, create a values.yaml file and add the following content to it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#75715e"># Contains values that affect multiple components of the chart.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">global</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># The main enabled/disabled setting.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If true, servers, clients, Consul DNS and the Consul UI will be enabled.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># The prefix used for all resources created in the Helm chart.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">consul</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># The consul image version.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">hashicorp/consul:1.15.3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># The name of the datacenter that the agents should register as.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datacenter</span>: <span style="color:#ae81ff">dc1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Enables TLS across the cluster to verify authenticity of the Consul servers and clients.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tls</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Enables ACLs across the cluster to secure access to data and APIs.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">acls</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># If true, automatically manage ACL tokens and policies for all Consul components.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">manageSystemACLs</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Exposes Prometheus metrics for the Consul service mesh and sidecars.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">metrics</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Enables Consul servers and clients metrics.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enableAgentMetrics</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Configures the retention time for metrics in Consul servers and clients.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">agentMetricsRetentionTime</span>: <span style="color:#e6db74">&#34;1m&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configures values that configure the Consul server cluster.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">server</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># The number of server agents to run. This determines the fault tolerance of the cluster.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Contains values that configure the Consul UI.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ui</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Defines the type of service created for the Consul UI (e.g. LoadBalancer, ClusterIP, NodePort).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># NodePort is primarily used for local deployments.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">service</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">NodePort</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Enables displaying metrics in the Consul UI.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">metrics</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The metrics provider specification.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">provider</span>: <span style="color:#e6db74">&#34;prometheus&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configures and installs the automatic Consul Connect sidecar injector.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">connectInject</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Enables metrics for Consul Connect sidecars.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">metrics</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultEnabled</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>You can see the default values on the Consul chart by inspecting the Consul chart using the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm inspect values hashicorp/consul
+</span></span></code></pre></div><p>Or you can visit the official <a href="https://developer.hashicorp.com/consul/docs/k8s/helm">Helm Chart Reference</a> docs to see all the values that can be overwritten on your values.yaml file.</p>
+<p>Now you can install Consul by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>helm install consul hashicorp/consul --create-namespace --namespace consul --values values.yaml
+</span></span></code></pre></div><p>Successful execution of the command above yields the following.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>NAME: consul
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Wed Jun <span style="color:#ae81ff">21</span> 22:40:35 <span style="color:#ae81ff">2023</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: consul
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>NOTES:
+</span></span><span style="display:flex;"><span>Thank you <span style="color:#66d9ef">for</span> installing HashiCorp Consul!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your release is named consul.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>To learn more about the release, run:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  $ helm status consul --namespace consul
+</span></span><span style="display:flex;"><span>  $ helm get all consul --namespace consul
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Consul on Kubernetes Documentation:
+</span></span><span style="display:flex;"><span>https://www.consul.io/docs/platform/k8s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Consul on Kubernetes CLI Reference:
+</span></span><span style="display:flex;"><span>https://www.consul.io/docs/k8s/k8s-cli
+</span></span></code></pre></div><blockquote>
+<p><strong>NOTE</strong> The version installed in this example is <strong>Consul 1.15.3</strong> which is the most recent version of Consul as of June 2023.</p>
+</blockquote>
+<p>Now run the following command to see the status of the newly created resources.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>kubectl get statefulset,deployment -n consul
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>NAME                             READY   AGE
+</span></span><span style="display:flex;"><span>statefulset.apps/consul-server   1/1     10m
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME                                          READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span style="display:flex;"><span>deployment.apps/consul-connect-injector       1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           10m
+</span></span><span style="display:flex;"><span>deployment.apps/consul-webhook-cert-manager   1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           10m
+</span></span><span style="display:flex;"><span>deployment.apps/prometheus-server             1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           10m
+</span></span></code></pre></div><p>The deployment consul-connect-injector is responsible for injecting services mesh sidecars as well as keeping the Kubernetes probes in sync with Consul. The consul-webhook-cert-manager deployment is responsible for creating certificates. The prometheus-server deployment runs Prometheus, see <a href="https://prometheus.io/">Prometheus</a> for more details, and the stateful set consul-server manages persistence claim volumes for the Consul server, remember this should be highly available, losing the claim volume could result in total loss of data.</p>
+<blockquote>
+<p><strong>Note</strong> that these resources could take up to a minute to be created, though normally you should expect them to be created within a couple of seconds.</p>
+</blockquote>
+<p>An additional confirmation to Consul being successfully installed is to connect to the UI using a port-forwarding proxy, you can do so by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>kubectl port-forward service/consul-server --namespace consul 8500:8500
+</span></span></code></pre></div><p>Then on a web browser navigate to <a href="http://localhost:8500/ui/">http://localhost:8500/ui/</a>, you should see the Consul UI as shown in the screenshot below.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/consul-ui-running-on-kubernetes.png" alt="Consul Running On Kubernetes"  />
+</p>
+<p>Next, let me confirm that the Blazor app is still up and running.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/blazor-still-running.png" alt="Blazor App Still Running"  />
+</p>
+<p>And it is, great, while Consul has been installed successfully it is still not handling the network communication between the two pods. In order for Consul to handle the network communication between pods, the pods need to be added to the service mesh via pod annotation, see <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">Annotations</a> for more details. In Consul, the annotation required is <strong>consul.hashicorp.com/connect-inject:&ldquo;true&rdquo;</strong>.</p>
+<h3 id="adding-services-to-the-mesh">Adding Services to the Mesh<a hidden class="anchor" aria-hidden="true" href="#adding-services-to-the-mesh">#</a></h3>
+<p>The annotation, consul.hashicorp.com/connect-inject:&ldquo;true&rdquo;, needs to be added to each pod running under the frontend app deployment, to add the annotation I will need to modify the values.yaml file from</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">podAnnotations</span>: {}
+</span></span></code></pre></div><p>to the following.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">podAnnotations</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;consul.hashicorp.com/connect-inject&#34;: </span><span style="color:#e6db74">&#34;true&#34;</span>
+</span></span></code></pre></div><p>With the annotation now added to the deployment.yaml file, the app can be redeployed. After redeploying the app, and returning to the Consul UI, the frontend app should now be registered under Services as shown in the screenshot below.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/frontend-app-in-consul.png" alt="Frontend App Register In Consul"  />
+</p>
+<p>Consul uses a mutating webhook, that is, an HTTP callback that allows third-party applications to modify Kubernetes Resources. When the frontend pod was scheduled, Kubernetes called Consul&rsquo;s mutating webhook, which allows Consul to look at the pod definition to see if it has the consul.hashicorp.com/connect-inject:&ldquo;true&rdquo; annotation, if it does, Consul modifies the pod to add a sidecar proxy.</p>
+<p>Time to add the &ldquo;backendapp&rdquo; to the mesh, as before, I will update the values.yaml file to include the required annotation on any backend pod.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">podAnnotations</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">consul.hashicorp.com/connect-inject</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span></code></pre></div><p>Redeploying the backend app and visiting the Consul UI shows the app was successfully registered, see the screenshot below.</p>
+<p><img loading="lazy" src="/post/2023/consul-service-mesh-in-kubernetes/both-apps-in-consul.png" alt="Both apps in Consul"  />
+</p>
+<p>This means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic outside of the mesh may reach the apps, not very useful, but I&rsquo;ll change that in part 2 of this blog series.</p>
+<p>First, let&rsquo;s prove that the apps are secure by Consul and that only authenticated and authorized traffic is allowed to reach the applications. In my current cluster, aside from the frontend and backend app I have a few other pods, one of them being the consul server itself, if I have configure everything correctly, then the consul server pod should not be able to communicate with the frontend app, this can be proven by executing the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>kubectl exec consul-server-0 -n consul -- curl -sS http://frontend-frontendapp:80
+</span></span></code></pre></div><p>I get this as a response.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>curl: <span style="color:#f92672">(</span>52<span style="color:#f92672">)</span> Empty reply from server
+</span></span><span style="display:flex;"><span>command terminated with exit code <span style="color:#ae81ff">52</span>
+</span></span></code></pre></div><p>This means the frontend app is secure, containers that are not in the Service Mesh cannot talk to applications that are within the mesh, essentially the Service Mesh rejectes any unauthorized traffic, I can further prove that by removing the Consul annotation from the frontendapp, then redeploying the frontend app, and executing the same command, though this time I get a different response.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">base</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/bootstrap/bootstrap.min.css&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/site.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;FrontEndApp.styles.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;icon&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;image/png&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;favicon.png&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--Blazor:{&#34;sequence&#34;:0,&#34;type&#34;:&#34;server&#34;,&#34;prerenderId&#34;:&#34;ee0f04c3fa464763b57c57330cede53f&#34;,&#34;descriptor&#34;:&#34;CfDJ8JJV\u002BT0V21FCl\u002Bk1k\u002BLUY\u002BBnKRRxy3paaV9R7emQy2NWR\u002BXDx\u002BwW0sLcOLDKemVI1mSpmb4/qiN4kzx9P0xqw94CAz/bk/llLJNEV7BeQm5ywTpAXn09jXJKz7LDw1rs9MUSeZ6ncDwOZdFFkmuEu/NwIei0XOdnwzxSvEjtvrs0rSIUeZWIWLsRFuMwZX/tcppkDSBJCQNSV9dL0aXaNWQVVKURgi\u002BBXUpy/hL7b8lozx3WJ\u002BktZX2AqNE6DSbtzsXp2i8JpOBLhT3GS2Pu\u002BGWXX\u002B5tPVgQsFvxVYDlRG\u002Bnkbc3FrSaluGIhgmZMoG9901C747UrYYTwj0Fy4qaQ4i/\u002BtGMvwZPWkM9O5A8TWSBQ6\u002Bvrgc7FKXLkF0MwcKJuCVlH0ZCK6oqbUfVJoRk1MNJQTLL9sKcHQc//eQJb\u002BY\u002B&#34;}--&gt;</span>&lt;<span style="color:#f92672">title</span>&gt;Index&lt;/<span style="color:#f92672">title</span>&gt;<span style="color:#75715e">&lt;!--Blazor:{&#34;prerenderId&#34;:&#34;ee0f04c3fa464763b57c57330cede53f&#34;}--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--Blazor:{&#34;sequence&#34;:1,&#34;type&#34;:&#34;server&#34;,&#34;prerenderId&#34;:&#34;a9e663ffbd414a9c82f7811056718548&#34;,&#34;descriptor&#34;:&#34;CfDJ8JJV\u002BT0V21FCl\u002Bk1k\u002BLUY\u002BAIAzoXlkJews\u002BivCBmR0zSEmSPge5jSzQzOvKwgPLyF1HVzKYJkbCOsjNqKHjf6njkosboRc/F6zkql4GFmkDxrvC8B2\u002BsyGz7DUoxO2IAPeY1SQJB7YMMzKuQf/ZoIQrk6BKE3EyjcKPq\u002BWFuSaoP6clUsAErNrZF1o35qh/yo5Aokhsstpf6ypffABkYczzpMXoyH963a\u002BwAWwM4QMYXtwux8bQAONLSoYXnP7juOqzWzjo9nUnM2Zo46TyxoPPa9627V2BS4eRWG07EcljuIMjuS6rGmDZ3u\u002BNfprAO8DppGJ1EgDZg3XXiguNVCQdAQC0TeG9B4GEslITYFIJB&#34;}--&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;page&#34;</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sidebar&#34;</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;top-row ps-3 navbar navbar-dark&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container-fluid&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar-brand&#34;</span> <span style="color:#a6e22e">href</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;FrontEndApp&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Navigation menu&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar-toggler&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar-toggler-icon&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;collapse nav-scrollable&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">nav</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex-column&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-item px-3&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link active&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;oi oi-home&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt; Home
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-item px-3&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;counter&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;oi oi-plus&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt; Counter
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-item px-3&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fetchdata&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nav-link&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;oi oi-list-rich&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">b-125dvlpeqw</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt; Fetch data
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">nav</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">main</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;top-row px-4&#34;</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://docs.microsoft.com/aspnet/&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;About&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">article</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content px-4&#34;</span> <span style="color:#a6e22e">b-u0fy2w1pvo</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;Hello, world!&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Welcome to your new app.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-secondary mt-4&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;oi oi-pencil me-2&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">strong</span>&gt;How is Blazor working for you?&lt;/<span style="color:#f92672">strong</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-nowrap&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        Please take our
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight-bold link-dark&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://go.microsoft.com/fwlink/?linkid=2186158&#34;</span>&gt;brief survey&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>    and tell us what you think.
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">article</span>&gt;&lt;/<span style="color:#f92672">main</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!--Blazor:{&#34;prerenderId&#34;:&#34;a9e663ffbd414a9c82f7811056718548&#34;}--&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;blazor-error-ui&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            An error has occurred. This application may no longer respond until reloaded.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;reload&#34;</span>&gt;Reload&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dismiss&#34;</span>&gt;🗙&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_framework/blazor.server.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>The response is the HTML of the main landing page of the Blazor application, which means that the consul-server pod is now allowed to communicate with the frontend app, due to the removal of the frontend app from the Service Mesh. This is great, but we need to allow traffic from outside the mesh to reach the apps that live within the Service Mesh, we also need to control how apps communicate with each other inside the service. Allowing external traffic into the Service Mesh in a secure fashion will be the responsibility of the <a href="https://developer.hashicorp.com/consul/docs/connect/gateways/ingress-gateway">Ingress gateways</a>, which I&rsquo;ll cover in part 2 of this series along with how to establish strong ACLS within the Service Mesh.</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Using Consul as a Service Mesh in Kubernetes turned out to be easier than expected, the documentation provided by HashiCorp was super useful and pointed me in the right direction whenever I felt lost. I did encounter a weird behavior with the Web API, the liveness probe was pointing to /swagger, just like the readiness probe, and while the readiness probe was succeeding, the liveness probe was failing, so I had to take off the liveness probe from the Helm chart, I&rsquo;m not sure what the issue was, once I discover the problem I will share it here.</p>
+<p>Part two of this series will be on the Consul Ingress Gateway, after that, I plan to move to Istio and Linkerd, two other popular Service Mesh tools in Kubernetes.</p>
+<p>Till then, cheerio.</p>
+<h2 id="resources">Resources<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h2>
+<p><a href="https://developer.hashicorp.com/consul/docs/k8s/helm">Helm Chart Reference</a></p>
+<p><a href="https://developer.hashicorp.com/consul/docs/k8s/operations/uninstall#helm-commands">Helm Uninstall Commands</a></p>
+<p><a href="https://developer.hashicorp.com/consul/tutorials/get-started-kubernetes/kubernetes-gs-deploy?in=consul%2Fget-started-kubernetes&amp;variants=consul-deploy%3Aoss#deploy-consul-datacenter">Deploy Consul datacenter</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://www.yunier.dev/tags/kubernetes/">Kubernetes</a></li>
+      <li><a href="https://www.yunier.dev/tags/consul/">Consul</a></li>
+      <li><a href="https://www.yunier.dev/tags/service-mesh/">Service Mesh</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://www.yunier.dev/post/2023/istio-service-mesh-in-kubernetes/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Linkerd Service Mesh in Kubernetes</span>
+  </a>
+  <a class="next" href="https://www.yunier.dev/post/2023/rule-engines-in-dotnet/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Rule Engines In .NET</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on twitter"
+        href="https://twitter.com/intent/tweet/?text=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f&amp;hashtags=Kubernetes%2cConsul%2cServiceMesh">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f&amp;title=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201&amp;summary=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201&amp;source=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f&title=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on whatsapp"
+        href="https://api.whatsapp.com/send?text=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201%20-%20https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Consul Service Mesh in Kubernetes - Part 1 on telegram"
+        href="https://telegram.me/share/url?text=Consul%20Service%20Mesh%20in%20Kubernetes%20-%20Part%201&amp;url=https%3a%2f%2fwww.yunier.dev%2fpost%2f2023%2fconsul-service-mesh-in-kubernetes-part-1%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://www.yunier.dev">Yunier&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

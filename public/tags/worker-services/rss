@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Worker Services on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/worker-services/</link>
+    <description>Recent content in Worker Services on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/worker-services/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Worker Services Configure Serilog</title>
+      <link>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</guid>
+      <description>A worker service is a type of Background Service that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.
+If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors.</description>
+    </item>
+    
+  </channel>
+</rss>

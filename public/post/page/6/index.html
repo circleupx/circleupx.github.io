@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Yunier&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Yunier&#39;s Blog">
+<meta name="author" content="Yunier">
+<link rel="canonical" href="https://www.yunier.dev/post/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://www.yunier.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.yunier.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.yunier.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.yunier.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.yunier.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://www.yunier.dev/post/rss">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Posts" />
+<meta property="og:description" content="Documenting my adventures in software development." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.yunier.dev/post/" /><meta property="og:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.yunier.dev/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Documenting my adventures in software development."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://www.yunier.dev/post/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.yunier.dev" accesskey="h" title="Yunier&#39;s Blog (Alt + H)">Yunier&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.yunier.dev/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/series/" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.yunier.dev/reading-list" title="Reading List">
+                    <span>Reading List</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://www.yunier.dev">Home</a></div>
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Preventing Invalid Assembly Dependencies
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like Clean Architecture where the Web project should not be referenced by the Core project or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies.
+The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-03-12 00:00:00 +0000 UTC'>March 12, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Preventing Invalid Assembly Dependencies" href="https://www.yunier.dev/post/2022/preventing-invalid-assembly-dependencies/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Faster Web API Pagination
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A few weeks ago I came across a blog post from Aaron Francis in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in High Performance MySQL: Proven Strategies for Operating at Scale.
+The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an OFFSET to skip over a number of records, however, even though the results are skipped, the database must still fetch those records....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-02-17 00:00:00 +0000 UTC'>February 17, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Faster Web API Pagination" href="https://www.yunier.dev/post/2022/faster-web-api-pagination/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>JSON:API - Pagination Links
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>It has been a while since I blogged about JSON:API. In my last post on JSON:API I covered how to create new resources. In today’s post, I want to go over how I expose pagination links. Pagination links allow a client to page through a collection of resources. A shift of control from the client back to the server.
+Here is an example of a possible JSON:API response that includes pagination links....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-01-25 00:00:00 +0000 UTC'>January 25, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to JSON:API - Pagination Links" href="https://www.yunier.dev/post/2022/json-api-pagination-links/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Microservice Generator
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Over the last few years, our industry has moved away from monolith architectures to microservice architectures. For a good number of reasons, this trend continues to remain strong. One issue you may encounter with creating microservices if you are not using a monorepo is that you may have to build a new project whenever you need to add a new microservice to your app ecosystem. Creating a new project may include creating new repositories in Bitbucket/Github, configuring a continuous integration pipeline, adding build/deploy scripts, building the project based on some folder structure that has been determined by the team....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-01-23 00:00:00 +0000 UTC'>January 23, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Microservice Generator" href="https://www.yunier.dev/post/2022/microservice-generator/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Tools For The Modern-Day Developer
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Development tools are an essential part of our job, they make us work smarter not harder, they simplify processes and make us more productive. In this post, I want to share some tools that I have found over the years that have made my job easier. If you have a similar experience with a tool that is not listed here, then I would love you hear from you.
+Grepapp The first tool I want to talk about is the grepapp, this tool is becoming one of my favorite tools....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-11-20 00:00:00 +0000 UTC'>November 20, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Tools For The Modern-Day Developer" href="https://www.yunier.dev/post/2021/tools-for-the-modern-developer/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://www.yunier.dev/post/page/5/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://www.yunier.dev/post/page/7/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://www.yunier.dev">Yunier&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

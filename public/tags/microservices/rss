@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microservices on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/microservices/</link>
+    <description>Recent content in Microservices on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 23 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/microservices/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microservice Generator</title>
+      <link>https://www.yunier.dev/post/2022/microservice-generator/</link>
+      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/microservice-generator/</guid>
+      <description>Over the last few years, our industry has moved away from monolith architectures to microservice architectures. For a good number of reasons, this trend continues to remain strong. One issue you may encounter with creating microservices if you are not using a monorepo is that you may have to build a new project whenever you need to add a new microservice to your app ecosystem. Creating a new project may include creating new repositories in Bitbucket/Github, configuring a continuous integration pipeline, adding build/deploy scripts, building the project based on some folder structure that has been determined by the team.</description>
+    </item>
+    
+    <item>
+      <title>Improving A CPU-Intensive Node.js App</title>
+      <link>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</link>
+      <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</guid>
+      <description>Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user&amp;rsquo;s password, hashes it, and compares the result with the stored hashed password from the database.</description>
+    </item>
+    
+  </channel>
+</rss>

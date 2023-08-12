@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postman on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/postman/</link>
+    <description>Recent content in Postman on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/postman/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Newman - Function Is Not Defined</title>
+      <link>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</link>
+      <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</guid>
+      <description>The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.
+if(pm.request.body.isEmpty){ // Code Omitted For Brevity } One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OAuth on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/oauth/</link>
+    <description>Recent content in OAuth on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/oauth/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authorization Code From Terminal</title>
+      <link>https://www.yunier.dev/post/2022/authorization-code-from-terminal/</link>
+      <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/authorization-code-from-terminal/</guid>
+      <description>I was recently presented with a unique challenge at work. I needed to create a script that clones repositories from Bitbucket. The problem is that as of June 2022, Bitbucket only supports managing repositories using OAuth via two grant types, the authorization code grant &amp;amp; the implicit grant.
+I won&amp;rsquo;t get into the details here but the implicit grant is no longer recommended and is in fact discouraged from ever being used.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tRPC on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/trpc/</link>
+    <description>Recent content in tRPC on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/trpc/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tRPC</title>
+      <link>https://www.yunier.dev/post/2023/trpc/</link>
+      <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/trpc/</guid>
+      <description>In the last few months, my Twitter feed has been dominated by one topic, tRPC. tRPC is a library that provides type-safety between your front end and backend, in theory, it allows you to quickly build applications.
+In today&amp;rsquo;s post, I would like to explore tRPC, its capabilities and features, and how it could be used in a project. To get started, I will create a new Node.js app using Express.</description>
+    </item>
+    
+  </channel>
+</rss>

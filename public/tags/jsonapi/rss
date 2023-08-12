@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JSON:API on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/jsonapi/</link>
+    <description>Recent content in JSON:API on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/jsonapi/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSON:API Implementing Filtering</title>
+      <link>https://www.yunier.dev/post/2023/json-api-implementing-filtering/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/json-api-implementing-filtering/</guid>
+      <description>It has been over a year since I last wrote about JSON:API, since then the team behind JSON:API has published verision 1.1. I want to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature into my Chinook JSON:API project, filterting.
+The first thing to know about filtering in JSON:API is that the spec itsel its agnostic to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API.</description>
+    </item>
+    
+    <item>
+      <title>JSON:API - Pagination Links</title>
+      <link>https://www.yunier.dev/post/2022/json-api-pagination-links/</link>
+      <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/json-api-pagination-links/</guid>
+      <description>It has been a while since I blogged about JSON:API. In my last post on JSON:API I covered how to create new resources. In today&amp;rsquo;s post, I want to go over how I expose pagination links. Pagination links allow a client to page through a collection of resources. A shift of control from the client back to the server.
+Here is an example of a possible JSON:API response that includes pagination links.</description>
+    </item>
+    
+    <item>
+      <title>JSON:API - Creating New Resources</title>
+      <link>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</link>
+      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</guid>
+      <description>So far in my JSON:API series I&amp;rsquo;ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today&amp;rsquo;s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
+To get started, the customer controller needs to have a method that will accept the incoming POST request.</description>
+    </item>
+    
+    <item>
+      <title>JSON:API - Exposing The Customer Resource</title>
+      <link>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</guid>
+      <description>This will be my third blog post on JSON:API in .NET Core.
+I plant to add Customer as an API resource, but before we get too deep on the code, I would like to review the Chinook database project. To do that I&amp;rsquo;m going to import Chinook.db into DB Browser for SQLite to see all available entities.
+As you can see we have quite a few entities, for this blog post I will concentrate on the customers entity.</description>
+    </item>
+    
+    <item>
+      <title>JSON:API - Exception Handling Middleware</title>
+      <link>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</guid>
+      <description>On my second post on JSON:API in .NET Core I wanted to create an exception handling middleware. This middleware would be responsible for catching all exceptions and for generating a JSON:API Errors Documents.
+I&amp;rsquo;ll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.
+Folder has been added, now I will add the middleware class to the project in here.</description>
+    </item>
+    
+    <item>
+      <title>JSON:API - Creating The Home Resource</title>
+      <link>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</link>
+      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</guid>
+      <description>This post will be my first entry into a multi-part series of post showing how I&amp;rsquo;ve built RESTful APIs using the JSON:API specification on .NET Core.
+I will start by creating a new .NET Core Web Api project, I am going to call this project Chinook, after the sqlite database that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his Clean Architecture repository.</description>
+    </item>
+    
+  </channel>
+</rss>

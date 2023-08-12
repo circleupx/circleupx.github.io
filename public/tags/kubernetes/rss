@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/kubernetes/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consul Service Mesh in Kubernetes - Part 2</title>
+      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</guid>
+      <description>Introduction Consul Ingress Gateway Sevice Discovery Conclusion </description>
+    </item>
+    
+    <item>
+      <title>Linkerd Service Mesh in Kubernetes</title>
+      <link>https://www.yunier.dev/post/2023/istio-service-mesh-in-kubernetes/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/istio-service-mesh-in-kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consul Service Mesh in Kubernetes - Part 1</title>
+      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</guid>
+      <description>Introduction I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
+Kubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp&amp;rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.</description>
+    </item>
+    
+    <item>
+      <title>Use Static IP In WSL</title>
+      <link>https://www.yunier.dev/post/2022/use-static-ip-in-wsl/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/use-static-ip-in-wsl/</guid>
+      <description>In my last post, Kubernetes In WSL - Connect to a service from Windows, I explored a few ways to connect to a Kubernetes service from the host machine, Windows. In the end of that blog post, I stated that using HostPort was the best option because at the time I did not know how to assign a static IP address to WSL.
+Without using a static IP address, when WSL is restarted a new IP is assigned.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes In WSL - Connect to a service from Windows</title>
+      <link>https://www.yunier.dev/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</link>
+      <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</guid>
+      <description>Today&amp;rsquo;s post is a follow-up to my Use Kubernetes In WSL blog post, where I outlined how to install Kubernetes on WSL. As noted at the end of the post, I was having issues connecting from the host, a windows machine, to Kubernetes in WSL.
+Connection Issue The main issue I was facing was that I could not connect to a pod running on Kubernetes using window&amp;rsquo;s localhost. Take the following Nginx deployment obtained from the official Kubernetes documentation.</description>
+    </item>
+    
+    <item>
+      <title>Use Kubernetes In WSL</title>
+      <link>https://www.yunier.dev/post/2022/use-kubernetes-in-wsl/</link>
+      <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2022/use-kubernetes-in-wsl/</guid>
+      <description>If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.
+Prerequisite To get started we need to know what version of Windows you are on. This is important because Kubernetes will be installed using Microk8s, which requires having snap installed and working.</description>
+    </item>
+    
+  </channel>
+</rss>

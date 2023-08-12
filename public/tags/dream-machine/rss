@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dream Machine on Yunier&#39;s Blog</title>
+    <link>https://www.yunier.dev/tags/dream-machine/</link>
+    <description>Recent content in Dream Machine on Yunier&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/dream-machine/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dream Machine - Turn On/Off LED Light Switch</title>
+      <link>https://www.yunier.dev/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.yunier.dev/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</guid>
+      <description>I want to step away from software for this post to talk about some hardware. Over the years I&amp;rsquo;ve owned a few routers, some have been really really good and some have been really bad. So far the best router I have owned is my current router, the UniFi Dream Machine. While I was mostly happy with my last router, the NighHawk AC1900, it did dropped the WiFi signal a lot, I think that at one point it was dropping the WiFi signal once a week.</description>
+    </item>
+    
+  </channel>
+</rss>
