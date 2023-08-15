@@ -1,5 +1,5 @@
 ---
-title: Go for the C# Developer - Part 1.
+title: Go for the C# Developer - Multiple Return Values
 tags: [Go]
 author: "Yunier"
 date: "2023-08-14"
