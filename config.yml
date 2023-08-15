@@ -1,5 +1,5 @@
 baseURL: "https://www.yunier.dev"
-title: Yunier's Blog
+title: Yunier's Wiki
 paginate: 5
 theme: PaperMod
 
@@ -60,7 +60,6 @@ params:
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowToc: true
-    # comments: false
     images: ["papermod-cover.png"]
 
     profileMode:
@@ -76,7 +75,7 @@ params:
 
 
     homeInfoParams:
-        Title: "Hi!"
+        Title: "Hello!"
         Content: >
           Welcome to my blog, I'm a backend developer focusing at the moment on the .NET stack. 
           I use this blog to document ideas or concepts I have learned or might be currently learning.
