@@ -1,5 +1,5 @@
 ---
-title: Use a custom OpenAPI specification file in .NET
+title: Use Custom OpenAPI Specification File In .NET
 tags: [OpenAPI, Swagger, .NET]
 author: "Yunier"
 date: "2023-05-18"

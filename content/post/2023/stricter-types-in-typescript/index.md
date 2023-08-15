@@ -1,5 +1,5 @@
 ---
-title: "Stricter Types in TypeScript"
+title: "Stricter Types In TypeScript"
 tags: [TypeScript]
 author: "Yunier"
 date: "2023-02-17"

@@ -1,5 +1,5 @@
 ---
-title: Consul Service Mesh in Kubernetes - Part 2
+title: Consul Service Mesh In Kubernetes - Part 2
 tags: [Kubernetes, Consul, 'Service Mesh']
 author: "Yunier"
 date: "2023-06-15"

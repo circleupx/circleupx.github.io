@@ -1,5 +1,5 @@
 ---
-title: "Power Up Integration Tests with Test Containers"
+title: "Power Up Integration Tests With Test Containers"
 tags: [WebApplicationFactory, Docker]
 author: "Yunier"
 date: "2023-04-23"

@@ -3,13 +3,13 @@ title: JSON:API Implementing Filtering
 tags: [JSON:API]
 author: "Yunier"
 date: "2023-05-18"
-description: "Learn how to implement filtering in JSON:API"
+description: "Implement filtering in JSON:API"
 draft: true
 ---
 
 It has been over [a year since I last wrote](/post/2022/json-api-pagination-links/) about JSON:API, since then the [team](https://jsonapi.org/about/#editors) behind JSON:API has published verision 1.1. I want to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature into my [Chinook JSON:API](https://github.com/circleupx/Chinook) project, filterting.
 
-The first thing to know about filtering in JSON:API is that the spec itsel its agnostic to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API. In my opinion has alwasy been a drawback in JSON:API, I believe in that it would have been a better choice for the spec if it had decided on a filtering strategy, but that is discussion for another day. While the spec does not favor any filtering strategy it does have some [recommendations](https://jsonapi.org/recommendations/#filtering).
+The first thing to know about filtering in JSON:API is that the spec itself is agnostic to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API. In my opinion has alwasy been a drawback in JSON:API, I believe in that it would have been a better choice for the spec if it had decided on a filtering strategy, but that is discussion for another day. While the spec does not favor any filtering strategy it does have some [recommendations](https://jsonapi.org/recommendations/#filtering).
 
 The spec recommends using the LHS bracket syntax to denote which resource the filtering should be applied to. For example, imagine you are dealing with a post resource and each post resource can expose a relationship to an author resource, that is to say, each post has a 1 to 1 relationship with with the authors resource. 
 
