@@ -26,3 +26,4 @@ In no particular order, here are my recommended list of books.
 18) [Fundamentals of Software Architecture: An Engineering Approach](https://a.co/d/8rtIzw3)
 19) [System Design Interview – An insider's guide](https://a.co/d/81sn78R)
 20) [Making Sense of Stream Processing](https://www.oreilly.com/library/view/making-sense-of/9781492042563/)
+21) [Patterns of Distributed Systems](https://a.co/d/foXKroJ)
