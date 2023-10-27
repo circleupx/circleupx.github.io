@@ -77,27 +77,37 @@ The first step in implementing filtering will be to take the filter query parame
 
 By the way, if you are interesting in learning more about parsers then you can enroll in [Building a Parser from scratch](http://dmitrysoshnikov.com/courses/parser-from-scratch/) by [Dmitry Soshnikov](http://dmitrysoshnikov.com/).
 
-Let's review the Chinook project I have been building for the last two years, as I mentioned before, it is a level 3 REST API that implements the JSON:API specification. The API exposes a number of resources, one of them, the album resource, has a one to many relationship to the track resource, a single track resource is represented with the following JSON payload.
+Let's review the Chinook project I have been building for the last two years, as I mentioned before, it is a level 3 REST API that implements the JSON:API specification. The API exposes a number of resources, one of them, the invoices resource, has a one to many relationship to the customer resource, a single customer resource is represented with the following JSON payload.
 
 ```JSON
 {
-  "jsonapi": {
-    "version": "1.0"
-  },
-  "links": {
-    "self": "https://localhost:5001/tracks/11"
-  },
-  "data": {
-    "type": "tracks",
-    "id": "11",
-    "attributes": {
-      "name": "C.O.D.",
-      "composer": "Angus Young, Malcolm Young, Brian Johnson",
-      "milliseconds": 199836,
-      "bytes": 6566314,
-      "unitPrice": "MC45OQ=="
+    "jsonapi": {
+        "version": "1.0"
+    },
+    "links": {
+        "self": "https://localhost:5001/invoices/98/customer",
+        "up": "https://localhost:5001/invoices/98"
+    },
+    "data": {
+        "type": "customers",
+        "id": "1",
+        "attributes": {
+            "firstName": "Luís",
+            "lastName": "Gonçalves",
+            "company": "Embraer - Empresa Brasileira de Aeronáutica S.A.",
+            "address": "Av. Brigadeiro Faria Lima, 2170",
+            "city": "São José dos Campos",
+            "state": "SP",
+            "country": "Brazil",
+            "postalCode": "12227-000",
+            "phone": "+55 (12) 3923-5555",
+            "fax": "+55 (12) 3923-5566",
+            "email": "luisg@embraer.com.br"
+        },
+        "links": {
+            "self": "https://localhost:5001/customers/1"
+        }
     }
-  }
 }
 ```
 
@@ -152,10 +162,10 @@ OData also offers [Built-in Query Functions](https://docs.oasis-open.org/odata/o
 In order for the a client of the Chinook API to get find an invoice where the billing country is Germany and the related customer's first name is Leonie the client would have to use the following query string.
 
 ```bash
-GET /albumbs?filter[invoices]=billingCountry eq 'Germany'&filter[customers]=firstName eq 'Leonie'&include=invoices HTTP/1.1
+GET /invoices?filter[invoices]=billingCountry eq 'Germany'&filter[customers]=firstName eq 'Leonie'&include=invoices HTTP/1.1
 ```
 
-Let's break down the request above, **/albumbs** is the resource collection we are dealing with, then we have the query parameters, the first one, the JSON:API keyword filter, is used by the client to inform the server that the resource should be filtered, then we have **[invoices]**, this is used to inform the server that the filtering will be done against the resource invoices, remember JSON:API uses compound documents, so you can have a JSON:API document with multiple resources, we then use **=billingCountry eq 'Germany'** to inform the server that the filter is against the property billingCountry on the source invoices, with OData syntax, **eq** as mention above being used as the equals operators, then since invoice billingCountry is a string type we use single quotes to specify the value. The second filter, is against the customers resource, against the firstName property, using the eq operator from OData to inform the server to filter the resource to only customer that have a first name of Leonie.
+Let's break down the request above, **/invoices** is the resource collection we are dealing with, then we have the query parameters, the first one, the JSON:API keyword filter, is used by the client to inform the server that the resource should be filtered, then we have **[invoices]**, this is used to inform the server that the filtering will be done against the resource invoices, remember JSON:API uses compound documents, so you can have a JSON:API document with multiple resources, we then use **=billingCountry eq 'Germany'** to inform the server that the filter is against the property billingCountry on the source invoices, with OData syntax, **eq** as mention above being used as the equals operators, then since invoice billingCountry is a string type we use single quotes to specify the value. The second filter, is against the customers resource, against the firstName property, using the eq operator from OData to inform the server to filter the resource to only customer that have a first name of Leonie.
 
 A quick aside, JSON is case sensitive, you can encounter APIs in different case formats, i.e. snake vs camel, therefore, when doing filtering, take into consideration the casing being used on the field you plan to filter one.
 
