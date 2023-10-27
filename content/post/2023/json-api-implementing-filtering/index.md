@@ -120,11 +120,11 @@ Back to the Chinook project, imagine the following scenario, a client of the Chi
 3) For any invoice where the billing country is Germany, navigate to the related customer.
 3) Check if the customer's first name is Leonie.
 
-What I have just described is totally inefficient, as I mention before this is a well-known problem, [Over Fetching And Under Fetching](https://nordicapis.com/what-are-over-fetching-and-under-fetching/) and it often sighted as the main reason to use GraphQL.
+What I have just described is totally inefficient, as I mention before this is a well-known problem, [Over Fetching And Under Fetching](https://nordicapis.com/what-are-over-fetching-and-under-fetching/) and it often refer as the main reason to use GraphQL.
 
-In other to provide better usability and developer experience I will introduce resource filtering to the Chinook project, the invoice resource collection will now allow a client to specify a filtering criteria. This filtering criteria can work against the invoice resource collection as well as any related resources but for this purposes of this demo I will only add filtering support for the related customer resource.
+In order to provide better usability and developer experience I will introduce resource filtering to the Chinook project, the invoice resource collection will now allow a client to specify a filtering criteria. This filtering criteria can work against the invoice resource collection as well as any related resources but for the purposes of this demo I will only add filtering support for the related customer resource.
 
-Adding filtering to an API means that you will need to come up with a filtering language, for the purposes of this blog post I am going to stick to OData, why? Simple, it is well known standard that many developers are already familiar with and comes with well defined operators, you can of course come up with your own if desired.
+Adding filtering to an API means that you will need to come up with a filtering language, I am going to stick to OData, why? Simple, it is well known standard that many developers are already familiar with and comes with well defined operators, you can of course come up with your own if desired or follow the ones recommended by the JSON:API community
 
 #### OData Operators
 
@@ -159,20 +159,21 @@ The filter operators offered by OData are as follows.
 
 OData also offers [Built-in Query Functions](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BuiltinQueryFunctions) but those functions are beyond the scope of this blog post.
 
-In order for the a client of the Chinook API to get find an invoice where the billing country is Germany and the related customer's first name is Leonie the client would have to use the following query string.
+In order for the a client of the Chinook API to find an invoice where the billing country is Germany and the related customer's first name is Leonie the client would have to use the following query string.
 
 ```bash
 GET /invoices?filter[invoices]=billingCountry eq 'Germany'&filter[customers]=firstName eq 'Leonie'&include=invoices HTTP/1.1
 ```
 
-Let's break down the request above, **/invoices** is the resource collection we are dealing with, then we have the query parameters, the first one, the JSON:API keyword filter, is used by the client to inform the server that the resource should be filtered, then we have **[invoices]**, this is used to inform the server that the filtering will be done against the resource invoices, remember JSON:API uses compound documents, so you can have a JSON:API document with multiple resources, we then use **=billingCountry eq 'Germany'** to inform the server that the filter is against the property billingCountry on the source invoices, with OData syntax, **eq** as mention above being used as the equals operators, then since invoice billingCountry is a string type we use single quotes to specify the value. The second filter, is against the customers resource, against the firstName property, using the eq operator from OData to inform the server to filter the resource to only customer that have a first name of Leonie.
+Let's break down the request above, **/invoices** is the resource collection we are dealing with, then we have the query string parameters, the first one is the JSON:API keyword filter and it is used by the client to inform the server that the resource should be filtered. The first LHS bracket with **invoices** is used to inform the server that filtering will be done against the resource invoices, remember JSON:API has [compound documents](https://jsonapi.org/format/#document-compound-documents), a single JSON:API document can have multiple resources. The next part, **=billingCountry eq 'Germany'** is used to inform the server that the filter should be against the property billingCountry on the source invoices, with OData syntax, **eq** as mention above being used as the equals operators, since invoice billingCountry is a string type we use single quotes to specify the value. The second filter is against the customers resource, in this filter the client tells the server to use the firstName property to and to filter the customer resource where that name is Leonie. 
+
+Meaning the request above, when executed correctly by the server, will only return invoices where the customer's first name is Leonie and the invoice was in Germany.
 
 A quick aside, JSON is case sensitive, you can encounter APIs in different case formats, i.e. snake vs camel, therefore, when doing filtering, take into consideration the casing being used on the field you plan to filter one.
 
-Now that we know what the HTTP request will look like let's switch to the Chinook API and add the code needed to support filtering.
+Now that I know what the HTTP request will look like let's switch to the Chinook API and the code required to support filtering.
 
-
-First thing I am going to do is to install Superpower on the Chinook Core Project by running the following command.
+First thing I am going to do is to install Superpower on the Chinook Core Project by running the following dotnet command.
 
 ```shell
 dotnet add package Superpower --version 3.0.0
@@ -247,7 +248,7 @@ public enum ODataTokens
 }
 ```
 
-Up next, we need to build our actual OData parsers with Superpower, let's gets started with the most basic, an OData string. As shown before, an OData request may look like the following HTTP GET request.
+Up next, we need to build our OData parsers with Superpower, let's gets started with the most basic, an OData string. As shown before, an OData request may look like the following HTTP GET request.
 
 ```shell
 GET /posts?filter[post]=published eq true&filter[author]=firstName eq 'Dan'&include=author HTTP/1.1
@@ -279,9 +280,9 @@ public static class ODataParser
 }
 ```
 
-Here we start seeing the beauty of parser combinators like Superpower, you can compose parsers out of other parsers. In the code above, the ODataString parser is composed by the Content parser and the Characters parser.
+Here you start to see the beauty of parser combinators like Superpower, you can compose parsers out of other parsers. In the code above, the ODataString parser is composed by the Content parser and the Characters parser.
 
-Now that we have our tokens and parses, it is time to create our [Tokenizer](https://www.youtube.com/watch?v=4m7ubrdbWQU). For the tokenizer we can use the built in Tokenizer provided by Superpower, along with their helpers functions, like Match, Ignore, Build and so on. Below is how the Tokenizer looks so far, note the usage of the key words defined in ODataParser and the Enum ODataTokens.
+Now that I have the tokens and parser I need to create the [Tokenizer](https://www.youtube.com/watch?v=4m7ubrdbWQU). For the tokenizer we can use the built in TokenizerBuilder provided by Superpower, along with their helpers functions, like Match, Ignore, Build and so on. Below is how the Tokenizer looks so far, note the usage of the key words defined in ODataParser and the Enum ODataTokens.
 
 #### Tokenizer
 
@@ -348,7 +349,7 @@ internal class TokenizerBuilder
 
 With the code above, when I call the method TokenizeObjectProperties and use Invoices as the generic type, all the properties that currently exist in the Invoices class will get tokenized.
 
-Taking an incoming query string, tokenize it, parse it, building an AST, then finally getting an expression to pass to an ORM like EF Core or Dapper takes a look of work, whenever I have face this before I have relied on the builder pattern, and since what I am building is rather complex, the builder pattern allows me delegate different parts of the process to small parts of the builder.
+Taking an incoming query string, tokenize it, parsing it, building an AST, then finally getting an expression to pass to an ORM like EF Core or Dapper takes a look of work, whenever I have face this before I have relied on the builder pattern, and since what I am building is rather complex structure, the builder pattern will allow me delegate different parts of the process to small parts of the builder.
 
 #### Building a DSL
 
@@ -387,7 +388,7 @@ public sealed class ResourceQueryBuilder
 }
 ```
 
-The first part of the AddFilter method in the ResourceQueryBuilder class is to call the tokenizer as shown in the code above to tokenize the properties on the resource, the next step is to call ParseFilterQueryString in the QueryParameterService class, this class was introduce in [JSON:API - Pagination Links](/post/2022/json-api-pagination-links/) as UriQueryParametersReader I just consolidated the reader and writer into a service. The new method, ParseFilterQueryString, was added in to the class due to a limitation in [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework), which powers the Chinook project was never built to handle multiple query filters.
+The first part of the AddFilter method in the ResourceQueryBuilder class is to call the tokenizer as shown in the code above to tokenize the properties on the resource, the next step is to call ParseFilterQueryString in the QueryParameterService class, this class was introduce in [JSON:API - Pagination Links](/post/2022/json-api-pagination-links/) as UriQueryParametersReader I just consolidated the reader and writer into a service. The new method, ParseFilterQueryString, was added in to the class due to a limitation in [JsonApiFramework](https://github.com/scott-mcdonald/JsonApiFramework), which powers the Chinook project, JsonApiFramework was never built to handle multiple query filters.
 
 ```c#
 public class QueryParameterSerive
@@ -452,7 +453,7 @@ The next part of the AddFilter method is looking at the parsed query strings val
 Notice the usage of the PredicateBuilder class, this is a helper class that allows us to work with expressions, the new method creates a starting expression that evaluates to true, essentially it creates the following code.
 
 ```c#
-public Expression<Func<Customer, bool>> FilterExpression { get; } = entity => true;
+public Expression<Func<TResource, bool>> FilterExpression { get; } = entity => true;
 ```
 
 As mentioned in [JSON:API - Pagination Links](/post/2022/json-api-pagination-links/), the code above is great because the Linq Provide will see this code and do nothing, in other words, this is a good default value to have when the client doesn't specify any filters.
