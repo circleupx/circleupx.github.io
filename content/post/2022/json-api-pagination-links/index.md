@@ -4,7 +4,7 @@ tags: [JSON:API, REST]
 author: "Yunier"
 date: "2022-01-25"
 description: "Exposing pagination links on JSON:API documents"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 It has been a while since I blogged about [JSON:API](https://jsonapi.org/). In my last post on JSON:API I covered how to create [new resources](/post/2021/json-api-creating-new-resources). In today's post, I want to go over how I expose pagination links. [Pagination links](https://jsonapi.org/examples/#pagination) allow a client to page through a collection of resources. A shift of control from the client back to the server.

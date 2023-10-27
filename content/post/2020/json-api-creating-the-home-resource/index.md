@@ -4,7 +4,7 @@ tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-09-14"
 description: "Guide on how to use the home resource"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 This post will be my first entry into a multi-part series of post showing how I've built RESTful APIs using the [JSON:API](https://jsonapi.org/) specification on .NET Core.

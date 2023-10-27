@@ -4,7 +4,7 @@ stags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-12-06"
 description: "Guide on how to expose relationship link between resources"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 My [previous](/post/2020/json-api-exposing-the-customer-resource/index/) post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource.

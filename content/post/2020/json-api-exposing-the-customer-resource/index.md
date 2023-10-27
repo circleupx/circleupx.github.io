@@ -4,7 +4,7 @@ tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-10-30"
 description: "Guide on how to expose resources"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 This will be my third blog post on [JSON:API](https://jsonapi.org/) in .NET Core.

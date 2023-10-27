@@ -4,7 +4,7 @@ tags: [JSON:API, REST]
 author: "Yunier"
 date: "2021-08-08"
 description: "Guide on how to create new resources"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 So far in my JSON:API series I've covered the [home resource](https://www.yunier.dev/2020-09-14-Adding-Home-Resource/), adding [your own resource](https://www.yunier.dev/2020-10-30-Adding-Customer-Resource/), adding an [exception handling middleware](https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/) and how to [expose relationship](https://www.yunier.dev/2020-12-06-Exposing-Relationships/) between resources. For the today's post, I would like to cover creating resources. I will update the chinook project by allowing [POST](https://datatracker.ietf.org/doc/html/rfc2616/#section-9.5) request on the customers collections to add new customers.

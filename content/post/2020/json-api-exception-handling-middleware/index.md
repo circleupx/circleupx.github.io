@@ -4,7 +4,7 @@ tags: [JSON:API, REST]
 author: "Yunier"
 date: "2020-10-19"
 description: "Guide on how to handle exceptions using a middleware"
-series: ['JSON:API in .NET']
+series: [JSON:API In .NET]
 ---
 
 On my second post on [JSON:API](https://jsonapi.org/) in .NET Core I wanted to create an exception handling [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1). This middleware would be responsible for catching all exceptions and for generating a JSON:API [Errors Documents](https://jsonapi.org/format/#document-top-level).

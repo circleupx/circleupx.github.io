@@ -1,10 +1,9 @@
 ---
-title: Go for the C# Developer - Multiple Return Values
+title: Go - Multiple Return Values
 tags: [Go]
 author: "Yunier"
-date: "2023-08-14"
-description: Getting used to Go.
-series: [Learning Go]
+date: "2023-08-01"
+description: Introduction to Go's multiple values feature
 ---
 
 I've been spending the last few weeks learning [Go](https://go.dev/learn/) by reading [Learning Go](https://a.co/d/dlJyukR) by [Jon Bodner](https://www.amazon.com/stores/Jon-Bodner/author/B08SWGN5NN), so far I've been enjoying learning about Go, though there is still one thing I keep tripping over, in Go, you can return one or more values, for me Go is the first language that I have worked with that does that, in every other language I had to introduce a custom discriminating union to achieve what Go does natively. 
