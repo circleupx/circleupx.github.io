@@ -9,7 +9,7 @@ series: [JSON:API In .NET]
 
 ### Introduction
 
-It has been over [a year since I last wrote](/post/2022/json-api-pagination-links/) about JSON:API, since then the [team](https://jsonapi.org/about/#editors) behind JSON:API has published version 1.1 of the JSON:API specification. I would like to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature into my [Chinook JSON:API](https://github.com/circleupx/Chinook) project, filtering.
+It has been over [a year since I last wrote](/post/2022/json-api-pagination-links/) about JSON:API, since then the [team](https://jsonapi.org/about/#editors) behind JSON:API has published version 1.1 of the JSON:API specification. I would like to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature to my [Chinook JSON:API](https://github.com/circleupx/Chinook) project, filtering.
 
 The first thing to know about filtering in JSON:API is that the spec itself [is agnostic](https://jsonapi.org/format/#fetching-filtering) to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API. In my opinion, this has always been a drawback of the JSON:API spec, I believe in that it would have been a better choice for the spec if it had decided on a filtering strategy, but that is discussion for another day. While the spec does not favor any filtering strategy it does have some [recommendations](https://jsonapi.org/recommendations/#filtering).
 
@@ -77,7 +77,7 @@ The first step in implementing filtering will be to take the filter query parame
 
 By the way, if you are interesting in learning more about parsers then you can enroll in [Building a Parser from scratch](http://dmitrysoshnikov.com/courses/parser-from-scratch/) by [Dmitry Soshnikov](http://dmitrysoshnikov.com/).
 
-Let's review the Chinook project I have been building for the last two years, as I mentioned before, it is a level 3 REST API that implements the JSON:API specification. The API exposes a number of resources, one of them, the invoices resource, has a one to many relationship to the customer resource, a single customer resource is represented with the following JSON payload.
+Let's review the Chinook project I have been building for the last two years, as I mentioned before, it is a level 3 REST API that implements the JSON:API specification. The API exposes a number of resources, one of them, the invoices resource, has a one to one relationship to the customer resource, a single customer resource is represented with the following JSON payload.
 
 ```JSON
 {
