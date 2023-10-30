@@ -651,7 +651,7 @@ Oh yeah, that looks right, this is perfect, filtering appears to be working as e
 Goal achived.
 
 
-### Resources
+### Further Reading
 
 Here are a list of resource related to everything that I just talked about, these resource will come in handy if run into any issues.
 
@@ -660,3 +660,4 @@ Here are a list of resource related to everything that I just talked about, thes
 3) [Expression Trees](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/)
 4) [Giving Clarity to LINQ Queries by Extending Expressions](https://www.red-gate.com/simple-talk/development/dotnet-development/giving-clarity-to-linq-queries-by-extending-expressions/)
 5) [How Do I Create an Expression<Func<>> with Type Parameters from a Type Variable](https://stackoverflow.com/questions/25793736/how-do-i-create-an-expressionfunc-with-type-parameters-from-a-type-variable)
+5) [Dynamically Composing Expression Predicates](https://www.albahari.com/nutshell/predicatebuilder.aspx)

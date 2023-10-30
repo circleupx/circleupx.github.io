@@ -86,7 +86,7 @@ params:
         - name: "twitter"
           url: "https://twitter.com/circleupx"
         - name: "email"
-          url: "mailto:yunier@hey.com"  
+          url: "mailto:yunier@developtive.com"  
         - name: "rss"
           url: "rss"  
 
