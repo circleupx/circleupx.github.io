@@ -393,7 +393,7 @@ Forwarding from [::1]:8081 -> 80
 
 Great, let's test it out, I should be able to open my browser to http://localhost:8081, then navigate to the Fetch Data page and see the randomly generate weather forecast create by the API.
 
-![Blazor in Kubernetes](/post/2023/consul-service-mesh-in-kubernetes/blazor-in-kubernetes.png)
+![Blazor in Kubernetes](/post/2023/consul-service-mesh-in-kubernetes-part-1/blazor-in-kubernetes.png)
 
 As expected, it works, the Blazor App is running on Kubernetes and it is able to communicate with the Web API.
 
@@ -547,11 +547,11 @@ kubectl port-forward service/consul-server --namespace consul 8500:8500
 
 Then on a web browser navigate to [http://localhost:8500/ui/](http://localhost:8500/ui/), you should see the Consul UI as shown in the screenshot below.
 
-![Consul Running On Kubernetes](/post/2023/consul-service-mesh-in-kubernetes/consul-ui-running-on-kubernetes.png)
+![Consul Running On Kubernetes](/post/2023/consul-service-mesh-in-kubernetes-part-1/consul-ui-running-on-kubernetes.png)
 
 Next, let me confirm that the Blazor app is still up and running.
 
-![Blazor App Still Running](/post/2023/consul-service-mesh-in-kubernetes/blazor-still-running.png)
+![Blazor App Still Running](/post/2023/consul-service-mesh-in-kubernetes-part-1/blazor-still-running.png)
 
 And it is, great, while Consul has been installed successfully it is still not handling the network communication between the two pods. In order for Consul to handle the network communication between pods, the pods need to be added to the service mesh via pod annotation, see [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for more details. In Consul, the annotation required is **consul.hashicorp.com/connect-inject:"true"**.
 
@@ -572,7 +572,7 @@ podAnnotations:
 
 With the annotation now added to the deployment.yaml file, the app can be redeployed. After redeploying the app, and returning to the Consul UI, the frontend app should now be registered under Services as shown in the screenshot below. 
 
-![Frontend App Register In Consul](/post/2023/consul-service-mesh-in-kubernetes/frontend-app-in-consul.png)
+![Frontend App Register In Consul](/post/2023/consul-service-mesh-in-kubernetes-part-1/frontend-app-in-consul.png)
 
 Consul uses a mutating webhook, that is, an HTTP callback that allows third-party applications to modify Kubernetes Resources. When the frontend pod was scheduled, Kubernetes called Consul's mutating webhook, which allows Consul to look at the pod definition to see if it has the consul.hashicorp.com/connect-inject:"true" annotation, if it does, Consul modifies the pod to add a sidecar proxy.
 
@@ -585,7 +585,7 @@ podAnnotations:
 
 Redeploying the backend app and visiting the Consul UI shows the app was successfully registered, see the screenshot below.
 
-![Both apps in Consul](/post/2023/consul-service-mesh-in-kubernetes/both-apps-in-consul.png)
+![Both apps in Consul](/post/2023/consul-service-mesh-in-kubernetes-part-1/both-apps-in-consul.png)
 
 This means both apps are now secure by the Consul Service Mesh since Consul is secure by default, this also means that no traffic outside of the mesh may reach the apps, not very useful, but I'll change that in part 2 of this blog series.
 
