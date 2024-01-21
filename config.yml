@@ -79,7 +79,7 @@ params:
   homeInfoParams:
     Title: "Hello!"
     Content: >
-      Welcome to my blog, I'm a backend developer focusing at the moment on the .NET stack. 
+      Welcome to my blog,
       I use this blog to document ideas or concepts I have learned or might be currently learning.
 
   socialIcons:
