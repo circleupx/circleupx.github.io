@@ -27,3 +27,7 @@ In no particular order, here are my recommended list of books.
 19) [System Design Interview – An insider's guide](https://a.co/d/81sn78R)
 20) [Making Sense of Stream Processing](https://www.oreilly.com/library/view/making-sense-of/9781492042563/)
 21) [Patterns of Distributed Systems](https://a.co/d/foXKroJ)
+22) [Concurrency in Go](https://a.co/d/fFgUZ9C)
+23) [Fluent Python](https://a.co/d/d5EOxbE)
+24) [Hypermedia Systems](https://a.co/d/goM6rQa)
+25) [Learning Go](https://a.co/d/ix1U7xv)
