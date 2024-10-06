@@ -77,7 +77,7 @@ params:
         url: tags
 
   homeInfoParams:
-    Title: "Hello!"
+    Title: "Hi!"
     Content: >
       Welcome to my blog,
       I use this blog to document ideas or concepts I have learned or might be currently learning.
