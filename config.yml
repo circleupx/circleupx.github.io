@@ -85,8 +85,6 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/circleupx"
-    - name: "twitter"
-      url: "https://twitter.com/circleupx"
     - name: "email"
       url: "mailto:yunier@developtive.com"
     - name: "rss"
