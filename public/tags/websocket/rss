@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Websocket on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/websocket/</link>
-    <description>Recent content in Websocket on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 03 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/websocket/rss" rel="self" type="application/rss+xml" />
+    <title>Websocket on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/websocket/</link>
+    <description>Recent content in Websocket on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/websocket/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Asynchronous Request In GraphQL</title>
-      <link>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</link>
+      <link>http://localhost:1313/post/2021/asynchronous-request-in-graphql/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</guid>
-      <description>When I first started to learn about GraphQL I was somewhat surprise to learn that the GraphQL specification did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.
-For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.</description>
+      <guid>http://localhost:1313/post/2021/asynchronous-request-in-graphql/</guid>
+      <description>&lt;p&gt;When I first started to learn about GraphQL I was somewhat surprise to learn that the &lt;a href=&#34;https://spec.graphql.org/June2018/&#34;&gt;GraphQL specification&lt;/a&gt; did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.&lt;/p&gt;&#xA;&lt;p&gt;For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.00, or orders placed in certain date range, or orders that have a particular product and so on. Depending on the amount of data and filters used, the query to get the data may take a couple of minutes, maybe even hours. The question now becomes how to best handle long-running request in GraphQL.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

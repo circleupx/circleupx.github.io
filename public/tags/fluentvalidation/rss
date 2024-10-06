@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FluentValidation on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/fluentvalidation/</link>
-    <description>Recent content in FluentValidation on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 13 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/fluentvalidation/rss" rel="self" type="application/rss+xml" />
+    <title>FluentValidation on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/fluentvalidation/</link>
+    <description>Recent content in FluentValidation on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/fluentvalidation/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>A Practical Web API Validation Strategy</title>
-      <link>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</link>
+      <link>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</guid>
-      <description>In my last post I wrote about how you can leverage JSON Schema to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema.</description>
+      <guid>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://localhost:1313/post/2021/a-better-web-api-validation-strategy/&#34;&gt;last post&lt;/a&gt; I wrote about how you can leverage &lt;a href=&#34;https://json-schema.org/&#34;&gt;JSON Schema&lt;/a&gt; to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library &lt;a href=&#34;https://fluentvalidation.net/&#34;&gt;FluentValidation&lt;/a&gt; and exposing validation errors using &lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7807&#34;&gt;Problem Details&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

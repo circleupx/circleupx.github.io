@@ -1,469 +1,383 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/</link>
-    <description>Recent content in Tags on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/rss" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Consul</title>
-      <link>https://www.yunier.dev/tags/consul/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/consul/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Istio</title>
-      <link>https://www.yunier.dev/tags/istio/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/istio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://www.yunier.dev/tags/kubernetes/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Service Mesh</title>
-      <link>https://www.yunier.dev/tags/service-mesh/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/service-mesh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rules Engine</title>
-      <link>https://www.yunier.dev/tags/rules-engine/</link>
-      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/rules-engine/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>.NET</title>
-      <link>https://www.yunier.dev/tags/.net/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/.net/</guid>
-      <description></description>
-    </item>
-    
+    <title>Tags on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>JSON:API</title>
-      <link>https://www.yunier.dev/tags/jsonapi/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/jsonapi/</guid>
+      <link>http://localhost:1313/tags/jsonapi/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/jsonapi/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Arrays</title>
+      <link>http://localhost:1313/tags/arrays/</link>
+      <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/arrays/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Modulo</title>
+      <link>http://localhost:1313/tags/modulo/</link>
+      <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/modulo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Consul</title>
+      <link>http://localhost:1313/tags/consul/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/consul/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>http://localhost:1313/tags/kubernetes/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Service Mesh</title>
+      <link>http://localhost:1313/tags/service-mesh/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/service-mesh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rules Engine</title>
+      <link>http://localhost:1313/tags/rules-engine/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rules-engine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET</title>
+      <link>http://localhost:1313/tags/.net/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/.net/</guid>
+      <description></description>
+    </item>
     <item>
       <title>OpenAPI</title>
-      <link>https://www.yunier.dev/tags/openapi/</link>
+      <link>http://localhost:1313/tags/openapi/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/openapi/</guid>
+      <guid>http://localhost:1313/tags/openapi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Swagger</title>
-      <link>https://www.yunier.dev/tags/swagger/</link>
+      <link>http://localhost:1313/tags/swagger/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/swagger/</guid>
+      <guid>http://localhost:1313/tags/swagger/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Docker</title>
-      <link>https://www.yunier.dev/tags/docker/</link>
+      <link>http://localhost:1313/tags/docker/</link>
       <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/docker/</guid>
+      <guid>http://localhost:1313/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>WebApplicationFactory</title>
-      <link>https://www.yunier.dev/tags/webapplicationfactory/</link>
+      <link>http://localhost:1313/tags/webapplicationfactory/</link>
       <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/webapplicationfactory/</guid>
+      <guid>http://localhost:1313/tags/webapplicationfactory/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Optic</title>
-      <link>https://www.yunier.dev/tags/optic/</link>
+      <link>http://localhost:1313/tags/optic/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/optic/</guid>
+      <guid>http://localhost:1313/tags/optic/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>TypeScript</title>
-      <link>https://www.yunier.dev/tags/typescript/</link>
+      <link>http://localhost:1313/tags/typescript/</link>
       <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/typescript/</guid>
+      <guid>http://localhost:1313/tags/typescript/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tRPC</title>
-      <link>https://www.yunier.dev/tags/trpc/</link>
+      <title>TRPC</title>
+      <link>http://localhost:1313/tags/trpc/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/trpc/</guid>
+      <guid>http://localhost:1313/tags/trpc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Microk8s</title>
-      <link>https://www.yunier.dev/tags/microk8s/</link>
+      <link>http://localhost:1313/tags/microk8s/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/microk8s/</guid>
+      <guid>http://localhost:1313/tags/microk8s/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>WSL</title>
-      <link>https://www.yunier.dev/tags/wsl/</link>
+      <link>http://localhost:1313/tags/wsl/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/wsl/</guid>
+      <guid>http://localhost:1313/tags/wsl/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Patterns</title>
-      <link>https://www.yunier.dev/tags/patterns/</link>
+      <link>http://localhost:1313/tags/patterns/</link>
       <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/patterns/</guid>
+      <guid>http://localhost:1313/tags/patterns/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mockoon</title>
-      <link>https://www.yunier.dev/tags/mockoon/</link>
+      <link>http://localhost:1313/tags/mockoon/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/mockoon/</guid>
+      <guid>http://localhost:1313/tags/mockoon/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Code Coverage</title>
-      <link>https://www.yunier.dev/tags/code-coverage/</link>
+      <link>http://localhost:1313/tags/code-coverage/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/code-coverage/</guid>
+      <guid>http://localhost:1313/tags/code-coverage/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Flurl</title>
-      <link>https://www.yunier.dev/tags/flurl/</link>
+      <link>http://localhost:1313/tags/flurl/</link>
       <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/flurl/</guid>
+      <guid>http://localhost:1313/tags/flurl/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Newman</title>
-      <link>https://www.yunier.dev/tags/newman/</link>
+      <link>http://localhost:1313/tags/newman/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/newman/</guid>
+      <guid>http://localhost:1313/tags/newman/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Postman</title>
-      <link>https://www.yunier.dev/tags/postman/</link>
+      <link>http://localhost:1313/tags/postman/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/postman/</guid>
+      <guid>http://localhost:1313/tags/postman/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OAuth</title>
-      <link>https://www.yunier.dev/tags/oauth/</link>
+      <link>http://localhost:1313/tags/oauth/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/oauth/</guid>
+      <guid>http://localhost:1313/tags/oauth/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>REST</title>
-      <link>https://www.yunier.dev/tags/rest/</link>
+      <link>http://localhost:1313/tags/rest/</link>
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/rest/</guid>
+      <guid>http://localhost:1313/tags/rest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SQL</title>
-      <link>https://www.yunier.dev/tags/sql/</link>
+      <link>http://localhost:1313/tags/sql/</link>
       <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/sql/</guid>
+      <guid>http://localhost:1313/tags/sql/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Microservices</title>
-      <link>https://www.yunier.dev/tags/microservices/</link>
+      <link>http://localhost:1313/tags/microservices/</link>
       <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/microservices/</guid>
+      <guid>http://localhost:1313/tags/microservices/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Tools</title>
-      <link>https://www.yunier.dev/tags/tools/</link>
+      <link>http://localhost:1313/tags/tools/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/tools/</guid>
+      <guid>http://localhost:1313/tags/tools/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SQL Server</title>
-      <link>https://www.yunier.dev/tags/sql-server/</link>
+      <link>http://localhost:1313/tags/sql-server/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/sql-server/</guid>
+      <guid>http://localhost:1313/tags/sql-server/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>FluentValidation</title>
-      <link>https://www.yunier.dev/tags/fluentvalidation/</link>
+      <link>http://localhost:1313/tags/fluentvalidation/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/fluentvalidation/</guid>
+      <guid>http://localhost:1313/tags/fluentvalidation/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ProblemDetails</title>
-      <link>https://www.yunier.dev/tags/problemdetails/</link>
+      <link>http://localhost:1313/tags/problemdetails/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/problemdetails/</guid>
+      <guid>http://localhost:1313/tags/problemdetails/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>GraphQL</title>
-      <link>https://www.yunier.dev/tags/graphql/</link>
+      <link>http://localhost:1313/tags/graphql/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/graphql/</guid>
+      <guid>http://localhost:1313/tags/graphql/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>JSON Schema</title>
-      <link>https://www.yunier.dev/tags/json-schema/</link>
+      <link>http://localhost:1313/tags/json-schema/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/json-schema/</guid>
+      <guid>http://localhost:1313/tags/json-schema/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Node.js</title>
-      <link>https://www.yunier.dev/tags/node.js/</link>
+      <link>http://localhost:1313/tags/node.js/</link>
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/node.js/</guid>
+      <guid>http://localhost:1313/tags/node.js/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>BenchmarkDotNet</title>
-      <link>https://www.yunier.dev/tags/benchmarkdotnet/</link>
+      <link>http://localhost:1313/tags/benchmarkdotnet/</link>
       <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/benchmarkdotnet/</guid>
+      <guid>http://localhost:1313/tags/benchmarkdotnet/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ReadMe</title>
-      <link>https://www.yunier.dev/tags/readme/</link>
+      <link>http://localhost:1313/tags/readme/</link>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/readme/</guid>
+      <guid>http://localhost:1313/tags/readme/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>CSS</title>
-      <link>https://www.yunier.dev/tags/css/</link>
+      <link>http://localhost:1313/tags/css/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/css/</guid>
+      <guid>http://localhost:1313/tags/css/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>HTML</title>
-      <link>https://www.yunier.dev/tags/html/</link>
+      <link>http://localhost:1313/tags/html/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/html/</guid>
+      <guid>http://localhost:1313/tags/html/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Web Components</title>
-      <link>https://www.yunier.dev/tags/web-components/</link>
+      <link>http://localhost:1313/tags/web-components/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/web-components/</guid>
+      <guid>http://localhost:1313/tags/web-components/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Serilog</title>
-      <link>https://www.yunier.dev/tags/serilog/</link>
+      <link>http://localhost:1313/tags/serilog/</link>
       <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/serilog/</guid>
+      <guid>http://localhost:1313/tags/serilog/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Worker Services</title>
-      <link>https://www.yunier.dev/tags/worker-services/</link>
+      <link>http://localhost:1313/tags/worker-services/</link>
       <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/worker-services/</guid>
+      <guid>http://localhost:1313/tags/worker-services/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Playwright</title>
-      <link>https://www.yunier.dev/tags/playwright/</link>
+      <link>http://localhost:1313/tags/playwright/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/playwright/</guid>
+      <guid>http://localhost:1313/tags/playwright/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>a11y</title>
-      <link>https://www.yunier.dev/tags/a11y/</link>
+      <title>A11y</title>
+      <link>http://localhost:1313/tags/a11y/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/a11y/</guid>
+      <guid>http://localhost:1313/tags/a11y/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Parsing</title>
-      <link>https://www.yunier.dev/tags/parsing/</link>
+      <link>http://localhost:1313/tags/parsing/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/parsing/</guid>
+      <guid>http://localhost:1313/tags/parsing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Websocket</title>
-      <link>https://www.yunier.dev/tags/websocket/</link>
+      <link>http://localhost:1313/tags/websocket/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/websocket/</guid>
+      <guid>http://localhost:1313/tags/websocket/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Heroku</title>
-      <link>https://www.yunier.dev/tags/heroku/</link>
+      <link>http://localhost:1313/tags/heroku/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/heroku/</guid>
+      <guid>http://localhost:1313/tags/heroku/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>EF Core</title>
-      <link>https://www.yunier.dev/tags/ef-core/</link>
+      <link>http://localhost:1313/tags/ef-core/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/ef-core/</guid>
+      <guid>http://localhost:1313/tags/ef-core/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Query Tags</title>
-      <link>https://www.yunier.dev/tags/query-tags/</link>
+      <link>http://localhost:1313/tags/query-tags/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/query-tags/</guid>
+      <guid>http://localhost:1313/tags/query-tags/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Dream Machine</title>
-      <link>https://www.yunier.dev/tags/dream-machine/</link>
+      <link>http://localhost:1313/tags/dream-machine/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/dream-machine/</guid>
+      <guid>http://localhost:1313/tags/dream-machine/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SQLite</title>
-      <link>https://www.yunier.dev/tags/sqlite/</link>
+      <link>http://localhost:1313/tags/sqlite/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/sqlite/</guid>
+      <guid>http://localhost:1313/tags/sqlite/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>AcquireRequestState</title>
-      <link>https://www.yunier.dev/tags/acquirerequeststate/</link>
+      <link>http://localhost:1313/tags/acquirerequeststate/</link>
       <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/acquirerequeststate/</guid>
+      <guid>http://localhost:1313/tags/acquirerequeststate/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Session</title>
-      <link>https://www.yunier.dev/tags/session/</link>
+      <link>http://localhost:1313/tags/session/</link>
       <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/tags/session/</guid>
+      <guid>http://localhost:1313/tags/session/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

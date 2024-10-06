@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flurl on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/flurl/</link>
-    <description>Recent content in Flurl on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 01 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/flurl/rss" rel="self" type="application/rss+xml" />
+    <title>Flurl on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/flurl/</link>
+    <description>Recent content in Flurl on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/flurl/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Fun With Flurl</title>
-      <link>https://www.yunier.dev/post/2022/fun-with-flurl/</link>
+      <link>http://localhost:1313/post/2022/fun-with-flurl/</link>
       <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/fun-with-flurl/</guid>
-      <description>A few months ago I was looking for a new HTTP client to use within my applications. I first checked on awesome dotnet under the HTTP section to see what projects the .NET community is using instead of the default HTTP client. One that immediately stands out is RestSharp, this project has been around for a while and is overall a good choice, but I was looking for something new and fresh, that is when I came across Flurl.</description>
+      <guid>http://localhost:1313/post/2022/fun-with-flurl/</guid>
+      <description>&lt;p&gt;A few months ago I was looking for a new HTTP client to use within my applications. I first checked on &lt;a href=&#34;https://github.com/quozd/awesome-dotnet&#34;&gt;awesome dotnet&lt;/a&gt; under the &lt;a href=&#34;https://github.com/quozd/awesome-dotnet#http&#34;&gt;HTTP section&lt;/a&gt; to see what projects the .NET community is using instead of the default HTTP client. One that immediately stands out is &lt;a href=&#34;https://github.com/restsharp/RestSharp&#34;&gt;RestSharp&lt;/a&gt;, this project has been around for a while and is overall a good choice, but I was looking for something new and fresh, that is when I came across &lt;a href=&#34;https://flurl.dev/&#34;&gt;Flurl&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

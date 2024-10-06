@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ReadMe on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/readme/</link>
-    <description>Recent content in ReadMe on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 25 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/readme/rss" rel="self" type="application/rss+xml" />
+    <title>ReadMe on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/readme/</link>
+    <description>Recent content in ReadMe on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 25 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/readme/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Writing A Good ReadME Is A Skill</title>
-      <link>https://www.yunier.dev/post/2021/writing-a-good-readme-is-a-skill/</link>
+      <link>http://localhost:1313/post/2021/writing-a-good-readme-is-a-skill/</link>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/writing-a-good-readme-is-a-skill/</guid>
-      <description>Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project&amp;rsquo;s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project.</description>
+      <guid>http://localhost:1313/post/2021/writing-a-good-readme-is-a-skill/</guid>
+      <description>&lt;p&gt;Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project&amp;rsquo;s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

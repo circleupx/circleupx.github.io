@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Node.js on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/node.js/</link>
-    <description>Recent content in Node.js on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/node.js/rss" rel="self" type="application/rss+xml" />
+    <title>Node.js on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/node.js/</link>
+    <description>Recent content in Node.js on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/node.js/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving A CPU-Intensive Node.js App</title>
-      <link>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</link>
+      <link>http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/</link>
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</guid>
-      <description>Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user&amp;rsquo;s password, hashes it, and compares the result with the stored hashed password from the database.</description>
+      <guid>http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/</guid>
+      <description>&lt;p&gt;Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user&amp;rsquo;s password, hashes it, and compares the result with the stored hashed password from the database. Here is the code without the implementation details.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

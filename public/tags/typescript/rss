@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TypeScript on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/typescript/</link>
-    <description>Recent content in TypeScript on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/typescript/rss" rel="self" type="application/rss+xml" />
+    <title>TypeScript on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/typescript/</link>
+    <description>Recent content in TypeScript on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/typescript/rss" rel="self" type="application/rss+xml" />
     <item>
-      <title>Stricter Types in TypeScript</title>
-      <link>https://www.yunier.dev/post/2023/stricter-types-in-typescript/</link>
+      <title>Stricter Types In TypeScript</title>
+      <link>http://localhost:1313/post/2023/stricter-types-in-typescript/</link>
       <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/stricter-types-in-typescript/</guid>
-      <description>Recently TypeScript wizard Matt Pocock made a Twitter thread on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in TypeScript 5 but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.
-I first learned about opaque types from Evert Pot in his blog post Implementing an opaque type in typescript, though I guess now the TypeScript community prefers to call them branded types, the name doesn&amp;rsquo;t matter, the problem being solved is the same, preventing types from being interchangeable.</description>
+      <guid>http://localhost:1313/post/2023/stricter-types-in-typescript/</guid>
+      <description>&lt;p&gt;Recently TypeScript &lt;a href=&#34;https://www.totaltypescript.com/&#34;&gt;wizard&lt;/a&gt; &lt;a href=&#34;https://twitter.com/mattpocockuk&#34;&gt;Matt Pocock&lt;/a&gt; made a &lt;a href=&#34;https://twitter.com/mattpocockuk/status/1625173884885401600&#34;&gt;Twitter thread&lt;/a&gt; on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in &lt;a href=&#34;https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/&#34;&gt;TypeScript 5&lt;/a&gt; but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.&lt;/p&gt;&#xA;&lt;p&gt;I first learned about opaque types from &lt;a href=&#34;https://evertpot.com/opaque-ts-types/&#34;&gt;Evert Pot&lt;/a&gt; in his blog post &lt;a href=&#34;https://evertpot.com/opaque-ts-types/&#34;&gt;Implementing an opaque type in typescript&lt;/a&gt;, though I guess now the TypeScript community prefers to call them branded types, the name doesn&amp;rsquo;t matter, the problem being solved is the same, preventing types from being interchangeable.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

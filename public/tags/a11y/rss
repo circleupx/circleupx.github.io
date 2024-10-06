@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>a11y on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/a11y/</link>
-    <description>Recent content in a11y on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/a11y/rss" rel="self" type="application/rss+xml" />
+    <title>A11y on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/a11y/</link>
+    <description>Recent content in A11y on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/a11y/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Accessibility Testing in Playwright</title>
-      <link>https://www.yunier.dev/post/2021/accessibility-testing-with-playwright/</link>
+      <link>http://localhost:1313/post/2021/accessibility-testing-with-playwright/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/accessibility-testing-with-playwright/</guid>
-      <description>I don&amp;rsquo;t believe I&amp;rsquo;ve mention this before here, but I am a huge fan of Hey. By far the best email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various tweets or blog post like Scaling the hottest app in tech on AWS and Kubernetes which outline how they use k8s. Recently, they shared how to tackle ay11 under hey accessibility is a lot of work.</description>
+      <guid>http://localhost:1313/post/2021/accessibility-testing-with-playwright/</guid>
+      <description>&lt;p&gt;I don&amp;rsquo;t believe I&amp;rsquo;ve mention this before here, but I am a huge fan of &lt;a href=&#34;https://hey.com/&#34;&gt;Hey&lt;/a&gt;. By far the &lt;strong&gt;best&lt;/strong&gt; email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various &lt;a href=&#34;https://twitter.com/dhh/status/1275901955995385856&#34;&gt;tweets&lt;/a&gt; or blog post like &lt;a href=&#34;https://acloudguru.com/blog/engineering/scaling-the-hottest-app-in-tech-on-aws-and-kubernetes&#34;&gt;Scaling the hottest app in tech on AWS and Kubernetes&lt;/a&gt; which outline how they use k8s. Recently, they shared how to tackle ay11 under &lt;a href=&#34;https://world.hey.com/michael/hey-accessibility-is-a-lot-of-work-785ec5cf&#34;&gt;hey accessibility is a lot of work&lt;/a&gt;. One thing that stood out was to me was their usage of &lt;a href=&#34;https://github.com/dequelabs/axe-core&#34;&gt;axe-core&lt;/a&gt;. Axe-core is an accessibility engine for automated Web UI testing. Which reminded me of &lt;a href=&#34;https://playwright.dev/&#34;&gt;playwright&lt;/a&gt;, so I started to wonder if the two could be combined, turns out they can be. Let&amp;rsquo;s explore how to do that.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

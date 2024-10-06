@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SQLite on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/sqlite/</link>
-    <description>Recent content in SQLite on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/sqlite/rss" rel="self" type="application/rss+xml" />
+    <title>SQLite on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/sqlite/</link>
+    <description>Recent content in SQLite on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sqlite/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>SQLite - No Such Table Error</title>
-      <link>https://www.yunier.dev/post/2020/sqlite-no-such-table-error/</link>
+      <link>http://localhost:1313/post/2020/sqlite-no-such-table-error/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/sqlite-no-such-table-error/</guid>
-      <description>Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
-As you can see from the exception, the error is &amp;ldquo;SQLite Error 1: &amp;rsquo;no such table vPet&amp;rsquo;&amp;rdquo; which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
-Here is my PetsDbContext.
-public class PetsDbContext : DbContext { // Rest of code omitted for brevity public DbSet&amp;lt;Pet&amp;gt; Pets { get; set; } public PetsDbContext() { } public PetsDbContext(DbContextOptions&amp;lt;PetsDbContext&amp;gt; options) : base(options) { } protected override void OnModelCreating(ModelBuilder modelBuilder) { // Rest of code omitted for brevity modelBuilder.</description>
+      <guid>http://localhost:1313/post/2020/sqlite-no-such-table-error/</guid>
+      <description>&lt;p&gt;Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/sqlite-no-such-table-error/pet-exception.PNG&#34; alt=&#34;Pet Exception&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;As you can see from the exception, the error is &lt;strong&gt;&amp;ldquo;SQLite Error 1: &amp;rsquo;no such table vPet&amp;rsquo;&amp;rdquo;&lt;/strong&gt; which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.&lt;/p&gt;&#xA;&lt;p&gt;Here is my PetsDbContext.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

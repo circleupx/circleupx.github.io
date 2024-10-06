@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Postman on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/postman/</link>
-    <description>Recent content in Postman on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 20 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/postman/rss" rel="self" type="application/rss+xml" />
+    <title>Postman on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/postman/</link>
+    <description>Recent content in Postman on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/postman/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Newman - Function Is Not Defined</title>
-      <link>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</link>
+      <link>http://localhost:1313/post/2022/newman-function-is-not-defined/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</guid>
-      <description>The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.
-if(pm.request.body.isEmpty){ // Code Omitted For Brevity } One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman.</description>
+      <guid>http://localhost:1313/post/2022/newman-function-is-not-defined/</guid>
+      <description>&lt;p&gt;The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;pm&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Code Omitted For Brevity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman. For example, the script above, which was written in Postman, is part of a series of tests that inspects the HTTP request body. The script can fail when executed on Newman because the function isEmpty does not exist.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

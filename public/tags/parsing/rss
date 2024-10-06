@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Parsing on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/parsing/</link>
-    <description>Recent content in Parsing on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/parsing/rss" rel="self" type="application/rss+xml" />
+    <title>Parsing on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/parsing/</link>
+    <description>Recent content in Parsing on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/parsing/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Parsing in C#</title>
-      <link>https://www.yunier.dev/post/2021/parsing-in-csharp/</link>
+      <link>http://localhost:1313/post/2021/parsing-in-csharp/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/parsing-in-csharp/</guid>
-      <description>I am currently building a JSON:API driven API on .NET 5, the project is called Chinook after the Sqlite Chinook project. The API is mature enough for me to introduce filtering via the Filter query parameter used in JSON:API.
-I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause.</description>
+      <guid>http://localhost:1313/post/2021/parsing-in-csharp/</guid>
+      <description>&lt;p&gt;I am currently building a &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; driven API on &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet/5.0&#34;&gt;.NET 5&lt;/a&gt;, the project is called &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook&lt;/a&gt; after the Sqlite Chinook project. The API is mature enough for me to introduce &lt;a href=&#34;https://jsonapi.org/format/#fetching-filtering&#34;&gt;filtering&lt;/a&gt; via the &lt;a href=&#34;https://jsonapi.org/recommendations/#filtering&#34;&gt;Filter&lt;/a&gt; query parameter used in JSON:API.&lt;/p&gt;&#xA;&lt;p&gt;I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause. For example, take the following API request, it uses the &lt;a href=&#34;https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361038&#34;&gt;OData&lt;/a&gt; filter syntax.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BenchmarkDotNet on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/benchmarkdotnet/</link>
-    <description>Recent content in BenchmarkDotNet on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 28 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/benchmarkdotnet/rss" rel="self" type="application/rss+xml" />
+    <title>BenchmarkDotNet on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/benchmarkdotnet/</link>
+    <description>Recent content in BenchmarkDotNet on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/benchmarkdotnet/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>The Order Of Interfaces Impacts Performace</title>
-      <link>https://www.yunier.dev/post/2021/the-order-of-interfaces-impacts-performance/</link>
+      <link>http://localhost:1313/post/2021/the-order-of-interfaces-impacts-performance/</link>
       <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/the-order-of-interfaces-impacts-performance/</guid>
-      <description>I was looking through some of my bookmarked Github issues when I rediscovered issue #32488, in that issue a comment was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the .NET CLR all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk.</description>
+      <guid>http://localhost:1313/post/2021/the-order-of-interfaces-impacts-performance/</guid>
+      <description>&lt;p&gt;I was looking through some of my bookmarked Github issues when I rediscovered issue &lt;a href=&#34;https://github.com/dotnet/runtime/pull/32488&#34;&gt;#32488&lt;/a&gt;, in that issue a &lt;a href=&#34;https://github.com/dotnet/runtime/pull/32488#discussion_r380818002&#34;&gt;comment&lt;/a&gt; was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/standard/clr&#34;&gt;.NET CLR&lt;/a&gt; all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

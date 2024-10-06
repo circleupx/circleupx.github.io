@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Session on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/session/</link>
-    <description>Recent content in Session on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/session/rss" rel="self" type="application/rss+xml" />
+    <title>Session on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/session/</link>
+    <description>Recent content in Session on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 03 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/session/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>The Problem With AcquireRequestState</title>
-      <link>https://www.yunier.dev/post/2020/the-problem-with-acquirerequeststate/</link>
+      <link>http://localhost:1313/post/2020/the-problem-with-acquirerequeststate/</link>
       <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/the-problem-with-acquirerequeststate/</guid>
-      <description>In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.
-AcquireRequestState is part of the ASP.NET Life Cycle, this is an event raised by the HttpApplication, it keeps session state in sync. Though I suspect that most developers are familiar with this event for being a major performance pain in their .</description>
+      <guid>http://localhost:1313/post/2020/the-problem-with-acquirerequeststate/</guid>
+      <description>&lt;p&gt;In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.&lt;/p&gt;&#xA;&lt;p&gt;AcquireRequestState is part of the ASP.NET &lt;a href=&#34;https://docs.microsoft.com/en-us/previous-versions/aspnet/bb470252(v=vs.100)&#34;&gt;Life Cycle&lt;/a&gt;, this is an event raised by the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/system.web.httpapplication?redirectedfrom=MSDN&amp;view=netframework-4.8&#34;&gt;HttpApplication&lt;/a&gt;, it keeps session state in sync. Though I suspect that most developers are familiar with this event for being a major performance pain in their .NET Framework application, as documented &lt;a href=&#34;https://stackoverflow.com/questions/30066925/long-delays-in-acquirerequeststate&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://discuss.newrelic.com/t/acquirerequeststate-is-delaying-response-times-web-api/38229&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://stackoverflow.com/questions/3629709/i-just-discovered-why-all-asp-net-websites-are-slow-and-i-am-trying-to-work-out&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://stackoverflow.com/questions/8349033/storing-anything-in-asp-net-session-causes-500ms-delays&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/35133150/newrelic-async-http-handler-and-acquirerequeststate&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

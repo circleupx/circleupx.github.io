@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Consul | Yunier&#39;s Blog</title>
+<title>Consul | Yunier&#39;s Wiki</title>
 <meta name="keywords" content="">
 <meta name="description" content="Documenting my adventures in software development.">
 <meta name="author" content="Yunier">
-<link rel="canonical" href="https://www.yunier.dev/series/consul/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.62aa25427797f8efd87301a5b69795dc50df2dbe79a5fba0648cc7bb8dbcd7c9.css" integrity="sha256-YqolQneX&#43;O/YcwGltpeV3FDfLb55pfugZIzHu42818k=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://www.yunier.dev/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://www.yunier.dev/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://www.yunier.dev/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://www.yunier.dev/apple-touch-icon.png">
-<link rel="mask-icon" href="https://www.yunier.dev/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/series/consul/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://www.yunier.dev/series/consul/rss">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/series/consul/rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/series/consul/">
 <noscript>
     <style>
         #theme-toggle,
@@ -30,11 +31,13 @@
 </noscript><meta property="og:title" content="Consul" />
 <meta property="og:description" content="Documenting my adventures in software development." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yunier.dev/series/consul/" /><meta property="og:image" content="https://www.yunier.dev/papermod-cover.png"/>
+<meta property="og:url" content="http://localhost:1313/series/consul/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.yunier.dev/papermod-cover.png"/>
 
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
 <meta name="twitter:title" content="Consul"/>
 <meta name="twitter:description" content="Documenting my adventures in software development."/>
 
@@ -51,7 +54,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://www.yunier.dev" accesskey="h" title="Yunier&#39;s Blog (Alt + H)">Yunier&#39;s Blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -77,22 +80,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://www.yunier.dev/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.yunier.dev/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.yunier.dev/series/" title="Series">
+                <a href="http://localhost:1313/series/" title="Series">
                     <span>Series</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.yunier.dev/reading-list" title="Reading List">
+                <a href="http://localhost:1313/reading-list" title="Reading List">
                     <span>Reading List</span>
                 </a>
             </li>
@@ -100,7 +103,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://www.yunier.dev">Home</a>&nbsp;»&nbsp;<a href="https://www.yunier.dev/series/">Series</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/series/">Series</a></div>
   <h1>
     Consul
   </h1>
@@ -108,32 +111,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Consul Service Mesh in Kubernetes - Part 2
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Introduction Consul Ingress Gateway Sevice Discovery Conclusion </p>
-  </div>
-  <footer class="entry-footer"><span title='2023-06-15 00:00:00 +0000 UTC'>June 15, 2023</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Consul Service Mesh in Kubernetes - Part 2" href="https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Consul Service Mesh in Kubernetes - Part 1
+    <h2 class="entry-hint-parent">Consul Service Mesh in Kubernetes - Part 1
     </h2>
   </header>
   <div class="entry-content">
     <p>Introduction I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
-Kubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp’s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support....</p>
+Kubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp’s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-05-28 00:00:00 +0000 UTC'>May 28, 2023</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Consul Service Mesh in Kubernetes - Part 1" href="https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/"></a>
+  <a class="entry-link" aria-label="post link to Consul Service Mesh in Kubernetes - Part 1" href="http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://www.yunier.dev">Yunier&#39;s Blog</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

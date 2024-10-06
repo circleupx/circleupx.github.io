@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Heroku on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/heroku/</link>
-    <description>Recent content in Heroku on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/heroku/rss" rel="self" type="application/rss+xml" />
+    <title>Heroku on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/heroku/</link>
+    <description>Recent content in Heroku on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/heroku/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Chinook Project Hosted On Heroku</title>
-      <link>https://www.yunier.dev/post/2021/chinook-project-hosted-on-heroku/</link>
+      <link>http://localhost:1313/post/2021/chinook-project-hosted-on-heroku/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/chinook-project-hosted-on-heroku/</guid>
-      <description>My Chinook JSON:API project is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, https://chinook-jsonapi.herokuapp.com/, I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using JSON Viewer.
-Remember, the API does not support filtering, pagination, sorting or include resolvers and it only supports READ operations.</description>
+      <guid>http://localhost:1313/post/2021/chinook-project-hosted-on-heroku/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook JSON:API project&lt;/a&gt; is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, &lt;a href=&#34;https://chinook-jsonapi.herokuapp.com/&#34;&gt;https://chinook-jsonapi.herokuapp.com/&lt;/a&gt;, I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using &lt;a href=&#34;https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh&#34;&gt;JSON Viewer&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Remember, the API does not support filtering, pagination, sorting or include resolvers and it only supports READ operations. I&amp;rsquo;m hoping to add filtering soon but I first want to dedicate a blog post or two on building dynamic LINQ queries using expression trees. That should be fun!&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

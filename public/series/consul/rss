@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Consul on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/series/consul/</link>
-    <description>Recent content in Consul on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/series/consul/rss" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Consul Service Mesh in Kubernetes - Part 2</title>
-      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</guid>
-      <description>Introduction Consul Ingress Gateway Sevice Discovery Conclusion </description>
-    </item>
-    
+    <title>Consul on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/series/consul/</link>
+    <description>Recent content in Consul on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/consul/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Consul Service Mesh in Kubernetes - Part 1</title>
-      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</link>
+      <link>http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/</link>
       <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</guid>
-      <description>Introduction I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
-Kubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp&amp;rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.</description>
+      <guid>http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://thechief.io/c/editorial/top-14-kubernetes-service-meshes/&#34;&gt;Kubernetes offers a wide range of Service Meshes&lt;/a&gt;, in this blog post I am going to concentrate on HashiCorp&amp;rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

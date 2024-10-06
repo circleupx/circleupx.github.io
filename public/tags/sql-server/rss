@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SQL Server on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/sql-server/</link>
-    <description>Recent content in SQL Server on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 13 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/sql-server/rss" rel="self" type="application/rss+xml" />
+    <title>SQL Server on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/sql-server/</link>
+    <description>Recent content in SQL Server on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 13 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sql-server/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Sort Functions Are Non-Deterministic</title>
-      <link>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</link>
+      <link>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</guid>
-      <description>When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.
-From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, like SQL Server, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.</description>
+      <guid>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</guid>
+      <description>&lt;p&gt;When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.&lt;/p&gt;&#xA;&lt;p&gt;From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, &lt;a href=&#34;https://docs.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?redirectedfrom=MSDN&amp;view=sql-server-ver15#arguments&#34;&gt;like SQL Server&lt;/a&gt;, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SQL on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/sql/</link>
-    <description>Recent content in SQL on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/sql/rss" rel="self" type="application/rss+xml" />
+    <title>SQL on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/sql/</link>
+    <description>Recent content in SQL on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sql/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Faster Web API Pagination</title>
-      <link>https://www.yunier.dev/post/2022/faster-web-api-pagination/</link>
+      <link>http://localhost:1313/post/2022/faster-web-api-pagination/</link>
       <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/faster-web-api-pagination/</guid>
-      <description>A few weeks ago I came across a blog post from Aaron Francis in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in High Performance MySQL: Proven Strategies for Operating at Scale.
-The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an OFFSET to skip over a number of records, however, even though the results are skipped, the database must still fetch those records.</description>
+      <guid>http://localhost:1313/post/2022/faster-web-api-pagination/</guid>
+      <description>&lt;p&gt;A few weeks ago I came across a blog &lt;a href=&#34;https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins&#34;&gt;post&lt;/a&gt; from &lt;a href=&#34;https://aaronfrancis.com/&#34;&gt;Aaron Francis&lt;/a&gt; in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in &lt;a href=&#34;https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519&#34;&gt;High Performance MySQL: Proven Strategies for Operating at Scale&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an &lt;a href=&#34;https://www.geeksforgeeks.org/sql-offset-fetch-clause/&#34;&gt;OFFSET&lt;/a&gt; to skip over a number of records, however, even though the results are skipped, the database must still fetch those records. Meaning we are reading data from the disk and immediately discarding it. This is an inefficient process and is what causes pagination performance to degrade as you paginate over more records.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

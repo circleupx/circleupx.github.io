@@ -1,601 +1,432 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/</link>
-    <description>Recent content on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/rss" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Consul Service Mesh in Kubernetes - Part 2</title>
-      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-2/</guid>
-      <description>Introduction Consul Ingress Gateway Sevice Discovery Conclusion </description>
-    </item>
-    
-    <item>
-      <title>Linkerd Service Mesh in Kubernetes</title>
-      <link>https://www.yunier.dev/post/2023/istio-service-mesh-in-kubernetes/</link>
-      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/istio-service-mesh-in-kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Consul Service Mesh in Kubernetes - Part 1</title>
-      <link>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</link>
-      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/consul-service-mesh-in-kubernetes-part-1/</guid>
-      <description>Introduction I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.
-Kubernetes offers a wide range of Service Meshes, in this blog post I am going to concentrate on HashiCorp&amp;rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.</description>
-    </item>
-    
-    <item>
-      <title>Rule Engines In .NET</title>
-      <link>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</link>
-      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</guid>
-      <description>Introduction I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.
-To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations.</description>
-    </item>
-    
+    <title>Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>JSON:API Implementing Filtering</title>
-      <link>https://www.yunier.dev/post/2023/json-api-implementing-filtering/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/json-api-implementing-filtering/</guid>
-      <description>It has been over a year since I last wrote about JSON:API, since then the team behind JSON:API has published verision 1.1. I want to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature into my Chinook JSON:API project, filterting.
-The first thing to know about filtering in JSON:API is that the spec itsel its agnostic to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API.</description>
+      <link>http://localhost:1313/post/2023/json-api-implementing-filtering/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/json-api-implementing-filtering/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;It has been over &lt;a href=&#34;http://localhost:1313/post/2022/json-api-pagination-links/&#34;&gt;a year since I last wrote&lt;/a&gt; about JSON:API, since then the &lt;a href=&#34;https://jsonapi.org/about/#editors&#34;&gt;team&lt;/a&gt; behind JSON:API has published version 1.1 of the JSON:API specification. I would like to continue my journey of documenting JOSN:API in .NET by introducing a really cool feature to my &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook JSON:API&lt;/a&gt; project, filtering.&lt;/p&gt;&#xA;&lt;p&gt;The first thing to know about filtering in JSON:API is that the spec itself &lt;a href=&#34;https://jsonapi.org/format/#fetching-filtering&#34;&gt;is agnostic&lt;/a&gt; to any filtering strategies. Meaning it is up to you to define how filtering should be handled by your API. In my opinion, this has always been a drawback of the JSON:API spec, I believe in that it would have been a better choice for the spec if it had decided on a filtering strategy, but that is discussion for another day. While the spec does not favor any filtering strategy it does have some &lt;a href=&#34;https://jsonapi.org/recommendations/#filtering&#34;&gt;recommendations&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>Use a custom OpenAPI specification file in .NET</title>
-      <link>https://www.yunier.dev/post/2023/use-a-custom-openapi-specification-file-in-.net/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/use-a-custom-openapi-specification-file-in-.net/</guid>
-      <description>.NET has the ability to auto-generated OpenAPI specifications based on your code. You can use different decorators on your code like ProducesResponseTypeAttribute or ConsumesAttribute to produce more descriptive response details for web API help pages generated by tools like Swagger.
-What if you didn&amp;rsquo;t want to use the autogenerated spec, what if you instead wanted to expose an already written spec, perhaps because you follow an API-first approach to building an API instead of a Code-First approach.</description>
+      <title>Circular Arrays</title>
+      <link>http://localhost:1313/post/2023/circular-arrays/</link>
+      <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/circular-arrays/</guid>
+      <description>&lt;p&gt;Most developers are familiar with the &lt;a href=&#34;https://en.wikipedia.org/wiki/Modulo&#34;&gt;modulo opertor&lt;/a&gt;, it is often presented in an example that determines if a number is odd or even as shown in the code below taken from &lt;a href=&#34;https://stackoverflow.com/questions/6211613/testing-whether-a-value-is-odd-or-even&#34;&gt;Testing whether a value is odd or even&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-JavaScript&#34; data-lang=&#34;JavaScript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isEven&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isOdd&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;abs&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Determining if a number is odd or even is just one use case for the modulo operator. Another use case that I learn a while back is that you can use the modulo operator to set a range, a boundary if you will, allowing you to rotate the array, this is because fundamentally A mod B is between 0 and B - 1 or another way to think about it, &lt;strong&gt;0 &amp;lt;= A &amp;lt; B&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>Power Up Integration Tests with Test Containers</title>
-      <link>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</link>
+      <title>Go - Multiple Return Values</title>
+      <link>http://localhost:1313/post/2023/go-multiple-return-values/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/go-multiple-return-values/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been spending the last few weeks learning &lt;a href=&#34;https://go.dev/learn/&#34;&gt;Go&lt;/a&gt; by reading &lt;a href=&#34;https://a.co/d/dlJyukR&#34;&gt;Learning Go&lt;/a&gt; by &lt;a href=&#34;https://www.amazon.com/stores/Jon-Bodner/author/B08SWGN5NN&#34;&gt;Jon Bodner&lt;/a&gt;, so far I&amp;rsquo;ve been enjoying learning about Go, though there is still one thing I keep tripping over, in Go, you can return one or more values, for me Go is the first language that I have worked with that does that, in every other language I had to introduce a custom discriminating union to achieve what Go does natively.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Consul Service Mesh in Kubernetes - Part 1</title>
+      <link>http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/</link>
+      <pubDate>Sun, 28 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I have been spending my last few weeks sharpening up my Kubernetes skills, one area that I focused on was how to enable and use a Service Mesh in Kubernetes. A service mesh is a layer in your infrastructure that enables control of inbound and outboard traffic. It controls the traffic of any app or service that uses the network.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://thechief.io/c/editorial/top-14-kubernetes-service-meshes/&#34;&gt;Kubernetes offers a wide range of Service Meshes&lt;/a&gt;, in this blog post I am going to concentrate on HashiCorp&amp;rsquo;s service mesh offering, Consul, though you may see other refer to it as Consul Connect, Consul Connect is a set of features that were added to Consul was in 2018 to enable service mesh support.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rule Engines In .NET</title>
+      <link>http://localhost:1313/post/2023/rule-engines-in-dotnet/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/rule-engines-in-dotnet/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.&lt;/p&gt;&#xA;&lt;p&gt;To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations. In .NET the most well-known rules engine is probably &lt;a href=&#34;https://nrules.net/&#34;&gt;NRules&lt;/a&gt;, the project has been around for some years and has good documentation. I also know that Microsoft created its own rules engine, &lt;a href=&#34;https://microsoft.github.io/RulesEngine/&#34;&gt;RulesEngine&lt;/a&gt; back in 2019. Then per &lt;a href=&#34;https://github.com/quozd/awesome-dotnet&#34;&gt;awesome-dotnet&lt;/a&gt; I could use &lt;a href=&#34;https://github.com/sang-hyeon/Plastic&#34;&gt;Plastic&lt;/a&gt; or &lt;a href=&#34;https://github.com/peasy/Peasy.NET&#34;&gt;Peasy.NET&lt;/a&gt; but I opted out on looking at those projects, for my use case I think NRules or RulesEngine will do.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Use Custom OpenAPI Specification File In .NET</title>
+      <link>http://localhost:1313/post/2023/use-custom-openapi-specification-file-in-.net/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/2023/use-custom-openapi-specification-file-in-.net/</guid>
+      <description>&lt;p&gt;.NET has the ability to auto-generated &lt;a href=&#34;https://swagger.io/specification/&#34;&gt;OpenAPI specifications&lt;/a&gt; based on your code. You can use different decorators on your code like &lt;a href=&#34;https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.producesresponsetypeattribute?view=aspnetcore-7.0&#34;&gt;ProducesResponseTypeAttribute&lt;/a&gt; or &lt;a href=&#34;https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.consumesattribute?view=aspnetcore-7.0&#34;&gt;ConsumesAttribute&lt;/a&gt; to produce more descriptive response details for web API help pages generated by tools like Swagger.&lt;/p&gt;&#xA;&lt;p&gt;What if you didn&amp;rsquo;t want to use the autogenerated spec, what if you instead wanted to expose an already written spec, perhaps because you follow an &lt;a href=&#34;https://blog.postman.com/what-is-api-first-design/&#34;&gt;API-first&lt;/a&gt; approach to building an API instead of a Code-First approach. How would you expose that OpenAPI file?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Power Up Integration Tests With Test Containers</title>
+      <link>http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/</link>
       <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</guid>
-      <description>Introduction In my blog post Integration Testing Using WebApplicationFactory I spoke about the benefits of testing a .NET Core Web API using WebApplicationFactory. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.
-The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client.</description>
+      <guid>http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;In my blog post &lt;a href=&#34;http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/&#34;&gt;Integration Testing Using WebApplicationFactory&lt;/a&gt; I spoke about the benefits of testing a .NET Core Web API using &lt;a href=&#34;https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-7.0&#34;&gt;WebApplicationFactory&lt;/a&gt;. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.&lt;/p&gt;&#xA;&lt;p&gt;The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client. One drawback of using WebApplicationFactory would be having to mock API dependencies, for example, the database. A common option for .NET developers using a relational database like SQL Server is to use SQLite in the integration tests, however, even that solution suffers from other drawbacks, our friend Jimmy Bogard goes into more detail in his blog &lt;a href=&#34;https://jimmybogard.com/avoid-in-memory-databases-for-tests/&#34;&gt;Avoid In-Memory Databases for Tests&lt;/a&gt;. What if instead of faking the database we actually used a real live database in our integration tests? There is a way, how? Well, with Docker.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>Tracking API changes with Optic</title>
-      <link>https://www.yunier.dev/post/2023/optic/</link>
+      <title>Tracking API Changes With Optic</title>
+      <link>http://localhost:1313/post/2023/optic/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/optic/</guid>
-      <description>Over the last few months, I have been brushing up on API testing, specifically around contract testing.
-According to Postman, an API contract is a human- and machine-readable representation of an API&amp;rsquo;s intended functionality. It establishes a single source of truth for what each request and response should look like—and forms the basis of service-level agreements (SLAs) between producers and consumers. API contract testing helps ensure that new releases don&amp;rsquo;t violate the contract by checking the content and format of requests and responses.</description>
+      <guid>http://localhost:1313/post/2023/optic/</guid>
+      <description>&lt;p&gt;Over the last few months, I have been brushing up on &lt;a href=&#34;https://www.postman.com/api-platform/api-testing/&#34;&gt;API testing&lt;/a&gt;, specifically around contract testing.&lt;/p&gt;&#xA;&lt;p&gt;According to Postman, an API contract is a human- and machine-readable representation of an API&amp;rsquo;s intended functionality. It establishes a single source of truth for what each request and response should look like—and forms the basis of service-level agreements (SLAs) between producers and consumers. API contract testing helps ensure that new releases don&amp;rsquo;t violate the contract by checking the content and format of requests and responses.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>Stricter Types in TypeScript</title>
-      <link>https://www.yunier.dev/post/2023/stricter-types-in-typescript/</link>
+      <title>Stricter Types In TypeScript</title>
+      <link>http://localhost:1313/post/2023/stricter-types-in-typescript/</link>
       <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/stricter-types-in-typescript/</guid>
-      <description>Recently TypeScript wizard Matt Pocock made a Twitter thread on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in TypeScript 5 but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.
-I first learned about opaque types from Evert Pot in his blog post Implementing an opaque type in typescript, though I guess now the TypeScript community prefers to call them branded types, the name doesn&amp;rsquo;t matter, the problem being solved is the same, preventing types from being interchangeable.</description>
+      <guid>http://localhost:1313/post/2023/stricter-types-in-typescript/</guid>
+      <description>&lt;p&gt;Recently TypeScript &lt;a href=&#34;https://www.totaltypescript.com/&#34;&gt;wizard&lt;/a&gt; &lt;a href=&#34;https://twitter.com/mattpocockuk&#34;&gt;Matt Pocock&lt;/a&gt; made a &lt;a href=&#34;https://twitter.com/mattpocockuk/status/1625173884885401600&#34;&gt;Twitter thread&lt;/a&gt; on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in &lt;a href=&#34;https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/&#34;&gt;TypeScript 5&lt;/a&gt; but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.&lt;/p&gt;&#xA;&lt;p&gt;I first learned about opaque types from &lt;a href=&#34;https://evertpot.com/opaque-ts-types/&#34;&gt;Evert Pot&lt;/a&gt; in his blog post &lt;a href=&#34;https://evertpot.com/opaque-ts-types/&#34;&gt;Implementing an opaque type in typescript&lt;/a&gt;, though I guess now the TypeScript community prefers to call them branded types, the name doesn&amp;rsquo;t matter, the problem being solved is the same, preventing types from being interchangeable.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>tRPC</title>
-      <link>https://www.yunier.dev/post/2023/trpc/</link>
+      <link>http://localhost:1313/post/2023/trpc/</link>
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/trpc/</guid>
-      <description>In the last few months, my Twitter feed has been dominated by one topic, tRPC. tRPC is a library that provides type-safety between your front end and backend, in theory, it allows you to quickly build applications.
-In today&amp;rsquo;s post, I would like to explore tRPC, its capabilities and features, and how it could be used in a project. To get started, I will create a new Node.js app using Express.</description>
+      <guid>http://localhost:1313/post/2023/trpc/</guid>
+      <description>&lt;p&gt;In the last few months, my Twitter feed has been dominated by one topic, tRPC. &lt;a href=&#34;https://trpc.io/&#34;&gt;tRPC&lt;/a&gt; is a library that provides type-safety between your front end and backend, in theory, it allows you to quickly build applications.&lt;/p&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s post, I would like to explore tRPC, its capabilities and features, and how it could be used in a project. To get started, I will create a new Node.js app using &lt;a href=&#34;https://expressjs.com/&#34;&gt;Express&lt;/a&gt;. If you prefer to use React or Next.js see &lt;a href=&#34;https://trpc.io/docs/quickstart#next-steps&#34;&gt;the official docs&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using AutoFixture</title>
-      <link>https://www.yunier.dev/post/2023/using-autofixture/</link>
+      <link>http://localhost:1313/post/2023/using-autofixture/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/using-autofixture/</guid>
-      <description>I enjoy writing unit tests and any tools that make writing tests easier are appreciated. For the last year, I have incorporated AutoFixture into all of my unit tests. I have found AutoFixture to be an excellent tool, it changed the way I approach the &amp;ldquo;Arrange&amp;rdquo; phase.
-Previously, my arrange phase involved manually assigning values to properties, in a small class that is referenced by a few tests, you may tolerate manually assigning values.</description>
+      <guid>http://localhost:1313/post/2023/using-autofixture/</guid>
+      <description>&lt;p&gt;I enjoy writing unit tests and any tools that make writing tests easier are appreciated. For the last year, I have incorporated &lt;a href=&#34;https://github.com/AutoFixture/AutoFixture/&#34;&gt;AutoFixture&lt;/a&gt; into all of my unit tests. I have found AutoFixture to be an excellent tool, it changed the way I approach the &amp;ldquo;Arrange&amp;rdquo; phase.&lt;/p&gt;&#xA;&lt;p&gt;Previously, my arrange phase involved manually assigning values to properties, in a small class that is referenced by a few tests, you may tolerate manually assigning values. Once you start to deal with a class that has many properties such as nested properties as shown on the &amp;ldquo;Employee&amp;rdquo; class below, things get out of hand.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Use Static IP In WSL</title>
-      <link>https://www.yunier.dev/post/2022/use-static-ip-in-wsl/</link>
+      <link>http://localhost:1313/post/2022/use-static-ip-in-wsl/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/use-static-ip-in-wsl/</guid>
-      <description>In my last post, Kubernetes In WSL - Connect to a service from Windows, I explored a few ways to connect to a Kubernetes service from the host machine, Windows. In the end of that blog post, I stated that using HostPort was the best option because at the time I did not know how to assign a static IP address to WSL.
-Without using a static IP address, when WSL is restarted a new IP is assigned.</description>
+      <guid>http://localhost:1313/post/2022/use-static-ip-in-wsl/</guid>
+      <description>&lt;p&gt;In my last post, &lt;a href=&#34;http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/&#34;&gt;Kubernetes In WSL - Connect to a service from Windows&lt;/a&gt;, I explored a few ways to connect to a Kubernetes service from the host machine, Windows. In the end of that blog post, I stated that using &lt;a href=&#34;http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/#using-hostport&#34;&gt;HostPort&lt;/a&gt; was the best option because at the time I did not know how to assign a static IP address to WSL.&lt;/p&gt;&#xA;&lt;p&gt;Without using a static IP address, when WSL is restarted a new IP is assigned. Having a dynamic IP made it harder for me to connect to a Kubernetes service from Windows as I would need to update all my configurations whenever a new IP was assigned to WSL.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Kubernetes In WSL - Connect to a service from Windows</title>
-      <link>https://www.yunier.dev/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</link>
+      <link>http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</link>
       <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</guid>
-      <description>Today&amp;rsquo;s post is a follow-up to my Use Kubernetes In WSL blog post, where I outlined how to install Kubernetes on WSL. As noted at the end of the post, I was having issues connecting from the host, a windows machine, to Kubernetes in WSL.
-Connection Issue The main issue I was facing was that I could not connect to a pod running on Kubernetes using window&amp;rsquo;s localhost. Take the following Nginx deployment obtained from the official Kubernetes documentation.</description>
+      <guid>http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s post is a follow-up to my &lt;a href=&#34;http://localhost:1313/post/2022/use-kubernetes-in-wsl/&#34;&gt;Use Kubernetes In WSL&lt;/a&gt; blog post, where I outlined how to install Kubernetes on WSL. As noted at the end of the post, I was having issues connecting from the host, a windows machine, to Kubernetes in WSL.&lt;/p&gt;&#xA;&lt;h2 id=&#34;connection-issue&#34;&gt;Connection Issue&lt;/h2&gt;&#xA;&lt;p&gt;The main issue I was facing was that I could not connect to a pod running on Kubernetes using window&amp;rsquo;s localhost. Take the following Nginx deployment obtained from the &lt;a href=&#34;https://k8s.io/examples/controllers/nginx-deployment.yaml&#34;&gt;official&lt;/a&gt; Kubernetes documentation.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Power Up The Strategy Pattern With Inversion Of Control</title>
-      <link>https://www.yunier.dev/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</link>
+      <link>http://localhost:1313/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</link>
       <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</guid>
-      <description>If you are a fan of the strategy pattern, and you find yourself adding a lot of conditional logic around each strategy then you should consider replacing all branching logic using inversion of control.
-Take the following code as an example. It defines a strategy for reading different file types. For simplicity, the code writes out to the console a message, in a real-world application, the logic would be far more complex, but we are not interested in that logic, rather we are interested in how the strategy pattern works and how we can improve its usage.</description>
+      <guid>http://localhost:1313/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</guid>
+      <description>&lt;p&gt;If you are a fan of the &lt;a href=&#34;https://refactoring.guru/design-patterns/strategy&#34;&gt;strategy pattern&lt;/a&gt;, and you find yourself adding a lot of conditional logic around each strategy then you should consider replacing all branching logic using inversion of control.&lt;/p&gt;&#xA;&lt;p&gt;Take the following code as an example. It defines a strategy for reading different file types. For simplicity, the code writes out to the console a message, in a real-world application, the logic would be far more complex, but we are not interested in that logic, rather we are interested in how the strategy pattern works and how we can improve its usage.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Mockoon</title>
-      <link>https://www.yunier.dev/post/2022/mockoon/</link>
+      <link>http://localhost:1313/post/2022/mockoon/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/mockoon/</guid>
-      <description>A while back I made a blog post titled, Tools For The Modern Day Developer, in which I listed the tools I thought at the time every developer should be using. Today, I still stand by that list, but I would like to add an additional tool that lately has become super useful to me, that tool is Mockoon.
-Mockoon is a free and open-source mock API tool created by Guillaume in 2017.</description>
+      <guid>http://localhost:1313/post/2022/mockoon/</guid>
+      <description>&lt;p&gt;A while back I made a blog post titled, &lt;a href=&#34;https://www.yunier.dev/post/2021/tools-for-the-modern-developer/&#34;&gt;Tools For The Modern Day Developer&lt;/a&gt;, in which I listed the tools I thought at the time every developer should be using. Today, I still stand by that list, but I would like to add an additional tool that lately has become super useful to me, that tool is &lt;a href=&#34;https://mockoon.com/&#34;&gt;Mockoon&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2022/mockoon/mockoon.png&#34; alt=&#34;Mockoon&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Mockoon is a free and open-source mock API tool created by &lt;a href=&#34;https://github.com/255kb&#34;&gt;Guillaume&lt;/a&gt; in 2017. It offers Docker support, a CLI, importing and exporting of Mockoon environments, it works with OpenAPI 3.0 files. In many ways it feel like &lt;a href=&#34;https://www.postman.com/&#34;&gt;Postman&lt;/a&gt;, even the UI feels like the old classic Postman UI.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Remote Desktop Into WSL</title>
-      <link>https://www.yunier.dev/post/2022/remote-desktop-into-wsl/</link>
+      <link>http://localhost:1313/post/2022/remote-desktop-into-wsl/</link>
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/remote-desktop-into-wsl/</guid>
-      <description>There have been a few instances where I could not figure out a problem within WSL. Problems that would be easier to fix if I had a UI instead of just an instance of the WSL shell. If you find yourself in such a situation know that you can install the UI portion, a Linux desktop on top of WSL. Once the UI has been installed you can RDP into the WSL instance allowing you to use the WSL distro as if it were natively installed on your machine.</description>
+      <guid>http://localhost:1313/post/2022/remote-desktop-into-wsl/</guid>
+      <description>&lt;p&gt;There have been a few instances where I could not figure out a problem within WSL. Problems that would be easier to fix if I had a UI instead of just an instance of the WSL shell. If you find yourself in such a situation know that you can install the UI portion, a Linux desktop on top of WSL. Once the UI has been installed you can RDP into the WSL instance allowing you to use the WSL distro as if it were natively installed on your machine.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Code Coverage In .NET</title>
-      <link>https://www.yunier.dev/post/2022/code-coverage/</link>
+      <link>http://localhost:1313/post/2022/code-coverage/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/code-coverage/</guid>
-      <description>If you are writing unit tests in .NET, you may eventually find the need to generate code coverage reports to show how much coverage your project has. The best tool for code coverage reports in my experience has been coverlet because it supports both .NET Framework and .NET Core.
-NUnit NUnit, the tried and tested framework originally being a port of JUnit. A powerful tool that when combined with coverlet console can be used to generate code coverage reports.</description>
+      <guid>http://localhost:1313/post/2022/code-coverage/</guid>
+      <description>&lt;p&gt;If you are writing unit tests in .NET, you may eventually find the need to generate code coverage reports to show how much coverage your project has. The best tool for code coverage reports in my experience has been &lt;a href=&#34;https://github.com/coverlet-coverage/coverlet&#34;&gt;coverlet&lt;/a&gt; because it supports both .NET Framework and .NET Core.&lt;/p&gt;&#xA;&lt;h3 id=&#34;nunit&#34;&gt;NUnit&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://nunit.org/&#34;&gt;NUnit&lt;/a&gt;, the tried and tested framework originally being a port of &lt;a href=&#34;https://junit.org/junit5/&#34;&gt;JUnit&lt;/a&gt;. A powerful tool that when combined with &lt;a href=&#34;https://www.nuget.org/packages/coverlet.console&#34;&gt;coverlet console&lt;/a&gt; can be used to generate code coverage reports. To demonstrate, I will create an NUnit test project targeting .NET Framework 4.8 along with a Class Library type project also targeting .NET Framework 4.8&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Use Kubernetes In WSL</title>
-      <link>https://www.yunier.dev/post/2022/use-kubernetes-in-wsl/</link>
+      <link>http://localhost:1313/post/2022/use-kubernetes-in-wsl/</link>
       <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/use-kubernetes-in-wsl/</guid>
-      <description>If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.
-Prerequisite To get started we need to know what version of Windows you are on. This is important because Kubernetes will be installed using Microk8s, which requires having snap installed and working.</description>
+      <guid>http://localhost:1313/post/2022/use-kubernetes-in-wsl/</guid>
+      <description>&lt;p&gt;If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;&#xA;&lt;p&gt;To get started we need to know what version of Windows you are on. This is important because Kubernetes will be installed using Microk8s, which requires having snap installed and working. Snap won&amp;rsquo;t work in older Windows builds.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Fun With Flurl</title>
-      <link>https://www.yunier.dev/post/2022/fun-with-flurl/</link>
+      <link>http://localhost:1313/post/2022/fun-with-flurl/</link>
       <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/fun-with-flurl/</guid>
-      <description>A few months ago I was looking for a new HTTP client to use within my applications. I first checked on awesome dotnet under the HTTP section to see what projects the .NET community is using instead of the default HTTP client. One that immediately stands out is RestSharp, this project has been around for a while and is overall a good choice, but I was looking for something new and fresh, that is when I came across Flurl.</description>
+      <guid>http://localhost:1313/post/2022/fun-with-flurl/</guid>
+      <description>&lt;p&gt;A few months ago I was looking for a new HTTP client to use within my applications. I first checked on &lt;a href=&#34;https://github.com/quozd/awesome-dotnet&#34;&gt;awesome dotnet&lt;/a&gt; under the &lt;a href=&#34;https://github.com/quozd/awesome-dotnet#http&#34;&gt;HTTP section&lt;/a&gt; to see what projects the .NET community is using instead of the default HTTP client. One that immediately stands out is &lt;a href=&#34;https://github.com/restsharp/RestSharp&#34;&gt;RestSharp&lt;/a&gt;, this project has been around for a while and is overall a good choice, but I was looking for something new and fresh, that is when I came across &lt;a href=&#34;https://flurl.dev/&#34;&gt;Flurl&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Connect To The Internet From WSL</title>
-      <link>https://www.yunier.dev/post/2022/connect-to-the-internet-from-wsl/</link>
+      <link>http://localhost:1313/post/2022/connect-to-the-internet-from-wsl/</link>
       <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/connect-to-the-internet-from-wsl/</guid>
-      <description>Problem You have installed WSL successfully on your machine only to find out that you cannot connect to the internet. I have encountered this problem before sometimes it can be fixed externally, but from my experience, no matter what you do, you will end up having to mock around with the resolv.conf file within WSL, more on that later.
-You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level.</description>
+      <guid>http://localhost:1313/post/2022/connect-to-the-internet-from-wsl/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;You have installed WSL successfully on your machine only to find out that you cannot connect to the internet. I have encountered this problem before sometimes it can be fixed externally, but from my experience, no matter what you do, you will end up having to mock around with the resolv.conf file within WSL, more on that later.&lt;/p&gt;&#xA;&lt;p&gt;You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level. You can confirm that this is applicable to you by searching for &lt;strong&gt;Windows Defender Firewall with Advance Security&lt;/strong&gt; on the start menu, then going to Action, then Properties, under properties switching to the Public Profile tab, then clicking &lt;strong&gt;customize&lt;/strong&gt; under settings. Now look under &amp;ldquo;Rule Merging&amp;rdquo;, &lt;strong&gt;if these options are set to no&lt;/strong&gt;, then you will not be able to connect from WSL.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Newman - Function Is Not Defined</title>
-      <link>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</link>
+      <link>http://localhost:1313/post/2022/newman-function-is-not-defined/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/newman-function-is-not-defined/</guid>
-      <description>The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.
-if(pm.request.body.isEmpty){ // Code Omitted For Brevity } One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman.</description>
+      <guid>http://localhost:1313/post/2022/newman-function-is-not-defined/</guid>
+      <description>&lt;p&gt;The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;pm&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;request&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Code Omitted For Brevity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman. For example, the script above, which was written in Postman, is part of a series of tests that inspects the HTTP request body. The script can fail when executed on Newman because the function isEmpty does not exist.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Authorization Code From Terminal</title>
-      <link>https://www.yunier.dev/post/2022/authorization-code-from-terminal/</link>
+      <link>http://localhost:1313/post/2022/authorization-code-from-terminal/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/authorization-code-from-terminal/</guid>
-      <description>I was recently presented with a unique challenge at work. I needed to create a script that clones repositories from Bitbucket. The problem is that as of June 2022, Bitbucket only supports managing repositories using OAuth via two grant types, the authorization code grant &amp;amp; the implicit grant.
-I won&amp;rsquo;t get into the details here but the implicit grant is no longer recommended and is in fact discouraged from ever being used.</description>
+      <guid>http://localhost:1313/post/2022/authorization-code-from-terminal/</guid>
+      <description>&lt;p&gt;I was recently presented with a unique challenge at work. I needed to create a script that clones repositories from Bitbucket. The problem is that as of June 2022, Bitbucket only supports managing repositories using OAuth via two grant types, the authorization code grant &amp;amp; the implicit grant.&lt;/p&gt;&#xA;&lt;p&gt;I won&amp;rsquo;t get into the details here but the implicit grant is no longer recommended and is in fact discouraged from ever being used. Regardless of which flow I use I will end up facing the same problem, the browser. In both the implicit and authorization grant, user interaction (3-legged OAuth) is required, the end-user must provide their credentials in order to properly authenticate, in some cases this may even include multifactor authentication.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Shortening URLs</title>
-      <link>https://www.yunier.dev/post/2022/shortening-urls/</link>
+      <link>http://localhost:1313/post/2022/shortening-urls/</link>
       <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/shortening-urls/</guid>
-      <description>I was recently talking to another developer about the importance of never exposing internal identifiers to the outside world. A well-known example of this is using an auto-incrementing identity field in SQL and exposing that field through an API. A client can look at the highest number to tell how many records exist, in an ordering system this is far from ideal. Now everyone will know how many orders you have created.</description>
+      <guid>http://localhost:1313/post/2022/shortening-urls/</guid>
+      <description>&lt;p&gt;I was recently talking to another developer about the importance of never exposing internal identifiers to the outside world. A well-known example of this is using an auto-incrementing identity field in SQL and exposing that field through an API. A client can look at the highest number to tell how many records exist, in an ordering system this is far from ideal. Now everyone will know how many orders you have created. I recommend watching &lt;a href=&#34;https://youtu.be/FRsRoaubPiY?t=2363&#34;&gt;The Internet of Pwned Things&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/troyhunt&#34;&gt;Troy Hunt&lt;/a&gt; for a real-world example.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Extracting Values From Types</title>
-      <link>https://www.yunier.dev/post/2022/extracting-values-from-types/</link>
+      <link>http://localhost:1313/post/2022/extracting-values-from-types/</link>
       <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/extracting-values-from-types/</guid>
-      <description>Learned a cool little trick a while back from Khalid. As a developer, you will often run into scenarios that require you to get a subset of all fields from a model. There are many ways to achieve this task, returning the type and then grabbing each property, for example, take the following User type.
-public class User { public User(string name, DateTime dob) { var random = new Random(); Id = random.</description>
+      <guid>http://localhost:1313/post/2022/extracting-values-from-types/</guid>
+      <description>&lt;p&gt;Learned a cool &lt;a href=&#34;https://twitter.com/buhakmeh/status/1308089098306039814/photo/1&#34;&gt;little trick&lt;/a&gt; a while back from &lt;a href=&#34;https://twitter.com/buhakmeh&#34;&gt;Khalid&lt;/a&gt;. As a developer, you will often run into scenarios that require you to get a subset of all fields from a model. There are many ways to achieve this task, returning the type and then grabbing each property, for example, take the following User type.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;User&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; User(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; name, DateTime dob)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; random = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Random();&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Id = random.Next();&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Name = name;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        DateOfBirth = dob;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; Id { &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; Name {&lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; DateTime DateOfBirth { &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;If you want to obtain the name and id property you can take the following approach.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Markup Your Web API Documents</title>
-      <link>https://www.yunier.dev/post/2022/markup-your-web-api-documents/</link>
+      <link>http://localhost:1313/post/2022/markup-your-web-api-documents/</link>
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/markup-your-web-api-documents/</guid>
-      <description>I&amp;rsquo;ve been thinking about what it takes to build a good Web API, regardless of the technology (REST vs GraphQL) or philosophy used. One concept that has been stuck on my head is the idea of marking up API documents to provide more context around the data.
-A Web API document is the response returned by the API itself, you will often see this term used in API specifications like GraphQL, HAL, JSON-LD, and JSON:API.</description>
+      <guid>http://localhost:1313/post/2022/markup-your-web-api-documents/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been thinking about what it takes to build a good Web API, regardless of the technology (REST vs GraphQL) or philosophy used. One concept that has been stuck on my head is the idea of marking up API documents to provide more context around the data.&lt;/p&gt;&#xA;&lt;p&gt;A Web API document is the response returned by the API itself, you will often see this term used in API specifications like &lt;a href=&#34;https://spec.graphql.org/October2021/#sec-Document&#34;&gt;GraphQL&lt;/a&gt;, &lt;a href=&#34;https://stateless.group/hal_specification.html&#34;&gt;HAL&lt;/a&gt;, &lt;a href=&#34;https://w3c.github.io/json-ld-syntax/#loading-documents&#34;&gt;JSON-LD&lt;/a&gt;, and &lt;a href=&#34;https://jsonapi.org/format/#document-structure&#34;&gt;JSON:API&lt;/a&gt;. Web API documents can be very simple, for example, imagine working with a Web API that manages users. This API may choose to represent the user resource using the following JSON.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Preventing Invalid Assembly Dependencies</title>
-      <link>https://www.yunier.dev/post/2022/preventing-invalid-assembly-dependencies/</link>
+      <link>http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/preventing-invalid-assembly-dependencies/</guid>
-      <description>.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like Clean Architecture where the Web project should not be referenced by the Core project or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies.
-The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution.</description>
+      <guid>http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/</guid>
+      <description>&lt;p&gt;.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies&#34;&gt;Clean Architecture&lt;/a&gt; where the &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture#the-web-project&#34;&gt;Web project&lt;/a&gt; should not be referenced by the &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture#the-core-project&#34;&gt;Core project&lt;/a&gt; or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/clean-architecture-projet-dependencies.png&#34; alt=&#34;clean architecture project dependencies&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution. Built with &lt;a href=&#34;https://excalidraw.com/&#34;&gt;Excalidraw&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Faster Web API Pagination</title>
-      <link>https://www.yunier.dev/post/2022/faster-web-api-pagination/</link>
+      <link>http://localhost:1313/post/2022/faster-web-api-pagination/</link>
       <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/faster-web-api-pagination/</guid>
-      <description>A few weeks ago I came across a blog post from Aaron Francis in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in High Performance MySQL: Proven Strategies for Operating at Scale.
-The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an OFFSET to skip over a number of records, however, even though the results are skipped, the database must still fetch those records.</description>
+      <guid>http://localhost:1313/post/2022/faster-web-api-pagination/</guid>
+      <description>&lt;p&gt;A few weeks ago I came across a blog &lt;a href=&#34;https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins&#34;&gt;post&lt;/a&gt; from &lt;a href=&#34;https://aaronfrancis.com/&#34;&gt;Aaron Francis&lt;/a&gt; in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in &lt;a href=&#34;https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519&#34;&gt;High Performance MySQL: Proven Strategies for Operating at Scale&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an &lt;a href=&#34;https://www.geeksforgeeks.org/sql-offset-fetch-clause/&#34;&gt;OFFSET&lt;/a&gt; to skip over a number of records, however, even though the results are skipped, the database must still fetch those records. Meaning we are reading data from the disk and immediately discarding it. This is an inefficient process and is what causes pagination performance to degrade as you paginate over more records.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Pagination Links</title>
-      <link>https://www.yunier.dev/post/2022/json-api-pagination-links/</link>
+      <link>http://localhost:1313/post/2022/json-api-pagination-links/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/json-api-pagination-links/</guid>
-      <description>It has been a while since I blogged about JSON:API. In my last post on JSON:API I covered how to create new resources. In today&amp;rsquo;s post, I want to go over how I expose pagination links. Pagination links allow a client to page through a collection of resources. A shift of control from the client back to the server.
-Here is an example of a possible JSON:API response that includes pagination links.</description>
+      <guid>http://localhost:1313/post/2022/json-api-pagination-links/</guid>
+      <description>&lt;p&gt;It has been a while since I blogged about &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt;. In my last post on JSON:API I covered how to create &lt;a href=&#34;http://localhost:1313/post/2021/json-api-creating-new-resources/&#34;&gt;new resources&lt;/a&gt;. In today&amp;rsquo;s post, I want to go over how I expose pagination links. &lt;a href=&#34;https://jsonapi.org/examples/#pagination&#34;&gt;Pagination links&lt;/a&gt; allow a client to page through a collection of resources. A shift of control from the client back to the server.&lt;/p&gt;&#xA;&lt;p&gt;Here is an example of a possible JSON:API response that includes pagination links.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: [&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// omitted for brevity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;links&amp;#34;&lt;/span&gt;: {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;up&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;self&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=3&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;first&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=1&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=2&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;next&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=4&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;last&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=13&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;As you can see, along with the &lt;a href=&#34;https://jsonapi.org/format/#document-top-level&#34;&gt;data&lt;/a&gt; object, the API responses included a &lt;a href=&#34;https://jsonapi.org/format/#document-links&#34;&gt;Links&lt;/a&gt; object, within the Links object, you can find links for up, self, first, prev, next, and last. These are all relationship name as defined in &lt;a href=&#34;https://www.iana.org/assignments/link-relations/link-relations.xhtml&#34;&gt;Link Relations&lt;/a&gt; by the Internet Assigned Numbers Authority (IANA).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Microservice Generator</title>
-      <link>https://www.yunier.dev/post/2022/microservice-generator/</link>
+      <link>http://localhost:1313/post/2022/microservice-generator/</link>
       <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/microservice-generator/</guid>
-      <description>Over the last few years, our industry has moved away from monolith architectures to microservice architectures. For a good number of reasons, this trend continues to remain strong. One issue you may encounter with creating microservices if you are not using a monorepo is that you may have to build a new project whenever you need to add a new microservice to your app ecosystem. Creating a new project may include creating new repositories in Bitbucket/Github, configuring a continuous integration pipeline, adding build/deploy scripts, building the project based on some folder structure that has been determined by the team.</description>
+      <guid>http://localhost:1313/post/2022/microservice-generator/</guid>
+      <description>&lt;p&gt;Over the last few years, our industry has moved away from monolith architectures to microservice architectures. For a good number of &lt;a href=&#34;https://stackify.com/6-key-benefits-of-microservices-architecture/&#34;&gt;reasons&lt;/a&gt;, this trend continues to remain strong. One issue you may encounter with creating microservices if you are not using a &lt;a href=&#34;https://www.youtube.com/watch?v=9iU_IE6vnJ8&#34;&gt;monorepo&lt;/a&gt; is that you may have to build a new project whenever you need to add a new microservice to your app ecosystem. Creating a new project may include creating new repositories in Bitbucket/Github, configuring a continuous integration pipeline, adding build/deploy scripts, building the project based on &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies&#34;&gt;some folder structure&lt;/a&gt; that has been determined by the team. It can also involve configuring how the service captures logs, communicating with other services, exposing an Open API definition, configuring a docker file, having a helm chart to deploy to k8s, installing external packages, and so on.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Tools For The Modern-Day Developer</title>
-      <link>https://www.yunier.dev/post/2021/tools-for-the-modern-developer/</link>
+      <link>http://localhost:1313/post/2021/tools-for-the-modern-developer/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/tools-for-the-modern-developer/</guid>
-      <description>Development tools are an essential part of our job, they make us work smarter not harder, they simplify processes and make us more productive. In this post, I want to share some tools that I have found over the years that have made my job easier. If you have a similar experience with a tool that is not listed here, then I would love you hear from you.
-Grepapp The first tool I want to talk about is the grepapp, this tool is becoming one of my favorite tools.</description>
+      <guid>http://localhost:1313/post/2021/tools-for-the-modern-developer/</guid>
+      <description>&lt;p&gt;Development tools are an essential part of our job, they make us work smarter not harder, they simplify processes and make us more productive. In this post, I want to share some tools that I have found over the years that have made my job easier. If you have a similar experience with a tool that is not listed here, then I would love you hear from you.&lt;/p&gt;&#xA;&lt;h4 id=&#34;grepapp&#34;&gt;Grepapp&lt;/h4&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://grep.app/&#34;&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2021/tools-for-the-modern-developer/grepapp.png&#34; alt=&#34;GrepApp&#34;  /&gt;&#xD;&#xA;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Idempotency In A Web API</title>
-      <link>https://www.yunier.dev/post/2021/idempotency-in-a-web-api/</link>
+      <link>http://localhost:1313/post/2021/idempotency-in-a-web-api/</link>
       <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/idempotency-in-a-web-api/</guid>
-      <description>Idempotency, is one of the key features any Web API should have. The idea is that software is unrealiable, the network can fail, the database the API connects to could be offline, the API itself could be performing an intense operation that impacts performance. For all these reasons an API client may resubmit a request, not much of a problem if you are dealing with GET, HEAD, PUT or DELETE, these HTTP methods are idempotent, POST and PATCH on the other hand are not.</description>
+      <guid>http://localhost:1313/post/2021/idempotency-in-a-web-api/</guid>
+      <description>&lt;p&gt;Idempotency, is one of the key features any Web API should have. The idea is that &lt;a href=&#34;https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing&#34;&gt;software is unrealiable&lt;/a&gt;, the network can fail, the database the API connects to could be offline, the API itself could be performing an intense operation that impacts performance. For all these reasons an API client may resubmit a request, not much of a problem if you are dealing with &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET&#34;&gt;GET&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD&#34;&gt;HEAD&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT&#34;&gt;PUT&lt;/a&gt; or &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE&#34;&gt;DELETE&lt;/a&gt;, these HTTP methods are idempotent, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/post&#34;&gt;POST&lt;/a&gt; and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH&#34;&gt;PATCH&lt;/a&gt; on the other hand are not.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Sort Functions Are Non-Deterministic</title>
-      <link>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</link>
+      <link>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</guid>
-      <description>When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.
-From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, like SQL Server, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.</description>
+      <guid>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</guid>
+      <description>&lt;p&gt;When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.&lt;/p&gt;&#xA;&lt;p&gt;From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, &lt;a href=&#34;https://docs.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?redirectedfrom=MSDN&amp;view=sql-server-ver15#arguments&#34;&gt;like SQL Server&lt;/a&gt;, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Practical Web API Validation Strategy</title>
-      <link>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</link>
+      <link>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</guid>
-      <description>In my last post I wrote about how you can leverage JSON Schema to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema.</description>
+      <guid>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://localhost:1313/post/2021/a-better-web-api-validation-strategy/&#34;&gt;last post&lt;/a&gt; I wrote about how you can leverage &lt;a href=&#34;https://json-schema.org/&#34;&gt;JSON Schema&lt;/a&gt; to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library &lt;a href=&#34;https://fluentvalidation.net/&#34;&gt;FluentValidation&lt;/a&gt; and exposing validation errors using &lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7807&#34;&gt;Problem Details&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Better Web API Validation Strategy</title>
-      <link>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</link>
+      <link>http://localhost:1313/post/2021/a-better-web-api-validation-strategy/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</guid>
-      <description>As an API developer, you will eventually need to determine how to handle data validation.
-The .NET ecosystem offers a few options, the first option, validation attributes, can be used to annotate how a model should be validated. Validation attributes are great, they don&amp;rsquo;t require any external dependencies, you can specify error messages, create your own custom validator, validate against many data types.
-For example, take the following Movie class, notice how the properties have been annotated with validation rules.</description>
+      <guid>http://localhost:1313/post/2021/a-better-web-api-validation-strategy/</guid>
+      <description>&lt;p&gt;As an API developer, you will eventually need to determine how to handle data validation.&lt;/p&gt;&#xA;&lt;p&gt;The .NET ecosystem offers a few options, the first option, &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes&#34;&gt;validation attributes&lt;/a&gt;, can be used to annotate how a model should be validated. Validation attributes are great, they don&amp;rsquo;t require any external dependencies, you can specify error messages, create your own &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes&#34;&gt;custom validator&lt;/a&gt;, validate against many data types.&lt;/p&gt;&#xA;&lt;p&gt;For example, take the following Movie class, notice how the properties have been annotated with validation rules.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Improving A CPU-Intensive Node.js App</title>
-      <link>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</link>
+      <link>http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/</link>
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/improving-a-cpu-intensive-node-app/</guid>
-      <description>Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user&amp;rsquo;s password, hashes it, and compares the result with the stored hashed password from the database.</description>
+      <guid>http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/</guid>
+      <description>&lt;p&gt;Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user&amp;rsquo;s password, hashes it, and compares the result with the stored hashed password from the database. Here is the code without the implementation details.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Order Of Interfaces Impacts Performace</title>
-      <link>https://www.yunier.dev/post/2021/the-order-of-interfaces-impacts-performance/</link>
+      <link>http://localhost:1313/post/2021/the-order-of-interfaces-impacts-performance/</link>
       <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/the-order-of-interfaces-impacts-performance/</guid>
-      <description>I was looking through some of my bookmarked Github issues when I rediscovered issue #32488, in that issue a comment was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the .NET CLR all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk.</description>
+      <guid>http://localhost:1313/post/2021/the-order-of-interfaces-impacts-performance/</guid>
+      <description>&lt;p&gt;I was looking through some of my bookmarked Github issues when I rediscovered issue &lt;a href=&#34;https://github.com/dotnet/runtime/pull/32488&#34;&gt;#32488&lt;/a&gt;, in that issue a &lt;a href=&#34;https://github.com/dotnet/runtime/pull/32488#discussion_r380818002&#34;&gt;comment&lt;/a&gt; was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/standard/clr&#34;&gt;.NET CLR&lt;/a&gt; all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Writing A Good ReadME Is A Skill</title>
-      <link>https://www.yunier.dev/post/2021/writing-a-good-readme-is-a-skill/</link>
+      <link>http://localhost:1313/post/2021/writing-a-good-readme-is-a-skill/</link>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/writing-a-good-readme-is-a-skill/</guid>
-      <description>Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project&amp;rsquo;s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project.</description>
+      <guid>http://localhost:1313/post/2021/writing-a-good-readme-is-a-skill/</guid>
+      <description>&lt;p&gt;Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project&amp;rsquo;s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Platform</title>
-      <link>https://www.yunier.dev/post/2021/the-platform/</link>
+      <link>http://localhost:1313/post/2021/the-platform/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/the-platform/</guid>
-      <description>HTML, CSS, and Javascript, are the languages of the world wide web, the platform. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I&amp;rsquo;ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn&amp;rsquo;t mean that I don&amp;rsquo;t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development.</description>
+      <guid>http://localhost:1313/post/2021/the-platform/</guid>
+      <description>&lt;p&gt;HTML, CSS, and Javascript, are the languages of the world wide web, the &lt;a href=&#34;https://youtu.be/BzX4aTRPzno?t=937&#34;&gt;platform&lt;/a&gt;. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I&amp;rsquo;ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn&amp;rsquo;t mean that I don&amp;rsquo;t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development. I am familiar with some of the modern frameworks like &lt;a href=&#34;https://angular.io/&#34;&gt;Angular&lt;/a&gt;, &lt;a href=&#34;https://reactjs.org/&#34;&gt;React.js&lt;/a&gt;, &lt;a href=&#34;https://nextjs.org/&#34;&gt;Next.js&lt;/a&gt; and &lt;a href=&#34;https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks&#34;&gt;everyone&amp;rsquo;s new favorite&lt;/a&gt;, &lt;a href=&#34;https://svelte.dev/&#34;&gt;svelte&lt;/a&gt;. By falling behind I mean that I am not up to date with some of the new tools and technologies that have been created since the days of AngularJS. I want to use this post to write about some of these new techniques and tools that are available for front-end development.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Worker Services Configure Serilog</title>
-      <link>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</link>
+      <link>http://localhost:1313/post/2021/worker-services-configure-serilog/</link>
       <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</guid>
-      <description>A worker service is a type of Background Service that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.
-If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors.</description>
+      <guid>http://localhost:1313/post/2021/worker-services-configure-serilog/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/workers&#34;&gt;worker service&lt;/a&gt; is a type of &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.backgroundservice?view=dotnet-plat-ext-5.0&#34;&gt;Background Service&lt;/a&gt; that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.&lt;/p&gt;&#xA;&lt;p&gt;If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors. If you plan to use Serilog, then this post will show you how to configure Serilog on a worker project.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Creating New Resources</title>
-      <link>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</link>
+      <link>http://localhost:1313/post/2021/json-api-creating-new-resources/</link>
       <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</guid>
-      <description>So far in my JSON:API series I&amp;rsquo;ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today&amp;rsquo;s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
-To get started, the customer controller needs to have a method that will accept the incoming POST request.</description>
+      <guid>http://localhost:1313/post/2021/json-api-creating-new-resources/</guid>
+      <description>&lt;p&gt;So far in my JSON:API series I&amp;rsquo;ve covered the &lt;a href=&#34;https://www.yunier.dev/2020-09-14-Adding-Home-Resource/&#34;&gt;home resource&lt;/a&gt;, adding &lt;a href=&#34;https://www.yunier.dev/2020-10-30-Adding-Customer-Resource/&#34;&gt;your own resource&lt;/a&gt;, adding an &lt;a href=&#34;https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/&#34;&gt;exception handling middleware&lt;/a&gt; and how to &lt;a href=&#34;https://www.yunier.dev/2020-12-06-Exposing-Relationships/&#34;&gt;expose relationship&lt;/a&gt; between resources. For the today&amp;rsquo;s post, I would like to cover creating resources. I will update the chinook project by allowing &lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc2616/#section-9.5&#34;&gt;POST&lt;/a&gt; request on the customers collections to add new customers.&lt;/p&gt;&#xA;&lt;p&gt;To get started, the customer controller needs to have a method that will accept the incoming POST request. I&amp;rsquo;ve decided to call the method &lt;strong&gt;CreateCustomerResource&lt;/strong&gt;, the method will accept a &lt;a href=&#34;https://jsonapi.org/format/#document-structure&#34;&gt;JSON:API document&lt;/a&gt; from the request body. The full method signature is defined below.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Running Lighthouse On CI/CD Pipeline</title>
-      <link>https://www.yunier.dev/post/2021/running-lighthouse-in-cicd-pipeline/</link>
+      <link>http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/running-lighthouse-in-cicd-pipeline/</guid>
-      <description>In the world of front end development there is no better tool than Lighthouse. Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.
-The only problem with lighthouse, at least from my experience, is that it is not used until after the app has been deployed.</description>
+      <guid>http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/</guid>
+      <description>&lt;p&gt;In the world of front end development there is no better tool than &lt;a href=&#34;https://developers.google.com/web/tools/lighthouse/&#34;&gt;Lighthouse&lt;/a&gt;. Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://developers.google.com/web/tools/lighthouse/images/report.png&#34; alt=&#34;Report generated by lighthouse&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;The only problem with lighthouse, at least from my experience, is that it is not used until after the app has been deployed. I haven&amp;rsquo;t been involved in any project that utilizes lighthouse upfront, certainly not on the ci/cd pipelines. Which can be done using &lt;a href=&#34;https://github.com/GoogleChrome/lighthouse-ci&#34;&gt;lighthouse-ci&lt;/a&gt;. There is also another way to get lighthouse running on your ci/cd pipeline, it involves executing lighthouse while you are running your unit test regardless of the unit test engine, be that &lt;a href=&#34;https://github.com/facebook/jest&#34;&gt;Jest&lt;/a&gt; or &lt;a href=&#34;https://github.com/mochajs/mocha&#34;&gt;Mocha&lt;/a&gt;. However, these tools lack the ability to invoke a web browser, after all, lighthouse can only be run against an actual website.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GraphQL Is Protocol Agnostic</title>
-      <link>https://www.yunier.dev/post/2021/graphql-is-protocol-agnostic/</link>
+      <link>http://localhost:1313/post/2021/graphql-is-protocol-agnostic/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/graphql-is-protocol-agnostic/</guid>
-      <description>I&amp;rsquo;m seeing many API developers, specially those that come from a REST background, struggle with GraphQL simply because they are introducing protocol concepts into their GraphQL documents.
-give it a REST... pic.twitter.com/sUxqL4ACdj
-&amp;mdash; I Am Devloper (@iamdevloper) November 13, 2020 GraphQL is not bound to any network protocol, it is most often implemented on top of the HTTP protocol and it only uses the most basic features of HTTP. That is because GraphQL treats HTTP as a dum pipe.</description>
+      <guid>http://localhost:1313/post/2021/graphql-is-protocol-agnostic/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m seeing many API developers, specially those that come from a REST background, struggle with GraphQL simply because they are introducing protocol concepts into their GraphQL documents.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;give it a REST... &lt;a href=&#34;https://t.co/sUxqL4ACdj&#34;&gt;pic.twitter.com/sUxqL4ACdj&lt;/a&gt;&lt;/p&gt;&amp;mdash; I Am Devloper (@iamdevloper) &lt;a href=&#34;https://twitter.com/iamdevloper/status/1327190006520221696?ref_src=twsrc%5Etfw&#34;&gt;November 13, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&#xD;&#xA;&lt;p&gt;GraphQL is not bound to any network protocol, it is most often implemented on top of the HTTP protocol and it only uses the most basic features of HTTP. That is because GraphQL treats HTTP as a dum pipe. Introducing protocol concept such as a 404 Not Found status code into your GraphQL documents will only cause you development pain.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Problem Details for HTTP APIs</title>
-      <link>https://www.yunier.dev/post/2021/problem-details-for-http-apis/</link>
+      <link>http://localhost:1313/post/2021/problem-details-for-http-apis/</link>
       <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/problem-details-for-http-apis/</guid>
-      <description>One of the many benefits of working with JSON:API and GraphQL is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.
-Almost every HTTP API that I&amp;#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?</description>
+      <guid>http://localhost:1313/post/2021/problem-details-for-http-apis/</guid>
+      <description>&lt;p&gt;One of the many benefits of working with &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; and &lt;a href=&#34;https://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Almost every HTTP API that I&amp;#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Accessibility Testing in Playwright</title>
-      <link>https://www.yunier.dev/post/2021/accessibility-testing-with-playwright/</link>
+      <link>http://localhost:1313/post/2021/accessibility-testing-with-playwright/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/accessibility-testing-with-playwright/</guid>
-      <description>I don&amp;rsquo;t believe I&amp;rsquo;ve mention this before here, but I am a huge fan of Hey. By far the best email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various tweets or blog post like Scaling the hottest app in tech on AWS and Kubernetes which outline how they use k8s. Recently, they shared how to tackle ay11 under hey accessibility is a lot of work.</description>
+      <guid>http://localhost:1313/post/2021/accessibility-testing-with-playwright/</guid>
+      <description>&lt;p&gt;I don&amp;rsquo;t believe I&amp;rsquo;ve mention this before here, but I am a huge fan of &lt;a href=&#34;https://hey.com/&#34;&gt;Hey&lt;/a&gt;. By far the &lt;strong&gt;best&lt;/strong&gt; email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various &lt;a href=&#34;https://twitter.com/dhh/status/1275901955995385856&#34;&gt;tweets&lt;/a&gt; or blog post like &lt;a href=&#34;https://acloudguru.com/blog/engineering/scaling-the-hottest-app-in-tech-on-aws-and-kubernetes&#34;&gt;Scaling the hottest app in tech on AWS and Kubernetes&lt;/a&gt; which outline how they use k8s. Recently, they shared how to tackle ay11 under &lt;a href=&#34;https://world.hey.com/michael/hey-accessibility-is-a-lot-of-work-785ec5cf&#34;&gt;hey accessibility is a lot of work&lt;/a&gt;. One thing that stood out was to me was their usage of &lt;a href=&#34;https://github.com/dequelabs/axe-core&#34;&gt;axe-core&lt;/a&gt;. Axe-core is an accessibility engine for automated Web UI testing. Which reminded me of &lt;a href=&#34;https://playwright.dev/&#34;&gt;playwright&lt;/a&gt;, so I started to wonder if the two could be combined, turns out they can be. Let&amp;rsquo;s explore how to do that.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Testing Web Apps With Playwright</title>
-      <link>https://www.yunier.dev/post/2021/testing-webapps-with-playwright/</link>
+      <link>http://localhost:1313/post/2021/testing-webapps-with-playwright/</link>
       <pubDate>Thu, 18 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/testing-webapps-with-playwright/</guid>
-      <description>A few weeks ago I was looking for an end-to-end testing framework. An alternative to Selenium, and all the other end-to-end frameworks. I came across a project called Playwright. Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.
-Playwright has full API coverage for all modern browsers, including Google Chrome and Microsoft Edge (with Chromium), Apple Safari (with WebKit) and Mozilla Firefox.</description>
+      <guid>http://localhost:1313/post/2021/testing-webapps-with-playwright/</guid>
+      <description>&lt;p&gt;A few weeks ago I was looking for an end-to-end testing framework. An alternative to &lt;a href=&#34;https://www.selenium.dev/&#34;&gt;Selenium&lt;/a&gt;, and all the other end-to-end frameworks. I came across a project called &lt;a href=&#34;https://playwright.dev/&#34;&gt;Playwright&lt;/a&gt;. Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Playwright has full API coverage for all modern browsers, including Google Chrome and Microsoft Edge (with Chromium), Apple Safari (with WebKit) and Mozilla Firefox.&lt;/li&gt;&#xA;&lt;li&gt;Supports multiple languages like Node.js, Python, c# and Java.&lt;/li&gt;&#xA;&lt;li&gt;First-party Docker image and GitHub Actions to deploy tests to your preferred CI/CD provider.&lt;/li&gt;&#xA;&lt;li&gt;Use device emulation to test your responsive web apps in mobile web browsers.&lt;/li&gt;&#xA;&lt;li&gt;Provides APIs to monitor and modify network traffic, both HTTP and HTTPS. Any requests that page does, including XHRs and fetch requests, can be tracked, modified and handled.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;While those feature are all great and useful, they don&amp;rsquo;t measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like &lt;a href=&#34;https://www.qawolf.com/&#34;&gt;qa wolf&lt;/a&gt; and &lt;a href=&#34;https://github.com/checkly/headless-recorder&#34;&gt;headless-recorder&lt;/a&gt;, these tools record any action you take on the browser, those actions are then converted into Playwright scripts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Parsing in C#</title>
-      <link>https://www.yunier.dev/post/2021/parsing-in-csharp/</link>
+      <link>http://localhost:1313/post/2021/parsing-in-csharp/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/parsing-in-csharp/</guid>
-      <description>I am currently building a JSON:API driven API on .NET 5, the project is called Chinook after the Sqlite Chinook project. The API is mature enough for me to introduce filtering via the Filter query parameter used in JSON:API.
-I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause.</description>
+      <guid>http://localhost:1313/post/2021/parsing-in-csharp/</guid>
+      <description>&lt;p&gt;I am currently building a &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; driven API on &lt;a href=&#34;https://dotnet.microsoft.com/download/dotnet/5.0&#34;&gt;.NET 5&lt;/a&gt;, the project is called &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook&lt;/a&gt; after the Sqlite Chinook project. The API is mature enough for me to introduce &lt;a href=&#34;https://jsonapi.org/format/#fetching-filtering&#34;&gt;filtering&lt;/a&gt; via the &lt;a href=&#34;https://jsonapi.org/recommendations/#filtering&#34;&gt;Filter&lt;/a&gt; query parameter used in JSON:API.&lt;/p&gt;&#xA;&lt;p&gt;I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause. For example, take the following API request, it uses the &lt;a href=&#34;https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31361038&#34;&gt;OData&lt;/a&gt; filter syntax.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Asynchronous Request In GraphQL</title>
-      <link>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</link>
+      <link>http://localhost:1313/post/2021/asynchronous-request-in-graphql/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/asynchronous-request-in-graphql/</guid>
-      <description>When I first started to learn about GraphQL I was somewhat surprise to learn that the GraphQL specification did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.
-For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.</description>
+      <guid>http://localhost:1313/post/2021/asynchronous-request-in-graphql/</guid>
+      <description>&lt;p&gt;When I first started to learn about GraphQL I was somewhat surprise to learn that the &lt;a href=&#34;https://spec.graphql.org/June2018/&#34;&gt;GraphQL specification&lt;/a&gt; did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.&lt;/p&gt;&#xA;&lt;p&gt;For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.00, or orders placed in certain date range, or orders that have a particular product and so on. Depending on the amount of data and filters used, the query to get the data may take a couple of minutes, maybe even hours. The question now becomes how to best handle long-running request in GraphQL.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Chinook Project Hosted On Heroku</title>
-      <link>https://www.yunier.dev/post/2021/chinook-project-hosted-on-heroku/</link>
+      <link>http://localhost:1313/post/2021/chinook-project-hosted-on-heroku/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/chinook-project-hosted-on-heroku/</guid>
-      <description>My Chinook JSON:API project is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, https://chinook-jsonapi.herokuapp.com/, I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using JSON Viewer.
-Remember, the API does not support filtering, pagination, sorting or include resolvers and it only supports READ operations.</description>
+      <guid>http://localhost:1313/post/2021/chinook-project-hosted-on-heroku/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook JSON:API project&lt;/a&gt; is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, &lt;a href=&#34;https://chinook-jsonapi.herokuapp.com/&#34;&gt;https://chinook-jsonapi.herokuapp.com/&lt;/a&gt;, I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using &lt;a href=&#34;https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh&#34;&gt;JSON Viewer&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Remember, the API does not support filtering, pagination, sorting or include resolvers and it only supports READ operations. I&amp;rsquo;m hoping to add filtering soon but I first want to dedicate a blog post or two on building dynamic LINQ queries using expression trees. That should be fun!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Tagging EF Core Queries</title>
-      <link>https://www.yunier.dev/post/2020/tagging-ef-core-queries/</link>
+      <link>http://localhost:1313/post/2020/tagging-ef-core-queries/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/tagging-ef-core-queries/</guid>
-      <description>.NET Core 2.2 introduce a small feature known as Query Tags. It allows you to annotate queries generated by EF Core. This is super useful for debugging purposes, after all one of the main complains you often hear about EntityFramework is the over completed SQL statements it generates.
-I am currently working on a project called Chinook, it demonstrates how to build a JSON:API on .NET Core. The project uses EF Core to query a SQLite database.</description>
+      <guid>http://localhost:1313/post/2020/tagging-ef-core-queries/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-2/#query-tags&#34;&gt;.NET Core 2.2&lt;/a&gt; introduce a small feature known as &lt;strong&gt;Query Tags&lt;/strong&gt;. It allows you to annotate queries generated by EF Core. This is super useful for debugging purposes, after all one of the main complains you often hear about EntityFramework is the over completed SQL statements it generates.&lt;/p&gt;&#xA;&lt;p&gt;I am currently working on a project called &lt;a href=&#34;https://github.com/circleupx/Chinook&#34;&gt;Chinook&lt;/a&gt;, it demonstrates how to build a JSON:API on .NET Core. The project uses EF Core to query a SQLite database. Here is an example of one of the LINQ queries used to get a collection of users.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Exposing Relationships</title>
-      <link>https://www.yunier.dev/post/2020/json-api-exposing-relationships/</link>
+      <link>http://localhost:1313/post/2020/json-api-exposing-relationships/</link>
       <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-exposing-relationships/</guid>
-      <description>My previous post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource.
-For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums.</description>
+      <guid>http://localhost:1313/post/2020/json-api-exposing-relationships/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/&#34;&gt;previous&lt;/a&gt; post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes  Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource.&lt;/p&gt;&#xA;&lt;p&gt;For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Integration Testing Using WebApplicationFactory</title>
-      <link>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</link>
+      <link>http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</guid>
-      <description>When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of .NET MVC 5 you probably know that one of the best ways to test an HTTP request in MVC 5 was to use Phil&amp;rsquo;s HttpSimulator.
-That is no longer the case in .</description>
+      <guid>http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/</guid>
+      <description>&lt;p&gt;When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started&#34;&gt;.NET MVC 5&lt;/a&gt; you probably know that one of the best ways to test an HTTP request in MVC 5 was to use &lt;a href=&#34;https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/&#34;&gt;Phil&amp;rsquo;s HttpSimulator&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;That is no longer the case in .NET Core thanks to the power of the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-5.0&#34;&gt;WebApplicationFactory&lt;/a&gt; class. This class creates a local instance of &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver?view=aspnetcore-5.0&#34;&gt;TestServer&lt;/a&gt;, TestServer creates a local &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-5.0&#34;&gt;kestrel&lt;/a&gt; web server. Since we are dealing with an actual web server, not a fake web server, there is no need to stub, fake, or mock anything. The HTTP request that are made to the local kestrel web server are legitimate HTTP request, this gives you the power to test your application&amp;rsquo;s functionality from visual studio, build server, or wherever you are executing your Unit Test as if the app where hosted on a live server.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dream Machine - Turn On/Off LED Light Switch</title>
-      <link>https://www.yunier.dev/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</link>
+      <link>http://localhost:1313/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</guid>
-      <description>I want to step away from software for this post to talk about some hardware. Over the years I&amp;rsquo;ve owned a few routers, some have been really really good and some have been really bad. So far the best router I have owned is my current router, the UniFi Dream Machine. While I was mostly happy with my last router, the NighHawk AC1900, it did dropped the WiFi signal a lot, I think that at one point it was dropping the WiFi signal once a week.</description>
+      <guid>http://localhost:1313/post/2020/dream-machine-turn-off-blue-led-light-on-dreammachine/</guid>
+      <description>&lt;p&gt;I want to step away from software for this post to talk about some hardware. Over the years I&amp;rsquo;ve owned a few routers, some have been really really &lt;a href=&#34;https://www.amazon.com/R7000-100PAS-Nighthawk-Parental-Controls-Compatible/dp/B00F0DD0I6/&#34;&gt;good&lt;/a&gt; and some have been really &lt;a href=&#34;https://en.wikipedia.org/wiki/Linksys_WRT54G_series&#34;&gt;bad&lt;/a&gt;. So far the best router I have owned is my current router, the &lt;a href=&#34;https://www.amazon.com/Ubiquiti-UniFi-Dream-Machine-UDM-US/dp/B081QNJFPV/&#34;&gt;UniFi Dream Machine&lt;/a&gt;. While I was mostly happy with my last router, the NighHawk AC1900, it did dropped the WiFi signal a lot, I think that at one point it was dropping the WiFi signal once a week. That prompted me to start looking for a new router. After doing some research, and seeing &lt;a href=&#34;https://youtu.be/FRsRoaubPiY?t=1800&#34;&gt;Troy Hunt presentation on bad IOT devices&lt;/a&gt; and NetworkChuck&amp;rsquo;s &lt;a href=&#34;https://www.youtube.com/watch?v=BezoNUflqXo&#34;&gt;review&lt;/a&gt; on the Dream Machine, I was sold on the Dream Machine.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Exposing The Customer Resource</title>
-      <link>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</link>
+      <link>http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</guid>
-      <description>This will be my third blog post on JSON:API in .NET Core.
-I plant to add Customer as an API resource, but before we get too deep on the code, I would like to review the Chinook database project. To do that I&amp;rsquo;m going to import Chinook.db into DB Browser for SQLite to see all available entities.
-As you can see we have quite a few entities, for this blog post I will concentrate on the customers entity.</description>
+      <guid>http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/</guid>
+      <description>&lt;p&gt;This will be my third blog post on &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; in .NET Core.&lt;/p&gt;&#xA;&lt;p&gt;I plant to add &lt;strong&gt;Customer&lt;/strong&gt; as an API resource, but before we get too deep on the code, I would like to review the &lt;a href=&#34;https://www.sqlitetutorial.net/sqlite-sample-database/&#34;&gt;Chinook&lt;/a&gt; database project. To do that I&amp;rsquo;m going to import &lt;a href=&#34;https://cdn.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip&#34;&gt;Chinook.db&lt;/a&gt; into &lt;a href=&#34;https://sqlitebrowser.org/dl/&#34;&gt;DB Browser&lt;/a&gt; for SQLite to see all available entities.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/chinook-database-entities.PNG&#34; alt=&#34;Database Entities&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;As you can see we have quite a few entities, for this blog post I will concentrate on the &lt;strong&gt;customers&lt;/strong&gt; entity. To accomplish adding customers as an API resource I will need to create a new service model that represents the customers entity in both JsonApiFramework and EF Core. I will scaffold the SQLite database using &lt;a href=&#34;https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=dotnet-core-cli&#34;&gt;EF Core&amp;rsquo;s reverse engineering capabilities&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Exception Handling Middleware</title>
-      <link>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</link>
+      <link>http://localhost:1313/post/2020/json-api-exception-handling-middleware/</link>
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</guid>
-      <description>On my second post on JSON:API in .NET Core I wanted to create an exception handling middleware. This middleware would be responsible for catching all exceptions and for generating a JSON:API Errors Documents.
-I&amp;rsquo;ll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.
-Folder has been added, now I will add the middleware class to the project in here.</description>
+      <guid>http://localhost:1313/post/2020/json-api-exception-handling-middleware/</guid>
+      <description>&lt;p&gt;On my second post on &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; in .NET Core I wanted to create an exception handling &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1&#34;&gt;middleware&lt;/a&gt;. This middleware would be responsible for catching all exceptions and for generating a JSON:API &lt;a href=&#34;https://jsonapi.org/format/#document-top-level&#34;&gt;Errors Documents&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/json-api-exception-handling-middleware/middleware-folder.PNG&#34; alt=&#34;Middleware Folder&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Folder has been added, now I will add the middleware class to the project in here.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SQLite - No Such Table Error</title>
-      <link>https://www.yunier.dev/post/2020/sqlite-no-such-table-error/</link>
+      <link>http://localhost:1313/post/2020/sqlite-no-such-table-error/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/sqlite-no-such-table-error/</guid>
-      <description>Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
-As you can see from the exception, the error is &amp;ldquo;SQLite Error 1: &amp;rsquo;no such table vPet&amp;rsquo;&amp;rdquo; which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
-Here is my PetsDbContext.
-public class PetsDbContext : DbContext { // Rest of code omitted for brevity public DbSet&amp;lt;Pet&amp;gt; Pets { get; set; } public PetsDbContext() { } public PetsDbContext(DbContextOptions&amp;lt;PetsDbContext&amp;gt; options) : base(options) { } protected override void OnModelCreating(ModelBuilder modelBuilder) { // Rest of code omitted for brevity modelBuilder.</description>
+      <guid>http://localhost:1313/post/2020/sqlite-no-such-table-error/</guid>
+      <description>&lt;p&gt;Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/sqlite-no-such-table-error/pet-exception.PNG&#34; alt=&#34;Pet Exception&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;As you can see from the exception, the error is &lt;strong&gt;&amp;ldquo;SQLite Error 1: &amp;rsquo;no such table vPet&amp;rsquo;&amp;rdquo;&lt;/strong&gt; which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.&lt;/p&gt;&#xA;&lt;p&gt;Here is my PetsDbContext.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Creating The Home Resource</title>
-      <link>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</link>
+      <link>http://localhost:1313/post/2020/json-api-creating-the-home-resource/</link>
       <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</guid>
-      <description>This post will be my first entry into a multi-part series of post showing how I&amp;rsquo;ve built RESTful APIs using the JSON:API specification on .NET Core.
-I will start by creating a new .NET Core Web Api project, I am going to call this project Chinook, after the sqlite database that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his Clean Architecture repository.</description>
+      <guid>http://localhost:1313/post/2020/json-api-creating-the-home-resource/</guid>
+      <description>&lt;p&gt;This post will be my first entry into a multi-part series of post showing how I&amp;rsquo;ve built RESTful APIs using the &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; specification on .NET Core.&lt;/p&gt;&#xA;&lt;p&gt;I will start by creating a new .NET Core Web Api project, I am going to call this project &lt;strong&gt;Chinook&lt;/strong&gt;, after the sqlite &lt;a href=&#34;https://www.sqlitetutorial.net/sqlite-sample-database/&#34;&gt;database&lt;/a&gt; that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture&#34;&gt;Clean Architecture&lt;/a&gt; repository.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Problem With AcquireRequestState</title>
-      <link>https://www.yunier.dev/post/2020/the-problem-with-acquirerequeststate/</link>
+      <link>http://localhost:1313/post/2020/the-problem-with-acquirerequeststate/</link>
       <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/the-problem-with-acquirerequeststate/</guid>
-      <description>In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.
-AcquireRequestState is part of the ASP.NET Life Cycle, this is an event raised by the HttpApplication, it keeps session state in sync. Though I suspect that most developers are familiar with this event for being a major performance pain in their .</description>
+      <guid>http://localhost:1313/post/2020/the-problem-with-acquirerequeststate/</guid>
+      <description>&lt;p&gt;In my second post, I wanted to cover AcquireRequestState. In my four years as a developer I have encountered issues with AcquireRequestState twice. So, what in the world is AcquireRequestState.&lt;/p&gt;&#xA;&lt;p&gt;AcquireRequestState is part of the ASP.NET &lt;a href=&#34;https://docs.microsoft.com/en-us/previous-versions/aspnet/bb470252(v=vs.100)&#34;&gt;Life Cycle&lt;/a&gt;, this is an event raised by the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/system.web.httpapplication?redirectedfrom=MSDN&amp;view=netframework-4.8&#34;&gt;HttpApplication&lt;/a&gt;, it keeps session state in sync. Though I suspect that most developers are familiar with this event for being a major performance pain in their .NET Framework application, as documented &lt;a href=&#34;https://stackoverflow.com/questions/30066925/long-delays-in-acquirerequeststate&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://discuss.newrelic.com/t/acquirerequeststate-is-delaying-response-times-web-api/38229&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://stackoverflow.com/questions/3629709/i-just-discovered-why-all-asp-net-websites-are-slow-and-i-am-trying-to-work-out&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://stackoverflow.com/questions/8349033/storing-anything-in-asp-net-session-causes-500ms-delays&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/35133150/newrelic-async-http-handler-and-acquirerequeststate&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Configure Serilog Sub-Loggers Using XML App Settings</title>
-      <link>https://www.yunier.dev/post/2020/configure-serilog-sub-logger-from-appsettings/</link>
+      <link>http://localhost:1313/post/2020/configure-serilog-sub-logger-from-appsettings/</link>
       <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/configure-serilog-sub-logger-from-appsettings/</guid>
-      <description>Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application.
-I recently had to configure a .NET Framework application to use two different sub-loggers and while I was able find many examples online on how to configure sub-loggers through AppSettings.json, I did not find any examples on how to configure them through AppSettings.config/App.config so I wanted to document that process on this post.</description>
+      <guid>http://localhost:1313/post/2020/configure-serilog-sub-logger-from-appsettings/</guid>
+      <description>&lt;p&gt;Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application.&lt;/p&gt;&#xA;&lt;p&gt;I recently had to configure a .NET Framework application to use two different sub-loggers and while I was able find many examples online on how to configure sub-loggers through AppSettings.json, I did not find any examples on how to configure them through AppSettings.config/App.config so I wanted to document that process on this post.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My reading list.</title>
-      <link>https://www.yunier.dev/reading-list/</link>
+      <link>http://localhost:1313/reading-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/reading-list/</guid>
-      <description>In no particular order, here are my recommended list of books.
-Terraform: Up and Running: Writing Infrastructure as Code Designing Data-Intensive Applications Production Ready GraphQL Designing Distributed Systems The DynamoDb Book RESTful Web Services Cookbook The Imposter&amp;rsquo;s Handbook Design Patterns for Cloud Native Applications Understanding Distributed Systems Practical Process Automation Database Internals: A Deep Dive into How Distributed Data Systems Work Modern Trade-Off Analyses for Distributed Architectures Managing Cloud Native Data on Kubernetes Kubernetes Patterns: Reusable Elements for Designing Cloud Native Applications Team Topologies: Organizing Business and Technology Teams for Fast Flow Foundations of Scalable Systems: Designing Distributed Architectures Building Event-Driven Microservices: Leveraging Organizational Data at Scale Fundamentals of Software Architecture: An Engineering Approach System Design Interview – An insider&amp;rsquo;s guide Making Sense of Stream Processing </description>
+      <guid>http://localhost:1313/reading-list/</guid>
+      <description>&lt;p&gt;In no particular order, here are my recommended list of books.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/j0150iK&#34;&gt;Terraform: Up and Running: Writing Infrastructure as Code&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/4VLsmog&#34;&gt;Designing Data-Intensive Applications&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://book.productionreadygraphql.com/s&#34;&gt;Production Ready GraphQL&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/4omRFjY&#34;&gt;Designing Distributed Systems&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.dynamodbbook.com/&#34;&gt;The DynamoDb Book&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/e6vjoVL&#34;&gt;RESTful Web Services Cookbook&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/31572054-the-imposter-s-handbook&#34;&gt;The Imposter&amp;rsquo;s Handbook&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/3iMA9s0&#34;&gt;Design Patterns for Cloud Native Applications&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/29Q6ge6&#34;&gt;Understanding Distributed Systems&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/1fWJ1hk&#34;&gt;Practical Process Automation&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/gurauZX&#34;&gt;Database Internals: A Deep Dive into How Distributed Data Systems Work&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/9xzwkX6&#34;&gt;Modern Trade-Off Analyses for Distributed Architectures&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/ePSzo48&#34;&gt;Managing Cloud Native Data on Kubernetes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/iLZq4qf&#34;&gt;Kubernetes Patterns: Reusable Elements for Designing Cloud Native Applications&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/1px40zH&#34;&gt;Team Topologies: Organizing Business and Technology Teams for Fast Flow&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/hQgiHJe&#34;&gt;Foundations of Scalable Systems: Designing Distributed Architectures&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/e0F5ZmK&#34;&gt;Building Event-Driven Microservices: Leveraging Organizational Data at Scale&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/8rtIzw3&#34;&gt;Fundamentals of Software Architecture: An Engineering Approach&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/81sn78R&#34;&gt;System Design Interview – An insider&amp;rsquo;s guide&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.oreilly.com/library/view/making-sense-of/9781492042563/&#34;&gt;Making Sense of Stream Processing&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/foXKroJ&#34;&gt;Patterns of Distributed Systems&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/fFgUZ9C&#34;&gt;Concurrency in Go&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/d5EOxbE&#34;&gt;Fluent Python&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/goM6rQa&#34;&gt;Hypermedia Systems&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://a.co/d/ix1U7xv&#34;&gt;Learning Go&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
-    
     <item>
       <title>Search</title>
-      <link>https://www.yunier.dev/search/</link>
+      <link>http://localhost:1313/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/search/</guid>
+      <guid>http://localhost:1313/search/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

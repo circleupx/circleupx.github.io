@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Serilog on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/serilog/</link>
-    <description>Recent content in Serilog on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/serilog/rss" rel="self" type="application/rss+xml" />
+    <title>Serilog on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/serilog/</link>
+    <description>Recent content in Serilog on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/serilog/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Worker Services Configure Serilog</title>
-      <link>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</link>
+      <link>http://localhost:1313/post/2021/worker-services-configure-serilog/</link>
       <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/worker-services-configure-serilog/</guid>
-      <description>A worker service is a type of Background Service that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.
-If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors.</description>
+      <guid>http://localhost:1313/post/2021/worker-services-configure-serilog/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/core/extensions/workers&#34;&gt;worker service&lt;/a&gt; is a type of &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.backgroundservice?view=dotnet-plat-ext-5.0&#34;&gt;Background Service&lt;/a&gt; that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.&lt;/p&gt;&#xA;&lt;p&gt;If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors. If you plan to use Serilog, then this post will show you how to configure Serilog on a worker project.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Configure Serilog Sub-Loggers Using XML App Settings</title>
-      <link>https://www.yunier.dev/post/2020/configure-serilog-sub-logger-from-appsettings/</link>
+      <link>http://localhost:1313/post/2020/configure-serilog-sub-logger-from-appsettings/</link>
       <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/configure-serilog-sub-logger-from-appsettings/</guid>
-      <description>Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application.
-I recently had to configure a .NET Framework application to use two different sub-loggers and while I was able find many examples online on how to configure sub-loggers through AppSettings.json, I did not find any examples on how to configure them through AppSettings.config/App.config so I wanted to document that process on this post.</description>
+      <guid>http://localhost:1313/post/2020/configure-serilog-sub-logger-from-appsettings/</guid>
+      <description>&lt;p&gt;Serilog has a neat feature that allows you to configure sub-loggers. With this feature you can essentially have log specific instances running on your application.&lt;/p&gt;&#xA;&lt;p&gt;I recently had to configure a .NET Framework application to use two different sub-loggers and while I was able find many examples online on how to configure sub-loggers through AppSettings.json, I did not find any examples on how to configure them through AppSettings.config/App.config so I wanted to document that process on this post.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rules Engine on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/rules-engine/</link>
-    <description>Recent content in Rules Engine on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/rules-engine/rss" rel="self" type="application/rss+xml" />
+    <title>Rules Engine on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/rules-engine/</link>
+    <description>Recent content in Rules Engine on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rules-engine/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Rule Engines In .NET</title>
-      <link>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</link>
+      <link>http://localhost:1313/post/2023/rule-engines-in-dotnet/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/rule-engines-in-dotnet/</guid>
-      <description>Introduction I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.
-To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations.</description>
+      <guid>http://localhost:1313/post/2023/rule-engines-in-dotnet/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.&lt;/p&gt;&#xA;&lt;p&gt;To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations. In .NET the most well-known rules engine is probably &lt;a href=&#34;https://nrules.net/&#34;&gt;NRules&lt;/a&gt;, the project has been around for some years and has good documentation. I also know that Microsoft created its own rules engine, &lt;a href=&#34;https://microsoft.github.io/RulesEngine/&#34;&gt;RulesEngine&lt;/a&gt; back in 2019. Then per &lt;a href=&#34;https://github.com/quozd/awesome-dotnet&#34;&gt;awesome-dotnet&lt;/a&gt; I could use &lt;a href=&#34;https://github.com/sang-hyeon/Plastic&#34;&gt;Plastic&lt;/a&gt; or &lt;a href=&#34;https://github.com/peasy/Peasy.NET&#34;&gt;Peasy.NET&lt;/a&gt; but I opted out on looking at those projects, for my use case I think NRules or RulesEngine will do.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CSS on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/css/</link>
-    <description>Recent content in CSS on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/css/rss" rel="self" type="application/rss+xml" />
+    <title>CSS on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/css/</link>
+    <description>Recent content in CSS on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/css/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>The Platform</title>
-      <link>https://www.yunier.dev/post/2021/the-platform/</link>
+      <link>http://localhost:1313/post/2021/the-platform/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/the-platform/</guid>
-      <description>HTML, CSS, and Javascript, are the languages of the world wide web, the platform. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I&amp;rsquo;ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn&amp;rsquo;t mean that I don&amp;rsquo;t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development.</description>
+      <guid>http://localhost:1313/post/2021/the-platform/</guid>
+      <description>&lt;p&gt;HTML, CSS, and Javascript, are the languages of the world wide web, the &lt;a href=&#34;https://youtu.be/BzX4aTRPzno?t=937&#34;&gt;platform&lt;/a&gt;. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I&amp;rsquo;ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn&amp;rsquo;t mean that I don&amp;rsquo;t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development. I am familiar with some of the modern frameworks like &lt;a href=&#34;https://angular.io/&#34;&gt;Angular&lt;/a&gt;, &lt;a href=&#34;https://reactjs.org/&#34;&gt;React.js&lt;/a&gt;, &lt;a href=&#34;https://nextjs.org/&#34;&gt;Next.js&lt;/a&gt; and &lt;a href=&#34;https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks&#34;&gt;everyone&amp;rsquo;s new favorite&lt;/a&gt;, &lt;a href=&#34;https://svelte.dev/&#34;&gt;svelte&lt;/a&gt;. By falling behind I mean that I am not up to date with some of the new tools and technologies that have been created since the days of AngularJS. I want to use this post to write about some of these new techniques and tools that are available for front-end development.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

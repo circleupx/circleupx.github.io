@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code Coverage on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/code-coverage/</link>
-    <description>Recent content in Code Coverage on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/code-coverage/rss" rel="self" type="application/rss+xml" />
+    <title>Code Coverage on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/code-coverage/</link>
+    <description>Recent content in Code Coverage on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/code-coverage/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Code Coverage In .NET</title>
-      <link>https://www.yunier.dev/post/2022/code-coverage/</link>
+      <link>http://localhost:1313/post/2022/code-coverage/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/code-coverage/</guid>
-      <description>If you are writing unit tests in .NET, you may eventually find the need to generate code coverage reports to show how much coverage your project has. The best tool for code coverage reports in my experience has been coverlet because it supports both .NET Framework and .NET Core.
-NUnit NUnit, the tried and tested framework originally being a port of JUnit. A powerful tool that when combined with coverlet console can be used to generate code coverage reports.</description>
+      <guid>http://localhost:1313/post/2022/code-coverage/</guid>
+      <description>&lt;p&gt;If you are writing unit tests in .NET, you may eventually find the need to generate code coverage reports to show how much coverage your project has. The best tool for code coverage reports in my experience has been &lt;a href=&#34;https://github.com/coverlet-coverage/coverlet&#34;&gt;coverlet&lt;/a&gt; because it supports both .NET Framework and .NET Core.&lt;/p&gt;&#xA;&lt;h3 id=&#34;nunit&#34;&gt;NUnit&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://nunit.org/&#34;&gt;NUnit&lt;/a&gt;, the tried and tested framework originally being a port of &lt;a href=&#34;https://junit.org/junit5/&#34;&gt;JUnit&lt;/a&gt;. A powerful tool that when combined with &lt;a href=&#34;https://www.nuget.org/packages/coverlet.console&#34;&gt;coverlet console&lt;/a&gt; can be used to generate code coverage reports. To demonstrate, I will create an NUnit test project targeting .NET Framework 4.8 along with a Class Library type project also targeting .NET Framework 4.8&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

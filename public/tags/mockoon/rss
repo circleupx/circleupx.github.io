@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mockoon on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/mockoon/</link>
-    <description>Recent content in Mockoon on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/mockoon/rss" rel="self" type="application/rss+xml" />
+    <title>Mockoon on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/mockoon/</link>
+    <description>Recent content in Mockoon on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 25 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mockoon/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Mockoon</title>
-      <link>https://www.yunier.dev/post/2022/mockoon/</link>
+      <link>http://localhost:1313/post/2022/mockoon/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/mockoon/</guid>
-      <description>A while back I made a blog post titled, Tools For The Modern Day Developer, in which I listed the tools I thought at the time every developer should be using. Today, I still stand by that list, but I would like to add an additional tool that lately has become super useful to me, that tool is Mockoon.
-Mockoon is a free and open-source mock API tool created by Guillaume in 2017.</description>
+      <guid>http://localhost:1313/post/2022/mockoon/</guid>
+      <description>&lt;p&gt;A while back I made a blog post titled, &lt;a href=&#34;https://www.yunier.dev/post/2021/tools-for-the-modern-developer/&#34;&gt;Tools For The Modern Day Developer&lt;/a&gt;, in which I listed the tools I thought at the time every developer should be using. Today, I still stand by that list, but I would like to add an additional tool that lately has become super useful to me, that tool is &lt;a href=&#34;https://mockoon.com/&#34;&gt;Mockoon&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2022/mockoon/mockoon.png&#34; alt=&#34;Mockoon&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Mockoon is a free and open-source mock API tool created by &lt;a href=&#34;https://github.com/255kb&#34;&gt;Guillaume&lt;/a&gt; in 2017. It offers Docker support, a CLI, importing and exporting of Mockoon environments, it works with OpenAPI 3.0 files. In many ways it feel like &lt;a href=&#34;https://www.postman.com/&#34;&gt;Postman&lt;/a&gt;, even the UI feels like the old classic Postman UI.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

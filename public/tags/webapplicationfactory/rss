@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>WebApplicationFactory on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/webapplicationfactory/</link>
-    <description>Recent content in WebApplicationFactory on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/webapplicationfactory/rss" rel="self" type="application/rss+xml" />
+    <title>WebApplicationFactory on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/webapplicationfactory/</link>
+    <description>Recent content in WebApplicationFactory on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/webapplicationfactory/rss" rel="self" type="application/rss+xml" />
     <item>
-      <title>Power Up Integration Tests with Test Containers</title>
-      <link>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</link>
+      <title>Power Up Integration Tests With Test Containers</title>
+      <link>http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/</link>
       <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2023/power-up-integration-tests-with-tests-containers/</guid>
-      <description>Introduction In my blog post Integration Testing Using WebApplicationFactory I spoke about the benefits of testing a .NET Core Web API using WebApplicationFactory. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.
-The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client.</description>
+      <guid>http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;In my blog post &lt;a href=&#34;http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/&#34;&gt;Integration Testing Using WebApplicationFactory&lt;/a&gt; I spoke about the benefits of testing a .NET Core Web API using &lt;a href=&#34;https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-7.0&#34;&gt;WebApplicationFactory&lt;/a&gt;. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.&lt;/p&gt;&#xA;&lt;p&gt;The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client. One drawback of using WebApplicationFactory would be having to mock API dependencies, for example, the database. A common option for .NET developers using a relational database like SQL Server is to use SQLite in the integration tests, however, even that solution suffers from other drawbacks, our friend Jimmy Bogard goes into more detail in his blog &lt;a href=&#34;https://jimmybogard.com/avoid-in-memory-databases-for-tests/&#34;&gt;Avoid In-Memory Databases for Tests&lt;/a&gt;. What if instead of faking the database we actually used a real live database in our integration tests? There is a way, how? Well, with Docker.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Integration Testing Using WebApplicationFactory</title>
-      <link>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</link>
+      <link>http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/integration-testing-using-webapplicationfactory/</guid>
-      <description>When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of .NET MVC 5 you probably know that one of the best ways to test an HTTP request in MVC 5 was to use Phil&amp;rsquo;s HttpSimulator.
-That is no longer the case in .</description>
+      <guid>http://localhost:1313/post/2021/integration-testing-using-webapplicationfactory/</guid>
+      <description>&lt;p&gt;When the .NET Core team started to envision how the .NET Framework would look like as a modern web framework they set out to expand the testing capabilities of the framework. If you come from the world of &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started&#34;&gt;.NET MVC 5&lt;/a&gt; you probably know that one of the best ways to test an HTTP request in MVC 5 was to use &lt;a href=&#34;https://haacked.com/archive/2007/06/19/unit-tests-web-code-without-a-web-server-using-httpsimulator.aspx/&#34;&gt;Phil&amp;rsquo;s HttpSimulator&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;That is no longer the case in .NET Core thanks to the power of the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-5.0&#34;&gt;WebApplicationFactory&lt;/a&gt; class. This class creates a local instance of &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver?view=aspnetcore-5.0&#34;&gt;TestServer&lt;/a&gt;, TestServer creates a local &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-5.0&#34;&gt;kestrel&lt;/a&gt; web server. Since we are dealing with an actual web server, not a fake web server, there is no need to stub, fake, or mock anything. The HTTP request that are made to the local kestrel web server are legitimate HTTP request, this gives you the power to test your application&amp;rsquo;s functionality from visual studio, build server, or wherever you are executing your Unit Test as if the app where hosted on a live server.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

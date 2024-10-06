@@ -1,131 +1,96 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>REST on Yunier&#39;s Blog</title>
-    <link>https://www.yunier.dev/tags/rest/</link>
-    <description>Recent content in REST on Yunier&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.yunier.dev/tags/rest/rss" rel="self" type="application/rss+xml" />
+    <title>REST on Yunier&#39;s Wiki</title>
+    <link>http://localhost:1313/tags/rest/</link>
+    <description>Recent content in REST on Yunier&#39;s Wiki</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rest/rss" rel="self" type="application/rss+xml" />
     <item>
       <title>Markup Your Web API Documents</title>
-      <link>https://www.yunier.dev/post/2022/markup-your-web-api-documents/</link>
+      <link>http://localhost:1313/post/2022/markup-your-web-api-documents/</link>
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/markup-your-web-api-documents/</guid>
-      <description>I&amp;rsquo;ve been thinking about what it takes to build a good Web API, regardless of the technology (REST vs GraphQL) or philosophy used. One concept that has been stuck on my head is the idea of marking up API documents to provide more context around the data.
-A Web API document is the response returned by the API itself, you will often see this term used in API specifications like GraphQL, HAL, JSON-LD, and JSON:API.</description>
+      <guid>http://localhost:1313/post/2022/markup-your-web-api-documents/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been thinking about what it takes to build a good Web API, regardless of the technology (REST vs GraphQL) or philosophy used. One concept that has been stuck on my head is the idea of marking up API documents to provide more context around the data.&lt;/p&gt;&#xA;&lt;p&gt;A Web API document is the response returned by the API itself, you will often see this term used in API specifications like &lt;a href=&#34;https://spec.graphql.org/October2021/#sec-Document&#34;&gt;GraphQL&lt;/a&gt;, &lt;a href=&#34;https://stateless.group/hal_specification.html&#34;&gt;HAL&lt;/a&gt;, &lt;a href=&#34;https://w3c.github.io/json-ld-syntax/#loading-documents&#34;&gt;JSON-LD&lt;/a&gt;, and &lt;a href=&#34;https://jsonapi.org/format/#document-structure&#34;&gt;JSON:API&lt;/a&gt;. Web API documents can be very simple, for example, imagine working with a Web API that manages users. This API may choose to represent the user resource using the following JSON.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Faster Web API Pagination</title>
-      <link>https://www.yunier.dev/post/2022/faster-web-api-pagination/</link>
+      <link>http://localhost:1313/post/2022/faster-web-api-pagination/</link>
       <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/faster-web-api-pagination/</guid>
-      <description>A few weeks ago I came across a blog post from Aaron Francis in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in High Performance MySQL: Proven Strategies for Operating at Scale.
-The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an OFFSET to skip over a number of records, however, even though the results are skipped, the database must still fetch those records.</description>
+      <guid>http://localhost:1313/post/2022/faster-web-api-pagination/</guid>
+      <description>&lt;p&gt;A few weeks ago I came across a blog &lt;a href=&#34;https://aaronfrancis.com/2022/efficient-pagination-using-deferred-joins&#34;&gt;post&lt;/a&gt; from &lt;a href=&#34;https://aaronfrancis.com/&#34;&gt;Aaron Francis&lt;/a&gt; in which he talks about creating efficient pagination using deferred joins. A technique he remembered reading in &lt;a href=&#34;https://www.amazon.com/High-Performance-MySQL-Strategies-Operating-dp-1492080519/dp/1492080519&#34;&gt;High Performance MySQL: Proven Strategies for Operating at Scale&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The idea is that without deferred joins pagination queries can impact response time. Pagination is done using an &lt;a href=&#34;https://www.geeksforgeeks.org/sql-offset-fetch-clause/&#34;&gt;OFFSET&lt;/a&gt; to skip over a number of records, however, even though the results are skipped, the database must still fetch those records. Meaning we are reading data from the disk and immediately discarding it. This is an inefficient process and is what causes pagination performance to degrade as you paginate over more records.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Pagination Links</title>
-      <link>https://www.yunier.dev/post/2022/json-api-pagination-links/</link>
+      <link>http://localhost:1313/post/2022/json-api-pagination-links/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2022/json-api-pagination-links/</guid>
-      <description>It has been a while since I blogged about JSON:API. In my last post on JSON:API I covered how to create new resources. In today&amp;rsquo;s post, I want to go over how I expose pagination links. Pagination links allow a client to page through a collection of resources. A shift of control from the client back to the server.
-Here is an example of a possible JSON:API response that includes pagination links.</description>
+      <guid>http://localhost:1313/post/2022/json-api-pagination-links/</guid>
+      <description>&lt;p&gt;It has been a while since I blogged about &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt;. In my last post on JSON:API I covered how to create &lt;a href=&#34;http://localhost:1313/post/2021/json-api-creating-new-resources/&#34;&gt;new resources&lt;/a&gt;. In today&amp;rsquo;s post, I want to go over how I expose pagination links. &lt;a href=&#34;https://jsonapi.org/examples/#pagination&#34;&gt;Pagination links&lt;/a&gt; allow a client to page through a collection of resources. A shift of control from the client back to the server.&lt;/p&gt;&#xA;&lt;p&gt;Here is an example of a possible JSON:API response that includes pagination links.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: [&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// omitted for brevity&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;links&amp;#34;&lt;/span&gt;: {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;up&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;self&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=3&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;first&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=1&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=2&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;next&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=4&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;last&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://example.com/articles?page[number]=13&amp;amp;page[size]=1&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;As you can see, along with the &lt;a href=&#34;https://jsonapi.org/format/#document-top-level&#34;&gt;data&lt;/a&gt; object, the API responses included a &lt;a href=&#34;https://jsonapi.org/format/#document-links&#34;&gt;Links&lt;/a&gt; object, within the Links object, you can find links for up, self, first, prev, next, and last. These are all relationship name as defined in &lt;a href=&#34;https://www.iana.org/assignments/link-relations/link-relations.xhtml&#34;&gt;Link Relations&lt;/a&gt; by the Internet Assigned Numbers Authority (IANA).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Idempotency In A Web API</title>
-      <link>https://www.yunier.dev/post/2021/idempotency-in-a-web-api/</link>
+      <link>http://localhost:1313/post/2021/idempotency-in-a-web-api/</link>
       <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/idempotency-in-a-web-api/</guid>
-      <description>Idempotency, is one of the key features any Web API should have. The idea is that software is unrealiable, the network can fail, the database the API connects to could be offline, the API itself could be performing an intense operation that impacts performance. For all these reasons an API client may resubmit a request, not much of a problem if you are dealing with GET, HEAD, PUT or DELETE, these HTTP methods are idempotent, POST and PATCH on the other hand are not.</description>
+      <guid>http://localhost:1313/post/2021/idempotency-in-a-web-api/</guid>
+      <description>&lt;p&gt;Idempotency, is one of the key features any Web API should have. The idea is that &lt;a href=&#34;https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing&#34;&gt;software is unrealiable&lt;/a&gt;, the network can fail, the database the API connects to could be offline, the API itself could be performing an intense operation that impacts performance. For all these reasons an API client may resubmit a request, not much of a problem if you are dealing with &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET&#34;&gt;GET&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD&#34;&gt;HEAD&lt;/a&gt;, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT&#34;&gt;PUT&lt;/a&gt; or &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE&#34;&gt;DELETE&lt;/a&gt;, these HTTP methods are idempotent, &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/post&#34;&gt;POST&lt;/a&gt; and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH&#34;&gt;PATCH&lt;/a&gt; on the other hand are not.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Sort Functions Are Non-Deterministic</title>
-      <link>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</link>
+      <link>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/sort-functions-are-nondeterministic/</guid>
-      <description>When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.
-From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, like SQL Server, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.</description>
+      <guid>http://localhost:1313/post/2021/sort-functions-are-nondeterministic/</guid>
+      <description>&lt;p&gt;When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.&lt;/p&gt;&#xA;&lt;p&gt;From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, &lt;a href=&#34;https://docs.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?redirectedfrom=MSDN&amp;view=sql-server-ver15#arguments&#34;&gt;like SQL Server&lt;/a&gt;, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Practical Web API Validation Strategy</title>
-      <link>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</link>
+      <link>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/a-practical-web-api-validation-strategy/</guid>
-      <description>In my last post I wrote about how you can leverage JSON Schema to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema.</description>
+      <guid>http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://localhost:1313/post/2021/a-better-web-api-validation-strategy/&#34;&gt;last post&lt;/a&gt; I wrote about how you can leverage &lt;a href=&#34;https://json-schema.org/&#34;&gt;JSON Schema&lt;/a&gt; to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library &lt;a href=&#34;https://fluentvalidation.net/&#34;&gt;FluentValidation&lt;/a&gt; and exposing validation errors using &lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7807&#34;&gt;Problem Details&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Better Web API Validation Strategy</title>
-      <link>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</link>
+      <link>http://localhost:1313/post/2021/a-better-web-api-validation-strategy/</link>
       <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/a-better-web-api-validation-strategy/</guid>
-      <description>As an API developer, you will eventually need to determine how to handle data validation.
-The .NET ecosystem offers a few options, the first option, validation attributes, can be used to annotate how a model should be validated. Validation attributes are great, they don&amp;rsquo;t require any external dependencies, you can specify error messages, create your own custom validator, validate against many data types.
-For example, take the following Movie class, notice how the properties have been annotated with validation rules.</description>
+      <guid>http://localhost:1313/post/2021/a-better-web-api-validation-strategy/</guid>
+      <description>&lt;p&gt;As an API developer, you will eventually need to determine how to handle data validation.&lt;/p&gt;&#xA;&lt;p&gt;The .NET ecosystem offers a few options, the first option, &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes&#34;&gt;validation attributes&lt;/a&gt;, can be used to annotate how a model should be validated. Validation attributes are great, they don&amp;rsquo;t require any external dependencies, you can specify error messages, create your own &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-6.0#validation-attributes&#34;&gt;custom validator&lt;/a&gt;, validate against many data types.&lt;/p&gt;&#xA;&lt;p&gt;For example, take the following Movie class, notice how the properties have been annotated with validation rules.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Creating New Resources</title>
-      <link>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</link>
+      <link>http://localhost:1313/post/2021/json-api-creating-new-resources/</link>
       <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/json-api-creating-new-resources/</guid>
-      <description>So far in my JSON:API series I&amp;rsquo;ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today&amp;rsquo;s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
-To get started, the customer controller needs to have a method that will accept the incoming POST request.</description>
+      <guid>http://localhost:1313/post/2021/json-api-creating-new-resources/</guid>
+      <description>&lt;p&gt;So far in my JSON:API series I&amp;rsquo;ve covered the &lt;a href=&#34;https://www.yunier.dev/2020-09-14-Adding-Home-Resource/&#34;&gt;home resource&lt;/a&gt;, adding &lt;a href=&#34;https://www.yunier.dev/2020-10-30-Adding-Customer-Resource/&#34;&gt;your own resource&lt;/a&gt;, adding an &lt;a href=&#34;https://www.yunier.dev/2020-10-19-Exception-Handling-Middleware/&#34;&gt;exception handling middleware&lt;/a&gt; and how to &lt;a href=&#34;https://www.yunier.dev/2020-12-06-Exposing-Relationships/&#34;&gt;expose relationship&lt;/a&gt; between resources. For the today&amp;rsquo;s post, I would like to cover creating resources. I will update the chinook project by allowing &lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc2616/#section-9.5&#34;&gt;POST&lt;/a&gt; request on the customers collections to add new customers.&lt;/p&gt;&#xA;&lt;p&gt;To get started, the customer controller needs to have a method that will accept the incoming POST request. I&amp;rsquo;ve decided to call the method &lt;strong&gt;CreateCustomerResource&lt;/strong&gt;, the method will accept a &lt;a href=&#34;https://jsonapi.org/format/#document-structure&#34;&gt;JSON:API document&lt;/a&gt; from the request body. The full method signature is defined below.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Problem Details for HTTP APIs</title>
-      <link>https://www.yunier.dev/post/2021/problem-details-for-http-apis/</link>
+      <link>http://localhost:1313/post/2021/problem-details-for-http-apis/</link>
       <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2021/problem-details-for-http-apis/</guid>
-      <description>One of the many benefits of working with JSON:API and GraphQL is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.
-Almost every HTTP API that I&amp;#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?</description>
+      <guid>http://localhost:1313/post/2021/problem-details-for-http-apis/</guid>
+      <description>&lt;p&gt;One of the many benefits of working with &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; and &lt;a href=&#34;https://graphql.org/&#34;&gt;GraphQL&lt;/a&gt; is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Almost every HTTP API that I&amp;#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Exposing The Customer Resource</title>
-      <link>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</link>
+      <link>http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-exposing-the-customer-resource/</guid>
-      <description>This will be my third blog post on JSON:API in .NET Core.
-I plant to add Customer as an API resource, but before we get too deep on the code, I would like to review the Chinook database project. To do that I&amp;rsquo;m going to import Chinook.db into DB Browser for SQLite to see all available entities.
-As you can see we have quite a few entities, for this blog post I will concentrate on the customers entity.</description>
+      <guid>http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/</guid>
+      <description>&lt;p&gt;This will be my third blog post on &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; in .NET Core.&lt;/p&gt;&#xA;&lt;p&gt;I plant to add &lt;strong&gt;Customer&lt;/strong&gt; as an API resource, but before we get too deep on the code, I would like to review the &lt;a href=&#34;https://www.sqlitetutorial.net/sqlite-sample-database/&#34;&gt;Chinook&lt;/a&gt; database project. To do that I&amp;rsquo;m going to import &lt;a href=&#34;https://cdn.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip&#34;&gt;Chinook.db&lt;/a&gt; into &lt;a href=&#34;https://sqlitebrowser.org/dl/&#34;&gt;DB Browser&lt;/a&gt; for SQLite to see all available entities.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/chinook-database-entities.PNG&#34; alt=&#34;Database Entities&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;As you can see we have quite a few entities, for this blog post I will concentrate on the &lt;strong&gt;customers&lt;/strong&gt; entity. To accomplish adding customers as an API resource I will need to create a new service model that represents the customers entity in both JsonApiFramework and EF Core. I will scaffold the SQLite database using &lt;a href=&#34;https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=dotnet-core-cli&#34;&gt;EF Core&amp;rsquo;s reverse engineering capabilities&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Exception Handling Middleware</title>
-      <link>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</link>
+      <link>http://localhost:1313/post/2020/json-api-exception-handling-middleware/</link>
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-exception-handling-middleware/</guid>
-      <description>On my second post on JSON:API in .NET Core I wanted to create an exception handling middleware. This middleware would be responsible for catching all exceptions and for generating a JSON:API Errors Documents.
-I&amp;rsquo;ll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.
-Folder has been added, now I will add the middleware class to the project in here.</description>
+      <guid>http://localhost:1313/post/2020/json-api-exception-handling-middleware/</guid>
+      <description>&lt;p&gt;On my second post on &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; in .NET Core I wanted to create an exception handling &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1&#34;&gt;middleware&lt;/a&gt;. This middleware would be responsible for catching all exceptions and for generating a JSON:API &lt;a href=&#34;https://jsonapi.org/format/#document-top-level&#34;&gt;Errors Documents&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll start by adding a middleware folder on the Chinook.Web project, for now it will only have the exception handling middleware, but, eventually it will have additional middleware.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/post/2020/json-api-exception-handling-middleware/middleware-folder.PNG&#34; alt=&#34;Middleware Folder&#34;  /&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Folder has been added, now I will add the middleware class to the project in here.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSON:API - Creating The Home Resource</title>
-      <link>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</link>
+      <link>http://localhost:1313/post/2020/json-api-creating-the-home-resource/</link>
       <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.yunier.dev/post/2020/json-api-creating-the-home-resource/</guid>
-      <description>This post will be my first entry into a multi-part series of post showing how I&amp;rsquo;ve built RESTful APIs using the JSON:API specification on .NET Core.
-I will start by creating a new .NET Core Web Api project, I am going to call this project Chinook, after the sqlite database that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his Clean Architecture repository.</description>
+      <guid>http://localhost:1313/post/2020/json-api-creating-the-home-resource/</guid>
+      <description>&lt;p&gt;This post will be my first entry into a multi-part series of post showing how I&amp;rsquo;ve built RESTful APIs using the &lt;a href=&#34;https://jsonapi.org/&#34;&gt;JSON:API&lt;/a&gt; specification on .NET Core.&lt;/p&gt;&#xA;&lt;p&gt;I will start by creating a new .NET Core Web Api project, I am going to call this project &lt;strong&gt;Chinook&lt;/strong&gt;, after the sqlite &lt;a href=&#34;https://www.sqlitetutorial.net/sqlite-sample-database/&#34;&gt;database&lt;/a&gt; that I will use for this project. Whenever I create a .NET Core project I like to follow the project structure outlined by Steve Smith in his &lt;a href=&#34;https://github.com/ardalis/CleanArchitecture&#34;&gt;Clean Architecture&lt;/a&gt; repository.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
