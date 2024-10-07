@@ -2,7 +2,7 @@
 url: "/reading-list/"
 ---
 
-Here are a list of books that have impacted how I write and think about software, in no particular order.
+Here is a list of books that have impacted how I write and think about software, in no particular order.
 
 1) [Terraform: Up and Running: Writing Infrastructure as Code](https://a.co/d/j0150iK)
 2) [Designing Data-Intensive Applications](https://a.co/d/4VLsmog)
