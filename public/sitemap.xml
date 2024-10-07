@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/go/</loc>
+    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/2024/testing-in-go/testing-in-go/</loc>
+    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/jsonapi/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,16 +26,7 @@
     <loc>http://localhost:1313/series/jsonapi-in-.net/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/series/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/arrays/</loc>
@@ -31,9 +37,6 @@
   </url><url>
     <loc>http://localhost:1313/tags/modulo/</loc>
     <lastmod>2023-08-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/go/</loc>
-    <lastmod>2023-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2023/go-multiple-return-values/</loc>
     <lastmod>2023-08-01T00:00:00+00:00</lastmod>
@@ -362,9 +365,9 @@
     <loc>http://localhost:1313/post/2020/configure-serilog-sub-logger-from-appsettings/</loc>
     <lastmod>2020-08-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
     <loc>http://localhost:1313/reading-list/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/search/</loc>
   </url>

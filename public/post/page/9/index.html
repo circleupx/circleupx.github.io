@@ -110,8 +110,8 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/reading-list" title="Reading List">
-                    <span>Reading List</span>
+                <a href="http://localhost:1313/reading-list" title="Books">
+                    <span>Books</span>
                 </a>
             </li>
         </ul>
@@ -123,6 +123,20 @@
     Posts
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JSON:API - Creating New Resources
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>So far in my JSON:API series I’ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today’s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
+To get started, the customer controller needs to have a method that will accept the incoming POST request. I’ve decided to call the method CreateCustomerResource, the method will accept a JSON:API document from the request body. The full method signature is defined below.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-08 00:00:00 +0000 UTC'>August 8, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to JSON:API - Creating New Resources" href="http://localhost:1313/post/2021/json-api-creating-new-resources/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -178,20 +192,6 @@ Almost every HTTP API that I&#39;ve consumed implements errors differently. Can 
   </div>
   <footer class="entry-footer"><span title='2021-03-13 00:00:00 +0000 UTC'>March 13, 2021</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Accessibility Testing in Playwright" href="http://localhost:1313/post/2021/accessibility-testing-with-playwright/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Testing Web Apps With Playwright
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>A few weeks ago I was looking for an end-to-end testing framework. An alternative to Selenium, and all the other end-to-end frameworks. I came across a project called Playwright. Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.
-Playwright has full API coverage for all modern browsers, including Google Chrome and Microsoft Edge (with Chromium), Apple Safari (with WebKit) and Mozilla Firefox. Supports multiple languages like Node.js, Python, c# and Java. First-party Docker image and GitHub Actions to deploy tests to your preferred CI/CD provider. Use device emulation to test your responsive web apps in mobile web browsers. Provides APIs to monitor and modify network traffic, both HTTP and HTTPS. Any requests that page does, including XHRs and fetch requests, can be tracked, modified and handled. While those feature are all great and useful, they don’t measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like qa wolf and headless-recorder, these tools record any action you take on the browser, those actions are then converted into Playwright scripts.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-02-18 00:00:00 +0000 UTC'>February 18, 2021</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Testing Web Apps With Playwright" href="http://localhost:1313/post/2021/testing-webapps-with-playwright/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -6,8 +6,15 @@
     <description>Recent content in Tags on Yunier&#39;s Wiki</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/rss" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
     <item>
       <title>JSON:API</title>
       <link>http://localhost:1313/tags/jsonapi/</link>
@@ -27,13 +34,6 @@
       <link>http://localhost:1313/tags/modulo/</link>
       <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/modulo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Go</title>
-      <link>http://localhost:1313/tags/go/</link>
-      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
     </item>
     <item>

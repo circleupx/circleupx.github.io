@@ -1,10 +1,8 @@
 ---
-title: My reading list.
-description: "Here are a list of books that have impacted how I write and think about software."
 url: "/reading-list/"
 ---
 
-In no particular order, here are my recommended list of books.
+Here are a list of books that have impacted how I write and think about software, in no particular order.
 
 1) [Terraform: Up and Running: Writing Infrastructure as Code](https://a.co/d/j0150iK)
 2) [Designing Data-Intensive Applications](https://a.co/d/4VLsmog)
@@ -20,14 +18,13 @@ In no particular order, here are my recommended list of books.
 12) [Modern Trade-Off Analyses for Distributed Architectures](https://a.co/d/9xzwkX6)
 13) [Managing Cloud Native Data on Kubernetes](https://a.co/d/ePSzo48)
 14) [Kubernetes Patterns: Reusable Elements for Designing Cloud Native Applications](https://a.co/d/iLZq4qf)
-15) [Team Topologies: Organizing Business and Technology Teams for Fast Flow](https://a.co/d/1px40zH)
-16) [Foundations of Scalable Systems: Designing Distributed Architectures](https://a.co/d/hQgiHJe)
-17) [Building Event-Driven Microservices: Leveraging Organizational Data at Scale](https://a.co/d/e0F5ZmK)
-18) [Fundamentals of Software Architecture: An Engineering Approach](https://a.co/d/8rtIzw3)
-19) [System Design Interview – An insider's guide](https://a.co/d/81sn78R)
-20) [Making Sense of Stream Processing](https://www.oreilly.com/library/view/making-sense-of/9781492042563/)
-21) [Patterns of Distributed Systems](https://a.co/d/foXKroJ)
-22) [Concurrency in Go](https://a.co/d/fFgUZ9C)
-23) [Fluent Python](https://a.co/d/d5EOxbE)
-24) [Hypermedia Systems](https://a.co/d/goM6rQa)
-25) [Learning Go](https://a.co/d/ix1U7xv)
+15) [Foundations of Scalable Systems: Designing Distributed Architectures](https://a.co/d/hQgiHJe)
+16) [Building Event-Driven Microservices: Leveraging Organizational Data at Scale](https://a.co/d/e0F5ZmK)
+17) [Fundamentals of Software Architecture: An Engineering Approach](https://a.co/d/8rtIzw3)
+18) [System Design Interview – An insider's guide](https://a.co/d/81sn78R)
+29) [Making Sense of Stream Processing](https://www.oreilly.com/library/view/making-sense-of/9781492042563/)
+20) [Patterns of Distributed Systems](https://a.co/d/foXKroJ)
+21) [Concurrency in Go](https://a.co/d/fFgUZ9C)
+22) [Fluent Python](https://a.co/d/d5EOxbE)
+23) [Hypermedia Systems](https://a.co/d/goM6rQa)
+24) [Learning Go](https://a.co/d/ix1U7xv)

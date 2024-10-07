@@ -110,14 +110,28 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/reading-list" title="Reading List">
-                    <span>Reading List</span>
+                <a href="http://localhost:1313/reading-list" title="Books">
+                    <span>Books</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Connect To The Internet From WSL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Problem You have installed WSL successfully on your machine only to find out that you cannot connect to the internet. I have encountered this problem before sometimes it can be fixed externally, but from my experience, no matter what you do, you will end up having to mock around with the resolv.conf file within WSL, more on that later.
+You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level. You can confirm that this is applicable to you by searching for Windows Defender Firewall with Advance Security on the start menu, then going to Action, then Properties, under properties switching to the Public Profile tab, then clicking customize under settings. Now look under “Rule Merging”, if these options are set to no, then you will not be able to connect from WSL.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-10-23 00:00:00 +0000 UTC'>October 23, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Connect To The Internet From WSL" href="http://localhost:1313/post/2022/connect-to-the-internet-from-wsl/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -172,20 +186,6 @@ I won’t get into the details here but the implicit grant is no longer recommen
   </div>
   <footer class="entry-footer"><span title='2022-04-10 00:00:00 +0000 UTC'>April 10, 2022</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Extracting Values From Types" href="http://localhost:1313/post/2022/extracting-values-from-types/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Markup Your Web API Documents
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I’ve been thinking about what it takes to build a good Web API, regardless of the technology (REST vs GraphQL) or philosophy used. One concept that has been stuck on my head is the idea of marking up API documents to provide more context around the data.
-A Web API document is the response returned by the API itself, you will often see this term used in API specifications like GraphQL, HAL, JSON-LD, and JSON:API. Web API documents can be very simple, for example, imagine working with a Web API that manages users. This API may choose to represent the user resource using the following JSON.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-03-31 00:00:00 +0000 UTC'>March 31, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Markup Your Web API Documents" href="http://localhost:1313/post/2022/markup-your-web-api-documents/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

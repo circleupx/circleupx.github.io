@@ -110,14 +110,27 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/reading-list" title="Reading List">
-                    <span>Reading List</span>
+                <a href="http://localhost:1313/reading-list" title="Books">
+                    <span>Books</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Improving A CPU-Intensive Node.js App
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user’s password, hashes it, and compares the result with the stored hashed password from the database. Here is the code without the implementation details.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-09-19 00:00:00 +0000 UTC'>September 19, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Improving A CPU-Intensive Node.js App" href="http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -170,20 +183,6 @@ If you are building a worker service, then more than likely you will need to be 
   </div>
   <footer class="entry-footer"><span title='2021-08-12 00:00:00 +0000 UTC'>August 12, 2021</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Worker Services Configure Serilog" href="http://localhost:1313/post/2021/worker-services-configure-serilog/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JSON:API - Creating New Resources
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>So far in my JSON:API series I’ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today’s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
-To get started, the customer controller needs to have a method that will accept the incoming POST request. I’ve decided to call the method CreateCustomerResource, the method will accept a JSON:API document from the request body. The full method signature is defined below.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-08-08 00:00:00 +0000 UTC'>August 8, 2021</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to JSON:API - Creating New Resources" href="http://localhost:1313/post/2021/json-api-creating-new-resources/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

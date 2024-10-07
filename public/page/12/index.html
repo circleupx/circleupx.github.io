@@ -110,14 +110,29 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/reading-list" title="Reading List">
-                    <span>Reading List</span>
+                <a href="http://localhost:1313/reading-list" title="Books">
+                    <span>Books</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SQLite - No Such Table Error
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Are you using SQLite as an in-memory provider for EF Core on your Unit/Integration test? If you are, you may come across the following exception when creating the in-memory database.
+As you can see from the exception, the error is “SQLite Error 1: ’no such table vPet’” which is odd because vPet is defined as a SQL view on my DbContext, not a SQL table.
+Here is my PetsDbContext.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-09-19 00:00:00 +0000 UTC'>September 19, 2020</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to SQLite - No Such Table Error" href="http://localhost:1313/post/2020/sqlite-no-such-table-error/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">

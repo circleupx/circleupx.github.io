@@ -33,7 +33,7 @@ languages:
         - name: Series
           url: /series/
           weight: 3
-        - name: Reading List
+        - name: Books
           url: /reading-list
           weight: 4
 outputs:
