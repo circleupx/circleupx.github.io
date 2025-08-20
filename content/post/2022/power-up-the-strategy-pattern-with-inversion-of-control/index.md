@@ -4,7 +4,6 @@ tags: [Patterns]
 author: "Yunier"
 date: "2022-12-04"
 description: "Create highly maintainable code using the strategy pattern and inversion of control."
-series: [Design Patterns]
 ---
 
 If you are a fan of the [strategy pattern](https://refactoring.guru/design-patterns/strategy), and you find yourself adding a lot of conditional logic around each strategy then you should consider replacing all branching logic using inversion of control. 

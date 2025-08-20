@@ -4,7 +4,6 @@ tags: [Kubernetes, Consul, 'Service Mesh']
 author: "Yunier"
 date: "2023-05-28"
 description: "Series of blog post on using Consul Service Mesh in Kubernetes"
-series: ['Consul']
 ---
 
 ## Introduction
