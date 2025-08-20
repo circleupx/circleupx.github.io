@@ -10,7 +10,7 @@
 <meta name="description" content="Guide on how to improve API validation">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/2021/a-better-web-api-validation-strategy/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -27,20 +27,23 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="A Better Web API Validation Strategy" />
-<meta property="og:description" content="Guide on how to improve API validation" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/2021/a-better-web-api-validation-strategy/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-10-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-10-09T00:00:00+00:00" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="A Better Web API Validation Strategy"/>
-<meta name="twitter:description" content="Guide on how to improve API validation"/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/2021/a-better-web-api-validation-strategy/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="A Better Web API Validation Strategy">
+  <meta property="og:description" content="Guide on how to improve API validation">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-10-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-10-09T00:00:00+00:00">
+    <meta property="article:tag" content="REST">
+    <meta property="article:tag" content="GraphQL">
+    <meta property="article:tag" content="JSON Schema">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="A Better Web API Validation Strategy">
+<meta name="twitter:description" content="Guide on how to improve API validation">
 
 
 <script type="application/ld+json">
@@ -111,7 +114,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -168,7 +171,7 @@
     <div class="post-description">
       Guide on how to improve API validation
     </div>
-    <div class="post-meta"><span title='2021-10-09 00:00:00 +0000 UTC'>October 9, 2021</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2021/a-better-web-api-validation-strategy/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-10-09 00:00:00 +0000 UTC'>October 9, 2021</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2021/a-better-web-api-validation-strategy/index.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -266,7 +269,7 @@
 <li>Major changes must be versioned.</li>
 </ol>
 <p>How can these problems be solved, while arriving at a better API architecture?</p>
-<p>To avoid the first problem, client applications duplicating validation rules, the rules themselves should come from the API. One of the beauties of the REST architectural style is that everything is centered around resources. What are resources? Well, just about anything can be a resource, even validation rules. By having the API exposes the validation rules as a resource, the UI application does not have to duplicate the validation rules. Instead, the API can provide the UI with the validation code, the UI can then execute the code to confirm the data is valid. Having the API provide the UI with code to execute is not a new idea. In fact, it is one of the key constraints in the REST architecture, <a href="https://en.wikipedia.org/wiki/Representational_state_transfer#Code_on_demand_(optional)">code on demond</a>. The idea is that the UI application is extended by having the API providing additional logic. This idea is not just limited to REST, there is no rule that prevents you from doing the same in GraphQL or GRPC.</p>
+<p>To avoid the first problem, client applications duplicating validation rules, the rules themselves should come from the API. One of the beauties of the REST architectural style is that everything is centered around resources. What are resources? Well, just about anything can be a resource, even validation rules. By having the API exposes the validation rules as a resource, the UI application does not have to duplicate the validation rules. Instead, the API can provide the UI with the validation code, the UI can then execute the code to confirm the data is valid. Having the API provide the UI with code to execute is not a new idea. In fact, it is one of the key constraints in the REST architecture, <a href="https://en.wikipedia.org/wiki/Representational_state_transfer#Code_on_demand_%28optional%29">code on demond</a>. The idea is that the UI application is extended by having the API providing additional logic. This idea is not just limited to REST, there is no rule that prevents you from doing the same in GraphQL or GRPC.</p>
 <p>So, validation rules will be exposed as a resource. How? Well, most APIs are built with JSON, and <a href="https://json-schema.org/">JSON Schema</a> can be used to described JSON, plus it allows us to provide human-readable documentation. That sounds familiar, describing data formats while providing human-readable messages is the key essence of data validation. JSON Schema is the perfect tool for API validation, the schema can be exposed as an API resource, the client application can then consume the schema, execute it and validate the data. This is perfect, JSON Schema solves all of the problems identified above. The client doesn&rsquo;t have to duplicate any validation rules. The schema resource can be versioned in case of a major change. The rules are now more dynamic and are easily changed.</p>
 <p>I want to create an example to see how it all would work.</p>
 <p>A <a href="/Adding-Customer-Resource">while back</a> I exposes a customers resource on my <a href="https://chinook-jsonapi.herokuapp.com/">Chinook</a> <a href="https://jsonapi.org/">JSON:API</a> project. The endpoint does not have any data validation, you can send a POST request with an empty firstName or lastName property and the API won&rsquo;t stop the request, it will fail due to a database constraint. I purposely skipped over validation when I created the endpoint since I figure I would eventually write this post and would tackle data validation at that time.</p>
@@ -330,11 +333,9 @@
 <li>The email field is required, must be no more than 60 characters, must be a valid email.</li>
 </ol>
 <p>Now, time to write the JSON schema that will be used for validation. You could choose to write it by hand, but there are better ways. I find <a href="stoplight.io">stoplight</a> to be the perfect tool to use to create REST APIs.</p>
-<p><img loading="lazy" src="/post/2021/a-better-web-api-validation-strategy/stoplight-vendor.PNG" alt="Stoplight"  />
-</p>
+<p><img alt="Stoplight" loading="lazy" src="/post/2021/a-better-web-api-validation-strategy/stoplight-vendor.PNG"></p>
 <p>What is even better is that they support writing JSON schemas, they make it super simple, give it a resource model in JSON, they&rsquo;ll generate the model, then you&rsquo;ll be given the opportunity to annotate the model with validation rules. For example, I can take the customer model above and import it into their system.</p>
-<p><img loading="lazy" src="/post/2021/a-better-web-api-validation-strategy/model-in-stoplight.PNG" alt="Model in Stoplight"  />
-</p>
+<p><img alt="Model in Stoplight" loading="lazy" src="/post/2021/a-better-web-api-validation-strategy/model-in-stoplight.PNG"></p>
 <p>I&rsquo;ll add all the rules to the model, like which field is required, the minimum and maximum length of a field, a regex expression for the email field. That will generate the following JSON file.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -527,8 +528,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>Info: You can see the schema in action by visiting <a href="https://www.jsonschemavalidator.net/s/dFXvl5kF">this</a> link. Validation should be successful, to see a failed example, go to <a href="https://www.jsonschemavalidator.net/s/Gcrdhha3">this</a> link. Validation failed in the second link because the id property should not be included when creating a resource. Since the id is determined by the database.</p>
-</blockquote>
+<p>Info: You can see the schema in action by visiting <a href="https://www.jsonschemavalidator.net/s/dFXvl5kF">this</a> link. Validation should be successful, to see a failed example, go to <a href="https://www.jsonschemavalidator.net/s/Gcrdhha3">this</a> link. Validation failed in the second link because the id property should not be included when creating a resource. Since the id is determined by the database.</p></blockquote>
 <p>The question now becomes how to expose the JSON schema on the API. Base on section <a href="https://json-schema.org/draft/2020-12/json-schema-core.html#rfc.section.9.5.1.1">9.5.1.1</a> of the JSON Schema Core <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">specification</a>. JSON schemas should be exposed through a relationship link, using the <a href="https://www.w3.org/TR/powder-dr/#assoc-linking">describedBy</a> link, see <a href="https://www.iana.org/assignments/link-relations/link-relations.xhtml">IANA link relations page for more details</a>. Which is great, linking from one resource to another is the essence of <a href="https://restfulapi.net/hateoas/">hypermedia driven APIs</a> like the <a href="https://chinook-jsonapi.herokuapp.com/">Chinook API</a> project. Now unfortunately, the Chinook API project implements <a href="https://jsonapi.org/format/1.0/">version 1.0</a> of the <a href="https://jsonapi.org/">JSON:API</a> specification. This version of JSON:API does not provide any guidance on how to use JSON:API with JSON Schema. Luckily for us, the <a href="https://jsonapi.org/format/1.1/">upcoming 1.1 version</a> of JSON:API does provide us with guidance. Per the 1.1 specifications a JSON:API document may contain a <a href="https://jsonapi.org/format/1.1/#document-links">Links</a> object as a <a href="https://jsonapi.org/format/1.1/#document-top-level">top level member</a>. Links object may contain a describedBy field, which is a link to a description document (e.g. OpenAPI or JSON Schema) for the current document. I am going to apply the recommendation made in version 1.1 of JSON:API to the Chinook API, even though Chinook implements version 1.0.</p>
 <p>To keep everything simple, the schema will be hosted directly on the Chinook Project. You should know that there is a JSON Schema <a href="https://www.schemastore.org/json/">store</a>. The store can be used to host any JSON schema you defined or browser for JSON Schemas, for example, <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-6.0#appsettingsjson-1">appsettings.json</a>, a file used by .NET Core can be <a href="https://json.schemastore.org/appsettings.json">found</a> on the store.</p>
 <p>After modifying the Chinook API project to support JSON Schema, the customer resource will now include the newly added describedBy link. See the response document below or visit <a href="https://chinook-jsonapi.herokuapp.com/customers">https://chinook-jsonapi.herokuapp.com/customers</a> to see it in action.</p>
@@ -663,7 +663,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

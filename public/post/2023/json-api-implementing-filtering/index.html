@@ -10,7 +10,7 @@
 <meta name="description" content="Implementing a Filtering Strategy in JSON:API">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/2023/json-api-implementing-filtering/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -27,21 +27,27 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="JSON:API Implementing Filtering" />
-<meta property="og:description" content="Implementing a Filtering Strategy in JSON:API" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/2023/json-api-implementing-filtering/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-10-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-10-15T00:00:00+00:00" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="JSON:API Implementing Filtering"/>
-<meta name="twitter:description" content="Implementing a Filtering Strategy in JSON:API"/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/2023/json-api-implementing-filtering/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="JSON:API Implementing Filtering">
+  <meta property="og:description" content="Implementing a Filtering Strategy in JSON:API">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-10-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-10-15T00:00:00+00:00">
+    <meta property="article:tag" content="JSON:API">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+      <meta property="og:see_also" content="http://localhost:1313/post/2022/json-api-pagination-links/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2021/json-api-creating-new-resources/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2020/json-api-exposing-relationships/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2020/json-api-exposing-the-customer-resource/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2020/json-api-exception-handling-middleware/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2020/json-api-creating-the-home-resource/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="JSON:API Implementing Filtering">
+<meta name="twitter:description" content="Implementing a Filtering Strategy in JSON:API">
 
 
 <script type="application/ld+json">
@@ -112,7 +118,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -169,7 +175,7 @@
     <div class="post-description">
       Implementing a Filtering Strategy in JSON:API
     </div>
-    <div class="post-meta"><span title='2023-10-15 00:00:00 +0000 UTC'>October 15, 2023</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2023/json-api-implementing-filtering/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2023-10-15 00:00:00 +0000 UTC'>October 15, 2023</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2023/json-api-implementing-filtering/index.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -394,116 +400,116 @@
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Comparison Operators</th>
-          <th style="text-align: left"></th>
-          <th style="text-align: left"></th>
+          <th>Comparison Operators</th>
+          <th></th>
+          <th></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">eq</td>
-          <td style="text-align: left">Equal</td>
-          <td style="text-align: left">Address/City eq &lsquo;Redmond&rsquo;</td>
+          <td>eq</td>
+          <td>Equal</td>
+          <td>Address/City eq &lsquo;Redmond&rsquo;</td>
       </tr>
       <tr>
-          <td style="text-align: left">ne</td>
-          <td style="text-align: left">Not equal</td>
-          <td style="text-align: left">Address/City ne &lsquo;London&rsquo;</td>
+          <td>ne</td>
+          <td>Not equal</td>
+          <td>Address/City ne &lsquo;London&rsquo;</td>
       </tr>
       <tr>
-          <td style="text-align: left">gt</td>
-          <td style="text-align: left">Greater than</td>
-          <td style="text-align: left">Price gt 20</td>
+          <td>gt</td>
+          <td>Greater than</td>
+          <td>Price gt 20</td>
       </tr>
       <tr>
-          <td style="text-align: left">ge</td>
-          <td style="text-align: left">Greater than or equal</td>
-          <td style="text-align: left">Price ge 10</td>
+          <td>ge</td>
+          <td>Greater than or equal</td>
+          <td>Price ge 10</td>
       </tr>
       <tr>
-          <td style="text-align: left">lt</td>
-          <td style="text-align: left">Less than</td>
-          <td style="text-align: left">Price lt 20</td>
+          <td>lt</td>
+          <td>Less than</td>
+          <td>Price lt 20</td>
       </tr>
       <tr>
-          <td style="text-align: left">le</td>
-          <td style="text-align: left">Less than or equal</td>
-          <td style="text-align: left">Price le 100</td>
+          <td>le</td>
+          <td>Less than or equal</td>
+          <td>Price le 100</td>
       </tr>
       <tr>
-          <td style="text-align: left">has</td>
-          <td style="text-align: left">Has flags</td>
-          <td style="text-align: left">Style has Sales.Color&rsquo;Yellow'</td>
+          <td>has</td>
+          <td>Has flags</td>
+          <td>Style has Sales.Color&rsquo;Yellow'</td>
       </tr>
       <tr>
-          <td style="text-align: left">in</td>
-          <td style="text-align: left">Is a member of</td>
-          <td style="text-align: left">Address/City in (&lsquo;Redmond&rsquo;, &lsquo;London&rsquo;)</td>
+          <td>in</td>
+          <td>Is a member of</td>
+          <td>Address/City in (&lsquo;Redmond&rsquo;, &lsquo;London&rsquo;)</td>
       </tr>
       <tr>
-          <td style="text-align: left">Logical Operators</td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
+          <td>Logical Operators</td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">and</td>
-          <td style="text-align: left">Logical and</td>
-          <td style="text-align: left">Price le 200 and Price gt 3.5</td>
+          <td>and</td>
+          <td>Logical and</td>
+          <td>Price le 200 and Price gt 3.5</td>
       </tr>
       <tr>
-          <td style="text-align: left">or</td>
-          <td style="text-align: left">Logical or</td>
-          <td style="text-align: left">Price le 3.5 or Price gt 200</td>
+          <td>or</td>
+          <td>Logical or</td>
+          <td>Price le 3.5 or Price gt 200</td>
       </tr>
       <tr>
-          <td style="text-align: left">not</td>
-          <td style="text-align: left">Logical negation</td>
-          <td style="text-align: left">not endswith(Description,&lsquo;milk&rsquo;)</td>
+          <td>not</td>
+          <td>Logical negation</td>
+          <td>not endswith(Description,&lsquo;milk&rsquo;)</td>
       </tr>
       <tr>
-          <td style="text-align: left">Arithmetic Operators</td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
+          <td>Arithmetic Operators</td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">add</td>
-          <td style="text-align: left">Addition</td>
-          <td style="text-align: left">Price add 5 gt 10</td>
+          <td>add</td>
+          <td>Addition</td>
+          <td>Price add 5 gt 10</td>
       </tr>
       <tr>
-          <td style="text-align: left">sub</td>
-          <td style="text-align: left">Subtraction</td>
-          <td style="text-align: left">Price sub 5 gt 10</td>
+          <td>sub</td>
+          <td>Subtraction</td>
+          <td>Price sub 5 gt 10</td>
       </tr>
       <tr>
-          <td style="text-align: left">mul</td>
-          <td style="text-align: left">Multiplication</td>
-          <td style="text-align: left">Price mul 2 gt 2000</td>
+          <td>mul</td>
+          <td>Multiplication</td>
+          <td>Price mul 2 gt 2000</td>
       </tr>
       <tr>
-          <td style="text-align: left">div</td>
-          <td style="text-align: left">Division</td>
-          <td style="text-align: left">Price div 2 gt 4</td>
+          <td>div</td>
+          <td>Division</td>
+          <td>Price div 2 gt 4</td>
       </tr>
       <tr>
-          <td style="text-align: left">divby</td>
-          <td style="text-align: left">Decimal Division</td>
-          <td style="text-align: left">Price divby 2 gt 3.5</td>
+          <td>divby</td>
+          <td>Decimal Division</td>
+          <td>Price divby 2 gt 3.5</td>
       </tr>
       <tr>
-          <td style="text-align: left">mod</td>
-          <td style="text-align: left">Modulo</td>
-          <td style="text-align: left">Price mod 2 eq 0</td>
+          <td>mod</td>
+          <td>Modulo</td>
+          <td>Price mod 2 eq 0</td>
       </tr>
       <tr>
-          <td style="text-align: left">Grouping Operators</td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
+          <td>Grouping Operators</td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">( )</td>
-          <td style="text-align: left">Precedence grouping</td>
-          <td style="text-align: left">(Price sub 5) gt 10</td>
+          <td>( )</td>
+          <td>Precedence grouping</td>
+          <td>(Price sub 5) gt 10</td>
       </tr>
   </tbody>
 </table>
@@ -1353,11 +1359,6 @@
       <li><a href="http://localhost:1313/tags/jsonapi/">JSON:API</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/post/2024/testing-in-go/testing-in-go/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Testing In Go</span>
-  </a>
   <a class="next" href="http://localhost:1313/post/2023/circular-arrays/">
     <span class="title">Next »</span>
     <br>
@@ -1438,7 +1439,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

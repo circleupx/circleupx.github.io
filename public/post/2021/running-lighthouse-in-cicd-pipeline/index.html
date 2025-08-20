@@ -10,7 +10,7 @@
 <meta name="description" content="Guide on how to configure lighthouse to ru on CI/CD">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -27,21 +27,23 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Running Lighthouse On CI/CD Pipeline" />
-<meta property="og:description" content="Guide on how to configure lighthouse to ru on CI/CD" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-06-05T00:00:00+00:00" />
-<meta property="og:see_also" content="http://localhost:1313/post/2021/accessibility-testing-with-playwright/" /><meta property="og:see_also" content="http://localhost:1313/post/2021/testing-webapps-with-playwright/" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Running Lighthouse On CI/CD Pipeline"/>
-<meta name="twitter:description" content="Guide on how to configure lighthouse to ru on CI/CD"/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Running Lighthouse On CI/CD Pipeline">
+  <meta property="og:description" content="Guide on how to configure lighthouse to ru on CI/CD">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-06-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-06-05T00:00:00+00:00">
+    <meta property="article:tag" content="Playwright">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+      <meta property="og:see_also" content="http://localhost:1313/post/2021/accessibility-testing-with-playwright/">
+      <meta property="og:see_also" content="http://localhost:1313/post/2021/testing-webapps-with-playwright/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="Running Lighthouse On CI/CD Pipeline">
+<meta name="twitter:description" content="Guide on how to configure lighthouse to ru on CI/CD">
 
 
 <script type="application/ld+json">
@@ -112,7 +114,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -169,14 +171,13 @@
     <div class="post-description">
       Guide on how to configure lighthouse to ru on CI/CD
     </div>
-    <div class="post-meta"><span title='2021-06-05 00:00:00 +0000 UTC'>June 5, 2021</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2021/running-lighthouse-in-cicd-pipeline/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-06-05 00:00:00 +0000 UTC'>June 5, 2021</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2021/running-lighthouse-in-cicd-pipeline/index.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
 
   <div class="post-content"><p>In the world of front end development there is no better tool than <a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>. Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.</p>
-<p><img loading="lazy" src="https://developers.google.com/web/tools/lighthouse/images/report.png" alt="Report generated by lighthouse"  />
-</p>
+<p><img alt="Report generated by lighthouse" loading="lazy" src="https://developers.google.com/web/tools/lighthouse/images/report.png"></p>
 <p>The only problem with lighthouse, at least from my experience, is that it is not used until after the app has been deployed. I haven&rsquo;t been involved in any project that utilizes lighthouse upfront, certainly not on the ci/cd pipelines. Which can be done using <a href="https://github.com/GoogleChrome/lighthouse-ci">lighthouse-ci</a>. There is also another way to get lighthouse running on your ci/cd pipeline, it involves executing lighthouse while you are running your unit test regardless of the unit test engine, be that <a href="https://github.com/facebook/jest">Jest</a> or <a href="https://github.com/mochajs/mocha">Mocha</a>. However, these tools lack the ability to invoke a web browser, after all, lighthouse can only be run against an actual website.</p>
 <p>This is where <a href="https://playwright.dev/">Playwright</a> comes into play. For those that don&rsquo;t know, playwright is the new kid on the block, it is a tool that enables end to end testing. Playwright is able to invoke a headless browser session, could be chrome, firefox, or webkit, then using that headless session we can run lighthouse thus giving us the ability to run lighthouse on a unit test. The idea came from <a href="https://applitools.com/blog/using-cypress-google-lighthouse-performance-testing/">this</a> blog post by <a href="https://applitools.com/">applitools</a> where they combine lighthouse with <a href="https://www.cypress.io/">cypress</a> and <a href="https://pa11y.org/">Pa11y</a> to do performance testing.</p>
 <p>To get started I am going to start a new project using the following npm command.</p>
@@ -591,7 +592,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

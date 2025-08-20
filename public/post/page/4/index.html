@@ -10,7 +10,7 @@
 <meta name="description" content="Posts - Yunier&#39;s Wiki">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -28,18 +28,17 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Posts" />
-<meta property="og:description" content="Documenting my adventures in software development." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/post/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Documenting my adventures in software development."/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Documenting my adventures in software development.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Documenting my adventures in software development.">
 
 
 <script type="application/ld+json">
@@ -71,7 +70,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -126,70 +125,137 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Mockoon
+    <h2 class="entry-hint-parent">Idempotency In A Web API
     </h2>
   </header>
   <div class="entry-content">
-    <p>A while back I made a blog post titled, Tools For The Modern Day Developer, in which I listed the tools I thought at the time every developer should be using. Today, I still stand by that list, but I would like to add an additional tool that lately has become super useful to me, that tool is Mockoon.
-Mockoon is a free and open-source mock API tool created by Guillaume in 2017. It offers Docker support, a CLI, importing and exporting of Mockoon environments, it works with OpenAPI 3.0 files. In many ways it feel like Postman, even the UI feels like the old classic Postman UI.
+    <p>Idempotency, is one of the key features any Web API should have. The idea is that software is unrealiable, the network can fail, the database the API connects to could be offline, the API itself could be performing an intense operation that impacts performance. For all these reasons an API client may resubmit a request, not much of a problem if you are dealing with GET, HEAD, PUT or DELETE, these HTTP methods are idempotent, POST and PATCH on the other hand are not.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-25 00:00:00 +0000 UTC'>November 25, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Mockoon" href="http://localhost:1313/post/2022/mockoon/"></a>
+  <footer class="entry-footer"><span title='2021-11-17 00:00:00 +0000 UTC'>November 17, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Idempotency In A Web API" href="http://localhost:1313/post/2021/idempotency-in-a-web-api/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Remote Desktop Into WSL
+    <h2 class="entry-hint-parent">Sort Functions Are Non-Deterministic
     </h2>
   </header>
   <div class="entry-content">
-    <p>There have been a few instances where I could not figure out a problem within WSL. Problems that would be easier to fix if I had a UI instead of just an instance of the WSL shell. If you find yourself in such a situation know that you can install the UI portion, a Linux desktop on top of WSL. Once the UI has been installed you can RDP into the WSL instance allowing you to use the WSL distro as if it were natively installed on your machine.
+    <p>When building a Web API, RESTful or GraphQL, you may want to expose some functionality that allows a client application to sort data.
+From my experience, this is often not implemented correctly. Many developers fail to realize that sorting should always be sort plus one. The plus one is a unique value, like a primary key or identifier. The reason for this is that sorting in most databases, like SQL Server, is nondeterministic, meaning the sort function may return different results each time they are called with a specific set of input values even if the database state that they access remains the same.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-17 00:00:00 +0000 UTC'>November 17, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Remote Desktop Into WSL" href="http://localhost:1313/post/2022/remote-desktop-into-wsl/"></a>
+  <footer class="entry-footer"><span title='2021-11-13 00:00:00 +0000 UTC'>November 13, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Sort Functions Are Non-Deterministic" href="http://localhost:1313/post/2021/sort-functions-are-nondeterministic/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Code Coverage In .NET
+    <h2 class="entry-hint-parent">A Practical Web API Validation Strategy
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you are writing unit tests in .NET, you may eventually find the need to generate code coverage reports to show how much coverage your project has. The best tool for code coverage reports in my experience has been coverlet because it supports both .NET Framework and .NET Core.
-NUnit NUnit, the tried and tested framework originally being a port of JUnit. A powerful tool that when combined with coverlet console can be used to generate code coverage reports. To demonstrate, I will create an NUnit test project targeting .NET Framework 4.8 along with a Class Library type project also targeting .NET Framework 4.8
+    <p>In my last post I wrote about how you can leverage JSON Schema to do Web API validation. The main benefit is that the API can expose the schema as an API resource, clients of the API can consume the schema and execute it on their end against any data. The benefit of doing API validation like this is that the client does not need to duplicate any validation logic, they only need to execute the schema. In this post, I would like to explore API validation in .NET, using the library FluentValidation and exposing validation errors using Problem Details.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-15 00:00:00 +0000 UTC'>November 15, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Code Coverage In .NET" href="http://localhost:1313/post/2022/code-coverage/"></a>
+  <footer class="entry-footer"><span title='2021-10-13 00:00:00 +0000 UTC'>October 13, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to A Practical Web API Validation Strategy" href="http://localhost:1313/post/2021/a-practical-web-api-validation-strategy/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Use Kubernetes In WSL
+    <h2 class="entry-hint-parent">A Better Web API Validation Strategy
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.
-Prerequisite To get started we need to know what version of Windows you are on. This is important because Kubernetes will be installed using Microk8s, which requires having snap installed and working. Snap won’t work in older Windows builds.
+    <p>As an API developer, you will eventually need to determine how to handle data validation.
+The .NET ecosystem offers a few options, the first option, validation attributes, can be used to annotate how a model should be validated. Validation attributes are great, they don’t require any external dependencies, you can specify error messages, create your own custom validator, validate against many data types.
+For example, take the following Movie class, notice how the properties have been annotated with validation rules.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-03 00:00:00 +0000 UTC'>November 3, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Use Kubernetes In WSL" href="http://localhost:1313/post/2022/use-kubernetes-in-wsl/"></a>
+  <footer class="entry-footer"><span title='2021-10-09 00:00:00 +0000 UTC'>October 9, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to A Better Web API Validation Strategy" href="http://localhost:1313/post/2021/a-better-web-api-validation-strategy/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Fun With Flurl
+    <h2 class="entry-hint-parent">Improving A CPU-Intensive Node.js App
     </h2>
   </header>
   <div class="entry-content">
-    <p>A few months ago I was looking for a new HTTP client to use within my applications. I first checked on awesome dotnet under the HTTP section to see what projects the .NET community is using instead of the default HTTP client. One that immediately stands out is RestSharp, this project has been around for a while and is overall a good choice, but I was looking for something new and fresh, that is when I came across Flurl.
+    <p>Recently I was asked to review a Web API written in Node.js. The API exposes an authentication endpoint, this authentication endpoint must be highly available, responsive, and it cannot become a bottleneck, otherwise, the user experience is severely impacted. Unfortunately, the endpoint had become a bottleneck and was impacting the overall performance of the application. Upon further review, it was determined that the problem was coming from a hashing function that takes the user’s password, hashes it, and compares the result with the stored hashed password from the database. Here is the code without the implementation details.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-11-01 00:00:00 +0000 UTC'>November 1, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Fun With Flurl" href="http://localhost:1313/post/2022/fun-with-flurl/"></a>
+  <footer class="entry-footer"><span title='2021-09-19 00:00:00 +0000 UTC'>September 19, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Improving A CPU-Intensive Node.js App" href="http://localhost:1313/post/2021/improving-a-cpu-intensive-node-app/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Order Of Interfaces Impacts Performace
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I was looking through some of my bookmarked Github issues when I rediscovered issue #32488, in that issue a comment was made that caught my attention. The comment stated that in .NET the order of interfaces impacts performance. This is because in the .NET CLR all class definitions have a collection of methods and interface definitions. Casting is a linear search that walks the interface definition. If you are constantly casting to an Interface located at the end then the CLR must do a longer walk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-28 00:00:00 +0000 UTC'>August 28, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to The Order Of Interfaces Impacts Performace" href="http://localhost:1313/post/2021/the-order-of-interfaces-impacts-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Writing A Good ReadME Is A Skill
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Writing good documentation is such an underrated skill, to that extent so is writing ReadME files, ReadME files can be an awesome addition to your project. They give you an opportunity to document all sorts of stuff. For me, a good project should come along with a good ReadME file. The file should outline everything that is necessary for me to interact with the project. Like how to run the unit/integration test, the project’s architecture, any terminology, the roadmap for the project, and the most important piece, examples on how to use the project.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-25 00:00:00 +0000 UTC'>August 25, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Writing A Good ReadME Is A Skill" href="http://localhost:1313/post/2021/writing-a-good-readme-is-a-skill/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Platform
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>HTML, CSS, and Javascript, are the languages of the world wide web, the platform. They are used to create websites, to make them interactive, and to make them beautiful. At one point in my career, I was more plugged into this world. A world that I feel I’ve fallen behind since I myself have not exclusively worked on a UI project since the days of AngularJS. That doesn’t mean that I don’t do any front-end work anymore, it is just that these days I spent most of the time doing back-end development. I am familiar with some of the modern frameworks like Angular, React.js, Next.js and everyone’s new favorite, svelte. By falling behind I mean that I am not up to date with some of the new tools and technologies that have been created since the days of AngularJS. I want to use this post to write about some of these new techniques and tools that are available for front-end development.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-18 00:00:00 +0000 UTC'>August 18, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to The Platform" href="http://localhost:1313/post/2021/the-platform/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Worker Services Configure Serilog
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A worker service is a type of Background Service that are generally use for long-running task. They can be seen as the equivalent of Windows Services in the .NET Framework, though a worker service is not limited to just windows.
+If you are building a worker service, then more than likely you will need to be able to write log data, be that general information of the worker services or perhaps just errors. If you plan to use Serilog, then this post will show you how to configure Serilog on a worker project.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-12 00:00:00 +0000 UTC'>August 12, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Worker Services Configure Serilog" href="http://localhost:1313/post/2021/worker-services-configure-serilog/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JSON:API - Creating New Resources
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>So far in my JSON:API series I’ve covered the home resource, adding your own resource, adding an exception handling middleware and how to expose relationship between resources. For the today’s post, I would like to cover creating resources. I will update the chinook project by allowing POST request on the customers collections to add new customers.
+To get started, the customer controller needs to have a method that will accept the incoming POST request. I’ve decided to call the method CreateCustomerResource, the method will accept a JSON:API document from the request body. The full method signature is defined below.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-08-08 00:00:00 +0000 UTC'>August 8, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to JSON:API - Creating New Resources" href="http://localhost:1313/post/2021/json-api-creating-new-resources/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -203,7 +269,7 @@ Prerequisite To get started we need to know what version of Windows you are on. 
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

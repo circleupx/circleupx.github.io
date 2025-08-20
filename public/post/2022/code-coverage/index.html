@@ -10,7 +10,7 @@
 <meta name="description" content="Create code coverage reports in .NET Framework and in .NET">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/2022/code-coverage/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -27,20 +27,22 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Code Coverage In .NET" />
-<meta property="og:description" content="Create code coverage reports in .NET Framework and in .NET" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/2022/code-coverage/" />
-<meta property="og:image" content="http://localhost:1313/post/2022/code-coverage/nunit-code-coverage.PNG" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-11-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-11-15T00:00:00+00:00" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/post/2022/code-coverage/nunit-code-coverage.PNG" />
-<meta name="twitter:title" content="Code Coverage In .NET"/>
-<meta name="twitter:description" content="Create code coverage reports in .NET Framework and in .NET"/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/2022/code-coverage/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Code Coverage In .NET">
+  <meta property="og:description" content="Create code coverage reports in .NET Framework and in .NET">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-11-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-11-15T00:00:00+00:00">
+    <meta property="article:tag" content=".NET">
+    <meta property="article:tag" content="Code Coverage">
+      <meta property="og:image" content="http://localhost:1313/post/2022/code-coverage/nunit-code-coverage.PNG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/post/2022/code-coverage/nunit-code-coverage.PNG">
+<meta name="twitter:title" content="Code Coverage In .NET">
+<meta name="twitter:description" content="Create code coverage reports in .NET Framework and in .NET">
 
 
 <script type="application/ld+json">
@@ -111,7 +113,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -168,7 +170,7 @@
     <div class="post-description">
       Create code coverage reports in .NET Framework and in .NET
     </div>
-    <div class="post-meta"><span title='2022-11-15 00:00:00 +0000 UTC'>November 15, 2022</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2022/code-coverage/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-11-15 00:00:00 +0000 UTC'>November 15, 2022</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2022/code-coverage/index.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -403,8 +405,7 @@
 <li><strong>reporttypes</strong> is used to specify the report format, in this case, Html.</li>
 </ul>
 <p>The resulting HTML report will be located under the report folder, in that folder, locate the index.html page and you should see the code report summary as showned below.</p>
-<p><img loading="lazy" src="/post/2022/code-coverage/nunit-code-coverage.PNG" alt="Code Coverage"  />
-</p>
+<p><img alt="Code Coverage" loading="lazy" src="/post/2022/code-coverage/nunit-code-coverage.PNG"></p>
 <p>As you can see from the image, an HTML report was generated from the result.xml file, and as you can see from the image the Calculator class has full code coverage.</p>
 <h3 id="xunit">XUnit<a hidden class="anchor" aria-hidden="true" href="#xunit">#</a></h3>
 <p>If you are using XUnit and would like to generate code coverage reports as demonstrated above then you are in luck, because generating reports in XUnit is much easier than NUnit. To demonstrate how to generate code coverage reports with XUnit, I will clone the Calculator project mentioned above for NUnit but this time I will target .NET 6.</p>
@@ -587,8 +588,7 @@
 <li><strong>targetdir</strong> is used to specify the location where the report should be generated. If the folder does not exist, it will be created.</li>
 <li><strong>reporttypes</strong> is used to specify the report format, in this case, Html.</li>
 </ul>
-<p><img loading="lazy" src="/post/2022/code-coverage/xunit-code-coverage.PNG" alt="Code Coverage"  />
-</p>
+<p><img alt="Code Coverage" loading="lazy" src="/post/2022/code-coverage/xunit-code-coverage.PNG"></p>
 <p>As you can see, I get an HTML report that is very similar to the one generated in the NUnit example, which is expected.</p>
 <h3 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h3>
 <p>I hope these two examples can guide you in adding cove coverage reports to your projects. Feel free to reach out if you have any questions.</p>
@@ -687,7 +687,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

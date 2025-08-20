@@ -2,21 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/go/</loc>
-    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/2024/testing-in-go/testing-in-go/</loc>
-    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-10-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/jsonapi/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -26,7 +11,16 @@
     <loc>http://localhost:1313/series/jsonapi-in-.net/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/series/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/arrays/</loc>
@@ -38,13 +32,16 @@
     <loc>http://localhost:1313/tags/modulo/</loc>
     <lastmod>2023-08-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/go/</loc>
+    <lastmod>2023-08-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/2023/go-multiple-return-values/</loc>
     <lastmod>2023-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/consul/</loc>
+    <loc>http://localhost:1313/series/consul/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/consul/</loc>
+    <loc>http://localhost:1313/tags/consul/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/</loc>
@@ -110,10 +107,10 @@
     <loc>http://localhost:1313/post/2022/use-static-ip-in-wsl/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wsl/</loc>
+    <loc>http://localhost:1313/series/wsl/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/wsl/</loc>
+    <loc>http://localhost:1313/tags/wsl/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</loc>
@@ -128,10 +125,10 @@
     <loc>http://localhost:1313/post/2022/power-up-the-strategy-pattern-with-inversion-of-control/</loc>
     <lastmod>2022-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mockoon/</loc>
+    <loc>http://localhost:1313/post/2022/mockoon/</loc>
     <lastmod>2022-11-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2022/mockoon/</loc>
+    <loc>http://localhost:1313/tags/mockoon/</loc>
     <lastmod>2022-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2022/remote-desktop-into-wsl/</loc>
@@ -275,10 +272,10 @@
     <loc>http://localhost:1313/post/2021/json-api-creating-new-resources/</loc>
     <lastmod>2021-08-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/playwright/</loc>
+    <loc>http://localhost:1313/series/playwright/</loc>
     <lastmod>2021-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/playwright/</loc>
+    <loc>http://localhost:1313/tags/playwright/</loc>
     <lastmod>2021-06-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/</loc>

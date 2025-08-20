@@ -10,7 +10,7 @@
 <meta name="description" content="Avoid having invalid assembly references with a Unit Test.">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -27,20 +27,21 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Preventing Invalid Assembly Dependencies" />
-<meta property="og:description" content="Avoid having invalid assembly references with a Unit Test." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-03-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-12T00:00:00+00:00" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Preventing Invalid Assembly Dependencies"/>
-<meta name="twitter:description" content="Avoid having invalid assembly references with a Unit Test."/>
+</noscript><meta property="og:url" content="http://localhost:1313/post/2022/preventing-invalid-assembly-dependencies/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Preventing Invalid Assembly Dependencies">
+  <meta property="og:description" content="Avoid having invalid assembly references with a Unit Test.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-03-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-12T00:00:00+00:00">
+    <meta property="article:tag" content=".NET">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="Preventing Invalid Assembly Dependencies">
+<meta name="twitter:description" content="Avoid having invalid assembly references with a Unit Test.">
 
 
 <script type="application/ld+json">
@@ -111,7 +112,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -168,17 +169,15 @@
     <div class="post-description">
       Avoid having invalid assembly references with a Unit Test.
     </div>
-    <div class="post-meta"><span title='2022-03-12 00:00:00 +0000 UTC'>March 12, 2022</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2022/preventing-invalid-assembly-dependencies/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2022-03-12 00:00:00 +0000 UTC'>March 12, 2022</span>&nbsp;·&nbsp;Yunier&nbsp;|&nbsp;<a href="https://github.com/circleupx/circleupx.github.io/tree/master/content/post/2022/preventing-invalid-assembly-dependencies/index.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
 
   <div class="post-content"><p>.NET makes it super simple to update the dependencies of a project. If you are following a solution structure like <a href="https://github.com/ardalis/CleanArchitecture#design-decisions-and-dependencies">Clean Architecture</a> where the <a href="https://github.com/ardalis/CleanArchitecture#the-web-project">Web project</a> should not be referenced by the <a href="https://github.com/ardalis/CleanArchitecture#the-core-project">Core project</a> or you have created your own solution structure that requires certain projects do not reference another project then you might need a way to avoid having developers incorrectly adding dependencies.</p>
-<p><img loading="lazy" src="/post/2022/preventing-invalid-assembly-dependencies/clean-architecture-projet-dependencies.png" alt="clean architecture project dependencies"  />
-</p>
+<p><img alt="clean architecture project dependencies" loading="lazy" src="/post/2022/preventing-invalid-assembly-dependencies/clean-architecture-projet-dependencies.png"></p>
 <blockquote>
-<p>The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution. Built with <a href="https://excalidraw.com/">Excalidraw</a>.</p>
-</blockquote>
+<p>The diagram above gives a high-level view of all project dependencies in a Clean Architecture solution. Built with <a href="https://excalidraw.com/">Excalidraw</a>.</p></blockquote>
 <p>You can prevent the issue described above if you have a strong continuous integration pipeline by having a unit test that asserts that a given project is not referenced by another project, in our example above, you may want to assert that the web project does not reference the core project. The <a href="https://chinook-jsonapi.herokuapp.com/">Chinook JSON:API</a> project that I have been working on follows the Clean Architecture project structure. To demonstrate, I will create a unit test that asserts that the core project in the Chinook solution never references the infrastructure project.</p>
 <p>Before I start writing the Unit Test, I would like to share the csproj file for the <a href="https://github.com/circleupx/Chinook/tree/master/src/Chinook.Core">Chinook.Core</a> project. As you can see from the configuration below, there is no reference to any other assemblies, our unit test should pass when executed. Also as a reminder, when the solution was first made, a project named <a href="https://github.com/circleupx/Chinook/tree/master/test/Chinook.Core.Test">Chinook.Core.Test</a> was created to host all unit tests having to do with the core project. This project already has <a href="https://xunit.net/">XUnit</a> and <a href="https://fluentassertions.com/">FluentAssertions</a> installed. You will need to use FluentAssertions or a library that offers similar capabilities.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -354,7 +353,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.135.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.148.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="Documenting my adventures in software development.">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -30,18 +30,17 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Yunier&#39;s Wiki" />
-<meta property="og:description" content="Documenting my adventures in software development." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Yunier&#39;s Wiki"/>
-<meta name="twitter:description" content="Documenting my adventures in software development."/>
+</noscript><meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Yunier&#39;s Wiki">
+  <meta property="og:description" content="Documenting my adventures in software development.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="Yunier&#39;s Wiki">
+<meta name="twitter:description" content="Documenting my adventures in software development.">
 
 <script type="application/ld+json">
 {
@@ -50,7 +49,7 @@
   "name": "Yunier's Wiki",
   "url": "http://localhost:1313/",
   "description": "Documenting my adventures in software development.",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "http://localhost:1313/favicon.ico",
   "sameAs": [
       "https://github.com/circleupx", "mailto:yunier@developtive.com", "rss"
   ]
@@ -71,7 +70,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -160,19 +159,6 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Testing In Go
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In today’s blog post I would like to showcase tic
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-10-05 00:00:00 +0000 UTC'>October 5, 2024</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Testing In Go" href="http://localhost:1313/post/2024/testing-in-go/testing-in-go/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">JSON:API Implementing Filtering
     </h2>
   </header>
@@ -225,6 +211,90 @@ Kubernetes offers a wide range of Service Meshes, in this blog post I am going t
   <footer class="entry-footer"><span title='2023-05-28 00:00:00 +0000 UTC'>May 28, 2023</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Consul Service Mesh in Kubernetes - Part 1" href="http://localhost:1313/post/2023/consul-service-mesh-in-kubernetes-part-1/"></a>
 </article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rule Engines In .NET
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Introduction I am working on a project that requires the usage of rules engines to enforce business rules, I am unsure if I should roll out my own custom implementation, probably a bad idea, or if I should use an existing project.
+To help me make a decision I will need to look at the current options for rules engines available in .NET, I need to understand their capabilities and limitations. In .NET the most well-known rules engine is probably NRules, the project has been around for some years and has good documentation. I also know that Microsoft created its own rules engine, RulesEngine back in 2019. Then per awesome-dotnet I could use Plastic or Peasy.NET but I opted out on looking at those projects, for my use case I think NRules or RulesEngine will do.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-21 00:00:00 +0000 UTC'>May 21, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Rule Engines In .NET" href="http://localhost:1313/post/2023/rule-engines-in-dotnet/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Use Custom OpenAPI Specification File In .NET
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>.NET has the ability to auto-generated OpenAPI specifications based on your code. You can use different decorators on your code like ProducesResponseTypeAttribute or ConsumesAttribute to produce more descriptive response details for web API help pages generated by tools like Swagger.
+What if you didn’t want to use the autogenerated spec, what if you instead wanted to expose an already written spec, perhaps because you follow an API-first approach to building an API instead of a Code-First approach. How would you expose that OpenAPI file?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-18 00:00:00 +0000 UTC'>May 18, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Use Custom OpenAPI Specification File In .NET" href="http://localhost:1313/post/2023/use-custom-openapi-specification-file-in-.net/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Power Up Integration Tests With Test Containers
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Introduction In my blog post Integration Testing Using WebApplicationFactory I spoke about the benefits of testing a .NET Core Web API using WebApplicationFactory. The idea is that WebApplicationFactory creates a local HTTP server in-memory, meaning that when using WebApplicationFactory you are not mocking the HTTP request made to your API, you are actually using the API as if it were hosted in a live environment.
+The benefit here is that your test code seats in the middle of the Web API and the client code calling the API, meaning you can now test how the API behaves under certain requests from the client. One drawback of using WebApplicationFactory would be having to mock API dependencies, for example, the database. A common option for .NET developers using a relational database like SQL Server is to use SQLite in the integration tests, however, even that solution suffers from other drawbacks, our friend Jimmy Bogard goes into more detail in his blog Avoid In-Memory Databases for Tests. What if instead of faking the database we actually used a real live database in our integration tests? There is a way, how? Well, with Docker.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-23 00:00:00 +0000 UTC'>April 23, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Power Up Integration Tests With Test Containers" href="http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Tracking API Changes With Optic
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Over the last few months, I have been brushing up on API testing, specifically around contract testing.
+According to Postman, an API contract is a human- and machine-readable representation of an API’s intended functionality. It establishes a single source of truth for what each request and response should look like—and forms the basis of service-level agreements (SLAs) between producers and consumers. API contract testing helps ensure that new releases don’t violate the contract by checking the content and format of requests and responses.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-17 00:00:00 +0000 UTC'>April 17, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Tracking API Changes With Optic" href="http://localhost:1313/post/2023/optic/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Stricter Types In TypeScript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recently TypeScript wizard Matt Pocock made a Twitter thread on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in TypeScript 5 but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.
+I first learned about opaque types from Evert Pot in his blog post Implementing an opaque type in typescript, though I guess now the TypeScript community prefers to call them branded types, the name doesn’t matter, the problem being solved is the same, preventing types from being interchangeable.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-17 00:00:00 +0000 UTC'>February 17, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Stricter Types In TypeScript" href="http://localhost:1313/post/2023/stricter-types-in-typescript/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">tRPC
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the last few months, my Twitter feed has been dominated by one topic, tRPC. tRPC is a library that provides type-safety between your front end and backend, in theory, it allows you to quickly build applications.
+In today’s post, I would like to explore tRPC, its capabilities and features, and how it could be used in a project. To get started, I will create a new Node.js app using Express. If you prefer to use React or Next.js see the official docs.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-05 00:00:00 +0000 UTC'>February 5, 2023</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to tRPC" href="http://localhost:1313/post/2023/trpc/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="http://localhost:1313/page/2/">Next&nbsp;&nbsp;»
@@ -234,7 +304,7 @@ Kubernetes offers a wide range of Service Meshes, in this blog post I am going t
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

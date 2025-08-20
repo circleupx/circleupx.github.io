@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.135.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.148.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="Documenting my adventures in software development.">
 <meta name="author" content="Yunier">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -30,18 +30,17 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Yunier&#39;s Wiki" />
-<meta property="og:description" content="Documenting my adventures in software development." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
-
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
-<meta name="twitter:title" content="Yunier&#39;s Wiki"/>
-<meta name="twitter:description" content="Documenting my adventures in software development."/>
+</noscript><meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Yunier&#39;s Wiki">
+  <meta property="og:title" content="Yunier&#39;s Wiki">
+  <meta property="og:description" content="Documenting my adventures in software development.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png">
+<meta name="twitter:title" content="Yunier&#39;s Wiki">
+<meta name="twitter:description" content="Documenting my adventures in software development.">
 
 <script type="application/ld+json">
 {
@@ -50,7 +49,7 @@
   "name": "Yunier's Wiki",
   "url": "http://localhost:1313/",
   "description": "Documenting my adventures in software development.",
-  "thumbnailUrl": "http://localhost:1313/favicon.ico",
+  "logo": "http://localhost:1313/favicon.ico",
   "sameAs": [
       "https://github.com/circleupx", "mailto:yunier@developtive.com", "rss"
   ]
@@ -71,7 +70,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Yunier&#39;s Wiki (Alt + H)">Yunier&#39;s Wiki</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -121,71 +120,142 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Connect To The Internet From WSL
+    <h2 class="entry-hint-parent">Running Lighthouse On CI/CD Pipeline
     </h2>
   </header>
   <div class="entry-content">
-    <p>Problem You have installed WSL successfully on your machine only to find out that you cannot connect to the internet. I have encountered this problem before sometimes it can be fixed externally, but from my experience, no matter what you do, you will end up having to mock around with the resolv.conf file within WSL, more on that later.
-You may encounter an internet issue in WSL when the network administrator had configured Windows Defender to not allow local fire rules to be merged with rules applied at the enterprise level. You can confirm that this is applicable to you by searching for Windows Defender Firewall with Advance Security on the start menu, then going to Action, then Properties, under properties switching to the Public Profile tab, then clicking customize under settings. Now look under “Rule Merging”, if these options are set to no, then you will not be able to connect from WSL.
+    <p>In the world of front end development there is no better tool than Lighthouse. Lighthouse is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.
+The only problem with lighthouse, at least from my experience, is that it is not used until after the app has been deployed. I haven’t been involved in any project that utilizes lighthouse upfront, certainly not on the ci/cd pipelines. Which can be done using lighthouse-ci. There is also another way to get lighthouse running on your ci/cd pipeline, it involves executing lighthouse while you are running your unit test regardless of the unit test engine, be that Jest or Mocha. However, these tools lack the ability to invoke a web browser, after all, lighthouse can only be run against an actual website.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-10-23 00:00:00 +0000 UTC'>October 23, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Connect To The Internet From WSL" href="http://localhost:1313/post/2022/connect-to-the-internet-from-wsl/"></a>
+  <footer class="entry-footer"><span title='2021-06-05 00:00:00 +0000 UTC'>June 5, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Running Lighthouse On CI/CD Pipeline" href="http://localhost:1313/post/2021/running-lighthouse-in-cicd-pipeline/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Newman - Function Is Not Defined
+    <h2 class="entry-hint-parent">GraphQL Is Protocol Agnostic
     </h2>
   </header>
   <div class="entry-content">
-    <p>The Postman app is an excellent tool for building and testing Web APIs. It gets even better when you combine it with Newman, which allows you to execute your Postman scripts on a continuous integration system like Bitbucket Pipelines. While both Postman and Newman are awesome, you may encounter issues while working with both apps.
-1 2 3 if(pm.request.body.isEmpty){ // Code Omitted For Brevity } One issue you may encounter is having a script that was written in Postman, successfully tested using Postman, fail when executed using Newman. For example, the script above, which was written in Postman, is part of a series of tests that inspects the HTTP request body. The script can fail when executed on Newman because the function isEmpty does not exist.
+    <p>I’m seeing many API developers, specially those that come from a REST background, struggle with GraphQL simply because they are introducing protocol concepts into their GraphQL documents.
+give it a REST... pic.twitter.com/sUxqL4ACdj
+— I Am Devloper (@iamdevloper) November 13, 2020 GraphQL is not bound to any network protocol, it is most often implemented on top of the HTTP protocol and it only uses the most basic features of HTTP. That is because GraphQL treats HTTP as a dum pipe. Introducing protocol concept such as a 404 Not Found status code into your GraphQL documents will only cause you development pain.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-10-20 00:00:00 +0000 UTC'>October 20, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Newman - Function Is Not Defined" href="http://localhost:1313/post/2022/newman-function-is-not-defined/"></a>
+  <footer class="entry-footer"><span title='2021-06-04 00:00:00 +0000 UTC'>June 4, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to GraphQL Is Protocol Agnostic" href="http://localhost:1313/post/2021/graphql-is-protocol-agnostic/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Authorization Code From Terminal
+    <h2 class="entry-hint-parent">Problem Details for HTTP APIs
     </h2>
   </header>
   <div class="entry-content">
-    <p>I was recently presented with a unique challenge at work. I needed to create a script that clones repositories from Bitbucket. The problem is that as of June 2022, Bitbucket only supports managing repositories using OAuth via two grant types, the authorization code grant &amp; the implicit grant.
-I won’t get into the details here but the implicit grant is no longer recommended and is in fact discouraged from ever being used. Regardless of which flow I use I will end up facing the same problem, the browser. In both the implicit and authorization grant, user interaction (3-legged OAuth) is required, the end-user must provide their credentials in order to properly authenticate, in some cases this may even include multifactor authentication.
+    <p>One of the many benefits of working with JSON:API and GraphQL is having a standardize way to communicate failures to a client. If you are not working with a spec like JSON:API or GraphQL, then you are in the hands of the developer that built the API and every developers implements error handling differently.
+Almost every HTTP API that I&#39;ve consumed implements errors differently. Can we just agree to use Problem Details and be done with it?
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-06-05 00:00:00 +0000 UTC'>June 5, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Authorization Code From Terminal" href="http://localhost:1313/post/2022/authorization-code-from-terminal/"></a>
+  <footer class="entry-footer"><span title='2021-05-11 00:00:00 +0000 UTC'>May 11, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Problem Details for HTTP APIs" href="http://localhost:1313/post/2021/problem-details-for-http-apis/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Shortening URLs
+    <h2 class="entry-hint-parent">Accessibility Testing in Playwright
     </h2>
   </header>
   <div class="entry-content">
-    <p>I was recently talking to another developer about the importance of never exposing internal identifiers to the outside world. A well-known example of this is using an auto-incrementing identity field in SQL and exposing that field through an API. A client can look at the highest number to tell how many records exist, in an ordering system this is far from ideal. Now everyone will know how many orders you have created. I recommend watching The Internet of Pwned Things by Troy Hunt for a real-world example.
+    <p>I don’t believe I’ve mention this before here, but I am a huge fan of Hey. By far the best email service I have ever used. What makes Hey even cooler is the team behind Hey sharing they engineering approach to different problems. Be that through various tweets or blog post like Scaling the hottest app in tech on AWS and Kubernetes which outline how they use k8s. Recently, they shared how to tackle ay11 under hey accessibility is a lot of work. One thing that stood out was to me was their usage of axe-core. Axe-core is an accessibility engine for automated Web UI testing. Which reminded me of playwright, so I started to wonder if the two could be combined, turns out they can be. Let’s explore how to do that.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-04-25 00:00:00 +0000 UTC'>April 25, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Shortening URLs" href="http://localhost:1313/post/2022/shortening-urls/"></a>
+  <footer class="entry-footer"><span title='2021-03-13 00:00:00 +0000 UTC'>March 13, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Accessibility Testing in Playwright" href="http://localhost:1313/post/2021/accessibility-testing-with-playwright/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Extracting Values From Types
+    <h2 class="entry-hint-parent">Testing Web Apps With Playwright
     </h2>
   </header>
   <div class="entry-content">
-    <p>Learned a cool little trick a while back from Khalid. As a developer, you will often run into scenarios that require you to get a subset of all fields from a model. There are many ways to achieve this task, returning the type and then grabbing each property, for example, take the following User type.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class User { public User(string name, DateTime dob) { var random = new Random(); Id = random.Next(); Name = name; DateOfBirth = dob; } public int Id { get; set; } public string Name {get; set; } public DateTime DateOfBirth { get; set; } } If you want to obtain the name and id property you can take the following approach.
+    <p>A few weeks ago I was looking for an end-to-end testing framework. An alternative to Selenium, and all the other end-to-end frameworks. I came across a project called Playwright. Playwright is a new end-to-end framewrok created and maintained by Microsoft, it allows you to test web applications on different browsers. Some the major feature it provides are as follows.
+Playwright has full API coverage for all modern browsers, including Google Chrome and Microsoft Edge (with Chromium), Apple Safari (with WebKit) and Mozilla Firefox. Supports multiple languages like Node.js, Python, c# and Java. First-party Docker image and GitHub Actions to deploy tests to your preferred CI/CD provider. Use device emulation to test your responsive web apps in mobile web browsers. Provides APIs to monitor and modify network traffic, both HTTP and HTTPS. Any requests that page does, including XHRs and fetch requests, can be tracked, modified and handled. While those feature are all great and useful, they don’t measure up to what I consider to be the best feature of Playwright. That is being able to create and execute test as easily as unit tests. You can also leverage tools like qa wolf and headless-recorder, these tools record any action you take on the browser, those actions are then converted into Playwright scripts.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-04-10 00:00:00 +0000 UTC'>April 10, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Extracting Values From Types" href="http://localhost:1313/post/2022/extracting-values-from-types/"></a>
+  <footer class="entry-footer"><span title='2021-02-18 00:00:00 +0000 UTC'>February 18, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Testing Web Apps With Playwright" href="http://localhost:1313/post/2021/testing-webapps-with-playwright/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Parsing in C#
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I am currently building a JSON:API driven API on .NET 5, the project is called Chinook after the Sqlite Chinook project. The API is mature enough for me to introduce filtering via the Filter query parameter used in JSON:API.
+I would like to support dynamic filtering, I want to avoid creating nested if-else/switch statements that check if a given input is part of the filter criteria, and if it is then it gets appended to a filtering clause. For example, take the following API request, it uses the OData filter syntax.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-01-17 00:00:00 +0000 UTC'>January 17, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Parsing in C#" href="http://localhost:1313/post/2021/parsing-in-csharp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Asynchronous Request In GraphQL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When I first started to learn about GraphQL I was somewhat surprise to learn that the GraphQL specification did not provide any guidance or spoke of any methods to handle asynchronous request. By asynchronous request, I mean request that cannot be completed within your normal request-response context.
+For example, take an API that aggregates orders by combining various types of filters, the API may allow you to filter by only orders that are greater than $100.00, or orders placed in certain date range, or orders that have a particular product and so on. Depending on the amount of data and filters used, the query to get the data may take a couple of minutes, maybe even hours. The question now becomes how to best handle long-running request in GraphQL.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-01-03 00:00:00 +0000 UTC'>January 3, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Asynchronous Request In GraphQL" href="http://localhost:1313/post/2021/asynchronous-request-in-graphql/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Chinook Project Hosted On Heroku
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>My Chinook JSON:API project is now in a good enough state that I feel comfortable hosting it on a live server. Here is the base url, https://chinook-jsonapi.herokuapp.com/, I highly recommend using some kind of JSON viewer if you want to interact with the API. If you are on a Chromium base browser then I recommend using JSON Viewer.
+Remember, the API does not support filtering, pagination, sorting or include resolvers and it only supports READ operations. I’m hoping to add filtering soon but I first want to dedicate a blog post or two on building dynamic LINQ queries using expression trees. That should be fun!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-01-02 00:00:00 +0000 UTC'>January 2, 2021</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Chinook Project Hosted On Heroku" href="http://localhost:1313/post/2021/chinook-project-hosted-on-heroku/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Tagging EF Core Queries
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>.NET Core 2.2 introduce a small feature known as Query Tags. It allows you to annotate queries generated by EF Core. This is super useful for debugging purposes, after all one of the main complains you often hear about EntityFramework is the over completed SQL statements it generates.
+I am currently working on a project called Chinook, it demonstrates how to build a JSON:API on .NET Core. The project uses EF Core to query a SQLite database. Here is an example of one of the LINQ queries used to get a collection of users.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-12-09 00:00:00 +0000 UTC'>December 9, 2020</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Tagging EF Core Queries" href="http://localhost:1313/post/2020/tagging-ef-core-queries/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JSON:API - Exposing Relationships
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>My previous post on JSON:API exposed customers as an API resource, since then, I have updated the project to expose all remaining resources, that includes Albums, Artists, Employees, Genres, Invoices, InvoiceItems, MediaTypes, Playlists, and Tracks. The time has come to expose the relationship that exist between these resource.
+For this post, I will expose the one-to-many relationship that exist between artists and albums. To accomplish this task I will have to update the class ArtistServiceModelConfiguration by using the ToManyRelationship method exposed by JsonApiFramework in order to link one artist to many albums.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-12-06 00:00:00 +0000 UTC'>December 6, 2020</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to JSON:API - Exposing Relationships" href="http://localhost:1313/post/2020/json-api-exposing-relationships/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -199,7 +269,7 @@ I won’t get into the details here but the implicit grant is no longer recommen
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Yunier&#39;s Wiki</a></span> · 
 
     <span>
         Powered by

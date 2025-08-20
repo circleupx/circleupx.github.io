@@ -1,6 +1,7 @@
 baseURL: "https://www.yunier.dev"
 title: Yunier's Wiki
-paginate: 5
+pagination:
+  pageSize: 5
 theme: PaperMod
 
 enableInlineShortcodes: true
