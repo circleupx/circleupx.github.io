@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/2025/python-script-to-combine-parquet-files/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/jsonapi/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,16 +26,7 @@
     <loc>http://localhost:1313/series/jsonapi-in-.net/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/series/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/arrays/</loc>
@@ -37,9 +43,6 @@
   </url><url>
     <loc>http://localhost:1313/post/2023/go-multiple-return-values/</loc>
     <lastmod>2023-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/series/consul/</loc>
-    <lastmod>2023-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/consul/</loc>
     <lastmod>2023-05-28T00:00:00+00:00</lastmod>
@@ -115,9 +118,6 @@
   </url><url>
     <loc>http://localhost:1313/post/2022/connect-to-a-service-in-a-kubernetes-instance-hosted-on-wsl-from-windows/</loc>
     <lastmod>2022-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/series/design-patterns/</loc>
-    <lastmod>2022-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/patterns/</loc>
     <lastmod>2022-12-04T00:00:00+00:00</lastmod>
