@@ -125,6 +125,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">T.Parallel() In GO Tests
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 1 2 3 4 5 6 7 8 9 package example func PrintHello() string { return &#34;Hello, World!&#34; } func PrintGoodbye() string { return &#34;Goodbye, World!&#34; } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 package example_test import ( &#34;example&#34; &#34;fmt&#34; &#34;testing&#34; ) func Test(t *testing.T) { fmt.Println(&#34;Starting tests...&#34;) t.Run(&#34;PrintHello&#34;, func(t *testing.T) { fmt.Println(&#34;Running PrintHello test&#34;) result := example.PrintHello() expected := &#34;Hello, World!&#34; if result != expected { t.Errorf(&#34;Expected %q, got %q&#34;, expected, result) } }) t.Run(&#34;PrintGoodbye&#34;, func(t *testing.T) { fmt.Println(&#34;Running PrintGoodbye test&#34;) result := example.PrintGoodbye() expected := &#34;Goodbye, World!&#34; if result != expected { t.Errorf(&#34;Expected %q, got %q&#34;, expected, result) } }) } When I run the go test command on my terminal I get the follownig.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-05 00:00:00 +0000 UTC'>November 5, 2025</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to T.Parallel() In GO Tests" href="http://localhost:1313/post/2025/t-parallel-in-go-tests/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">VSCode Configuration to attach to a container running in a kubernetes cluster
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>VSCode is an amazing text editor, it offers a wide variety of features and an awesome list of extensions. One feature that I like to use is “Attach to a container in a Kubernetes cluster”, that is attaching my code to a running instance of my app running in my local kubernetes cluster.
+Super useful if you need to test, debug or monitor your app while it is running. I recently found myself in a situation where I had to restart the app and reattached myself to the container over and over again. It became tedious to find the pod in the Kubernetes view, right clicking on the pod once I found it to select the attach option. Having to do this over and over again prompted me to look into whether this could be easier to do via some configuration. I wanted something that would allow me to easily attach to a pod. I looked around the web and found nothing so this is what I came up with.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0000 UTC'>November 4, 2025</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to VSCode Configuration to attach to a container running in a kubernetes cluster" href="http://localhost:1313/post/2025/vscode-configuration-to-attach-to-a-container-running-in-a-kubernetes-cluster/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Python Script to Combine Parquet Files
     </h2>
   </header>
@@ -232,34 +259,6 @@ The benefit here is that your test code seats in the middle of the Web API and t
   </div>
   <footer class="entry-footer"><span title='2023-04-23 00:00:00 +0000 UTC'>April 23, 2023</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Power Up Integration Tests With Test Containers" href="http://localhost:1313/post/2023/power-up-integration-tests-with-tests-containers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Tracking API Changes With Optic
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Over the last few months, I have been brushing up on API testing, specifically around contract testing.
-According to Postman, an API contract is a human- and machine-readable representation of an API’s intended functionality. It establishes a single source of truth for what each request and response should look like—and forms the basis of service-level agreements (SLAs) between producers and consumers. API contract testing helps ensure that new releases don’t violate the contract by checking the content and format of requests and responses.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-04-17 00:00:00 +0000 UTC'>April 17, 2023</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Tracking API Changes With Optic" href="http://localhost:1313/post/2023/optic/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Stricter Types In TypeScript
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Recently TypeScript wizard Matt Pocock made a Twitter thread on branded types. At first, I did not know what he was talking about, I thought it was a new TypeScript feature being introduced in TypeScript 5 but upon closer look, I realized that it was not a new feature but rather a technique that I already knew, opaque types.
-I first learned about opaque types from Evert Pot in his blog post Implementing an opaque type in typescript, though I guess now the TypeScript community prefers to call them branded types, the name doesn’t matter, the problem being solved is the same, preventing types from being interchangeable.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-02-17 00:00:00 +0000 UTC'>February 17, 2023</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to Stricter Types In TypeScript" href="http://localhost:1313/post/2023/stricter-types-in-typescript/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -110,6 +110,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">T.Parallel() In GO Tests
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 1 2 3 4 5 6 7 8 9 package example func PrintHello() string { return &#34;Hello, World!&#34; } func PrintGoodbye() string { return &#34;Goodbye, World!&#34; } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 package example_test import ( &#34;example&#34; &#34;fmt&#34; &#34;testing&#34; ) func Test(t *testing.T) { fmt.Println(&#34;Starting tests...&#34;) t.Run(&#34;PrintHello&#34;, func(t *testing.T) { fmt.Println(&#34;Running PrintHello test&#34;) result := example.PrintHello() expected := &#34;Hello, World!&#34; if result != expected { t.Errorf(&#34;Expected %q, got %q&#34;, expected, result) } }) t.Run(&#34;PrintGoodbye&#34;, func(t *testing.T) { fmt.Println(&#34;Running PrintGoodbye test&#34;) result := example.PrintGoodbye() expected := &#34;Goodbye, World!&#34; if result != expected { t.Errorf(&#34;Expected %q, got %q&#34;, expected, result) } }) } When I run the go test command on my terminal I get the follownig.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-05 00:00:00 +0000 UTC'>November 5, 2025</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to T.Parallel() In GO Tests" href="http://localhost:1313/post/2025/t-parallel-in-go-tests/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">VSCode Configuration to attach to a container running in a kubernetes cluster
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>VSCode is an amazing text editor, it offers a wide variety of features and an awesome list of extensions. One feature that I like to use is “Attach to a container in a Kubernetes cluster”, that is attaching my code to a running instance of my app running in my local kubernetes cluster.
+Super useful if you need to test, debug or monitor your app while it is running. I recently found myself in a situation where I had to restart the app and reattached myself to the container over and over again. It became tedious to find the pod in the Kubernetes view, right clicking on the pod once I found it to select the attach option. Having to do this over and over again prompted me to look into whether this could be easier to do via some configuration. I wanted something that would allow me to easily attach to a pod. I looked around the web and found nothing so this is what I came up with.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0000 UTC'>November 4, 2025</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to VSCode Configuration to attach to a container running in a kubernetes cluster" href="http://localhost:1313/post/2025/vscode-configuration-to-attach-to-a-container-running-in-a-kubernetes-cluster/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Go - Multiple Return Values
     </h2>
   </header>

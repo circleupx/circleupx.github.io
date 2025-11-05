@@ -120,6 +120,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Use Kubernetes In WSL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you find yourself in need of having to use Kubernetes in WSL, know that it is possible, hard, but possible. It might require upgrading your machine to Windows 11 if you are on Windows 10 and a few other packages.
+Prerequisite To get started we need to know what version of Windows you are on. This is important because Kubernetes will be installed using Microk8s, which requires having snap installed and working. Snap won’t work in older Windows builds.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-11-03 00:00:00 +0000 UTC'>November 3, 2022</span>&nbsp;·&nbsp;Yunier</footer>
+  <a class="entry-link" aria-label="post link to Use Kubernetes In WSL" href="http://localhost:1313/post/2022/use-kubernetes-in-wsl/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Fun With Flurl
     </h2>
   </header>
@@ -240,21 +254,6 @@ The idea is that without deferred joins pagination queries can impact response t
   </div>
   <footer class="entry-footer"><span title='2022-02-17 00:00:00 +0000 UTC'>February 17, 2022</span>&nbsp;·&nbsp;Yunier</footer>
   <a class="entry-link" aria-label="post link to Faster Web API Pagination" href="http://localhost:1313/post/2022/faster-web-api-pagination/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JSON:API - Pagination Links
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>It has been a while since I blogged about JSON:API. In my last post on JSON:API I covered how to create new resources. In today’s post, I want to go over how I expose pagination links. Pagination links allow a client to page through a collection of resources. A shift of control from the client back to the server.
-Here is an example of a possible JSON:API response that includes pagination links.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 { &#34;data&#34;: [ { // omitted for brevity } ], &#34;links&#34;: { &#34;up&#34;: &#34;http://example.com/&#34;, &#34;self&#34;: &#34;http://example.com/articles?page[number]=3&amp;page[size]=1&#34;, &#34;first&#34;: &#34;http://example.com/articles?page[number]=1&amp;page[size]=1&#34;, &#34;prev&#34;: &#34;http://example.com/articles?page[number]=2&amp;page[size]=1&#34;, &#34;next&#34;: &#34;http://example.com/articles?page[number]=4&amp;page[size]=1&#34;, &#34;last&#34;: &#34;http://example.com/articles?page[number]=13&amp;page[size]=1&#34; } } As you can see, along with the data object, the API responses included a Links object, within the Links object, you can find links for up, self, first, prev, next, and last. These are all relationship name as defined in Link Relations by the Internet Assigned Numbers Authority (IANA).
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-01-25 00:00:00 +0000 UTC'>January 25, 2022</span>&nbsp;·&nbsp;Yunier</footer>
-  <a class="entry-link" aria-label="post link to JSON:API - Pagination Links" href="http://localhost:1313/post/2022/json-api-pagination-links/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
